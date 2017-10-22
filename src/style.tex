@@ -15,7 +15,24 @@
 \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
 \titlespacing{\paragraph}{0pt}{0pt}{0pt}
 
-% style of header/footer
+% style of header/footer twoside/oneside
+\if@twoside
+\fancypagestyle{mypagestyle}{%
+  \fancyhf{}
+  \fancyhead[OR]{\leftmark}
+  \fancyfoot[OR]{\thepage}
+
+  \ifthenelse{\boolean{final}}{}{\fancyfoot[OL]{\version}}
+  \ifthenelse{\boolean{final}}{}{\fancyhead[OL]{Version vom \today}}
+
+  \fancyhead[EL]{\titel}
+  \fancyfoot[EL]{\thepage}
+
+  \ifthenelse{\boolean{final}}{}{\fancyhead[ER]{Version vom \today}}
+  \ifthenelse{\boolean{final}}{}{\fancyfoot[ER]{\version}}
+}
+
+\else
 \fancypagestyle{mypagestyle}{%
   \fancyhf{}
   \fancyhead[OR]{\leftmark}
@@ -30,6 +47,8 @@
   \ifthenelse{\boolean{final}}{}{\fancyhead[EL]{Version vom \today}}
   \ifthenelse{\boolean{final}}{}{\fancyfoot[EL]{\version}}
 }
+
+\fi
 \pagestyle{mypagestyle}
 
 \renewcommand*{\chapterpagestyle}{mypagestyle} 

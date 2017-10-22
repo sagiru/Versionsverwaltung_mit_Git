@@ -12,10 +12,15 @@
 \begin{document}
 
 \include{title}
+\ifthenelse{\boolean{final}}{\cleardoublepage}{}
+
 
 \newgeometry{left=3.5cm, right=2.5cm, top=2.9cm, bottom=2.9cm}
 
-\include{content/abstract}
+\ifthenelse{\boolean{abstract}}{
+  \include{abstract}
+  \ifthenelse{\boolean{final}}{\cleardoublepage}{}
+}{}
 
 \fancyfoot[OR]{\pagemark}%
 \fancyfoot[EL]{\pagemark}%
