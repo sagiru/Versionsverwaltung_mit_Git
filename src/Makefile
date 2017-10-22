@@ -5,6 +5,8 @@
 # Author: Sascha Girrulat <sascha@girrulat.de>
 #
 #
+
+SOURCE=Seminar-1908-Git.tex
 PDF=$(SOURCE:tex=pdf)
 export TEXMFHOME=$(PWD)/texmf
 UNAME_S := $(shell uname -s)
