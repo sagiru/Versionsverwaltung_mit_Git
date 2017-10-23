@@ -34,6 +34,7 @@
 \iftotallstlistings\lstlistoflistings\fi
 
 \input{abbreviations}
+\input{glossary}
 
 % Topline inside the page header 
 \clearpage\markboth{\nomname}{\nomname}
@@ -59,13 +60,11 @@
 
 % glossary if selected
 \ifthenelse{\boolean{glossary}}{
-\input{glossary}
 \label{sec:glossary}
 
 % \glsaddall
 
-\printglossaries
-\addcontentsline{toc}{chapter}{Glossar}
+\printglossary[title=\gloss]
 }{}
 
 \clearpage
