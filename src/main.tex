@@ -22,8 +22,14 @@
   \ifthenelse{\boolean{final}}{\cleardoublepage}{}
 }{}
 
-\fancyfoot[OR]{\pagemark}%
-\fancyfoot[EL]{\pagemark}%
+\if@twoside
+  \fancyfoot[OR]{\pagemark}
+  \fancyfoot[EL]{\pagemark}
+
+\else
+  \fancyfoot[R]{\pagemark}
+  \fancyfoot[L]{\pagemark}
+\fi
 
 \tableofcontents
 
@@ -69,6 +75,6 @@
 
 \clearpage
 \bibliography{bibliography}
-\bibliographystyle{alphadin}
+\bibliographystyle{alpha}
 
 \end{document}

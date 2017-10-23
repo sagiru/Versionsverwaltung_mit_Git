@@ -4,28 +4,34 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
-\fancyfoot[OR]{}%
-\fancyfoot[EL]{}%
-\fancyfoot[OL]{}%
-\fancyfoot[ER]{}%
+\if@twoside
+  \fancyfoot[OR]{}
+  \fancyfoot[EL]{}
+  \fancyfoot[OL]{}
+  \fancyfoot[ER]{}
+
+\else
+  \fancyfoot[R]{}
+  \fancyfoot[L]{}
+\fi
 
 \begin{titlepage}
 \newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
 \begin{figure}
     \begin{minipage}{0.2\textwidth}
-        \begin{flushleft}    
+        \begin{flushleft}
             \includegraphics[scale=0.20]{images/logo_left.png}
         \end{flushleft}
-    \end{minipage}  
+    \end{minipage}
     \begin{minipage}{0.55\textwidth}
         \centering
         \hspace{0.25cm}
     \end{minipage}
     \begin{minipage}{0.2\textwidth}
-        \begin{flushleft}   
+        \begin{flushleft}
             \includegraphics[scale=0.5]{images/logo_right.png}
         \end{flushleft}
-    \end{minipage} 
+    \end{minipage}
 \end{figure}
 \begin{center}
     \vspace*{0cm}
@@ -38,7 +44,7 @@
 \end{center}
 \ifthenelse{\boolean{final}}{}{
     \begin{center}
-        \version ~vom \today        
+        \version ~vom \today
     \end{center}
 }
 \begin{center}

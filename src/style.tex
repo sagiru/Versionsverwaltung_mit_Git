@@ -35,17 +35,17 @@
 \else
 \fancypagestyle{mypagestyle}{%
   \fancyhf{}
-  \fancyhead[OR]{\leftmark}
-  \fancyfoot[OR]{\thepage}
+  \fancyhead[R]{\leftmark}
+  \fancyfoot[R]{\thepage}
 
-  \ifthenelse{\boolean{final}}{}{\fancyfoot[OL]{\version}}
-  \ifthenelse{\boolean{final}}{}{\fancyhead[OL]{Version vom \today}}
+  \ifthenelse{\boolean{final}}{}{\fancyfoot[L]{\version}}
+  \ifthenelse{\boolean{final}}{}{\fancyhead[L]{Version vom \today}}
 
-  \fancyhead[ER]{\titel}
-  \fancyfoot[ER]{\thepage}
+  \fancyhead[R]{\titel}
+  \fancyfoot[R]{\thepage}
 
-  \ifthenelse{\boolean{final}}{}{\fancyhead[EL]{Version vom \today}}
-  \ifthenelse{\boolean{final}}{}{\fancyfoot[EL]{\version}}
+  \ifthenelse{\boolean{final}}{}{\fancyhead[L]{Version vom \today}}
+  \ifthenelse{\boolean{final}}{}{\fancyfoot[L]{\version}}
 }
 
 \fi

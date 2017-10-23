@@ -20,7 +20,7 @@ all: setup pdf
 
 SKIP_CLEANUP?=0
 
-pdf: ${PDF} clean move
+pdf: ${PDF} move clean
 
 move:
 	mkdir ../target -p
