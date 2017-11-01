@@ -20,6 +20,8 @@ src/*.toc
 src/*.out
 src/*.fls
 src/*.fdb*
+src/*.ac*
+src/*.al*
 src/*.gz
 src/texmf/*ls-R
 *.log

@@ -83,7 +83,6 @@ setup_tex: setup
 
 ${PDF}: ${SOURCE} Makefile
 	pdflatex  -synctex=1 -interaction=nonstopmode --src-specials ${SOURCE}
-	makeindex $(MAIN).nlo -s nomencl.ist -o $(MAIN).nls
 	latexmk -r .latexmk.rc -f -bibtex -pdf -bibtex-cond ${SOURCE}
 
 .PHONY: src clean

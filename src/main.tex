@@ -39,14 +39,11 @@
 \renewcommand{\lstlistlistingname}{Listings}
 \iftotallstlistings\lstlistoflistings\fi
 
-\input{abbreviations}
+\input{acronyms}
 \input{glossary}
 
-% Topline inside the page header 
-\clearpage\markboth{\nomname}{\nomname}
-
-\printnomenclature
-\label{cha:abbreviations}
+\printglossary[title=\acron,type=\acronymtype]
+\label{cha:acronyms}
 \clearpage
 
 \begin{spacing}{\lineDistanceMain}
