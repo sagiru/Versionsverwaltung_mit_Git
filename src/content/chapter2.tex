@@ -19,24 +19,50 @@ Entwicklung unterstützt wird.}.\cite[s.~381]{cd}
 Das erste Versionskontrollsystem namens SCCS enstand 1972 und wurde von Marc J.
 Rockkind bei Bell Labs
 geschrieben\footnote{\url{http://www.belllabs.com/}}\cite[s.~382]. Ab diesem
-Zeitpunkt enstand eine Vielzahl von verschiedenen Versionskontollsystemen. Hier
-seien nur einige genannt. Als Alternative zu dem properitären SCCS folgte
-Anfang 1980 das von Walter F. Tichy an Purdue University entwickelte erste
-\acrlong{OpenSource} Versionskontrollsystem
-\acrfull{rcs}\cite{paper:rcs,link:rcs}. Ross Ridge schrieb 1993 mit
-\acrshort{mysc} einen freien Ersatz für \acrfull{sccs} der in späteren
-Versionen in \acrfull{cssc} umbenannt wurde\cite{link:cssc,link:mysc}. Alle
-drei Systeme finden in der Praxis nur noch wenig Anwendung und daher wird an
-dieser Stelle nicht auf weiter auf Details eingegangen.
-\subsection{CSV}
+Zeitpunkt enstand eine Vielzahl von verschiedenen Versionskontollsystemen.  Als
+Alternative zu dem properitären \acrshort{sccs} folgte Anfang 1980 das von
+Walter F. Tichy an Purdue University entwickelte erste \acrlong{OpenSource}
+Versionskontrollsystem \acrfull{rcs}\cite{paper:rcs,link:rcs}. Ross Ridge
+veröffentlichte 1993 mit einer Beta Version von \acrshort{mysc} einen freien
+Ersatz für \acrshort{sccs}. In späteren Versionen wurde \acrshort{mysc} in
+\acrfull{cssc} umbenannt\cite{link:cssc,link:mysc}. Alle drei Systeme finden in
+der Praxis nur noch wenig Anwendung und daher wird an dieser Stelle nicht auf
+weiter auf Details eingegangen. In der weiteren Auswahl sei hier nur noch auf
+einige populäre Systeme eingegangen.
+
+\subsection{CVS}\label{sec:cvs}
+Das 1986 durch Dick Grune veröffentlichte \acrfull{cvs} war das erste freie
+Versionskontrollsystem mit einem zentralen \gls{repository}. Das wurde ereicht
+in dem \acrshort{rcs}, mit Hilfe eines \gls{wrapper}, um eine
+Client-/Serverkomponente erweitert wurde. Das ermöglichte erstmals das mehrere
+Entwickler gleichzeitig an einem \gls{repository} und konkurrierend an den
+selben Dateien arbeiten konnten. Neben dem innovativen Ansatz gabe es hier aber
+noch einige technische Einschränkungen die ein kollaboratives Arbeiten
+erschwerten. So war z.B. die Nutzung des verbrauchten Speicherplatzes nicht
+optimal. Das erzeugen von Abzweigungen (Branches) wurde durch einfaches
+Kopieren erreicht. Das war deshalb nicht nur Zeitaufwändig sondern verbrauchte
+auch entsprechenden Speicherplatz. Ein späteres Zusammenführen (mergen) dieser
+Zweige führte daher zu Dateikonflikten und verursachte hierduch erheblichen
+Aufwand. Auch gab es keine Funktonalität Binärdateien zu verwalten so das hier
+der Speicherplatz auch eher ineffizient genutzt wurde. Das erstellen von Tags
+war mit wachsendem Inhalt des \glspl{repository} ebenfalls Zeitaufwändig da
+alle enthaltenen Dateien bearbeitet werden mussten. Eine der, aus heutiger
+Sicht, größte Einschränkung war aber sicher die Tatsache das Commits in das
+\gls{repository} nicht Atomar waren. Wurde die Übertragung der Dateien in das
+zentrale \gls{repository} unterbrochen so wurde dieses in einem inkonsistenten
+und nicht nutzbaren Zustand hinterlassen und musste administrativ repariert
+werden. \cite[s.~382-383]{cd}
+
 \subsection{SVN}
+Das Ziel des 
+\subsection{Git}
 \subsection{Weitere}
 \section{Versionsverwaltungssysteme}
 \subsection{Lokal}
 Beide Systeme arbeiteten auf dem lokalen
 Dateisystem.,
 \subsection{Zentral}
-\subsection{Dezentral}
+\subsection{Verteilte Versionskontrolle}
 \subsection{Streaming}
 \section{Warum und Wozu?}
 single vs big teams, picture lokal vs team
