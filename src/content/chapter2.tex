@@ -54,7 +54,58 @@ und nicht nutzbaren Zustand hinterlassen und musste administrativ repariert
 werden. \cite[s.~382-383]{cd}
 
 \subsection{SVN}
-Das Ziel des 
+Das Ziel des als quasi Nachfolger zu \acrshort{cvs} entwickelten
+Versionsverwaltungssystem \acrfull{svn} war es die technischen Einschränkungen
+von \acrshort{cvs} zu beheben. Es wurde darauf geachtet das es als Ersatz
+fungieren kann und einen Umstieg möglichst einfach zu machen. Ebenso
+funktioniert das Benutzerinterface ähnich zu \acrshort{cvs} so das Entwickler
+sich nach einem Umstieg leichter zurecht finden. Als zentrale Neuerung wird
+hier, im Gegensatz zu \acrshort{rcs} und \acrshort{sccs} sind nicht mehr die
+Dateien zentraler Bestandteil der Versionierung sondern die sogenannte SVN
+Revision. Jede Revision enthält einen eindeutigen Stand aller Dateien im
+\gls{repository} zu einem bestimmten Zeitpunkt und ist global gültig und
+eindeutig. Das ermöglicht konkrete Vergleiche welche Veränderungen zwischen
+zwei Revisionen durchgeführt wurden. Alle Änderungen, wie z.b. das Kopieren,
+Hinzufügen oder Entfernen von Dateien werden Atomar durchgeführt. Im Gegensatz
+zu \acrshort{cvs} geht die Historie einer Datei nicht verloren wenn Sie kopiert
+wird. Das erstellen von Tags oder Branches wurde ebenfalls verbessert. Hierzu wurde eine Konvention eingeführt die drei verschiedene Verzeichnisse innerhalb eines \glspl{repository} vorgibt.
+\begin{itemize}
+\item \textbf{trunk}: Enthält die Revision an der gemeinsam gearbeitet wird
+       und von der Branches und Tags erzeugt werden.
+\item \textbf{tags}: Verzeichnis in dem unterschiedliche Verzeichnisse als
+       Tags erzeugt werden die von einer bestimmten Revision erzeugt werden.
+\item \textbf{branches}: Verzeichnis in dem unterschiedliche Verzeichnisse als
+      Abzweigungen angelegt werden. Hierauf kann unabhängig von \textit{trunk}
+      gearbeitet werden.
+\end{itemize}
+Die o.a. Verzeichnsse bzw. Tags und Branches sind lediglich Zeiger auf eine
+bestimmte Revision und die Trennung dazwischen ist nur eine Konvention. So
+werden Tags und Branches erzeugt in dem ein Verzeichnis angelegt wird und der
+Inhalt von \textit{trunk} kopiert wird. Das führt auch zu einem der Probleme bei dem
+Arbeiten mit \acrlong{svn}. Tags sind nicht eindeutig und veränderbar. So macht
+SVN technisch keinen Unterschied zwischen \textit{trunk},
+\textit{tags}, \textit{branches} oder einem beliebigen anderen
+Verzeichnis. Alle können in der gleichen Art und Weise bearbeitet werden. Eine
+weiterer Vorteil ist, das mit \acrlong{svn} auch gearbeitet werden kann wenn
+das Netzwerk nicht zur Verfügung. Alle Änderungen an Dateien werden i\.d\.R\.
+erstmal auf einer lokalen Kopie durchgeführt und mit einem seperaten Kommando
+an das zentrale Repository gesendet. Als weitere Funktionalität seien noch
+sogenannte Externals genannt die es erstmals ermöglichen Inhalte von anderen
+Repositorys einzubinden. Dies kann nützlich sein um Abhängigkeiten zwischen
+unterschiedlicher Software abubilden oder Binärdateien in andere
+\glspl{repository} auszulagern. \acrlong{svn} war zwar eine erhebliche Neuerung
+gegenüber \acrlong{cvs} hatte aber aufgrund der zusätzlichen Client-/Server
+Komponente einige neue Probleme. So waren z.B. zwar die Aktionen auf seiten des
+zentralen \glspl{repository} atomar aber nicht auf seiten des Clients. So das
+hier, bei unvorhergesehenen Fehlern, wieder Inkonsistenzen entstehen konnten.
+Des weiteren verwaltet \acrshort{svn} mit Hilfe eines Verzeichnisses \textit{\.svn}
+innerhalb eines jeden Verzeichnisses. Innerhalb dieses Ordners werden
+Verwaltungsinformationen gespeichert. Das ermöglicht eine unabhängige
+Verwaltung aller Verzeichnisse untereinander und führt ggf\. dazu das die lokale
+Kopie eine Zusammenstellung von unterschiedlichen Revisionen ist und keinen
+eindeutigen Stand representiert. Das sind nur einige der Probleme mit SVN auf
+eine weitere Ausführung wird aus Platzgründen verzichtet und kann in
+einschlägiger Literatur nachgelesen werden.\cite[s.~383-385]{cd} 
 \subsection{Git}
 \subsection{Weitere}
 \section{Versionsverwaltungssysteme}
