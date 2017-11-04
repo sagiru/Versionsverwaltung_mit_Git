@@ -13,7 +13,12 @@ Software ermöglicht ohne sich gegenseitig zu
 behindern\footnote{\label{dev:1}Das hängt natürlich nicht nur von dem
 Versionskontollsystem ab sondern auch von dem Design der entwickelten Software.
 Diese wird i.d.R. eher modular aufgebaut so das die Möglichkeit einer paralelle
-Entwicklung unterstützt wird.}.\cite[s.~381]{cd}
+Entwicklung unterstützt wird.}.\cite[s.~381]{cd}\\
+
+Es wird in nachvolgenden Abschnitten nicht im Detail auf alle existierende
+Versionskontollsysteme eingegangen. Viel mehr wird ein kleiner Ausschnitt
+vorgestellt von wenigen Systemen der dazu dienen einen Überblick über die
+grundlegende Entwicklung von \glspl{vcs} zu vermitteln.
 
 \section{Geschichtliche Entwicklung}\label{sec:GeschichtlicheEntwicklung}
 Das erste Versionskontrollsystem namens SCCS enstand 1972 und wurde von Marc J.
@@ -27,8 +32,7 @@ veröffentlichte 1993 mit einer Beta Version von \acrshort{mysc} einen freien
 Ersatz für \acrshort{sccs}. In späteren Versionen wurde \acrshort{mysc} in
 \acrfull{cssc} umbenannt\cite{link:cssc,link:mysc}. Alle drei Systeme finden in
 der Praxis nur noch wenig Anwendung und daher wird an dieser Stelle nicht auf
-weiter auf Details eingegangen. In der weiteren Auswahl sei hier nur noch auf
-einige populäre Systeme eingegangen.
+weiter auf Details eingegangen.
 
 \subsection{CVS}\label{sec:cvs}
 Das 1986 durch Dick Grune veröffentlichte \acrfull{cvs} war das erste freie
@@ -53,7 +57,7 @@ zentrale \gls{repository} unterbrochen so wurde dieses in einem inkonsistenten
 und nicht nutzbaren Zustand hinterlassen und musste administrativ repariert
 werden. \cite[s.~382-383]{cd}
 
-\subsection{SVN}
+\subsection{SVN}\label{sec:svn}
 Das Ziel des als quasi Nachfolger zu \acrshort{cvs} entwickelten
 Versionsverwaltungssystem \acrfull{svn} war es die technischen Einschränkungen
 von \acrshort{cvs} zu beheben. Es wurde darauf geachtet das es als Ersatz
@@ -81,50 +85,95 @@ wird. Das erstellen von Tags oder Branches wurde ebenfalls verbessert. Hierzu wu
 Die o.a. Verzeichnsse bzw. Tags und Branches sind lediglich Zeiger auf eine
 bestimmte Revision und die Trennung dazwischen ist nur eine Konvention. So
 werden Tags und Branches erzeugt in dem ein Verzeichnis angelegt wird und der
-Inhalt von \textit{trunk} kopiert wird. Das führt auch zu einem der Probleme bei dem
-Arbeiten mit \acrlong{svn}. Tags sind nicht eindeutig und veränderbar. So macht
-SVN technisch keinen Unterschied zwischen \textit{trunk},
-\textit{tags}, \textit{branches} oder einem beliebigen anderen
-Verzeichnis. Alle können in der gleichen Art und Weise bearbeitet werden. Eine
-weiterer Vorteil ist, das mit \acrlong{svn} auch gearbeitet werden kann wenn
-das Netzwerk nicht zur Verfügung. Alle Änderungen an Dateien werden i\.d\.R\.
-erstmal auf einer lokalen Kopie durchgeführt und mit einem seperaten Kommando
-an das zentrale Repository gesendet. Als weitere Funktionalität seien noch
-sogenannte Externals genannt die es erstmals ermöglichen Inhalte von anderen
-Repositorys einzubinden. Dies kann nützlich sein um Abhängigkeiten zwischen
-unterschiedlicher Software abubilden oder Binärdateien in andere
-\glspl{repository} auszulagern. \acrlong{svn} war zwar eine erhebliche Neuerung
-gegenüber \acrlong{cvs} hatte aber aufgrund der zusätzlichen Client-/Server
-Komponente einige neue Probleme. So waren z.B. zwar die Aktionen auf seiten des
-zentralen \glspl{repository} atomar aber nicht auf seiten des Clients. So das
-hier, bei unvorhergesehenen Fehlern, wieder Inkonsistenzen entstehen konnten.
-Des weiteren verwaltet \acrshort{svn} mit Hilfe eines Verzeichnisses \textit{\.svn}
+Inhalt von \textit{trunk} kopiert wird. Das führt auch zu einem der Probleme
+bei dem Arbeiten mit \acrlong{svn}. Tags sind nicht eindeutig und veränderbar.
+So macht SVN technisch keinen Unterschied zwischen \textit{trunk},
+\textit{tags}, \textit{branches} oder einem beliebigen anderen Verzeichnis.
+Alle können in der gleichen Art und Weise bearbeitet werden. Eine weiterer
+Vorteil ist, das mit \acrlong{svn} auch gearbeitet werden kann wenn das
+Netzwerk nicht zur Verfügung. Alle Änderungen an Dateien werden i.d.R.  erstmal
+auf einer lokalen Kopie durchgeführt und mit einem seperaten Kommando an das
+zentrale Repository gesendet. Als weitere Funktionalität seien noch sogenannte
+Externals genannt die es erstmals ermöglichen Inhalte von anderen Repositorys
+einzubinden. Dies kann nützlich sein um Abhängigkeiten zwischen
+unterschiedlicher Software oder \glspl{repository} abzubilden oder Binärdateien
+auszulagern. \acrlong{svn} war zwar eine erhebliche Neuerung gegenüber
+\acrlong{cvs} hatte aber aufgrund der zusätzlichen Client-/Server Komponente
+einige neue Probleme. So waren z.B. zwar die Aktionen auf seiten des zentralen
+\glspl{repository} atomar aber nicht auf seiten des Clients. So das hier, bei
+unvorhergesehenen Fehlern, wieder Inkonsistenzen entstehen konnten.  Des
+weiteren verwaltet \acrshort{svn} mit Hilfe eines Verzeichnisses \textit{.svn}
 innerhalb eines jeden Verzeichnisses. Innerhalb dieses Ordners werden
 Verwaltungsinformationen gespeichert. Das ermöglicht eine unabhängige
-Verwaltung aller Verzeichnisse untereinander und führt ggf\. dazu das die lokale
-Kopie eine Zusammenstellung von unterschiedlichen Revisionen ist und keinen
-eindeutigen Stand representiert. Das sind nur einige der Probleme mit SVN auf
-eine weitere Ausführung wird aus Platzgründen verzichtet und kann in
-einschlägiger Literatur nachgelesen werden.\cite[s.~383-385]{cd} 
-\subsection{Git}
-\subsection{Weitere}
-\section{Versionsverwaltungssysteme}
+Verwaltung aller Verzeichnisse untereinander und führt ggf\. dazu das die
+lokale Kopie eine Zusammenstellung von unterschiedlichen Revisionen ist und
+keinen eindeutigen Stand representiert. Das sind nur einige der Probleme mit
+SVN auf eine weitere Ausführung wird aus Platzgründen verzichtet und kann in
+einschlägiger Literatur nachgelesen werden.\cite[s.~383-385]{cd}
+
+\subsection{Git}\label{git}
+Git ist ein verteiltes bzw. dezentrales \acrlong{vcs}. Es wurde von Linux
+Torvalds und Junio Hamano entwickelt und ist für die gängigen Platformen wie
+Linux, BSD und Windows u.a. verfügbar. Der Name Git kommt nach einem Zitat von
+Linux Torvalds wie folgt zustande\cite{link:gitfaq}:
+
+\begin{center}
+\textit{\glqq{}I'm an egotistical bastard, and I name all my projects after
+myself. First 'Linux', now 'Git'\grqq{}}\\
+\end{center}
+
+Alternativ stellt Linux Torvalds noch
+weitere Varianten als Acronym für Git zur Verf\-ügung\cite{link:gitfaq}:
+
+\begin{itemize}
+  \item \textit{\glqq{}Random three-letter combination that is pronounceable, and not
+  actually used by any common UNIX command. The fact that it is a
+  mispronunciation of "get" may or may not be relevant.\grqq{}}
+  \item \textit{\glqq{}Stupid. Contemptible and despicable. Simple. Take your pick from the
+  dictionary of slang.\grqq{}}
+  \item \textit{\glqq{}Global information tracker": you're in a good mood, and it actually
+  works for you. Angels sing and light suddenly fills the room.\grqq{}}
+  \item \textit{\glqq{}Goddamn idiotic truckload of sh*t": when it breaks\grqq{}}
+\end{itemize}
+
+Linux Torvalds nutzte ursprünglich als Versionsverwaltung das kommerzielle System BitKeeper für
+die Entwicklung am Linux
+Kernel\footnote{\url{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git}}.
+Nach Unstimmigkeiten mit dem Hersteller von BitKeeper entschloss Linux Tovalds
+sich dazu ein neues \gls{vcs:de} zu schreiben. Dieses sollte weit mehr als
+eine Alternative zu den bisherigen sein\cite[s.~13]{gitosp}. So lautete 2005
+eine Aussage von Linus Torvalds zu \acrshort{cvs}\cite[s.~385]{cd}:
+
+\begin{center}
+\textit{\glqq{}There is no way to do CVS right\grqq{}}\\
+\end{center}
+
+Neben dem beheben der Probleme mit denen die populären Systeme (Abschnitt
+\ref{sec:svn} und \ref{sec:cvs}) zu kämpfen hatten sollte der zentrale
+Augenmerk auf Geschwindigkeit und Integrität liegen. Schon wenige Wochen nach
+dem Start der Arbeit an Git konnten die ersten Versionen bereits Quellkode
+verwalten. Die grundlegenden Konzepte sind bis heute gleich geblieben. Die
+spätere erfolgreiche Migration und Verwaltung des Linux Kernel
+\glspl{repository} mit Git führte zu einem hohen ansehen und einer starken
+Verbreitung von Git. Die Anforderungen an ein \gls{vcs:de} um den Linux Kernel
+mit über 1000 Entwicklern zu verwalten sind immens. Allein zwischen zwei Versionen finden sich mehrere hunderttausend Änderungen in über 1000 Dateien und etliche Merges zwischen verschiedenen Branches (Abschnitt \ref{cha:kernel}). Git selbst ist heutzutage insbesonderen bei großen
+Projekten kaum mehr wegzudenken.\cite[s.~13]{gitosp}
+
+\section{Grundlagen}\label{sec:Grundlagen}
+\subsection{Tags}\label{sec:Tags}
+\subsection{Branches}\label{sec:Branches}
+\subsection{Commits}
+\subsection{Repository}
+\subsection{Integrität}
+\section{Arten von Versionsverwaltungssystemen}
 \subsection{Lokal}
 Beide Systeme arbeiteten auf dem lokalen
 Dateisystem.,
 \subsection{Zentral}
-\subsection{Verteilte Versionskontrolle}
+\subsection{Verteilte}
 \subsection{Streaming}
+
 \section{Warum und Wozu?}
 single vs big teams, picture lokal vs team
 \label{sec:why}
-\section{Konzepte}
-\label{sec:systems}
-\section{Konzepte}
-\label{sec:Konzepte}
-\subsection{Datenhaltung}
-\label{sec:Datenhaltung}
-\subsection{Tags}
-\label{sec:Tags}
-\subsection{Branches}
-\label{sec:Branches}
+
