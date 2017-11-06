@@ -23,7 +23,7 @@ grundlegende Entwicklung von \glspl{vcs} zu vermitteln.
 \section{Geschichtliche Entwicklung}\label{sec:GeschichtlicheEntwicklung}
 Das erste Versionskontrollsystem namens SCCS enstand 1972 und wurde von Marc J.
 Rockkind bei Bell Labs
-geschrieben\footnote{\url{http://www.belllabs.com/}}\cite[s.~382]. Ab diesem
+geschrieben\footnote{\url{http://www.belllabs.com/}}\cite[s.~382]{cd}. Ab diesem
 Zeitpunkt enstand eine Vielzahl von verschiedenen Versionskontollsystemen.  Als
 Alternative zu dem properitären \acrshort{sccs} folgte Anfang 1980 das von
 Walter F. Tichy an Purdue University entwickelte erste \acrlong{OpenSource}
@@ -112,7 +112,7 @@ SVN auf eine weitere Ausführung wird aus Platzgründen verzichtet und kann in
 einschlägiger Literatur nachgelesen werden.\cite[s.~383-385]{cd}
 
 \subsection{Git}\label{git}
-Git ist ein verteiltes bzw. dezentrales \acrlong{vcs}. Es wurde von Linux
+Git ist ein verteiltes bzw. dezentrales \acrlong{vcs:de}. Es wurde von Linux
 Torvalds und Junio Hamano entwickelt und ist für die gängigen Platformen wie
 Linux, BSD und Windows u.a. verfügbar. Der Name Git kommt nach einem Zitat von
 Linux Torvalds wie folgt zustande\cite{link:gitfaq}:
@@ -156,15 +156,95 @@ verwalten. Die grundlegenden Konzepte sind bis heute gleich geblieben. Die
 spätere erfolgreiche Migration und Verwaltung des Linux Kernel
 \glspl{repository} mit Git führte zu einem hohen ansehen und einer starken
 Verbreitung von Git. Die Anforderungen an ein \gls{vcs:de} um den Linux Kernel
-mit über 1000 Entwicklern zu verwalten sind immens. Allein zwischen zwei Versionen finden sich mehrere hunderttausend Änderungen in über 1000 Dateien und etliche Merges zwischen verschiedenen Branches (Abschnitt \ref{cha:kernel}). Git selbst ist heutzutage insbesonderen bei großen
-Projekten kaum mehr wegzudenken.\cite[s.~13]{gitosp}
+mit über 1000 Entwicklern zu verwalten sind immens. Allein zwischen zwei
+Versionen finden sich mehrere hunderttausend Änderungen in über 1000 Dateien
+und etliche Merges zwischen verschiedenen Branches (Abschnitt
+\ref{cha:kernel}). Git selbst ist heutzutage insbesonderen bei großen Projekten
+kaum mehr wegzudenken.\cite[s.~13]{gitosp}
 
-\section{Grundlagen}\label{sec:Grundlagen}
+\section{Kollaboration}
+Die Möglichkeit Änderungen transparent und nachvollziehbar in einem
+\gls{repository} zu speichern und bei Bedarf wieder zurückzunehmen oder Stände
+die zu unterschiedlichen Zeitpunkten erzeugt wurden zu vergleichen,
+\textit{\glqq{}mergen\grqq{}} und Teile davon wieder herzustellen ermöglicht es
+die Zusammenarbeit in Teams oder Organisationen erheblich zu verbessern. Alle
+beteiligten werden damit konfrontiert das mehrere Personen und Teams am
+gleichen Inhalten zur gleichen Zeit arbeiten müssen. Das verbessert den Umgang
+mit Konflikten, seien sie technischer oder organisatorischer Art, die eben
+durch eine solche Zusammenarbeit enstehen. Der frühe Einsatz eines
+\acrlong{vcs:de} sollte als eine gute Angewohnheit angesehen werden die einen
+positiven Einfluss auf die Zusammenarbeit hat. Da nicht alle
+Versionskontrollsysteme die gleichen Funktionen unterstützen sollte bei der
+Auswahl des einzusetztenden \acrlong{vcs:de} darauf geachtet werden welche
+Eigenschaften der Zusammenarbeit gefördert werden sollen. So könnten das nach
+Jennifer Davis und Katherine Daniels in \cite[S.~178]{effdo} z.b. folgende sein:
+
+\begin{itemize}
+\item erstellen und abzweigen von Repositories,
+\item beitragen zu Repositories bwz. das verwalten von Beiträgen,
+\item festlegen von Prozessen oder
+\item das verwalten von Berechtigungen innerhalb von Repositories.
+\end{itemize}
+
+Ebenso hat der Einsatz eines \acrlong{vcs:de} auch einen Einfluss auf Risiken
+die beispielsweise bei Änderungen an einer produktiven Softwareplattform (z.B.
+eines Internetportals) enstehen. Hierdurch wird \acrlong{vcs:de} es möglich, im
+Fehlerfall, eine frühere Version der Software wieder einzusetzten und eben
+solche Risiken zu verringern.\cite[S.~178]{effdo}
+
+Auch ist ein \acrlong{vcs:de} nicht nur für Quellcode Dateien geeignet. Die
+Aussage von Jez Humble und David Farley in \cite[S.~33]{cd} lautet:
+
+\begin{center}
+\glqq{}Keep Absolutely Everything in Verison Control\grqq{}
+\end{center}
+
+Jede Datei die benötigt wird um die Software reproduzierbar zu erzeugen und zu
+verwalten sollte sich unter Versionskontolle befinden. Das können beliebige
+Dateien sein wie z.B.
+
+\begin{itemize}
+\item Quellcode,
+\item Tests,
+\item Skripte zum Kompilieren oder zur Datenbankverwaltung,
+\item Bibliotheken oder
+\item Konfigurationen.
+\end{itemize}
+
+So können neue Mitglieder schnell in Teams integriert werden und anfangen zu
+arbeiten. Es ist ebenfalls wichtig das alle benötigten Informationen mit unter
+Versionskontolle sind und allen zur Verfügung stehen. Hierzu gehören neben
+Dokumentationen auch z.B. Projekt- und Releasepläne der Manager oder Dokumente
+über durchgeführte Analysen. Darüber hinaus sollten auch externe Abhängigkeiten
+mit verwaltet werden. So könnten hier ebenso
+
+\begin{itemize}
+\item DNS Zonendateien,
+\item Regeln für eine Firewall oder
+\item die Konfiguration für eine Entwicklungsumgebung mit abgelegt werden.
+\end{itemize}
+
+Im Kern alles was nötig ist um Umgebungen (insbesondere test und
+produktive\footnote{Es gibt hier sicher eine Vielzahl von Szenarien die es
+erfordern hierzu in der Lage zu sein. Wenn man nicht gerade wie Anbieter
+einschlägiger Suchmaschinen nicht z.B. von einem abbrennen eines Datenzentrums
+abhängig ist.}) von Grund auf neu erzeugt werden können. Erst wenn all diese
+Informationen und Dateien, die sich über die Zeit verändern, in einem
+Versionskontrollsystem verwaltet werden ist es möglich das Projekt oder die
+Software von/zu einem beliebigen Zeitpunkt in der Historie wieder herzustellen.
+\cite[S.~33]{cd}
+
+\section{Allgemeine Grundlagen}\label{sec:Grundlagen}
+Um
+\subsection{Commits}
+Als Commit wird eine Sammlung von aktionen, die ist eine Sammlung von
 \subsection{Tags}\label{sec:Tags}
 \subsection{Branches}\label{sec:Branches}
-\subsection{Commits}
+\subsection{Merge}
 \subsection{Repository}
+
 \subsection{Integrität}
+
 \section{Arten von Versionsverwaltungssystemen}
 \subsection{Lokal}
 Beide Systeme arbeiteten auf dem lokalen
@@ -173,7 +253,5 @@ Dateisystem.,
 \subsection{Verteilte}
 \subsection{Streaming}
 
-\section{Warum und Wozu?}
-single vs big teams, picture lokal vs team
 \label{sec:why}
 
