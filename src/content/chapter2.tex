@@ -166,18 +166,18 @@ kaum mehr wegzudenken.\cite[s.~13]{gitosp}
 Die Möglichkeit Änderungen transparent und nachvollziehbar in einem
 \gls{repository} zu speichern und bei Bedarf wieder zurückzunehmen oder Stände
 die zu unterschiedlichen Zeitpunkten erzeugt wurden zu vergleichen,
-\textit{\glqq{}mergen\grqq{}} und Teile davon wieder herzustellen ermöglicht es
-die Zusammenarbeit in Teams oder Organisationen erheblich zu verbessern. Alle
-beteiligten werden damit konfrontiert das mehrere Personen und Teams am
+zusammenzuführen  und Teile davon wieder herzustellen ermöglicht es die
+Zusammenarbeit in Teams oder Organisationen erheblich zu verbessern. Alle
+beteiligten werden damit konfrontiert das mehrere Personen und Teams an
 gleichen Inhalten zur gleichen Zeit arbeiten müssen. Das verbessert den Umgang
 mit Konflikten, seien sie technischer oder organisatorischer Art, die eben
-durch eine solche Zusammenarbeit enstehen. Der frühe Einsatz eines
+durch eine solche Zusammenarbeit enstehen konnen. Der frühe Einsatz eines
 \acrlong{vcs:de} sollte als eine gute Angewohnheit angesehen werden die einen
-positiven Einfluss auf die Zusammenarbeit hat. Da nicht alle
-Versionskontrollsysteme die gleichen Funktionen unterstützen sollte bei der
-Auswahl des einzusetztenden \acrlong{vcs:de} darauf geachtet werden welche
-Eigenschaften der Zusammenarbeit gefördert werden sollen. So könnten das nach
-Jennifer Davis und Katherine Daniels in \cite[S.~178]{effdo} z.b. folgende sein:
+positiven Einfluss auf die Zusammenarbeit hat. Da nicht alle die gleichen
+Funktionen unterstützen sollte bei der Auswahl des einzusetztenden
+Systems darauf geachtet werden welche Eigenschaften der Zusammenarbeit
+gefördert werden sollen. So könnten das nach Jennifer Davis und Katherine
+Daniels in \cite[S.~178]{effdo} z.B. folgende sein:
 
 \begin{itemize}
 \item erstellen und abzweigen von Repositories,
@@ -186,14 +186,15 @@ Jennifer Davis und Katherine Daniels in \cite[S.~178]{effdo} z.b. folgende sein:
 \item das verwalten von Berechtigungen innerhalb von Repositories.
 \end{itemize}
 
-Ebenso hat der Einsatz eines \acrlong{vcs:de} auch einen Einfluss auf Risiken
-die beispielsweise bei Änderungen an einer produktiven Softwareplattform (z.B.
-eines Internetportals) enstehen. Hierdurch wird \acrlong{vcs:de} es möglich, im
-Fehlerfall, eine frühere Version der Software wieder einzusetzten und eben
-solche Risiken zu verringern.\cite[S.~178]{effdo}
+Der Einsatz eines \acrlong{vcs:de} hat auch einen Einfluss auf Risiken die
+beispielsweise bei Änderungen an einer produktiven Softwareplattform (z.B.
+eines Internetportals) enstehen. Hierdurch wird es möglich, im Fehlerfall, eine
+frühere Version der Software wieder einzusetzten und eben solche Risiken zu
+verringern.\cite[S.~178]{effdo}
 
-Auch ist ein \acrlong{vcs:de} nicht nur für Quellcode Dateien geeignet. Die
-Aussage von Jez Humble und David Farley in \cite[S.~33]{cd} lautet:
+Ein \acrlong{vcs:de} ist auch nicht nur zum Versionieren von Quellcode
+geeignet. Eine Aussage von Jez Humble und David Farley in \cite[S.~33]{cd}
+lautet hierzu:
 
 \begin{center}
 \glqq{}Keep Absolutely Everything in Verison Control\grqq{}
@@ -211,38 +212,51 @@ Dateien sein wie z.B.
 \item Konfigurationen.
 \end{itemize}
 
-So können neue Mitglieder schnell in Teams integriert werden und anfangen zu
-arbeiten. Es ist ebenfalls wichtig das alle benötigten Informationen mit unter
-Versionskontolle sind und allen zur Verfügung stehen. Hierzu gehören neben
-Dokumentationen auch z.B. Projekt- und Releasepläne der Manager oder Dokumente
-über durchgeführte Analysen. Darüber hinaus sollten auch externe Abhängigkeiten
-mit verwaltet werden. So könnten hier ebenso
+So können neue Mitarbeiter schnell in Teams integriert werden und ein
+effizienter Start wird gefördert. Es ist ebenfalls wichtig das alle
+benötigten Informationen mit unter Versionskontolle sind und allen zur
+Verfügung stehen. Hierzu gehören neben Dokumentationen auch z.B. Projekt- und
+Releasepläne der Manager oder Dokumente über durchgeführte Analysen. Darüber
+hinaus sollten auch externe Abhängigkeiten mit verwaltet werden. So könnten
+hier ebenso
 
 \begin{itemize}
 \item DNS Zonendateien,
 \item Regeln für eine Firewall oder
-\item die Konfiguration für eine Entwicklungsumgebung mit abgelegt werden.
+\item die Konfiguration für eine Entwicklungsumgebung mit versioniert werden.
 \end{itemize}
 
 Im Kern alles was nötig ist um Umgebungen (insbesondere test und
-produktive\footnote{Es gibt hier sicher eine Vielzahl von Szenarien die es
-erfordern hierzu in der Lage zu sein. Wenn man nicht gerade wie Anbieter
-einschlägiger Suchmaschinen nicht z.B. von einem abbrennen eines Datenzentrums
-abhängig ist.}) von Grund auf neu erzeugt werden können. Erst wenn all diese
-Informationen und Dateien, die sich über die Zeit verändern, in einem
-Versionskontrollsystem verwaltet werden ist es möglich das Projekt oder die
-Software von/zu einem beliebigen Zeitpunkt in der Historie wieder herzustellen.
-\cite[S.~33]{cd}
+produktive\footnote{Es gibt sicher eine Vielzahl von Szenarien die es als
+wirtschaftlich arbeitenes Unternehmen erfordern zu so etwas in der Lage zu
+sein. Ausgenommen vielleicht Anbieter einschlägiger Suchmaschinen die nicht
+z.B. von dem abbrennen eines einzelnen Datenzentrums abhängig sind.}) von Grund
+auf neu zu erzeugen. Erst wenn all diese Informationen und Dateien, die sich
+über die Zeit verändern, in einem Versionskontrollsystem verwaltet werden ist
+es möglich das Projekt oder die Software von/zu einem beliebigen Zeitpunkt in
+der Historie wieder herzustellen. \cite[S.~33]{cd}
 
 \section{Allgemeine Grundlagen}\label{sec:Grundlagen}
-Um
-\subsection{Commits}
+Aus den vorhergehenden Abschnitten lässt sich zusammenfassend feststellen das
+für den gemeinsamen Zugriff auf Dateien bestimmte Forderungen aus Sicht der
+Benutzer gibt. Nach \cite[S.~37]{hagen:1678} bestehen Forderungen nach
+\textbf{Konsistenz}, \textbf{Isolation}, \textbf{Integration},
+\textbf{Aktualität}, \textbf{Gruppenwahrnehmung} und
+\textbf{Nachvollziehbarkeit}. So sollen Entwickler in der Lage sein immer an
+einer gültigen Fassung einer Datei zu arbeiten als sei diese Datei exklusiv für
+sie reserviert und die eigenen Änderungen daran wieder so wieder zu integrieren
+das eine Nachvollziehbarkeit mit einer Änderungshistorie die wenigstens Namen
+und Datum enthält zu gewährleistet ist.  Wie die praktische Umsetzung dieser
+Forderungen in der Praxis, insbesondere mit Git, darstellt wird in den
+folgenden Unterkapiteln erläutert. Vorher werden aber noch einige benötigte
+Grundbegriffe erläutert. 
+
+\subsection{Commit}
 Als Commit wird eine Sammlung von aktionen, die ist eine Sammlung von
-\subsection{Tags}\label{sec:Tags}
-\subsection{Branches}\label{sec:Branches}
+\subsection{Tag}\label{sec:Tags}
+\subsection{Branch}\label{sec:Branches}
 \subsection{Merge}
 \subsection{Repository}
-
 \subsection{Integrität}
 
 \section{Arten von Versionsverwaltungssystemen}
