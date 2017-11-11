@@ -1,61 +1,63 @@
 \chapter{Versionsverwaltung}\label{cha:Versionsverwaltung}
 \section{Definition}\label{sec:Definition}
-Versionskontrollsysteme sind auch bekannt als Versionsverwaltungssysteme (engl.
+Versionsverwaltungssysteme sind auch bekannt als Versionskontrollsysteme (engl.
 \acrlong{vcs}), Quellcode Verwaltung(engl. Source Control) oder
-Revisionskontollsysteme(engl. Revision Control System). Mit diesen Begriffen
-sind Systeme gemeint die es Entwicklern, Teams oder Organisationen erlauben
-eine vollständige Historie mit allen Änderungen an dem Quellcode ihrer
-gemeinsam entwickelten Software zu verwalten. Ausschlaggebend ist hierbei das
-für alle Nutzer transparent wird wer, wann und vor allem warum welche
-Änderungen durchgeführt hat. Eine weiterer wichtige Eigentschaft ist das es
-verschiedenen Teams eine Zusammenarbeit an ggf\. verschiedenen Teilen der
-Software ermöglicht ohne sich gegenseitig zu
-behindern\footnote{\label{dev:1}Das hängt natürlich nicht nur von dem
-Versionskontollsystem ab sondern auch von dem Design der entwickelten Software.
-Diese wird i.d.R. eher modular aufgebaut so das die Möglichkeit einer paralelle
-Entwicklung unterstützt wird.}.\cite[s.~381]{cd}\\
+Revisionskontrollsysteme(engl. Revision Control System). Mit diesen Begriffen
+sind Systeme, gemeint die es Entwicklern, Teams oder Organisationen erlauben
+eine vollständige Historie mit allen Änderungen am Quellcode ihrer gemeinsam
+entwickelten Software zu verwalten. Ausschlaggebend ist hierbei, dass für alle
+Nutzer transparent wird, wer, wann und vor allem warum welche Änderungen
+durchgeführt hat. Eine weitere wichtige Eigenschaft ist, dass es verschiedenen
+Teams eine Zusammenarbeit an ggf. verschiedenen Teilen der Software
+ermöglichti, ohne sich gegenseitig zu behindern\footnote{\label{dev:1}Das hängt
+natürlich nicht nur von dem Versionskontrollsystem ab, sondern auch von dem
+Design der entwickelten Software.  Diese wird i.d.R. eher modular aufgebaut, so
+dass die Möglichkeit einer parallelen Entwicklung unterstützt
+wird.}.\cite[s.~381]{cd}\\
 
-Es wird in nachvolgenden Abschnitten nicht im Detail auf alle existierende
+In den nachvolgenden Abschnitten wird nicht im Detail auf alle existierende
 Versionskontollsysteme eingegangen. Viel mehr wird ein kleiner Ausschnitt
-vorgestellt von wenigen Systemen der dazu dienen einen Überblick über die
-grundlegende Entwicklung von \glspl{vcs} zu vermitteln.
+weniger Systeme vorgestellt, der dazu dienen soll einen Überblick über die
+grundlegende Entwicklung von Versionsverwaltungssystemen zu vermitteln.
 
 \section{Geschichtliche Entwicklung}\label{sec:GeschichtlicheEntwicklung}
-Das erste Versionskontrollsystem namens SCCS enstand 1972 und wurde von Marc J.
-Rockkind bei Bell Labs
-geschrieben\footnote{\url{http://www.belllabs.com/}}\cite[s.~382]{cd}. Ab diesem
-Zeitpunkt enstand eine Vielzahl von verschiedenen Versionskontollsystemen.  Als
-Alternative zu dem properitären \acrshort{sccs} folgte Anfang 1980 das von
-Walter F. Tichy an Purdue University entwickelte erste \acrlong{OpenSource}
-Versionskontrollsystem \acrfull{rcs}\cite{paper:rcs,link:rcs}. Ross Ridge
-veröffentlichte 1993 mit einer Beta Version von \acrshort{mysc} einen freien
-Ersatz für \acrshort{sccs}. In späteren Versionen wurde \acrshort{mysc} in
-\acrfull{cssc} umbenannt\cite{link:cssc,link:mysc}. Alle drei Systeme finden in
-der Praxis nur noch wenig Anwendung und daher wird an dieser Stelle nicht auf
-weiter auf Details eingegangen.
+Das erste \gls{vcs:de} namens SCCS enstand 1972 und wurde von Marc J.  Rockkind
+bei Bell Labs
+geschrieben\footnote{\url{http://www.belllabs.com/}}\cite[s.~382]{cd}. Ab
+diesem Zeitpunkt enstand eine Vielzahl von verschiedenen
+Versionskontollsystemen. Als Alternative zu dem properitären \acrshort{sccs}
+folgte Anfang 1980 das, von Walter F. Tichy an der Purdue University
+entwickelte, erste \acrlong{OpenSource} Versionskontrollsystem
+\acrfull{rcs}\cite{paper:rcs,link:rcs}. Ross Ridge veröffentlichte 1993 mit
+einer Beta Version von \acrshort{mysc} einen freien Ersatz für \acrshort{sccs}.
+In späteren Versionen wurde \acrshort{mysc} in \acrfull{cssc}
+umbenannt\cite{link:cssc,link:mysc}. Alle drei Systeme finden in der Praxis nur
+noch wenig Anwendungi. Daher wird diesbezüglich nicht auf weitere Details
+eingegangen.
 
 \subsection{CVS}\label{sec:cvs}
-Das 1986 durch Dick Grune veröffentlichte \acrfull{cvs} war das erste freie
-Versionskontrollsystem mit einem zentralen \gls{repository}. Das wurde ereicht
-in dem \acrshort{rcs}, mit Hilfe eines \gls{wrapper}, um eine
-Client-/Serverkomponente erweitert wurde. Das ermöglichte erstmals das mehrere
-Entwickler gleichzeitig an einem \gls{repository} und konkurrierend an den
-selben Dateien arbeiten konnten. Neben dem innovativen Ansatz gabe es hier aber
-noch einige technische Einschränkungen die ein kollaboratives Arbeiten
-erschwerten. So war z.B. die Nutzung des verbrauchten Speicherplatzes nicht
-optimal. Das erzeugen von Abzweigungen (Branches) wurde durch einfaches
-Kopieren erreicht. Das war deshalb nicht nur Zeitaufwändig sondern verbrauchte
-auch entsprechenden Speicherplatz. Ein späteres Zusammenführen (mergen) dieser
-Zweige führte daher zu Dateikonflikten und verursachte hierduch erheblichen
-Aufwand. Auch gab es keine Funktonalität Binärdateien zu verwalten so das hier
-der Speicherplatz auch eher ineffizient genutzt wurde. Das erstellen von Tags
-war mit wachsendem Inhalt des \glspl{repository} ebenfalls Zeitaufwändig da
-alle enthaltenen Dateien bearbeitet werden mussten. Eine der, aus heutiger
-Sicht, größte Einschränkung war aber sicher die Tatsache das Commits in das
-\gls{repository} nicht Atomar waren. Wurde die Übertragung der Dateien in das
-zentrale \gls{repository} unterbrochen so wurde dieses in einem inkonsistenten
-und nicht nutzbaren Zustand hinterlassen und musste administrativ repariert
-werden. \cite[s.~382-383]{cd}
+Das 1986 durch Dick Grune veröffentlichte \acrfull{cvs}, war das erste freie
+Versionskontrollsystem mit einem zentralen \gls{repository}. Das wurde
+erreicht, indem \acrshort{rcs}, mit Hilfe eines \gls{wrapper}, um eine
+Client-/Serverkomponente erweitert wurde. Dadurch war es erstmals möglich, dass
+mehrere Entwickler gleichzeitig an einem \gls{repository} und konkurrierend
+anden selben Dateien arbeiten konnten. Neben den innovativen Ansätzen, gab es
+hier aber noch einige technische Einschränkungen, die ein kollaboratives
+Arbeiten erschwerten. Beispielsweise war die Nutzung des verbrauchten
+Speicherplatzes nicht optimal. Das erzeugen von Abzweigungen (referenz fehlt!!
+Branches) wurde durch einfaches Kopieren erreicht. Das war deshalb nicht nur
+Zeitaufwändig sondern verbrauchte auch entsprechend zusätzlichen Speicherplatz.
+Ein späteres Zusammenführen (referenz fehlt!!! Mergen) dieser Zweige führte
+daher zu Dateikonflikten und verursachte hierduch erheblichen Aufwand. Auch gab
+es keine Funktonalität Binärdateien zu verwalten so das hier der Speicherplatz
+auch eher ineffizient genutzt wurde. Das erstellen von Tags war mit wachsendem
+Inhalt des \glspl{repository} ebenfalls Zeitaufwändig da alle enthaltenen
+Dateien bearbeitet werden mussten. Eine der, aus heutiger Sicht, größte
+Einschränkung war aber sicher die Tatsache das Commits in das \gls{repository}
+nicht Atomar waren. Wurde die Übertragung der Dateien in das zentrale
+\gls{repository} unterbrochen so wurde dieses in einem inkonsistenten und nicht
+nutzbaren Zustand hinterlassen und musste administrativ repariert werden.
+\cite[s.~382-383]{cd}
 
 \subsection{SVN}\label{sec:svn}
 Das Ziel des als quasi Nachfolger zu \acrshort{cvs} entwickelten
@@ -264,7 +266,7 @@ Als Commit wird eine Sammlung von aktionen, die ist eine Sammlung von
 Beide Systeme arbeiteten auf dem lokalen
 Dateisystem.,
 \subsection{Zentral}
-\subsection{Verteilte}
+\subsection{Verteilt}
 \subsection{Streaming}
 
 \label{sec:why}

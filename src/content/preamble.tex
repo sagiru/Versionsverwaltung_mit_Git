@@ -2,58 +2,61 @@
 \label{cha:preamble}
 Das heutige Umfeld der Informationstechnologie ist gepr\"agt von einer Vielzahl
 unterschiedlichster Arten von Software. Schaut man sich allein in seinem Alltag
-genauer um wird man feststellen das man es täglich mit verschiedensten Systemen
-zu tun hat auf eine Softwarekomponente ihre Arbeit verichtet. Allen voran ist
-sicherlich das Internet mit zahlreichen online Platformen ein Motor dieser
-Softwareindustrie. Dieser o.a. Ausschnitt ist aber auch nur ein Teil mit dem
-man unmittelbar Kontakt hat oder den man umgansprachlich "`sehen"' kann.  Eine
-Vielzahl von Softwaresystemen wird hinter verschlossenen T\"uren entwickelt und
-betrieben. So entwickeln z.B.  Versicherungen, Banken o.\"a.  Organisationen
-viele ihrer Softwaresysteme nicht f\"ur die \"Offenlichkeit. Eine Eigenschaft
-die aber fast alle gro\ss{}en Softwareprojekte gemeinsam haben ist, das sie
-i.d.R. in Teams unterschiedlicher Gr\"o\ss{}e entwickelt werden. Je nach
-Zusammenstellung solcher Teams kommt es hier u.U. zu geografischen und
-zeitlichen herausforderungen solche Systeme gemeinsam effektiv zu entwickeln.
-Weitere Beispiele f\"ur verteilte Softwareprojekte findet man ebenfalls
-h\"aufig in der Welt der \gls{OpenSource} Software. So ist
-Git\footnote{\label{git:1}\url{https://git-scm.com/}}, auf das wir im weiteren noch
-eingehen werden, ebenfalls ein Beispiel aus der \gls{OpenSource} Community. So
-stellen sich nach Jez Humble und David Farley in Projekten mit verteilten Teams einige Fragen auf die im weiteren eingegangen wird\cite[S.~26, 33]{cd}:
+genauer um wird man feststellen, daß man es täglich mit verschiedensten
+Systemen zu tun hat, auf denen eine Softwarekomponente ihre Arbeit verrichtet.
+Allen voran ist sicherlich das Internet mit zahlreichen Online Plattformen ein
+Motor dieser Softwareindustrie. Dieser o.a. Ausschnitt ist aber auch nur ein
+Teil, mit dem man unmittelbar Kontakt hat oder den man umganssprachlich
+"`sehen"' kann.  Eine Vielzahl von Softwaresystemen wird hinter verschlossenen
+T\"uren entwickelt und betrieben. So entwickeln z.B.  Versicherungen, Banken
+o.\"a.  Organisationen viele ihrer Softwaresysteme nicht f\"ur die
+\"Offenlichkeit. Eine Eigenschat, die fast alle gro\ss{}en Softwareprojekte
+gemeinsam haben ist, daß sie i.d.R. in Teams unterschiedlicher Gr\"o\ss{}e
+entwickelt werden. Je nach Zusammenstellung dieser Teams, kommt es hier u.U. zu
+geografischen und zeitlichen Herausforderungen, solche Systeme gemeinsam
+effektiv zu entwickeln.  Weitere Beispiele f\"ur verteilte Softwareprojekte
+findet man ebenfalls h\"aufig in der Welt der \gls{OpenSource} Software. So ist
+Git\footnote{\label{git:1}\url{https://git-scm.com/}}, auf das im Weiteren noch
+eingegangen wird, ebenfalls ein Beispiel aus der \gls{OpenSource} Community. So
+stellen sich nach Jez Humble und David Farley in Projekten mit verteilten Teams
+einige Fragen, auf die in Kapitel \ref{cha:Versionsverwaltung} Bezug genommen
+wird\cite[S.~26, 33]{cd}:
 \begin{itemize}
   \item Ein neues Teammitglied bekommt seinen Arbeitsplatz und ben\"otigt
-  schnellen Zugriff auf ggf. verschiedene Versionen der entwickelten Software.
-  M\"ochte diese ggf. Compilieren und in einem definierten Umfeld ausf\"uhren.
+  schnellen Zugriff auf ggf. verschiedene Versionen der entwickelten Software,
+  m\"ochte diese ggf. kompilieren und in einem definierten Umfeld ausf\"uhren.
   Auch gibt es vielleicht verschiedene Umgebungen und der Entwickler muss
-  Feststellen welche Version mit welchen Unterschieden in welcher \gls{Umgebung}
+  feststellen, welche Version mit welchen Unterschieden in welcher \gls{Umgebung}
   \footnote{\label{umgebung:1}In der Softwareentwicklung wird häufig von
-  produktiven Umgebungen die gesprochen.  Damit ist eine Zusammenstellung aus
-  verschiedenen Systemen, in definierter Konfiguration, gemeint auf denen die
+  produktiven Umgebungen gesprochen. Damit ist eine Zusammenstellung aus
+  verschiedenen Systemen in definierter Konfiguration gemeint, auf denen die
   entwickelte Software produktiv eingesetzt wird. Um Fehlentwicklungen zu
   vermeiden, wird die Software häufig in sogenannten Entwicklungsumgebungen,
-  die der Produktionsumgebung nachempfunden sind, getestet \cite[s.~49,
-  250]{cd}.} gerade verwendet wird \citep[s.~26]{cd}.
+  die der Produktionsumgebung nachempfunden sind, getestet \cite[S.~49,
+  250]{cd}.} gerade verwendet wird \citep[S.~26]{cd}.
   \item Was macht eine spezielle Version einer Software aus?  Wie kann eine
-  konkrete Auspr\"agung von einer Software, die sich im produktiven Einsatz
-  befinden, reproduziert werden. Das kann .z.B. n\"otig Sein um einen
+  konkrete Auspr\"agung einer Software, die sich im produktiven Einsatz
+  befindet, reproduziert werden. Das kann, .z.B. n\"otig sein, um einen akkuten
   Fehlerfall nachzustellen\cite[s.~33]{cd}.
   \item Was wurde durch wen und wann ge\"andert? Und aus welchen Gr\"unden?
-  Auch das kann f\"ur den Fall einer Fehlersuche von Vorteil sein. So kann,
-  wenn diese Frage beantwortet werden kann, auch die Historie der Entwicklung
-  reproduziert werden\cite[s.~33]{cd}.
+  Auch das kann f\"ur den Fall einer Fehlersuche von Vorteil sein. Darüber
+  hinaus kann, mit Beantwortung dieser Frage, die Projekthistorie aus Sicht der
+  Entwicklung reproduziert werden\cite[S.~33]{cd}.
 \end{itemize}
-Die o.a. Fragen sind natürlich nicht nur exklusiv auf große Projekte beschränkt
-sondern gewinnen verstärkt an Wichtigkeit. Vergleichbare Problemstellung finden
-sich genauso in Entwicklungsprojekten bei denen nur wenige Personen beteiligt
-sind. Um diese Fragestellungen, neben der eigentlichen Frage wofür
-Versionskontrollsysteme überhaupt eingesetzt werden, zu berücksichtigen wird in
-Kapitel \ref{cha:Versionsverwaltung} ab Seite \pageref{cha:Versionsverwaltung}
-auf Versionskontrollsysteme(\acrshort{vcs}) im allgemeinen eingegangen. Hier
-wird, neben einer grundlegenden Definition und einem geschichtlicher Überblick,
-auf Gemeinsamkeiten und Vorgehensweisen eingegangen. In Kapitel \ref{cha:Git}
-ab Seite \pageref{cha:Git} wird dann Git vorgestellt in dem zuerst die
-Grundlagen und Architektur beschreiben wird und im weiteren die praktische
-Anwendung, Workflows und fortgeschrittene Konzepte. Um einen weiteren
-Praxisbezug herzustellen und weitere Vorteile und Möglichkeiten von Git
-herauszustellen wird Abschließend wird in Kapitel \ref{cha:lookout} ab Seite
-\pageref{cha:lookout} der Einsatz von Git in Projekten und Unternehmen
+Die o.a. Fragen sind natürlich nicht nur exklusiv auf große Projekte
+beschränkt, sondern gewinnen mit steigender größe verstärkt an Wichtigkeit.
+Vergleichbare Problemstellungen finden sich aber genauso in
+Entwicklungsprojekten bei denen nur wenige Personen beteiligt sind. Um diese
+Fragestellungen, neben der eigentlichen Frage wofür Versionskontrollsysteme
+überhaupt eingesetzt werden, zu berücksichtigen wird in Kapitel
+\ref{cha:Versionsverwaltung} ab Seite \pageref{cha:Versionsverwaltung} auf
+Versionskontrollsysteme(\acrshort{vcs}) im Allgemeinen eingegangen. Hier wird,
+neben einer grundlegenden Definition und einem geschichtlichen Überblick, auf
+Gemeinsamkeiten und Vorgehensweisen eingegangen. In Kapitel \ref{cha:Git} ab
+Seite \pageref{cha:Git} wird dann Git vorgestellt, wobei zunächst die
+Grundlagen und Architektur beschrieben wird und daran anschließend die
+praktische Anwendung, Workflows und fortgeschrittenr Konzepte. Um einen
+weiteren Praxisbezug herzustellen sowie weitere Vorteile und Möglichkeiten von
+Git herauszustellen, wird abschließend in Kapitel \ref{cha:lookout} ab Seite
+\pageref{cha:lookout} der Einsatz von Git in gößeren Projekten und Unternehmen
 betrachtet.
