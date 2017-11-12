@@ -263,10 +263,30 @@ gezeigt. Vorher aber, werden noch einige benötigte Grundbegriffe erläutert.
 Als Commit wird eine Sammlung von aktionen, die ist eine Sammlung von
 \subsection{Tag}\label{sec:Tags}
 \subsection{Branch}\label{sec:Branches}
+I.d.R. enthält ein Repository mindestens einen zentralen Zweig(Branch) auf dem
+die Entwicklungsarbeit stattfindet. Ein Abzweig an einer bestimmten Stelle zu
+einem bestimmten Zeitpunkt erzeigt einen neuen Branch. Dieser Abzweig kann von
+dem zentralen oder einem andern Branch erfolgen. Wie diese Branches erzeugt
+werden ist abbhängig von dem eingesetzten Versionskonrollsystem. So wird unter
+\acrshort{svn} oder \acrshort{cvs} der Branch mittels eines Kopiervorgangs
+erzeugt(Abschnitt \ref{sec:cvs}\ref{sec:svn} und unter Git über eine lediglich
+über eine symbolische Referenz. Häufig werden Branches verwendet um Features zu
+entwickeln, Releases zu erzeugen oder Bugfixes an bestehenden Versionen
+durchzuführen\cite[S.~21]. Um effizient mit Branches umzugehen gibt es
+verschiedene Strategien so wird von Jez Humble und David Farley in
+\cite[S.~408-412]{cd} auf Releasebranches, Featurebranches oder Teambranches
+eingegangen.
 \subsection{Merge}
 \subsection{Repository}
 \subsection{Integrität}
-
+\subsection{HEAD}
+Eine Referenz auf den letzten Commit im aktuellen Repository bzw. Branch
+verweist. Hier muss zwischen verschiedenen Versionskontrollsystemen
+unterschieden werden. So ist unter Git die HEAD Version eine symbolische
+Referenz auf die letzte Version des aktuell lokal genutzten Branches. Diese ist
+also abhängig von den gerade vorhandenen Daten im Working Tree von
+Git\cite[S.~20]{gitosp}. Für SVN hingegen bezeichnet HEAD die letzte
+veröffentlichte Version im Repository.
 \section{Arten von Versionsverwaltungssystemen}
 \subsection{Lokal}
 Beide Systeme arbeiteten auf dem lokalen
