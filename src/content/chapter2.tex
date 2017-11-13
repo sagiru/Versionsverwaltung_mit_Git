@@ -51,7 +51,7 @@ Ein späteres Zusammenführen (referenz fehlt!!! Mergen) dieser Zweige führte
 daher zu Dateikonflikten und verursachte hierduch erheblichen Mehraufwand. Auch
 gab es keine Funktonalität um Binärdateien zu verwalten so das der
 Speicherplatz eher ineffizient genutzt wurde. Das Erstellen von
-Tags\ref{sec:tags} wurde mit steigendem Inhalt des \glspl{repository} ebenfalls
+Tags\ref{sec:tag} wurde mit steigendem Inhalt des \glspl{repository} ebenfalls
 immer zeitaufwändiger, da alle enthaltenen Dateien bearbeitet werden mussten.
 Eine der, aus heutiger Sicht, größte Einschränkung war aber sicher die
 Tatsache, dass Commits\ref{sec:commits} in das \gls{repository} nicht atomar
@@ -89,7 +89,7 @@ eingeführt, die drei verschiedene Verzeichnisse innerhalb eines
       Abzweigungen angelegt werden. Auf diesen Abzweigungen kann unabhängig von
       \textit{trunk} gearbeitet werden.
 \end{itemize}
-Die o.a. Verzeichnisse bzw. Tags\ref{sec:tags} und \ref{sec:branches}Branches
+Die o.a. Verzeichnisse bzw. Tags\ref{sec:tag} und \ref{sec:branches}Branches
 sind lediglich Zeiger auf eine bestimmte Revision und die Trennung dazwischen
 ist nur eine Konvention. So werden Tags und Branches erzeugt in dem ein
 Verzeichnis angelegt wird und der Inhalt von \textit{trunk} kopiert wird. Das
@@ -260,11 +260,34 @@ Forderungen in der Praxis darstellt wird in den folgenden Unterkapiteln
 gezeigt. Vorher aber, werden noch einige benötigte Grundbegriffe erläutert.
 
 \subsection{Commit}\label{sec:commit}
+Werden Veränderungen am Repository durchgeführt bzw. an den darin enthaltenen
+Dateien werden diese als Commits gespeichert. Hierzu werden die einzelnen
+Veränderungen and Dateien oder Metadaten z.B. löschen, hinzufügen oder
+Veränderungen and Dateiberechtigungen durch den Autor, mit verschiedenen
+Kommandos, zusammengefasst und mit Namen, Zeitpunkt und Beschreibung als Commit
+dem Repository hinzugefügt. Unter Git referenziert ein Commit immer einen
+eindeutigen Zustand aller verwalteten Dateien. Diese Referenz enhält eine
+inhaltsabhänigige eindeutige 160-Bit lange Prüfsumme, die auch als
+\textit{Commit-ID} bezeichnet wird(siehe Abschnitt \ref{sec:kernel},
+\pageref{sec:kernel}). Die inhaltsabhängige Prüfsumme gewährleistet auch das
+Inhalte nachträglich nicht unbemerkt verändert werden können. Die Prüfsumme
+wird mit dem \textit{Secure Hash Algotithm} (SHA-1) erzeugt.
 
 Als Commit wird eine Sammlung von aktionen, die ist eine Sammlung von
-\subsection{Tag}\label{sec:tags}
+\subsection{Tag}\label{sec:tag}
+Die meisten Versionskontollsysteme\ref{cha:Versionskontrollsysteme} benutzten
+Tags um bestimmte Stände des Repositorys mit Namen zu versehen. Die übliche
+Anwendung sind Versionsnummern wie z.B. 2.6.12-rc2( Abschnitt
+\ref{sec:kernel}), v1.0 oder ähnliche. Unter Git sind Tags
+lediglich symbolische Namen für Referenzen zu einzelnen Commits. Es gibt hier
+zwei verschiedene Arten von Commits. Zum einen leichtgewichtige Tags
+(\textit{lightweight tags}) die keine weiteren Informationen ausser der
+Versionsnummer enthalten und ausführlichere Tags (\textit{annotated}) die
+darüber hinaus noch Metadaten wie Autor, Beschreibung oder ggf. eine Signatur
+mit GPG enthalten.\cite[S.~48]{progit}
+
 \subsection{Branch}\label{sec:branches}
-I.d.R. enthält ein Repository mindestens einen zentralen Zweig(Branch) auf dem
+Ein Repository enthält i.d.R. mindestens einen zentralen Zweig(Branch) auf dem
 die Entwicklungsarbeit stattfindet. Ein Abzweig an einer bestimmten Stelle zu
 einem bestimmten Zeitpunkt erzeigt einen neuen Branch. Dieser Abzweig kann von
 dem zentralen oder einem andern Branch erfolgen. Wie diese Branches erzeugt
@@ -275,8 +298,14 @@ erzeugt(Abschnitt \ref{sec:cvs}\ref{sec:svn} und unter Git über eine lediglich
 entwickeln, Releases zu erzeugen oder Bugfixes an bestehenden Versionen
 durchzuführen\cite[S.~21]. Um effizient mit Branches umzugehen gibt es
 verschiedene Strategien so wird von Jez Humble und David Farley in
-\cite[S.~408-412]{cd} auf Releasebranches, Featurebranches oder Teambranches
-eingegangen.
+\cite[S.~408-412]{cd} auf Releasebranches, Featurebranches, Teambranches oder
+einer Entwicklung mit nur einem Hauptbranch\footnote{Umgangsprachlich werden
+verschiedene Begriffe für diesen Branch benutzt. So sind Begriffe wie z.b.
+Trunk, Masterbranch oder Mainlinebranch nicht unüblich. Gemeint ist hiermit
+i.d.R. aber immer der zentrale Branch der Standardmäßig von dem genutzen
+\acrlong{vcs} vorgesehen ist. Für \acrshort{svn} ist das z.B. per Konvention
+das Verzeichnis \textit{trunk} und unter Git einfach die Referenz auf den Namen
+\textit{master}.} eingegangen.
 \subsection{Merge}\label{sec:merge}
 \subsection{Repository}\label{sec:repository}
 \subsection{Integrität}
