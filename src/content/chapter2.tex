@@ -271,9 +271,9 @@ inhaltsabhänigige eindeutige 160-Bit lange Prüfsumme, die auch als
 \textit{Commit-ID} bezeichnet wird(siehe Abschnitt \ref{sec:kernel},
 \pageref{sec:kernel}). Die inhaltsabhängige Prüfsumme gewährleistet auch das
 Inhalte nachträglich nicht unbemerkt verändert werden können. Die Prüfsumme
-wird mit dem \textit{Secure Hash Algotithm} (SHA-1) erzeugt.
+wird mit dem \textit{Secure Hash Algotithm} (SHA-1)
+erzeugt.\cite[S.~20-21]{gitos}
 
-Als Commit wird eine Sammlung von aktionen, die ist eine Sammlung von
 \subsection{Tag}\label{sec:tag}
 Die meisten Versionskontollsysteme\ref{cha:Versionskontrollsysteme} benutzten
 Tags um bestimmte Stände des Repositorys mit Namen zu versehen. Die übliche
@@ -306,7 +306,40 @@ i.d.R. aber immer der zentrale Branch der Standardmäßig von dem genutzen
 \acrlong{vcs} vorgesehen ist. Für \acrshort{svn} ist das z.B. per Konvention
 das Verzeichnis \textit{trunk} und unter Git einfach die Referenz auf den Namen
 \textit{master}.} eingegangen.
+
 \subsection{Merge}\label{sec:merge}
+Wenn wie in dem Abschnitt \ref{sec:collaboration} auf Seite
+\pageref{sec:collaboration} mehrere Entwickler in dem \gls{repository} arbeiten
+entstehen an einer gemeinsamen Basis häufig paralelle Abzweige. An diesen wird
+gleichzeitig gearbeitet und dadurch laufen diese Zweige u.U. auseinander. Das
+spätere wieder Zusammenführen dieser Zweige bezeichnet man als Merge. Git
+bietet hier mit \textit{merge}, \textit{mergetool}, \textit{rebase} und
+\textit{cherry-pick} eine umfangreiche Unterstüzung\cite[S.~vii]{gitwf}. Beim
+zusammenführen der beiden Zweige, z.B. \textit{topic} und \textit{master}
+ensteht wie in Abbildung \ref{fig:merge} gezeigt ein sogenannter Merge-Commit.
+Dieser hat seinen Ursprung in den beiden vorhergehenden Knoten dieser Zweige. 
+
+\begin{figure}[hb]
+  \centering
+  \includegraphics[scale=0.60]{images/merge.eps}
+  \caption{Zusammenführen von zwei Branches}
+  \label{fig:merge}
+\end{figure}
+
+Komplexere Szenarien erlauben es mit git auch Merges aus mehr als zwei Branches
+zu erzeugen z.b. sogenannte \textit{tree-way-merges} oder
+\textit{octopus-merges}. Git ermöglicht es auch Zeige aus verschiedenen
+Repositorys zusammenzuführen. So gibt es nach \cite[3]{gitwf} noch die
+Möglichkeit Repositorys nach spezielleren Funktionen zu unterteilen. So kann
+ein dediziertes \textit{Blessed Repositorys} ausschliesslich für das erstellen
+von Versionen der erzeugten Software genutzt werden. Die Änderungen können aus
+einem \textit{Fork Repository} importiert werden. Das \textit{Fork Repository}
+dient zur Entkopplung des Haupt-Repositorys. So können größere Umbauten, Merges
+oder Features unabhängig vom Haupt-Repository entwickelt
+werden\cite[S.~123]{gitwk}. Eine vergleichbare Vorgehensweise findet man im
+Repository des Linux Kernels\cite{link:linuxgit} aus Abschnitt \ref{sec:kernel}
+auf Seite \pageref{sec:kernel}.
+
 \subsection{Repository}\label{sec:repository}
 \subsection{Integrität}
 \subsection{HEAD}\label{sec:head}

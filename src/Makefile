@@ -51,6 +51,7 @@ clean:
 		*.run.xml \
 		*.bcf \
 		*.out \
+		images/*converted-to.pdf \
 		content/*.aux \
 		includes/*.aux \
 		*.aux || echo "Skip cleanup, pls do make clean manually."
