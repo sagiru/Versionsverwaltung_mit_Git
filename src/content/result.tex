@@ -1,6 +1,6 @@
 \chapter{\lookout}
 \label{cha:lookout}
-\section{Linux Kernel}\label{sec:kernel}
+\section{Zahlen und Fakten - Der Linux Kernel}\label{sec:kernel}
 Das Git Repository des Linux Kernels wurde am 16 April 2005 initial von Linus
 Torvalds mit folgendem \gls{commit}\cite{link:linuxgit} eröffnet:
 
@@ -54,11 +54,28 @@ David Farley in \cite[S.~138]{cd} eine Messung der geschriebenen Zeilen
 Quellcode am Tag warscheinlich eher dazu führen das Entwickler kürzere Zeilen
 Quellcode als effizientere schreiben. Die gemessene Anzahl an Commits hingegen
 evtl. dazu das Änderungen pro Commit kleiner werden und dadurch besser
-nachvollziehbar.
+nachvollziehbar. So schreiben Jeniffer Davis und Katherine Daniels in
+\cite[S.~179]{effdo} zu der Anzahl geschriebener Zeilen Quellcodes:
+\begin{center}
+\textit{\glqq{}Lines of code is not an accurare measure of value. There are
+different types of developers, some that refactor hundreds of confusing lines
+into tens of lines of simple-to-read abstractions that can be build upon by
+others in the team.\grqq{}}
+\end{center}
 
-Es können verschiedenste Statistiken über das Projekt erhoben werden.
-Beispielsweise könnten das nach Jez Humble und David Farley in
-\cite[S.~138]{cd}folgende sein:
+Eine genauere Betrachtung von Abbildung \ref{top20} bekräftigt diese Aussage.
+Linus Torvalds führt zwar die Liste der meisten Commits an hat aber weder die
+meisten Zeilen hinzugefügt noch entfernt. Greg Kroah-Hartman hingegen liegt
+nach der Anzahl der Commits auf Platz 10 und hat mit stattlichen 1.224.072
+hinzugefügten und 891.939 entfernten Zeilen, wie auch die meisten anderen aus
+der Liste, weit mehr Zeilen zum Kernel beigetragen als Linus Torvalds selbst.
+Die Betrachtung der reinen Zahlen reicht also nicht aus um eine repräsentative 
+Einschätzung einzelner Personen zu erhalten.
+
+Es können verschiedenste Statistiken über ein Projekt bzw. Repository erhoben
+werden die geeignet sind ein vollständigeres Bild über die Aktivitäten
+innerhalb des Projektes zu bilden. Beispielsweise könnten das nach Jez Humble
+und David Farley in \cite[S.~138]{cd}folgende sein:
 
 \begin{itemize}
 \item Testabdeckung,
@@ -67,7 +84,6 @@ Beispielsweise könnten das nach Jez Humble und David Farley in
 \item Anzahl der fehlgeschlagenen/erfolgreichen Versuche die Software zu erstellen,
 \item Metriken über den Quellcode (Zyklen, Duplikate o.a.),
 \end{itemize}
-
 
 \section{Git in Unternehmen und Projekten}
 \section{Git im Internet}
