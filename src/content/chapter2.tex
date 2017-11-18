@@ -271,7 +271,7 @@ inhaltsabhänigige eindeutige 160-Bit lange Prüfsumme, die auch als
 \textit{Commit-ID} bezeichnet wird(siehe Abschnitt \ref{sec:kernel},
 \pageref{sec:kernel}). Die inhaltsabhängige Prüfsumme gewährleistet auch das
 Inhalte nachträglich nicht unbemerkt verändert werden können. Die Prüfsumme
-wird mit dem \textit{Secure Hash Algotithm} (SHA-1)
+wird mit dem \textit{Secure Hash Algotithm} (\gls{SHA-1})
 erzeugt.\cite[S.~20-21]{gitos}
 
 \subsection{Tag}\label{sec:tag}
@@ -317,18 +317,18 @@ bietet hier mit \textit{merge}, \textit{mergetool}, \textit{rebase} und
 \textit{cherry-pick} eine umfangreiche Unterstüzung\cite[S.~vii]{gitwf}. Beim
 zusammenführen der beiden Zweige, z.B. \textit{topic} und \textit{master}
 ensteht wie in Abbildung \ref{fig:merge} gezeigt ein sogenannter Merge-Commit.
-Dieser hat seinen Ursprung in den beiden vorhergehenden Knoten dieser Zweige. 
+Dieser hat seinen Ursprung in den beiden vorhergehenden Knoten dieser Zweige.
 
 \begin{figure}[hb]
   \centering
   \includegraphics[scale=0.60]{images/merge.eps}
-  \caption{Zusammenführen von zwei Branches}
+  \caption{Zusammenführen zwei Branches}
   \label{fig:merge}
 \end{figure}
 
 Komplexere Szenarien erlauben es mit git auch Merges aus mehr als zwei Branches
 zu erzeugen z.b. sogenannte \textit{tree-way-merges} oder
-\textit{octopus-merges}. Git ermöglicht es auch Zeige aus verschiedenen
+\textit{octopus-merges}\cite[S.~87]{gitosp}. Git ermöglicht es auch Zeige aus verschiedenen
 Repositorys zusammenzuführen. So gibt es nach \cite[3]{gitwf} noch die
 Möglichkeit Repositorys nach spezielleren Funktionen zu unterteilen. So kann
 ein dediziertes \textit{Blessed Repositorys} ausschliesslich für das erstellen
@@ -336,12 +336,17 @@ von Versionen der erzeugten Software genutzt werden. Die Änderungen können aus
 einem \textit{Fork Repository} importiert werden. Das \textit{Fork Repository}
 dient zur Entkopplung des Haupt-Repositorys. So können größere Umbauten, Merges
 oder Features unabhängig vom Haupt-Repository entwickelt
-werden\cite[S.~123]{gitwk}. Eine vergleichbare Vorgehensweise findet man im
+werden\cite[S.~123]{gitwf}. Eine vergleichbare Vorgehensweise findet man im
 Repository des Linux Kernels\cite{link:linuxgit} aus Abschnitt \ref{sec:kernel}
 auf Seite \pageref{sec:kernel}.
 
 \subsection{Repository}\label{sec:repository}
-\subsection{Integrität}
+Das Repository ist ein Datenspeicher in dem gemeinsame Dateien eines Projekts
+durch das \acrlong{vcs:de} verwaltet werden. Der Benutzer kann hier Dateien
+z.B. Hinzufügen, Entfernen oder Manipulieren. Das  \acrlong{vcs:de} erzeugt,
+für alle in Commits\ref{label:commit} zusammengefasten Anderungen, eine
+Historie mit den durchgeführten Änderungen\cite[S.~38]{hagen:1678}.
+
 \subsection{HEAD}\label{sec:head}
 Eine Referenz auf den letzten Commit im aktuellen Repository bzw. Branch
 verweist. Hier muss zwischen verschiedenen Versionskontrollsystemen
@@ -350,13 +355,83 @@ Referenz auf die letzte Version des aktuell lokal genutzten Branches. Diese ist
 also abhängig von den gerade vorhandenen Daten im Working Tree von
 Git\cite[S.~20]{gitosp}. Für SVN hingegen bezeichnet HEAD die letzte
 veröffentlichte Version im Repository.
+
 \section{Arten von Versionsverwaltungssystemen}
-\subsection{Lokal}
-Beide Systeme arbeiteten auf dem lokalen
-Dateisystem.,
-\subsection{Zentral}
-\subsection{Verteilt}
-\subsection{Streaming}
+\subsection{Lokal}\label{sec:local}
+Frühe Versionskontrollsysteme wie \acrshort{rcs} oder \acrshort{rcs} arbeiten
+ausschliesslich auf dem lokalen Dateisystem und sind nicht dafür entwickelt ein
+kollaboratives Arbeiten zu unterstützen. Hier geht es auschliesslich darum
+einem Entwickler eine lokale Versionsverwaltung zur ermöglichen. Die Inhalte
+können weiteren Personen nicht mit Mitteln des \acrlong{vcs:de} zur Verfügung
+gestellt werden.
 
-\label{sec:why}
+\subsection{Zentral}\label{sec:central}
+Versionskontrollsysteme wie \acrshort{svn} oder \acrshort{cvs} stellen ein
+zenrales \gls{repository} mit hilfe einer Serverkomponente zur Verfügung.
+Entsprechend dazu gibt es für verschiedene Betriebsysteme Clientkomponenten. So
+gibt es für Linux oder andere Unix-derivate i.d.R. frei verfügbare Server- und
+Clientkomponenten die zum Teil grafisch als auch auf einem Terminal zu bedienen
+sind. Die Kommunikation der Clientkomponente mit dem Server erfolgt i.d.R.
+direkt. Das bedeutet der Benutzer holt mit dem Client die Dokumente aus dem
+zentralen Repository, führt seine Änderungen durch und fasst diese in einem
+Commit\ref{commit} zusammen. Hierfür stellt das \acrlong{vcs:de} entsprechende
+Unterstützung bereit. So z.b. für die o.a. Versionskontrollsysteme einen Befehl
+\textit{checkout} zum holen der Dokumente und  \textit{commit} zum zusammenfassen
+und gleichzeitigem übertragen an die Serverkomponente. Die Bearbeitung der
+Dokumente im lokalen \ref{sec:repository} erfolgt i.d.R. mit unabhängigen
+Werkzeugen.\cite[S.~38-40]{hagen:1678}
 
+\subsection{Verteilt}\label{sec:decentral}
+Versionskonrollsysteme die Verteilt arbeiten werden im englischen
+\acrfull{dvcs} genannt und zeichnen sich dadurch aus das der Benutzer, lokal,
+ein vollwertiges \gls{repository} zur Verfügung hat ohne das eine
+Serverkomponente ein zentrales zur Verfügung stellen muss. Das ist aber nicht
+zu verwechseln mit lokalen Versionskontrollsystemen\ref{sec:local} wie
+\acrshort{rcs} oder \acrshort{sccs}. Der Unterschied ist das verteilte Systeme
+das gleichzeitige Arbeiten von mehreren Usern stärker unterstützen als zentrale
+\acrshort{vcs:de}. Dabei ist es unerheblich ob Benutzer gleichzeitig, an
+mehreren Branches, an verschiedenen Repositorys und/oder an den geleichen
+Dateien arbeiten oder nicht.\cite[S.~393-394]{cd}
+
+Ein Auszug aus den von Jez Humble und David Farley in \cite[S.~393-394]{cd}
+beschriebenen Eigenschaften eines \acrshort{dvcs} lautet wie folgt:
+
+\begin{itemize}
+\item Es ist keine Serverkomponente nötig um einen Commit in ein lokales
+\gls{repository} durchzuführen.
+\item \glspl{repository} verschiedener Benutzer und Quellen können miteinander
+verbunden werden und deren Inhalte verglichen, integriert oder verändert werden. 
+\item Um Veränderungen durchzuführen und in einem \ref{commit} zusammenzufassen
+ist unerheblich ob eine Netzwerkverbindung zu einer möglichen Quelle besteht
+\item Änderungen können an eingeschränkte Nutzergruppen veröffentlicht werden
+ohne das jemand gezwungen ist diese zu übernehmen.
+\item Dadurch das jeder Benutzer eine eigene vollwertige Kopie des
+\glspl{repository} hat, sind \acrshort{dvcs} robuster gegenüber Datenverluste.
+Darüberhinaus können Benutzer dadurch lokal branches anlegen und ggf.
+Experimente machen ohne diese immer in ein zentrales Repository zu übertragen.
+Das sorgt zusätzlich für eine bessere Skalierbarbeit.
+\item Commits, Branches und Tags können lokal sortiert geordnet und ggf.
+Zusammengefasst werden bevor die Übertragung in ein gemeinsam genutztes
+\gls{repository} durchgeführt wird.\footnote{Das wird im Kontext von Git als
+\textit{rebase} bezeichnet.}
+\end{itemize}
+
+Im Gegensatz zu zentralen (Abschnitt \ref{sec:central}) Versionskontrollsystemen erfolgt das
+erzeugen eines \glspl{commit}\ref{sec:commit} lokal und die Übertragung in ein ggf.
+weiteres \gls{repository} mit einem zusäztlichem Befehl \textit{push}. Dabei
+können die Daten beliebig oft in weitere \glspl{repository} übertragen werden.
+
+\subsection{Streaming}\label{sec:streaming}
+An dieser Stelle sei noch grob auf Versionskontrollsysteme eingegangen die auf
+Datenströmen basieren. Ein populäres Beispiel ist das kommerziell vermarktete
+ClearCase entwickelt von IBM. Das zentrale Merkmal ist hier das
+Branches\ref{sec:branch} durch sogenannte Streams ersetzt wurden.
+Das ermöglicht eine Baumstruktur von abhängigen Abzweigen die durch eine
+Vererbungsstruktur verbunden sind. Es können Änderungen innerhalb eines
+Arbeitsbereichs durchgeführt werden ohne andere Benutzer zu bereinflussen. Nach
+Abschluss dieser Arbeiten können diese veröffentlicht bzw. \textit{promoted}
+werden. Diese werden dann allen abhängigen Streams gleichzeitig zur Verfügung
+gestellt. Das kann hilfreich sein um z.B. grundlegende Softwarebibliotheken
+auszutauschen oder wichtige Fehlerbehebungen durchzuführen. In herkömmlichen
+\acrshort{vcs:de} müssen solche Änderungen einzeln auf jeden Branch übertragen
+werden.
