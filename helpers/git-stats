@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# This script is used as simple git example
+#
+# Author: Sascha Girrulat
+#
+if git log --oneline > /dev/null; then
+    for author in "$(git shortlog -sn --all | cut -f2)"
+    do
+        echo '-------------------'
+        echo "Statistics for: ${author}"
+        echo -n "Commits: "
+        git --no-pager shortlog -sn --all --author="${author}" | cut -f1 | sed 's/ //g'
+        echo -n "Files changed: "
+        git log --all --numstat --format="%n" --author="${author}" | cut -f3 | sort -iu | wc -l
+        echo -n "Lines added: "
+        git log --all --numstat --format="%n" --author="${author}" | cut -f1 | awk '{s+=$1} END {print s}'
+        echo -n "Lines deleted: "
+        git log --all --numstat --format="%n" --author="${author}" | cut -f2 | awk '{s+=$1} END {print s}'
+        echo -n "Merges: "
+        git log --all --merges --author="${author}" | grep -c '^commit'
+    done
+fi

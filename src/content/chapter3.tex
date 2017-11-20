@@ -6,39 +6,88 @@ auf weitere Eigenschaften und fortgeschrittene Befehle eingegangen. Darüber
 hinaus stellt der Author dieser Seminararbeit den Quellcode dieser Arbeit als
 Git-Repository unter \cite{link:seminararbeit} zur Verfügung. Diese Repository
 dient ebenso als Beispiel für Sachverhalte bei denen der gewünschte
-Zusammenhang hiermit besser darzustellen ist. 
+Zusammenhang hiermit besser darzustellen ist.
 
 \section{Grundlagen}\label{gitbasics}
+In diesem Beispiel werden wir ein Repository \texttt{git-example} mit einem
+Skript (\texttt{git-stats}) erstellen welches ein paar einfache Statistiken
+über die Autoren eines git Repositorys erzeugt.
 
-Alle Beispiele werden auf einer Linux Kommandozeile durchgeführt. Die
-eingesetzte Git-Version ist 2.15.0.
+Alle Beispiele werden auf einer Linux Kommandozeile durchgeführt. Git ist für
+alle gängigen Linux derivate verfügbar. Die Autoren von \cite[S.~12-14]{gitpro}
+gehen auf weitere Detauls zur Installation von Git in anderen Versionen oder
+auf anderen Betriebsystemen ein. 
+
+Die in den Beispielen eingesetzte Version von ist 2.15.0.
 
 \lstinputlisting[
   label=lst:gitversion,
-  caption={Git Version anzeigen},
+  caption={Version von Git ausgeben},
   captionpos=none,
 ]{listings/git_version.lst}
 
 \subsection{Konfiguration}\label{gitconfig}
-Um Dateien mit git zu Verwalten sollten zu erst einige Konfigurationen
-vorgenommen werden. So sollten, damit die Nachvollziehbarkeit gewährleistet
-ist, als erstes immer der Name und Mailadresse des Benutzers konfiguriert
-werden. Auch ist die farbliche Darstellung der Ausgaben durchaus hilfreich.
-Hier kann Git so konfiguriert werden das es die Farbausgabe automatisch
-unterdrückt sollte die Ausgabe in Dateien umgeleitet werden.
+Zu Beginn sollten zu erst einige grundlegende Konfigurationen vorgenommen
+werden. So sollten, damit die Nachvollziehbarkeit gewährleistet ist, als erstes
+immer der Name und Mailadresse des Benutzers konfiguriert werden. Auch ist die
+farbliche Darstellung der Ausgaben durchaus hilfreich. Hier kann Git so
+konfiguriert werden das die Farbausgabe automatisch unterdrückt wird, sollte
+die Ausgabe in eine Datei umgeleitet werden.
 
 \lstinputlisting[
   label=lst:gitinitconfig,
-  caption={Initiale Git Konfiguration},
+  caption={Erste Git Konfiguration},
   captionpos=none,
 ]{listings/git_init_config.lst}
 
+Die eingestellten Optionen können ebenso direkt in der Datei
+\texttt{\textasciitilde/.gitconfig} eingesehen und bearbeitet werden.
+
 \subsection{Erstellen eines Repositorys}\label{startup}
+Damit Dateien nun mit Git Versioniert werden können muss wie folgt ein ein (lokales)
+\gls{repository} erstellt werden: 
+
 \lstinputlisting[
   label=lst:gitinit,
-  caption={Git Repository erstellen},
+  caption={Repository anlegen},
   captionpos=none,
 ]{listings/git_init.lst}
+
+Sollte das Verzeichnis \texttt{hello\_seminar.git} noch nicht existieren wird es
+angelegt. Zusätzlich wird innerhalb von \texttt{hello\_seminar.git} noch ein
+weiteres Verzeichnis \texttt{.git} angelegt in dem alle Daten ablegt werden die
+Git zur weiteren Verwaltung des \glspl{repository} benötigt.
+
+Um den Status des aktuell erzeugten \glspl{repository} auszugeben können wir
+den Befehl \texttt{git status} verwenden:
+
+\lstinputlisting[
+  label=lst:gitstatus,
+  caption={Status des Repositorys ausgeben},
+  captionpos=none,
+]{listings/git_status.lst}
+
+Die von Git erzeugte Ausgabe macht darauf Aufmerksam das noch keine Commits
+erzeugt wurde und das man nun neue Dateien erstellen und hinzufügen kann. 
+
+\lstinputlisting[
+  label=lst:gitstatus,
+  caption={Status des Repositorys ausgeben},
+  captionpos=none,
+]{listings/git_status.lst}
+
+
+\subsection{Die ersten Commits}\label{first_commits}
+
+Wir werden nun die ersten Dateien zu dem Repository hinzufügen. Dazu werden wir
+als erstes zwei Dateien herunterladen. Wer diese Dateien nicht herunter laden
+möchte kann auch Dateien mit gleichem Namen erstellen.
+
+\lstinputlisting[
+  label=lst:downloads,
+  caption={Download der Beispieldateien},
+  captionpos=none,
+]{listings/downloads.lst}
 
 \section{Architektur und Bäume}\label{sec:trees}
 \label{sec:Konfiguration}

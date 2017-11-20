@@ -1,0 +1,9 @@
+
+$ git config --global user.name "Markus Moeglich"
+$ git config --global user.email markus@moeglich.de
+$ git config --global color.ui auto 
+
+$ git config --global --list
+user.name=Markus Moeglich
+user.email=markus@moeglich.de
+color.ui=auto
