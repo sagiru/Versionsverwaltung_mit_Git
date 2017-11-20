@@ -356,6 +356,40 @@ also abhängig von den gerade vorhandenen Daten im Working Tree von
 Git\cite[S.~20]{gitosp}. Für SVN hingegen bezeichnet HEAD die letzte
 veröffentlichte Version im Repository.
 
+\subsection{Checkout}\label{sec:checkout}
+Um Missverständnisse zu vermeiden muss man hier zwischen den bisher erwähnten
+Versionskontollsystemen und Git unterscheiden. Wie auch in Abschnitt
+\ref{sec:central} erwähnt, beschreibt der Begriff \textit{checkout} im Rahmen
+erwähnten Versionskonrollsystemen z.B. \acrshort{cvs}\ref{sec:cvs} oder
+\acrshort{svn}\ref{sec:svn} (Abschnitt \ref{cha:Versionsverwaltung}) das
+Erstellen einer lokalen Kopie eines entfernten \glspl{repository}. Im Kontext von
+Git\ref{git} beschreibt dieses aber eher das wechseln zu einem konkreten
+\glspl{commit}. Das kann unter Git ein \gls{branch}, \gls{tag} oder eine
+Commit-ID\ref{commit} sein. Unter allen erwähnten Versionskontrollsystemen gibt
+es einen gleichnamigen Befehl.
+
+\subsection{Clone}\label{sec:clone}
+Was unter z.B. \acrshort{svn} oder \acrshort{cvs} der Checkout\ref{checkout}
+eines entfernten \glspl{repository} ist unter Git das \textit{Clonen}. Das
+beschreibt also das herunterladen eines Git-Reposiorys von einer Quelle mit der
+vollständigen Historie und allen enhaltenen \glspl{commit}. Es erstellt
+also sozusagen einen Klon des ursprünglichen \gls{repository}.\cite[S.~21]{gitosp}
+
+\subsection{Working Tree}\label{sec:workingtree}
+Es gibt Unterschiedliche Begriffe für den \textit{Working Tree}. So werden
+synonyme Begriffe wie Arbeitskope engl. \textit{Working Copy}, \textit{sandbox}
+oder auch \textit{checkout} verwendet. Es bezeichnet die gerade aktuelle
+Version des lokalen Arbeitsverzeichnisses an denen ggf. Änderungen vorgenomme
+werden können.\cite[S.~20]{gitosp}
+
+\subsection{Index}\label{sec:index}
+Der Index ist ein Alleinstellungsmerkmal von Git und bez. eine Ebene zwischen
+der Arbeitskopie und dem \gls{repository}. Hier können Änderungen für einen
+zukünftigen Commit vorgemerkt werdeni\cite[S.~20]{gitosp}. Der Index und dessen
+Rolle wird im späteren nochmal gesondert betrachtet (Abschnitt \ref{sec:trees}.
+Dieser Bereich wir häufig auch \textit{Stage} oder \textit{Staging Area}
+genannt\cite[S.~11]{progit}.
+
 \section{Arten von Versionsverwaltungssystemen}
 \subsection{Lokal}\label{sec:local}
 Frühe Versionskontrollsysteme wie \acrshort{rcs} oder \acrshort{rcs} arbeiten
