@@ -1,16 +1,3 @@
-<span>0.2</span>
-
-![image](images/logo_left.png)
-
-<span>0.55</span>
-
-<span>0.2</span>
-
-![image](images/logo_right.png)
-
-![image](images/git.png)
-
-
 # Versionsverwaltung mit Git
 
 Diese Seminararbeit stellt Versionskontrollsysteme und deren Funktion im
