@@ -1,11 +1,28 @@
-# lecture
-Latex template to use for seminar, lecture, course or workshops. Mainly for
-students. It is inspired by http://www.minet.uni-jena.de.
+<span>0.2</span>
 
-The central tex file is main.tex. To build that you could call simply make(with
-setup) or make pdf(without setup). Optional you could set a variable
-SOURCE=my.tex to use a other file (e.g. a link) to use an other name/file.
+![image](images/logo_left.png)
 
-Example
+<span>0.55</span>
 
-        SOURCE=your.tex make pdf
+<span>0.2</span>
+
+![image](images/logo_right.png)
+
+![image](images/git.png)
+
+
+# Versionsverwaltung mit Git
+
+Diese Seminararbeit stellt Versionskontrollsysteme und deren Funktion im
+Allgemeinen und Git im Speziellen vor. Neben einem kurzen geschichlichen
+ÜUberblick, wird hierbei auf grundlegende Eigenschaften von
+Versionskontrollsystemen eingegangen. Ebenso werden wesentliche Unterschiede,
+insbesondere gegenüber Git, aufgezeigt. Um einen praktischen Einblick in die
+Arbeit mit Git zu vermitteln, werden die gebräuchlisten Befehle in Beispielen
+vorgestellt. Darüber hinaus wird auf eine kleine Auswahl von Workflows und
+fortgeschrittener Konzepte eingegangen. Zum Abschluss wird ein Ausblick auf den
+Einsatz von Git in Teams, Projekten und Betrieben gegeben. Dieser Ausblick soll
+unter anderem Bezug auf die Frage nehmen, warum ein Einsatz von
+Versionskontrollsystemen essenziell für den Einsatz in erfolgreichen
+Softwareprojekten ist. Mit Rücksicht auf den Umfang der Arbeit werden
+Details hierzu aber nicht weiter ausgeführt.

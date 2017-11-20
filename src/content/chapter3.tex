@@ -1,12 +1,46 @@
 \chapter{Git}\label{cha:Git}
-\section{Architektur}
-\label{sec:Architektur}
-\section{Grundlagen}
-\label{sec:Grundlagen}
+In diesem Kapitel wird auf die wesentlichsten Grundlagen und Befehle
+beschrieben um mit Git Dateien zu Verwalten. Es wird als erstes mit einfachen
+Befehlen ein Git-Repository erstellt und später am Beispiel dieses Repositorys
+auf weitere Eigenschaften und fortgeschrittene Befehle eingegangen. Darüber
+hinaus stellt der Author dieser Seminararbeit den Quellcode dieser Arbeit als
+Git-Repository unter \cite{link:seminararbeit} zur Verfügung. Diese Repository
+dient ebenso als Beispiel für Sachverhalte bei denen der gewünschte
+Zusammenhang hiermit besser darzustellen ist. 
 
+\section{Grundlagen}\label{gitbasics}
 
-\url{https://git.wiki.kernel.org/index.php/GitFaq#Why_the_.27Git.27_name.3F}
-\subsection{Konfiguration}
+Alle Beispiele werden auf einer Linux Kommandozeile durchgeführt. Die
+eingesetzte Git-Version ist 2.15.0.
+
+\lstinputlisting[
+  label=lst:gitversion,
+  caption={Git Version anzeigen},
+  captionpos=none,
+]{listings/git_version.lst}
+
+\subsection{Konfiguration}\label{gitconfig}
+Um Dateien mit git zu Verwalten sollten zu erst einige Konfigurationen
+vorgenommen werden. So sollten, damit die Nachvollziehbarkeit gewährleistet
+ist, als erstes immer der Name und Mailadresse des Benutzers konfiguriert
+werden. Auch ist die farbliche Darstellung der Ausgaben durchaus hilfreich.
+Hier kann Git so konfiguriert werden das es die Farbausgabe automatisch
+unterdrückt sollte die Ausgabe in Dateien umgeleitet werden.
+
+\lstinputlisting[
+  label=lst:gitinitconfig,
+  caption={Initiale Git Konfiguration},
+  captionpos=none,
+]{listings/git_init_config.lst}
+
+\subsection{Erstellen eines Repositorys}\label{startup}
+\lstinputlisting[
+  label=lst:gitinit,
+  caption={Git Repository erstellen},
+  captionpos=none,
+]{listings/git_init.lst}
+
+\section{Architektur und Bäume}\label{sec:trees}
 \label{sec:Konfiguration}
 \subsection{Kommandos}
 \label{sec:Kommandos}
