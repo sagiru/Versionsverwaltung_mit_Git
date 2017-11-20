@@ -83,7 +83,7 @@ setup_tex: setup
 	sudo mktexlsr
 
 ${PDF}: ${SOURCE} Makefile
-	pdflatex  -synctex=1 -interaction=nonstopmode --src-specials ${SOURCE}
-	latexmk -r .latexmk.rc -f -bibtex -pdf -bibtex-cond ${SOURCE}
+	pdflatex -halt-on-error -synctex=1 -interaction=nonstopmode --src-specials ${SOURCE}
+	latexmk --silent -r .latexmk.rc -f -bibtex -pdf -bibtex-cond ${SOURCE}
 
 .PHONY: src clean
