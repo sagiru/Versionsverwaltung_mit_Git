@@ -1,0 +1,21 @@
+commit 55382cbf68369cedda73a785dc13e1823dffa6c2
+Author: Markus Moeglich <markus@moeglich.de>
+Date:   Sat Nov 25 14:00:14 2017 +0100
+
+    Add gpl license file
+    
+    The software and all the files includes by this repository should be
+    licensed with the GNU General Public Licsense 3.0. Thats why we put the
+    original license file from [1] into this repository.
+    
+    [1] https://www.gnu.org/licenses/gpl-3.0.txt
+
+diff --git a/LICENSE b/LICENSE
+new file mode 100644
+index 0000000..9cecc1d
+--- /dev/null
++++ b/LICENSE
+@@ -0,0 +1,674 @@
++                    GNU GENERAL PUBLIC LICENSE
++                       Version 3, 29 June 2007
+...

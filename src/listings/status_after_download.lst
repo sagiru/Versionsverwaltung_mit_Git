@@ -1,0 +1,13 @@
+$ git status
+Auf Branch master
+
+Noch keine Commits
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+	LICENSE
+	git-stats
+
+nichts zum Commit vorgemerkt, aber es gibt unversionierte Dateien
+(benutzen Sie "git add" zum Versionieren)

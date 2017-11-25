@@ -1,3 +1,3 @@
 
-wget https://www.gnu.org/licenses/gpl-3.0.txt
-wget https://github.com/sagiru/Seminar-1908-Git/helpers/git-stats
+wget https://raw.githubusercontent.com/sagiru/Seminar-1908-Git/master/LICENSE
+wget https://raw.githubusercontent.com/sagiru/Seminar-1908-Git/master/helpers/git-stats 

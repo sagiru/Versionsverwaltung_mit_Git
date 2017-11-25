@@ -1,0 +1,14 @@
+$ git status
+Auf Branch master
+
+Noch keine Commits
+
+zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git rm --cached <Datei>..." zum Entfernen aus der Staging-Area)
+
+	neue Datei:     LICENSE
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+	git-stats
