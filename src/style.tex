@@ -51,21 +51,18 @@
 \fi
 \pagestyle{mypagestyle}
 
-\renewcommand*{\chapterpagestyle}{mypagestyle} 
+\renewcommand*{\chapterpagestyle}{mypagestyle}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\headfont}{\normalfont}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
-\frenchspacing 
+\frenchspacing
 
 % Schusterjungen und Hurenkinder vermeiden
 \clubpenalty = 10000
-\widowpenalty = 10000 
+\widowpenalty = 10000
 \displaywidowpenalty = 10000
-
-\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, breaklines=true}
-\lstset{emph={square}, emphstyle=\color{red}, emph={[2]root,base}, emphstyle={[2]\color{blue}}}
 
 \counterwithout{footnote}{chapter}
 
@@ -74,6 +71,7 @@
 \definecolor{colIdentifier}{rgb}{0,0,0}
 \definecolor{colComments}{rgb}{1,0,0}
 \definecolor{colString}{rgb}{0,0.5,0}
+
 \lstset{
     float=hbp,
     columns=flexible,
@@ -88,5 +86,13 @@
     breakautoindent=true,
     xleftmargin=0.6cm,
     xrightmargin=0.1cm,
-    captionpos=b
+    captionpos=b,
+    literate=%
+      {Ö}{{\"O}}1
+      {Ä}{{\"A}}1
+      {Ü}{{\"U}}1
+      {ß}{{\ss}}1
+      {ü}{{\"u}}1
+      {ä}{{\"a}}1
+      {ö}{{\"o}}1
 }
