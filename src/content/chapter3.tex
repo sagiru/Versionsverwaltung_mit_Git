@@ -139,13 +139,33 @@ zur Verfügung.
 
 Wir fügen nun die zweite Datei, wie oben bereits beschrieben, mit einem
 \texttt{git add git-stats} hinzu. Anschliessend erzeugen wir einen weiteren
-\gls{commit} mit \texttt{git commit -m "Add script to generate author
+\gls{commit} mit \texttt{git commit -m "Add helper script to generate author
 statistics."}.
 
-\section{Architektur und Bäume}\label{sec:trees}
+Mit diesen beiden zuvor ausgeführten Commits haben wir nun eine, wenn auch
+kurze, Historie erstellt. Um diese zu untersuchen dienen die Befehle
+\texttt{git whatchanged}\footnote{Der Befehl \texttt{git whatchanged} stammt
+aus frühen von Git und ist das gleiche wie \texttt{git log} mit einigen
+Parametern um die Ausgabe entsprechend zu Formatieren.} oder \texttt{git log}.
+Wir werden in Abschnitt \ref{sec:gitlog} weiter darauf eingehen aber für diesen
+Fall ist ein \texttt{git whatchanged} ausreichend:
+
+\lstinputlisting[
+  label=lst:first_git_whatchanged.lst
+  caption={Untersuchen der Historie},
+  captionpos=none,
+]{listings/first_git_whatchanged.lst}
+
+Die Ausgabe wird im sogenannten \textit{raw} Format dargestellt. Es werden alle
+Commits mit Informationen über den Autor, Commit-ID, Zeit und den veränderten
+Dateien in zeitlicher Reihenfolge dargestellt. Die konkreten Veränderungen am
+Inhalt der Dateien werden hier nicht dargestellt(siehe Abschnitt
+\ref{sec:gitlog} auf Seite \pageref{sec:gitlog}).
+
+\subsection{Objektmodell}
 \subsection{Kommandos}\label{sec:commands}
 
-\subsubsection{git add}
+\subsubsection{git add}\label{sec:gitadd}
 Mit \texttt{git add} können Grundsätzlich Dateien hinzugefügt werden. Der
 Befehl selbst bietet, wie fast alle Git Kommandos eine Vielzahl an
 Optionen\footnote{Eine Übersicht über die unterstützden Optione kann mit den
@@ -156,6 +176,7 @@ Eine sei an dieser Stelle besonders erwähnt \texttt{git add -p}. Das
 hinzuzufügen. Das kann hilfreich sein um Änderungen an verschiedenen Teilen in
 seperate \glspl{commit} aufzuteilen oder bestimmte Änderungen weg zulassen.
 
+\subsubsection{git log}\label{sec:gitlog}
 \subsubsection{git show}\label{sec:gitshow}
 Git show gibt alle relevanten Informationen eines Commits aus.....S.25 gitosp
 
