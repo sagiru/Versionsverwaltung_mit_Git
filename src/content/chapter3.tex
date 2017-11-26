@@ -113,7 +113,7 @@ Versionskontrollsystemen üblich.
 Darüber hinaus bietet es sich an bei dem Erstellen solcher Bemerkungen an sich
 an gewisse Regeln zu Halten. Beispielsweise beschreiben Jez Humble und David
 Farley in \cite[S.~37]{cd} ein übliches Szenario bei dem es durchaus Sinnvoll
-sein kann, nicht nur zu wissen was der Author geändert hat sondern auch warum
+kann, nicht nur zu wissen was der Author geändert hat sondern auch warum
 und in welchem Kontext. Wenn nicht klar ist was sich der Autor sich bei
 Änderungen gedacht hat oder Zusammenhäge nicht aus dem Commit hervorgehen, kann
 ein gefundener und behobener Fehler vor dem Veröffentlichen einer
@@ -122,13 +122,25 @@ nicht selten darin das viele Stunden Arbeit investiert werden müssen diese zu
 bereinigen.
 
 Nachdem der erste Commit wie o.a. erzeugt wurde kann dieser nun mit \texttt{git
-show} betrachtet werden.
+show}\ref{sec:gitshow} betrachtet werden:
+
 \lstinputlisting[
   label=lst:git_show_first_commit.lst
   caption={Anzeige des ersten Commits},
   captionpos=none,
 ]{listings/git_show_first_commit.lst}
 
+Hier können alle wichtigen Informationen eingesehen werden. Neben Zeitpunkt,
+Author und Beschreibung auch die Commit-ID (Abschnitt \ref{sec:commit}). Die
+weiteren Informationen werden in einem Format namens Unified-Diff dargestellt
+auf welches hier nicht weiter eingegangen wird. Details zu dem Format stellen
+die Autoren von \textit{GNU diffutils} unter \cite[S.~12-13]{paper:diffutils}
+zur Verfügung.
+
+Wir fügen nun die zweite Datei, wie oben bereits beschrieben, mit einem
+\texttt{git add git-stats} hinzu. Anschliessend erzeugen wir einen weiteren
+\gls{commit} mit \texttt{git commit -m "Add script to generate author
+statistics."}.
 
 \section{Architektur und Bäume}\label{sec:trees}
 \subsection{Kommandos}\label{sec:commands}
@@ -143,6 +155,9 @@ Eine sei an dieser Stelle besonders erwähnt \texttt{git add -p}. Das
 \texttt{-p} ermöglicht die durchgeführten Änderungen an den Dateien selektiv
 hinzuzufügen. Das kann hilfreich sein um Änderungen an verschiedenen Teilen in
 seperate \glspl{commit} aufzuteilen oder bestimmte Änderungen weg zulassen.
+
+\subsubsection{git show}\label{sec:gitshow}
+Git show gibt alle relevanten Informationen eines Commits aus.....S.25 gitosp
 
 \section{Praktische Anwendung}
 \label{sec:Praxis}
