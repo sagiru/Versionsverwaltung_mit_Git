@@ -1,0 +1,4 @@
+$ git commit -a -m "Add executable bit to helper script."
+[master 614195f] Add executable bit to helper script.
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+  mode change 100644 => 100755 helpers/git-stats

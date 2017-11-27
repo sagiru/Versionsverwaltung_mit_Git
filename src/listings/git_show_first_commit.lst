@@ -1,6 +1,7 @@
-commit 55382cbf68369cedda73a785dc13e1823dffa6c2
+$ git show
+commit 38bfa5a56baa0d443639cc321120c38470e8b871
 Author: Markus Moeglich <markus@moeglich.de>
-Date:   Sat Nov 25 14:00:14 2017 +0100
+Date:   Mon Nov 27 14:58:41 2017 +0100
 
     Add gpl license file
     

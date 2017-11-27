@@ -11,4 +11,4 @@ zum Commit vorgemerkte Änderungen:
 Unversionierte Dateien:
   (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
 
-	git-stats
+	helpers/

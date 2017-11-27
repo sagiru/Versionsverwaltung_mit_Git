@@ -77,12 +77,14 @@ den Befehl \texttt{\$ git status} verwenden:
 Die von Git erzeugte Ausgabe macht darauf aufmerksam, das noch keine Commits
 erzeugt wurden und dass man nun neue Dateien erstellen und hinzufügen kann.
 
-\subsection{Die ersten Commits}\label{first_commits}
+\subsection{Die ersten Commits}\label{sec:first_commits}
 
 Wir werden nun die ersten Dateien zu dem Repository hinzufügen. Dazu laden wir
-zwei Dateien mit folgendem Befehl aus dem Internet herunter. Wer diese Dateien
-nicht herunterladen kann oder möchte, darf selbstverständlich auch einfach
-Dateien mit gleichem Namen und beliebigem Inhalt erstellen.
+zwei Dateien mit folgendem Befehl aus dem Internet herunter. Zuvor sollte aber
+noch mit folgendem Befehl \texttt{\$ mkdir helpers} ein Unterordner in dem
+erzeugten Repository angelegt werden. Wer diese Dateien nicht herunterladen
+kann oder möchte, darf selbstverständlich auch einfach Dateien mit gleichem
+Namen und beliebigem Inhalt erstellen.
 
 \lstinputlisting[
   label=lst:downloads,
@@ -92,7 +94,7 @@ Dateien mit gleichem Namen und beliebigem Inhalt erstellen.
 
 Ab jetzt können die Dateien mit \gls{git} verwaltet werden. Ein erstes
 Hinzufügen einer Datei mit dem Befehl \texttt{\$ git add LICENSE} führt zu
-folgender Ausgabe:
+folgender Ausgabe von \texttt{\$ git status}:
 
 \lstinputlisting[
   label=lst:add_first_file,
@@ -127,11 +129,12 @@ Softwareversion durchaus zu Folgefehlern führen. Solche Situationen enden
 nicht selten darin, dass viele Stunden Arbeit investiert werden müssen diese zu
 bereinigen.\cite[S.~37]{cd}
 
-Nachdem der erste Commit wie o.a. erzeugt wurde, kann dieser nun mit \texttt{git
-show}\ref{sec:gitshow} betrachtet werden:
+Nachdem der erste Commit wie o.a. erzeugt wurde, kann dieser nun mit \texttt{\$
+git show} (Abschnitt \ref{sec:gitshow} auf Seite \pageref{git:show}) betrachtet
+werden:
 
 \lstinputlisting[
-  label=lst:git_show_first_commit.lst
+  label=lst:git_show_first_commit.lst,
   caption={Anzeige des ersten Commits},
   captionpos=none,
 ]{listings/git_show_first_commit.lst}
@@ -144,20 +147,26 @@ eingegangen wird. Details zu dem Format stellen die Autoren von \textit{GNU
 diffutils} unter \cite[S.~12-13]{paper:diffutils} zur Verfügung.
 
 Wir fügen nun die zweite Datei, wie oben bereits beschrieben mit einem
-\texttt{\$ git add git-stats} hinzu. Anschließend erzeugen wir einen weiteren
-\gls{commit} mit \texttt{\$ git commit -m "Add helper script to generate author
-statistics."}.
+\texttt{\$ git add helpers/git-stats} hinzu. Anschließend erzeugen wir einen
+weiteren \gls{commit} mit \texttt{\$ git commit -m "Add helper script to
+generate author statistics."}.
+
+\lstinputlisting[
+  label=lst:commit_git-stats.lst,
+  caption={Hinzufügen einer weiteren Datei},
+  captionpos=none,
+]{listings/commit_git-stats.lst}
 
 Mit diesen beiden zuvor ausgeführten Commits haben wir nun eine, wenn auch
 kurze, Historie erstellt. Um diese zu untersuchen dienen die Befehle
-\texttt{git whatchanged}\footnote{Der Befehl \texttt{\$ git whatchanged} stammt
+\texttt{\$ git whatchanged}\footnote{Der Befehl \texttt{\$ git whatchanged} stammt
 aus frühen von Git und ist das gleiche wie \texttt{\$ git log} mit einigen
 Parametern um die Ausgabe entsprechend zu Formatieren.} oder \texttt{git log}.
 Wir werden in Abschnitt \ref{sec:gitlog} weiter darauf eingehen aber für diesen
 Fall ist ein \texttt{git whatchanged} ausreichend:
 
 \lstinputlisting[
-  label=lst:first_git_whatchanged.lst
+  label=lst:first_git_whatchanged.lst,
   caption={Untersuchen der Historie},
   captionpos=none,
 ]{listings/first_git_whatchanged.lst}
@@ -168,7 +177,163 @@ Dateien in zeitlicher Reihenfolge dargestellt. Die konkreten Veränderungen am
 Inhalt der Dateien werden hier nicht dargestellt(siehe Abschnitt
 \ref{sec:gitlog} auf Seite \pageref{sec:gitlog}).
 
-\subsection{Objektmodell}
+Erwähnenswert ist noch das Git, im Gegensatz zu anderen
+Versionskontrollsystemen, die Dateiberechtigungen speichert. Wer bei den
+letzten der beiden Commits auf die Ausgabe geachtet hat (Listing
+\ref{lst:commit_git-stats.lst}) dem ist vielleicht die Zeile \texttt{create
+mode 100644 helpers/git-stats} aufgefallen. Der vollständigkeit halber erzeugen
+wir nun noch einen weiteren Commit der das Skript entsprechend ausführbar
+machen soll. Hierzu führen zuerst den Befehl \texttt{chmod 755
+helpers/git-stats} und anschließend \texttt{\$ git commit -a -m "Add executable
+bit to helper script."}.
+
+\lstinputlisting[
+  label=lst:git_commit_all.lst,
+  caption={Commit mit allen Änderungen},
+  captionpos=none,
+]{listings/git_commit_all.lst}
+
+Mit dem zuvor ausgeführten Befehl haben wir einen Commit erzeugt ohne unsere
+Änderungen vorher mit \texttt{\$ git add} hinzuzufügen. Der Parameter
+\texttt{-a} bewirkt hier das alle vorhandenen Änderungen zu einem Commit
+zusammengefasst werden und nicht einzeln hinzugefügt werden müssen. Zu beachten
+ist allerdings das Dateien die Git noch nicht kennt, davon nicht betroffen
+sind. Diese müssen nach wie vor zuerst mit einem \texttt{add} hinzugefügt
+werden.
+
+Abschließend zu diese \texttt{\$ git tag -m "Tagging first Release 0.0.1"
+tags/0.0.1}
+
+\subsection{Bäume???Titel}\label{sec:trees}
+\subsection{Objektmodell}\label{objectmodel}
+Wie in vorherigen Abschnitten bereits erwähnt, ist das Repository ein
+Datenspeicher vergleichbar mit einer Datenbank. Dahinter steht also ein
+Datenmodell welches sicherstellt das die einzelnen Teile eines Commits und
+deren Zusammenhänge über die Zeit gewährleistet. Dazu verwendet Git ein of
+Objekten basierendes Modell. Dieser Abschnitt geht auf die verschiedenen
+Objektypen und deren Zusammenhänge ein und basiert größtenteils auf den
+Ausführungen der Autoren aus \cite[S.~49-59]{gitosp}
+
+Für jedes Objekt wird innerhalb des Repositorys unter \texttt{.git/objects}
+eine Datei abgelegt. Für alle Objekte wird eine eindeutige \gls{SHA-1}
+Prüfsumme erzeugt die gleichzeitig als Dateiname und Referenz für das
+abgespeicherte Objekt dient. Git unterscheidet zwischen den Objekttypen Tree,
+Object, Commit und Tag.
+
+\subsubsection{Trees und Blobs}\label{sec:treeblobobjects}
+Zum speichern von Verzeichnissen verwendet Git ein sogenanntes
+\textit{Tree-Object}. Eine Ausgabe der Dateistruktur aus dem verwendeten
+Beispiel (Abschnitt \ref{sec:first_commits} auf Seite
+\pageref{sec:first_commits}) an erhält man mit dem Linux Befehl \texttt{\$
+tree}:
+
+\lstinputlisting[
+  label=lst:tree.lst,
+  caption={Dateibaum des Beispiels},
+  captionpos=none,
+]{listings/tree.lst}
+
+Um nun den Dateibaum mit der Objektstruktur aus dem Git Repository zur vergleichen kann der Befehl \texttt{\$ git ls-tree HEAD} genutzt werden:
+
+\lstinputlisting[
+  label=lst:git_ls_tree.lst,
+  caption={Objektbaum des Beispiels},
+  captionpos=none,
+]{listings/git_ls_tree.lst}
+
+Git unterscheidet hier zwischen den angelegten Verzeichnissen und den
+eigentlichen Dateien wie \texttt{helpers/git-stats}. Verzeichnisse werden als
+\textit{tree} dargestellt und enhalten, wie auch im Dateisystem, entweder
+Referenzen auf weitere Objekte vom Typ \textit{tree} oder \textit{blob}.
+Inhalte von Dateien werden in \textit{blob}-Objekten gespeichertt. Allerdings
+ist der Dateiname nicht Vestandteil des \textit{blob} sondern wird in dem
+zugehörigen \textit{tree} gespeichert. Dies wird auch nochmal deutlicher wenn
+wir uns das Objekt zu dem Ordner \texttt{helpers} anschauen:
+
+\lstinputlisting[
+  label=lst:git_ls_tree_helpers.lst,
+  caption={Objekt eines Ordners},
+  captionpos=none,
+]{listings/git_ls_tree_helpers.lst}
+
+\subsubsection{Commit}\label{sec:commitobject}
+Ein Commit-Objekt entält neben den bereits bekannten Daten aus Listing
+\ref{lst:git_show_first_commit.lst} eine Referenz zu \textbf{einem}
+\textit{tree} und mindestens einem vorhergehenden Commit (engl.
+\textit{parent}). Im Fall eines Merge-Commits (Abbildung \ref{fig:merge} auf
+Seite \pageref{fig:merge}) werden enstprechend so viele Vorgänger referenziert
+wie branches zusammengeführt wurden. Hier wird jeweils auf den \gls{HEAD} des
+jeweiligen Branches referenziert. Der in einem Commit referenzierte
+\textit{tree} ist immer ein Verweis auf einen sogenannten
+\textit{top-level-tree} (\texttt{/}). Dieser Verweis referenziert die Wurzel des
+entstandenen Objektbaums und enhält keinen Dateinamen.
+
+Abbildung \ref{fig:objectmodel} zeigt zusammenfassend die verschiedenen Objekte
+zu dem Beispiel aus Abschnitt \ref{sec:first_commits}.
+
+\begin{figure}[hb]
+  \centering
+  \includegraphics[scale=0.75]{images/objectmodel.png}
+  \caption{Objektmodell zum Beispiel aus Abschnitt \ref{sec:first_commits}\cite[S.~53]{gitosp}}
+  \label{fig:objectmodel}
+\end{figure}
+
+\subsubsection{Tag}\label{sec:tagobject}
+Ein \gls{tag} markiert einzelne Commits. Hierzu werden i.d.R. Versionsnummern
+als Namen verwendet (Abschnitt \ref{sec:tag} auf Seite \ref{sec:tag}). Neben
+der \gls{SHA-1}-Id des zu referenzierenden Commits wird ein Tagname, der Typ
+und der Autor (\textit{tagger}) mit Name und Mailadresse gespeichert. Je nach
+Art des Tags kann optional noch eine Beschreibung angegeben werden. Tags sind
+immer eizigartig. Nicht nur durch die Prüfsumme sondern auch der Name ist
+eindeutig. Wird versucht ein Tag mit einem bereits existierenden Namen zu
+erzeugen dann reagiert git mit einer Fehlermeldung und lehnt das Erstellen
+entsprechend ab. 
+
+Git unterscheidet zwischen drei unteschiedlichen Arten von Tags.
+
+\begin{enumerate}
+\item \textbf{Lightweight Tags:} Dieser Typ ist die einfachste Variante. Er
+enthält neben den benötigten Daten wie Autor, Commitreferenz und Prüfsumme
+lediglich den Namen. Erzeugt wird er mit dem Befehl: \\\\\texttt{\$ git tag
+<name>}\\
+\item \textbf{Annotated Tags:} Annotated bedeutet nichts anderes als
+Kommentiert. Zusätzlich zu den Daten aus den einfachen Tags wird hier wie bei
+einem Commit ein Texteditor geöffnet. Alternativ kann auf der Komandozeile
+ebenfalls mit dem Parameter \texttt{-m} eine Beschreibung übergeben
+werden.\\\\\texttt{\$ git tag <name> -m "Das ist ein annotated Tag."}\\ 
+\item \textbf{Signierte Tags:} Vorausetzung für diese Art von Tags ist ein
+vorhandener privater \textit{GPG-Key}. Diese Tags werden mit einer Signatur
+versehen die von anderen entsprechend überprüft werden kann umd  die Identität
+des Autors eindeutig zu verifizieren\footnote{\url{https://gnupg.org}}.
+Erstellt werden signierte Tags mit dem zusätzlichen Parameter
+\texttt{-s}.\\\\\texttt{\$ git tag -s  <name> -m "Das ist ein signierter
+Tag}\\\\ Zuvor muss Git der zu verwendene Key noch bekannt gemacht werden. Das
+kann mit folgendem Befehl erreicht werden:\\\\\texttt{\$ git config --global
+user.signingkey <Key-Id>}\\
+\end{enumerate}
+
+\subsubsection{Branch}\label{sec:branchobject}
+Eine einfache Antwort auf die Frage warum ein nun Branch kein Objekt ist liefert
+das Ausgeben der Referenzdatei des Branches \textit{master}:
+
+\lstinputlisting[
+  label=lst:cat_master.lst,
+  caption={Referenz \textit{master}},
+  captionpos=none,
+]{listings/cat_master.lst}
+
+Die ausgegebene Prüfsumme ist in diesem Fall lediglich die \gls{SHA-1}-ID des
+letzten Commits aus Abschnitt \ref{sec:first_commits}. Branches sind einfach
+Textdateiem die eine Commit-ID zu einem referenzierenden Commit enthalten. Da
+diese Referenz veränderbar ist und keine weiteren Informationen enthält wird
+hier kein weiterer Objekttyp benötigt. Da der Name des Branches direkt abhängig
+von der erstelten Referenzdatei ist, sind auch die Namen von Branches
+eindeutig.
+
+Neben der fortgeschrittene Manipulation von Git Objekten stellen die Autoren
+Scott Chacon und Ben Straub in \cite[S.~408-418]{progit} eine ausführlichere
+Sicht auf die Objektverwaltung dar.
+
 \subsection{Kommandos}\label{sec:commands}
 
 \subsubsection{git add}\label{sec:gitadd}
