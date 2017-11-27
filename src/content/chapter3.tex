@@ -1,22 +1,22 @@
 \chapter{Git}\label{cha:Git}
-In diesem Kapitel wird auf die wesentlichsten Grundlagen und Befehle
-beschrieben um mit Git Dateien zu Verwalten. Es wird als erstes mit einfachen
-Befehlen ein Git-Repository erstellt und später am Beispiel dieses Repositorys
-auf weitere Eigenschaften und fortgeschrittene Befehle eingegangen. Darüber
-hinaus stellt der Author dieser Seminararbeit den Quellcode dieser Arbeit als
-Git-Repository unter \cite{link:seminararbeit} zur Verfügung. Diese Repository
-dient ebenso als Beispiel für Sachverhalte bei denen der gewünschte
+In diesem Kapitel werden auf die wesentlichsten Grundlagen und Befehle
+beschrieben, um mit Git Dateien zu verwalten. Als Erstes wird mit einfachen
+Befehlen ein Git-Repository erstellt und später am Beispiel dieses Repositorys,
+auf weitere Eigenschaften und fortgeschrittene Befehle eingegangen.
+Außerdem stellt der Autor dieser Seminararbeit, den Quellcode dieser Arbeit als
+Git-Repository unter \cite{link:seminararbeit} zur Verfügung. Dieses Repository
+dient ebenso als Beispiel für Sachverhalte, bei denen der gewünschte
 Zusammenhang hiermit besser darzustellen ist.
 
 \section{Grundlagen}\label{gitbasics}
-In diesem Beispiel werden wir ein Repository \texttt{git-example} mit einem
+In diesem Beispiel werden wir ein Repository \textit{git-example} mit einem
 Skript (\texttt{git-stats}) erstellen welches ein paar einfache Statistiken
 über die Autoren eines git Repositorys erzeugt.
 
 Alle Beispiele werden auf einer Linux Kommandozeile durchgeführt. Git ist für
-alle gängigen Linux derivate verfügbar. Die Autoren von \cite[S.~12-14]{gitpro}
-gehen auf weitere Detauls zur Installation von Git in anderen Versionen oder
-auf anderen Betriebsystemen ein.
+alle gängigen Linux Derivate verfügbar. Die Autoren von \cite[S.~12-14]{progit}
+gehen auf weitere Details zur Installation von Git in anderen Versionen oder
+auf anderen Betriebssystemen ein.
 
 Die in den Beispielen eingesetzte Version von Git ist 2.15.0. Der folgende
 Abschnitt basiert zum Zeil auf den Ausführungen der Autoren aus
@@ -29,11 +29,11 @@ Abschnitt basiert zum Zeil auf den Ausführungen der Autoren aus
 ]{listings/git_version.lst}
 
 \subsection{Konfiguration}\label{gitconfig}
-Zu Beginn sollten zu erst einige grundlegende Konfigurationen vorgenommen
-werden. So sollten, damit die Nachvollziehbarkeit gewährleistet ist, als erstes
-immer der Name und Mailadresse des Benutzers konfiguriert werden. Auch ist die
+Zu Beginn sollten einige grundlegende Konfigurationen vorgenommen werden. So
+sollten, damit die Nachvollziehbarkeit gewährleistet ist als erstes immer der
+Name und die Mailadresse des Benutzers konfiguriert werden. Auch ist die
 farbliche Darstellung der Ausgaben durchaus hilfreich. Hier kann Git so
-konfiguriert werden das die Farbausgabe automatisch unterdrückt wird, sollte
+konfiguriert werden, dass die Farbausgabe automatisch unterdrückt wird sollte
 die Ausgabe in eine Datei umgeleitet werden.
 
 \lstinputlisting[
@@ -42,12 +42,16 @@ die Ausgabe in eine Datei umgeleitet werden.
   captionpos=none,
 ]{listings/git_init_config.lst}
 
-Die eingestellten Optionen können ebenso direkt in der Datei
+Die \textit{global} eingestellten Optionen können ebenfalls direkt in der Datei
 \texttt{\textasciitilde/.gitconfig} eingesehen und bearbeitet werden.
+Zusätzlich können für jedes Repository spezifische Konfigurationen vorgenommen
+werden. Hierzu muss der Parameter \texttt{--global} bei dem o.a. Befehl
+entfernt werden. Die zugehörige Konfigurationsdatei findet sich in jedem
+Repository unter dem Pfad \texttt{.git/config}. 
 
 \subsection{Erstellen eines Repositorys}\label{startup}
-Damit Dateien nun mit Git Versioniert werden können muss wie folgt ein ein (lokales)
-\gls{repository} erstellt werden:
+Damit Dateien nun mit Git versioniert werden können, muss wie folgt ein
+(lokales) \gls{repository} erstellt werden:
 
 \lstinputlisting[
   label=lst:gitinit,
@@ -55,13 +59,14 @@ Damit Dateien nun mit Git Versioniert werden können muss wie folgt ein ein (lok
   captionpos=none,
 ]{listings/git_init.lst}
 
-Sollte das Verzeichnis \texttt{hello\_seminar.git} noch nicht existieren wird es
-angelegt. Zusätzlich wird innerhalb von \texttt{hello\_seminar.git} noch ein
-weiteres Verzeichnis \texttt{.git} angelegt in dem alle Daten ablegt werden die
-Git zur weiteren Verwaltung des \glspl{repository} benötigt.
+Sollte das Verzeichnis \texttt{hello\_seminar.git} noch nicht existieren, wird
+es angelegt. Zusätzlich wird innerhalb von \texttt{hello\_seminar.git} noch ein
+weiteres Verzeichnis \texttt{.git} erzeugt, in dem, neben der Konfiguration,
+alle Daten abgelegt werden die Git zur weiteren Verwaltung des \glspl{repository}
+benötigt.
 
 Um den Status des aktuell erzeugten \glspl{repository} auszugeben können wir
-den Befehl \texttt{git status} verwenden:
+den Befehl \texttt{\$ git status} verwenden:
 
 \lstinputlisting[
   label=lst:gitstatus,
@@ -69,14 +74,14 @@ den Befehl \texttt{git status} verwenden:
   captionpos=none,
 ]{listings/git_status.lst}
 
-Die von Git erzeugte Ausgabe macht darauf Aufmerksam das noch keine Commits
-erzeugt wurde und das man nun neue Dateien erstellen und hinzufügen kann.
+Die von Git erzeugte Ausgabe macht darauf aufmerksam, das noch keine Commits
+erzeugt wurden und dass man nun neue Dateien erstellen und hinzufügen kann.
 
 \subsection{Die ersten Commits}\label{first_commits}
 
 Wir werden nun die ersten Dateien zu dem Repository hinzufügen. Dazu laden wir
 zwei Dateien mit folgendem Befehl aus dem Internet herunter. Wer diese Dateien
-nicht herunterladen möchte oder kann, darf selbstverständlich auch einfach
+nicht herunterladen kann oder möchte, darf selbstverständlich auch einfach
 Dateien mit gleichem Namen und beliebigem Inhalt erstellen.
 
 \lstinputlisting[
@@ -87,7 +92,7 @@ Dateien mit gleichem Namen und beliebigem Inhalt erstellen.
 
 Ab jetzt können die Dateien mit \gls{git} verwaltet werden. Ein erstes
 Hinzufügen einer Datei mit dem Befehl \texttt{\$ git add LICENSE} führt zu
-folgender status Ausgabe:
+folgender Ausgabe:
 
 \lstinputlisting[
   label=lst:add_first_file,
@@ -95,33 +100,34 @@ folgender status Ausgabe:
   captionpos=none,
 ]{listings/add_first_file.lst}
 
-Git macht nun darauf Aufmerksam das zum einen, eine neue Datei zum Commit
-vorgemerkt ist und zum anderen das sich noch eine Datei im Verzeichnis befindet
-die wir noch nicht mit Git verwalten. Hierbei ist anzumerken das Git auch die
-vorgemerkte Datei noch nicht wirklich Versioniert. Dazu müssen wir zuerst einen
-Commit erstellen. Darauf wie Git hier unterscheidet wird im späteren(REFERENZ?)
-nochmal eingegangen.
+Die Ausgabe macht darauf aufmerksam, dass zum Einen, eine neue Datei zum Commit
+vorgemerkt ist und zum Anderen, dass sich noch eine Datei im Verzeichnis
+befindet, die wir noch nicht mit Git verwalten. Hierbei ist anzumerken, dass
+Git auch die vorgemerkte Datei noch nicht wirklich versioniert. Dazu müssen wir
+zuerst einen Commit erstellen. Darauf wie Git hier unterscheidet, wird im
+Späteren (Abschnitt \ref{sec:trees} auf Seite \pageref{sec:trees}) nochmal
+eingegangen.
 
 Der erste Commit in dem angelegten Repository wird mit dem Befehl \texttt{git
 commit} erzeugt. Eine Bemerkung zu dem Commit kann, je nach voreingestelltem
-Systemeditor, nun eingegeben werden oder optional mit dem Parameter \texttt{-m}
+Systemeditor jetzt eingegeben werden oder optional mit dem Parameter \texttt{-m}
 direkt auf der Kommandozeile übergeben werden. In der Bemerkung wird die erste
-Zeile als "Betreff" und getrennt mit einer Leerzeile, alle weiteren Zeilen als
-ausführliche Beschreibung verwendet. Dieses Format ist i.d.R. in dem meisten
+Zeile als Betreff, und getrennt mit einer Leerzeile alle weiteren Zeilen als
+ausführliche Beschreibung verwendet. Dieses Format ist, i.d.R. in den meisten
 Versionskontrollsystemen üblich.
 
-Darüber hinaus bietet es sich an bei dem Erstellen solcher Bemerkungen an sich
-an gewisse Regeln zu Halten. Beispielsweise beschreiben Jez Humble und David
-Farley in \cite[S.~37]{cd} ein übliches Szenario bei dem es durchaus Sinnvoll
-kann, nicht nur zu wissen was der Author geändert hat sondern auch warum
-und in welchem Kontext. Wenn nicht klar ist was sich der Autor sich bei
-Änderungen gedacht hat oder Zusammenhäge nicht aus dem Commit hervorgehen, kann
+Darüber hinaus bietet es sich an, sich bem Erstellen solcher Bemerkungen an sich
+an gewisse Regeln zu halten. Beispielsweise beschreiben Jez Humble und David
+Farley in \cite[S.~37]{cd} eine übliche Situation, bei dem es durchaus sinnvoll
+kann, nicht nur zu wissen was der Autor geändert hat, sondern auch warum
+und in welchem Kontext. Wenn nicht klar ist, was der Autor sich bei
+Änderungen gedacht, hat oder Zusammenhänge nicht aus dem Commit hervorgehen, kann
 ein gefundener und behobener Fehler vor dem Veröffentlichen einer
-Softwareversion durch aus zu Folgefehlern führen. Solche Situationen enden
-nicht selten darin das viele Stunden Arbeit investiert werden müssen diese zu
-bereinigen.
+Softwareversion durchaus zu Folgefehlern führen. Solche Situationen enden
+nicht selten darin, dass viele Stunden Arbeit investiert werden müssen diese zu
+bereinigen.\cite[S.~37]{cd}
 
-Nachdem der erste Commit wie o.a. erzeugt wurde kann dieser nun mit \texttt{git
+Nachdem der erste Commit wie o.a. erzeugt wurde, kann dieser nun mit \texttt{git
 show}\ref{sec:gitshow} betrachtet werden:
 
 \lstinputlisting[
@@ -131,21 +137,21 @@ show}\ref{sec:gitshow} betrachtet werden:
 ]{listings/git_show_first_commit.lst}
 
 Hier können alle wichtigen Informationen eingesehen werden. Neben Zeitpunkt,
-Author und Beschreibung auch die Commit-ID (Abschnitt \ref{sec:commit}). Die
-weiteren Informationen werden in einem Format namens Unified-Diff dargestellt
-auf welches hier nicht weiter eingegangen wird. Details zu dem Format stellen
-die Autoren von \textit{GNU diffutils} unter \cite[S.~12-13]{paper:diffutils}
-zur Verfügung.
+Autor und Beschreibung auch die \textit{Commit-ID} (Abschnitt \ref{sec:commit}
+auf Seite \pageref{sec:commit}). Die weiteren Informationen werden in einem
+Format namens Unified-Diff dargestellt, auf welches hier nicht weiter
+eingegangen wird. Details zu dem Format stellen die Autoren von \textit{GNU
+diffutils} unter \cite[S.~12-13]{paper:diffutils} zur Verfügung.
 
-Wir fügen nun die zweite Datei, wie oben bereits beschrieben, mit einem
-\texttt{git add git-stats} hinzu. Anschliessend erzeugen wir einen weiteren
-\gls{commit} mit \texttt{git commit -m "Add helper script to generate author
+Wir fügen nun die zweite Datei, wie oben bereits beschrieben mit einem
+\texttt{\$ git add git-stats} hinzu. Anschließend erzeugen wir einen weiteren
+\gls{commit} mit \texttt{\$ git commit -m "Add helper script to generate author
 statistics."}.
 
 Mit diesen beiden zuvor ausgeführten Commits haben wir nun eine, wenn auch
 kurze, Historie erstellt. Um diese zu untersuchen dienen die Befehle
-\texttt{git whatchanged}\footnote{Der Befehl \texttt{git whatchanged} stammt
-aus frühen von Git und ist das gleiche wie \texttt{git log} mit einigen
+\texttt{git whatchanged}\footnote{Der Befehl \texttt{\$ git whatchanged} stammt
+aus frühen von Git und ist das gleiche wie \texttt{\$ git log} mit einigen
 Parametern um die Ausgabe entsprechend zu Formatieren.} oder \texttt{git log}.
 Wir werden in Abschnitt \ref{sec:gitlog} weiter darauf eingehen aber für diesen
 Fall ist ein \texttt{git whatchanged} ausreichend:
@@ -166,15 +172,15 @@ Inhalt der Dateien werden hier nicht dargestellt(siehe Abschnitt
 \subsection{Kommandos}\label{sec:commands}
 
 \subsubsection{git add}\label{sec:gitadd}
-Mit \texttt{git add} können Grundsätzlich Dateien hinzugefügt werden. Der
+Mit \texttt{git add} können grundsätzlich Dateien hinzugefügt werden. Der
 Befehl selbst bietet, wie fast alle Git Kommandos eine Vielzahl an
-Optionen\footnote{Eine Übersicht über die unterstützden Optione kann mit den
-uter Linux üblichem Methoden angezeigt werden. So z.B. mit \texttt{git <Befehl>
-help} oder mit dem klassischen Aufruf der Manpage \texttt{man git <Befehl>}}.
-Eine sei an dieser Stelle besonders erwähnt \texttt{git add -p}. Das
-\texttt{-p} ermöglicht die durchgeführten Änderungen an den Dateien selektiv
-hinzuzufügen. Das kann hilfreich sein um Änderungen an verschiedenen Teilen in
-seperate \glspl{commit} aufzuteilen oder bestimmte Änderungen weg zulassen.
+Optionen\footnote{Eine Übersicht über die unterstützten Optionen kann mit den
+unter Linux üblichen Methoden angezeigt werden. So z.B. mit \texttt{\$ git <Befehl>
+help} oder mit dem klassischen Aufruf der Manpage \texttt{\$ man git <Befehl>}}.
+Eine sei an dieser Stelle besonders erwähnt, \texttt{\$ git add -p}. Das
+\texttt{-p} ermöglicht, die durchgeführten Änderungen an den Dateien selektiv
+hinzuzufügen. Das kann hilfreich sein, um Änderungen an verschiedenen Teilen in
+einzelne \glspl{commit} aufzuteilen oder bestimmte Änderungen wegzulassen.
 
 \subsubsection{git log}\label{sec:gitlog}
 \subsubsection{git show}\label{sec:gitshow}
