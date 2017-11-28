@@ -241,7 +241,32 @@ der den letzten Commit (\gls{HEAD}) referenziert:
 Auf den weiteren Umgang mit Tags und welche Arten es gibt wird in den
 Abschnitten \ref{sec:tag} und \ref{sec:tagobject} weiter eingegangen.
 
-\subsection{Bäume???Titel}\label{sec:trees}
+\subsection{Bäume}\label{sec:trees}
+Git organisiert das Repository in drei verschiedene Bereiche. Scott Chacon,
+einer der Autoren von \cite{progit}, spricht in einem seiner
+Vorträge\cite{link:talesoftrees} von drei Bäumen \textit{HEAD}, \textit{Index}
+und dem \textit{Work Tree}.
+
+Den \textit{Work Tree} (Abschnitt \ref{sec:workingtree} auf Seite
+\pageref{sec:workingtree}) haben wir bereits als Arbeitsbereich angesprochen.
+Mit \gls{HEAD} ist neben dem Verweis auf den neuesten commit auch i.w.S. das
+Repository gemeint.  Das Repository(Abschnitt \ref{repository} auf Seite
+\pageref{repository}) dient i.d.S. als Datenspeicher für alle Commits, deren
+Inhalte und Historie. Der Index(Abschnitt \ref{sec:index} auf Seite
+\pageref{sec:index}) in Git stellt, im Vergleich zu voherigen
+Versionskontrollsystemen, eine Neuerung dar. Der Index stellt einen Bereich
+zwischen dem \gls{repository} und dem Arbeitsbereich dar. Er dient dazu um den
+nächsten \gls{HEAD} bzw. Commit vorzubereiten. Die Kommandos \texttt{\$git
+add}, \texttt{\$ git reset} und \texttt{\$git commit} arbeiten auf diesen drei
+Bereichen.\cite[34-35]{gitosp}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.60]{images/trees.eps}
+    \caption{\textit{Work Tree}, \textit{HEAD} und Index\cite[34]{gitosp}}
+    \label{fig:trees}
+\end{figure}
+
 \subsection{Objektmodell}\label{sec:objectmodel}
 Wie in vorherigen Abschnitten bereits erwähnt, ist das Repository ein
 Datenspeicher vergleichbar mit einer Datenbank. Dahinter steht ein Datenmodell
@@ -293,6 +318,13 @@ wenn wir uns das \textit{tree} Objekt zu dem Ordner \texttt{helpers} anschauen:
   captionpos=none,
 ]{listings/git_ls_tree_helpers.lst}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.75]{images/objectmodel.eps}
+  \caption{Objektmodell zum Beispiel aus Abschnitt \ref{sec:first_commits}\cite[S.~53]{gitosp}}
+  \label{fig:objectmodel}
+\end{figure}
+
 \subsubsection{Commit}\label{sec:commitobject}
 Ein Commit-Objekt enthält, neben den bereits bekannten Daten aus Listing
 \ref{lst:git_show_first_commit.lst} eine Referenz zu \textbf{einem}
@@ -305,6 +337,10 @@ immer ein Verweis auf einen sogenannten \textit{top-level-tree} (\texttt{/}).
 Dieser Verweis referenziert die Wurzel des entstandenen Objektbaums und enhält
 keinen Dateinamen(Abbildung \ref{fig:objectmodel} auf Seite \pageref{fig:objectmodel}).
 
+Dadurch das Jeder Commit seinen vorhergehenden Commit referenziert entsteht ein
+gerichteter azyklicher Graph bei dem ein Koten durch einen Commit und Kanten
+durch Referenzen repräsentiert werden.\cite[57]{gitops}.
+
 \lstinputlisting[
   label=lst:git_show_raw,
   caption={Ausgabe eines Commits im \textit{raw} Format},
@@ -314,13 +350,6 @@ Zusätzlich unterscheidet Git noch den Committer vom Autor. Diese können sich
 unterscheiden wenn Commits z.B. einen Reviewprozess durchlaufen müssen und
 nicht von dem Autor selbst in das aktuelle Repository integiert werden(Listing
 \ref{lst:git_show_raw}).
-
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.75]{images/objectmodel.eps}
-  \caption{Objektmodell zum Beispiel aus Abschnitt \ref{sec:first_commits}\cite[S.~53]{gitosp}}
-  \label{fig:objectmodel}
-\end{figure}
 
 \subsubsection{Tag}\label{sec:tagobject}
 Ein \gls{tag} markiert einzelne Commits. Hierzu werden i.d.R. Versionsnummern
