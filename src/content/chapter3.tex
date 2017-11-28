@@ -181,7 +181,7 @@ Erwähnenswert ist noch das Git, im Gegensatz zu anderen
 Versionskontrollsystemen, die Dateiberechtigungen speichert. Wer bei den
 letzten der beiden Commits auf die Ausgabe geachtet hat (Listing
 \ref{lst:commit_git-stats.lst}) dem ist vielleicht die Zeile \texttt{create
-mode 100644 helpers/git-stats} aufgefallen. Der vollständigkeit halber erzeugen
+mode 100644 helpers/git-stats} aufgefallen. Der Vollständigkeit halber erzeugen
 wir nun noch einen weiteren Commit der das Skript entsprechend ausführbar
 machen soll. Hierzu führen zuerst den Befehl \texttt{chmod 755
 helpers/git-stats} und anschließend \texttt{\$ git commit -a -m "Add executable
@@ -207,25 +207,24 @@ tags/0.0.1}
 \subsection{Bäume???Titel}\label{sec:trees}
 \subsection{Objektmodell}\label{objectmodel}
 Wie in vorherigen Abschnitten bereits erwähnt, ist das Repository ein
-Datenspeicher vergleichbar mit einer Datenbank. Dahinter steht also ein
-Datenmodell welches sicherstellt das die einzelnen Teile eines Commits und
-deren Zusammenhänge über die Zeit gewährleistet. Dazu verwendet Git ein of
+Datenspeicher vergleichbar mit einer Datenbank. Dahinter steht ein Datenmodell
+welches sicherstellt, dass die einzelnen Teile eines Commits und deren
+Zusammenhänge über die Zeit gewährleistet sind. Dazu verwendet Git ein auf
 Objekten basierendes Modell. Dieser Abschnitt geht auf die verschiedenen
-Objektypen und deren Zusammenhänge ein und basiert größtenteils auf den
-Ausführungen der Autoren aus \cite[S.~49-59]{gitosp}
+Objekttypen und deren Zusammenhänge ein. Er basiert größtenteils auf den
+Ausführungen der Autoren aus \cite[S.~49-59]{gitosp}.
 
 Für jedes Objekt wird innerhalb des Repositorys unter \texttt{.git/objects}
 eine Datei abgelegt. Für alle Objekte wird eine eindeutige \gls{SHA-1}
-Prüfsumme erzeugt die gleichzeitig als Dateiname und Referenz für das
+Prüfsumme erzeugt, die gleichzeitig als Dateiname und Referenz für das
 abgespeicherte Objekt dient. Git unterscheidet zwischen den Objekttypen Tree,
 Object, Commit und Tag.
 
 \subsubsection{Trees und Blobs}\label{sec:treeblobobjects}
-Zum speichern von Verzeichnissen verwendet Git ein sogenanntes
+Zum Speichern von Verzeichnissen verwendet Git ein sogenanntes
 \textit{Tree-Object}. Eine Ausgabe der Dateistruktur aus dem verwendeten
 Beispiel (Abschnitt \ref{sec:first_commits} auf Seite
-\pageref{sec:first_commits}) an erhält man mit dem Linux Befehl \texttt{\$
-tree}:
+\pageref{sec:first_commits}) erhält man mit dem Linux Befehl \texttt{\$ tree}:
 
 \lstinputlisting[
   label=lst:tree.lst,
@@ -233,7 +232,8 @@ tree}:
   captionpos=none,
 ]{listings/tree.lst}
 
-Um nun den Dateibaum mit der Objektstruktur aus dem Git Repository zur vergleichen kann der Befehl \texttt{\$ git ls-tree HEAD} genutzt werden:
+Um nun den Dateibaum mit der Objektstruktur aus dem Git Repository zur
+vergleichen, kann der Befehl \texttt{\$ git ls-tree HEAD} genutzt werden:
 
 \lstinputlisting[
   label=lst:git_ls_tree.lst,
@@ -242,13 +242,13 @@ Um nun den Dateibaum mit der Objektstruktur aus dem Git Repository zur vergleich
 ]{listings/git_ls_tree.lst}
 
 Git unterscheidet hier zwischen den angelegten Verzeichnissen und den
-eigentlichen Dateien wie \texttt{helpers/git-stats}. Verzeichnisse werden als
-\textit{tree} dargestellt und enhalten, wie auch im Dateisystem, entweder
-Referenzen auf weitere Objekte vom Typ \textit{tree} oder \textit{blob}.
-Inhalte von Dateien werden in \textit{blob}-Objekten gespeichertt. Allerdings
-ist der Dateiname nicht Vestandteil des \textit{blob} sondern wird in dem
-zugehörigen \textit{tree} gespeichert. Dies wird auch nochmal deutlicher wenn
-wir uns das Objekt zu dem Ordner \texttt{helpers} anschauen:
+eigentlichen Dateien, wie \texttt{helpers/git-stats}. Verzeichnisse werden als
+\textit{tree} dargestellt und enhalten, wie auch im Dateisystem, Referenzen auf
+weitere Objekte entweder vom Typ \textit{tree} oder \textit{blob}.  Inhalte von
+Dateien werden in \textit{blob}-Objekten gespeichert. Allerdings ist der
+Dateiname nicht Bestandteil des \textit{blob}, sondern wird in dem
+referenzierenden \textit{tree} gespeichert. Dies wird auch nochmal deutlicher,
+wenn wir uns das \textit{tree} Objekt zu dem Ordner \texttt{helpers} anschauen:
 
 \lstinputlisting[
   label=lst:git_ls_tree_helpers.lst,
@@ -257,21 +257,28 @@ wir uns das Objekt zu dem Ordner \texttt{helpers} anschauen:
 ]{listings/git_ls_tree_helpers.lst}
 
 \subsubsection{Commit}\label{sec:commitobject}
-Ein Commit-Objekt entält neben den bereits bekannten Daten aus Listing
+Ein Commit-Objekt enthält, neben den bereits bekannten Daten aus Listing
 \ref{lst:git_show_first_commit.lst} eine Referenz zu \textbf{einem}
-\textit{tree} und mindestens einem vorhergehenden Commit (engl.
-\textit{parent}). Im Fall eines Merge-Commits (Abbildung \ref{fig:merge} auf
-Seite \pageref{fig:merge}) werden enstprechend so viele Vorgänger referenziert
-wie branches zusammengeführt wurden. Hier wird jeweils auf den \gls{HEAD} des
-jeweiligen Branches referenziert. Der in einem Commit referenzierte
-\textit{tree} ist immer ein Verweis auf einen sogenannten
-\textit{top-level-tree} (\texttt{/}). Dieser Verweis referenziert die Wurzel des
-entstandenen Objektbaums und enhält keinen Dateinamen.
+\textit{tree} und ggf. einem vorhergehenden Commit (engl.  \textit{parent}). Im Fall
+eines Merge-Commits (Abbildung \ref{fig:merge} auf Seite \pageref{fig:merge})
+werden enstprechend so viele Vorgänger referenziert wie branches
+zusammengeführt wurden. Hier wird jeweils auf \gls{HEAD} des jeweiligen
+Branches referenziert. Der in einem Commit referenzierte \textit{tree} ist,
+immer ein Verweis auf einen sogenannten \textit{top-level-tree} (\texttt{/}).
+Dieser Verweis referenziert die Wurzel des entstandenen Objektbaums und enhält
+keinen Dateinamen(Abbildung \ref{fig:objectmodel} auf Seite \pageref{fig:objectmodel}). 
 
-Abbildung \ref{fig:objectmodel} zeigt zusammenfassend die verschiedenen Objekte
-zu dem Beispiel aus Abschnitt \ref{sec:first_commits}.
+\lstinputlisting[
+  label=lst:git_show_raw.lst,
+  caption={Ausgabe eines Commits im \textit{raw} Format},
+]{listings/git_show_raw.lst}
 
-\begin{figure}[hb]
+Zusätzlich unterscheidet Git noch den Committer vom Autor. Diese können sich
+unterscheiden wenn Commits z.B. einen Reviewprozess durchlaufen müssen und
+nicht von dem Autor selbst in das aktuelle Repository integiert werden(Listing
+\ref{lst:git_show_raw.lst}). 
+
+\begin{figure}
   \centering
   \includegraphics[scale=0.75]{images/objectmodel.eps}
   \caption{Objektmodell zum Beispiel aus Abschnitt \ref{sec:first_commits}\cite[S.~53]{gitosp}}
@@ -281,39 +288,38 @@ zu dem Beispiel aus Abschnitt \ref{sec:first_commits}.
 \subsubsection{Tag}\label{sec:tagobject}
 Ein \gls{tag} markiert einzelne Commits. Hierzu werden i.d.R. Versionsnummern
 als Namen verwendet (Abschnitt \ref{sec:tag} auf Seite \ref{sec:tag}). Neben
-der \gls{SHA-1}-Id des zu referenzierenden Commits wird ein Tagname, der Typ
-und der Autor (\textit{tagger}) mit Name und Mailadresse gespeichert. Je nach
-Art des Tags kann optional noch eine Beschreibung angegeben werden. Tags sind
-immer eizigartig. Nicht nur durch die Prüfsumme sondern auch der Name ist
-eindeutig. Wird versucht ein Tag mit einem bereits existierenden Namen zu
-erzeugen dann reagiert git mit einer Fehlermeldung und lehnt das Erstellen
-entsprechend ab. 
+der \textit{SHA-1-ID} des zu referenzierenden Commits, wird ein Tagname, der
+Typ und der Autor (\textit{tagger}) mit Name und Mailadresse gespeichert. Je
+nach Art des Tags kann optional noch eine Beschreibung angegeben werden. Bei
+Tags ist nicht nur die Prüfsumme, sondern auch der Name eindeutig. Wird
+versucht ein Tag mit einem bereits existierenden Namen zu erzeugen, dann
+reagiert Git mit einer Fehlermeldung und lehnt das Erstellen entsprechend ab. 
 
-Git unterscheidet zwischen drei unteschiedlichen Arten von Tags.
+Git unterscheidet zwischen drei Arten von Tags:
 
 \begin{enumerate}
 \item \textbf{Lightweight Tags:} Dieser Typ ist die einfachste Variante. Er
 enthält neben den benötigten Daten wie Autor, Commitreferenz und Prüfsumme
 lediglich den Namen. Erzeugt wird er mit dem Befehl: \\\\\texttt{\$ git tag
 <name>}\\
-\item \textbf{Annotated Tags:} Annotated bedeutet nichts anderes als
-Kommentiert. Zusätzlich zu den Daten aus den einfachen Tags wird hier wie bei
-einem Commit ein Texteditor geöffnet. Alternativ kann auf der Komandozeile
+\item \textbf{Annotated Tags:} Annotated bedeutet nichts Anderes als
+kommentiert. Zusätzlich zu den Daten aus den einfachen Tags, wird hier wie bei
+einem Commit ein Texteditor geöffnet. Alternativ kann auf der Kommandozeile
 ebenfalls mit dem Parameter \texttt{-m} eine Beschreibung übergeben
 werden.\\\\\texttt{\$ git tag <name> -m "Das ist ein annotated Tag."}\\ 
-\item \textbf{Signierte Tags:} Vorausetzung für diese Art von Tags ist ein
-vorhandener privater \textit{GPG-Key}. Diese Tags werden mit einer Signatur
-versehen die von anderen entsprechend überprüft werden kann umd  die Identität
+\item \textbf{Signierte Tags:} Vorausetzung für diese Art von Tags, ist ein
+vorhandener privater \textit{GPG-Key}. Diese Tags werden mit einer Signatur,
+versehen die von anderen entsprechend überprüft werden kann, um die Identität
 des Autors eindeutig zu verifizieren\footnote{\url{https://gnupg.org}}.
 Erstellt werden signierte Tags mit dem zusätzlichen Parameter
 \texttt{-s}.\\\\\texttt{\$ git tag -s  <name> -m "Das ist ein signierter
-Tag}\\\\ Zuvor muss Git der zu verwendene Key noch bekannt gemacht werden. Das
+Tag"}\\\\ Zuvor muss Git der zu verwendene Key noch bekannt gemacht werden. Das
 kann mit folgendem Befehl erreicht werden:\\\\\texttt{\$ git config --global
 user.signingkey <Key-Id>}\\
 \end{enumerate}
 
 \subsubsection{Branch}\label{sec:branchobject}
-Eine einfache Antwort auf die Frage warum ein nun Branch kein Objekt ist liefert
+Eine einfache Antwort auf die Frage warum ein Branch nun kein Objekt ist, liefert
 das Ausgeben der Referenzdatei des Branches \textit{master}:
 
 \lstinputlisting[
@@ -322,15 +328,15 @@ das Ausgeben der Referenzdatei des Branches \textit{master}:
   captionpos=none,
 ]{listings/cat_master.lst}
 
-Die ausgegebene Prüfsumme ist in diesem Fall lediglich die \gls{SHA-1}-ID des
+Die ausgegebene Prüfsumme ist in diesem Fall lediglich die \textit{SHA-1-ID} des
 letzten Commits aus Abschnitt \ref{sec:first_commits}. Branches sind einfach
-Textdateiem die eine Commit-ID zu einem referenzierenden Commit enthalten. Da
-diese Referenz veränderbar ist und keine weiteren Informationen enthält wird
+Textdateien, die eine Commit-ID zu einem referenzierenden Commit enthalten. Da
+diese Referenz veränderbar ist und keine weiteren Informationen enthält, wird
 hier kein weiterer Objekttyp benötigt. Da der Name des Branches direkt abhängig
-von der erstelten Referenzdatei ist, sind auch die Namen von Branches
+von der erstellten Referenzdatei ist, sind auch die Namen von Branches
 eindeutig.
 
-Neben der fortgeschrittene Manipulation von Git Objekten stellen die Autoren
+Neben der fortgeschrittenen Manipulation von Git Objekten stellen die Autoren
 Scott Chacon und Ben Straub in \cite[S.~408-418]{progit} eine ausführlichere
 Sicht auf die Objektverwaltung dar.
 
