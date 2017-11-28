@@ -1,5 +1,4 @@
 $ git commit -m "Add helper script to generate author statistics."
-[master 9160f07] Add helper script to generate author statistics.
+[master ce31bd5] Add helper script to generate author statistics.
  1 file changed, 23 insertions(+)
- create mode 100644 helpers/git-stats
-
+  create mode 100644 helpers/git-stats

@@ -47,7 +47,7 @@ Die \textit{global} eingestellten Optionen können ebenfalls direkt in der Datei
 Zusätzlich können für jedes Repository spezifische Konfigurationen vorgenommen
 werden. Hierzu muss der Parameter \texttt{--global} bei dem o.a. Befehl
 entfernt werden. Die zugehörige Konfigurationsdatei findet sich in jedem
-Repository unter dem Pfad \texttt{.git/config}. 
+Repository unter dem Pfad \texttt{.git/config}.
 
 \subsection{Erstellen eines Repositorys}\label{startup}
 Damit Dateien nun mit Git versioniert werden können, muss wie folgt ein
@@ -65,8 +65,8 @@ weiteres Verzeichnis \texttt{.git} erzeugt, in dem, neben der Konfiguration,
 alle Daten abgelegt werden die Git zur weiteren Verwaltung des \glspl{repository}
 benötigt.
 
-Um den Status des aktuell erzeugten \glspl{repository} auszugeben können wir
-den Befehl \texttt{\$ git status} verwenden:
+Um den Status des aktuell erzeugten \glspl{repository} auszugeben kann der
+Befehl \texttt{\$ git status} verwendet werden:
 
 \lstinputlisting[
   label=lst:gitstatus,
@@ -110,13 +110,20 @@ zuerst einen Commit erstellen. Darauf wie Git hier unterscheidet, wird im
 Späteren (Abschnitt \ref{sec:trees} auf Seite \pageref{sec:trees}) nochmal
 eingegangen.
 
-Der erste Commit in dem angelegten Repository wird mit dem Befehl \texttt{git
-commit} erzeugt. Eine Bemerkung zu dem Commit kann, je nach voreingestelltem
-Systemeditor jetzt eingegeben werden oder optional mit dem Parameter \texttt{-m}
-direkt auf der Kommandozeile übergeben werden. In der Bemerkung wird die erste
-Zeile als Betreff, und getrennt mit einer Leerzeile alle weiteren Zeilen als
-ausführliche Beschreibung verwendet. Dieses Format ist, i.d.R. in den meisten
+Der erste Commit in dem angelegten Repository wird mit dem Befehl \texttt{\$
+git commit} erzeugt. Eine Bemerkung zu dem Commit kann, je nach
+voreingestelltem Systemeditor jetzt eingegeben werden oder optional mit dem
+Parameter \texttt{-m} direkt auf der Kommandozeile übergeben(Listing
+\ref{lst:git_first_commit}). In der Bemerkung wird die erste Zeile als Betreff,
+und getrennt mit einer Leerzeile alle weiteren Zeilen als ausführliche
+Beschreibung verwendet. Dieses Format ist, i.d.R. in den meisten
 Versionskontrollsystemen üblich.
+
+\lstinputlisting[
+  label=lst:git_first_commit,
+  caption={Der erste Commit},
+  captionpos=none,
+]{listings/git_first_commit.lst}
 
 Darüber hinaus bietet es sich an, sich bem Erstellen solcher Bemerkungen an sich
 an gewisse Regeln zu halten. Beispielsweise beschreiben Jez Humble und David
@@ -129,9 +136,10 @@ Softwareversion durchaus zu Folgefehlern führen. Solche Situationen enden
 nicht selten darin, dass viele Stunden Arbeit investiert werden müssen diese zu
 bereinigen.\cite[S.~37]{cd}
 
-Nachdem der erste Commit wie o.a. erzeugt wurde, kann dieser nun mit \texttt{\$
-git show} (Abschnitt \ref{sec:gitshow} auf Seite \pageref{git:show}) betrachtet
-werden:
+Nachdem der erste Commit erzeugt wurde, kann dieser nun mit \texttt{\$ git
+show} (Abschnitt \ref{sec:gitshow} auf Seite \pageref{sec:git_show}) betrachtet
+werden. In diesem Fall wurde beispielhaft eine etwas ausführlichere Bemerkung
+gewählt:
 
 \lstinputlisting[
   label=lst:git_show_first_commit.lst,
@@ -146,24 +154,28 @@ Format namens Unified-Diff dargestellt, auf welches hier nicht weiter
 eingegangen wird. Details zu dem Format stellen die Autoren von \textit{GNU
 diffutils} unter \cite[S.~12-13]{paper:diffutils} zur Verfügung.
 
-Wir fügen nun die zweite Datei, wie oben bereits beschrieben mit einem
-\texttt{\$ git add helpers/git-stats} hinzu. Anschließend erzeugen wir einen
-weiteren \gls{commit} mit \texttt{\$ git commit -m "Add helper script to
-generate author statistics."}.
+Wir fügen nun die zweite Datei mit einem weiteren \texttt{\$ git add} hinzu:
 
 \lstinputlisting[
-  label=lst:commit_git-stats.lst,
-  caption={Hinzufügen einer weiteren Datei},
+  label=lst:git_add_second_file,
+  caption={Eine weitere Datei hinzufügen},
   captionpos=none,
+]{listings/git_add_second_file.lst}
+
+Anschließend erzeugen wir einen weiteren \gls{commit} mit:
+
+\lstinputlisting[
+  label=lst:commit_git-stats,
+  caption={Hinzufügen einer weiteren Datei},
 ]{listings/commit_git-stats.lst}
 
 Mit diesen beiden zuvor ausgeführten Commits haben wir nun eine, wenn auch
-kurze, Historie erstellt. Um diese zu untersuchen dienen die Befehle
-\texttt{\$ git whatchanged}\footnote{Der Befehl \texttt{\$ git whatchanged} stammt
-aus frühen von Git und ist das gleiche wie \texttt{\$ git log} mit einigen
-Parametern um die Ausgabe entsprechend zu Formatieren.} oder \texttt{git log}.
-Wir werden in Abschnitt \ref{sec:gitlog} weiter darauf eingehen aber für diesen
-Fall ist ein \texttt{git whatchanged} ausreichend:
+kurze, Historie erstellt. Um diese zu untersuchen dienen die Befehle \texttt{\$
+git whatchanged}\footnote{Der Befehl \texttt{\$ git whatchanged} stammt aus
+frühen von Git und ist das gleiche wie \texttt{\$ git log} mit einigen
+Parametern um die Ausgabe entsprechend zu Formatieren.} oder \texttt{\$ git
+log}. Wir werden in Abschnitt \ref{sec:gitlog} weiter darauf eingehen aber für
+diesen Fall ist \texttt{\$ git whatchanged} ausreichend:
 
 \lstinputlisting[
   label=lst:first_git_whatchanged.lst,
@@ -174,21 +186,28 @@ Fall ist ein \texttt{git whatchanged} ausreichend:
 Die Ausgabe wird im sogenannten \textit{raw} Format dargestellt. Es werden alle
 Commits mit Informationen über den Autor, Commit-ID, Zeit und den veränderten
 Dateien in zeitlicher Reihenfolge dargestellt. Die konkreten Veränderungen am
-Inhalt der Dateien werden hier nicht dargestellt(siehe Abschnitt
-\ref{sec:gitlog} auf Seite \pageref{sec:gitlog}).
+Inhalt der Dateien werden hier nicht dargestellt(Abschnitt \ref{sec:gitlog} auf
+Seite \pageref{sec:gitlog}).
 
 Erwähnenswert ist noch das Git, im Gegensatz zu anderen
 Versionskontrollsystemen, die Dateiberechtigungen speichert. Wer bei den
 letzten der beiden Commits auf die Ausgabe geachtet hat (Listing
-\ref{lst:commit_git-stats.lst}) dem ist vielleicht die Zeile \texttt{create
-mode 100644 helpers/git-stats} aufgefallen. Der Vollständigkeit halber erzeugen
-wir nun noch einen weiteren Commit der das Skript entsprechend ausführbar
-machen soll. Hierzu führen zuerst den Befehl \texttt{chmod 755
-helpers/git-stats} und anschließend \texttt{\$ git commit -a -m "Add executable
-bit to helper script."}.
+\ref{lst:commit_git-stats} auf Seite \pageref{lst:commit_git-stats}) dem ist
+vielleicht folgende Zeile aufgefallen:
 
 \lstinputlisting[
-  label=lst:git_commit_all.lst,
+  label=lst:create_mode,
+  caption={Create Mode},
+  captionpos=none,
+]{listings/create_mode.lst}
+
+Diese Ausgabe besagt das es sich hierbei um eine normale Datei handelt (100)
+die mit einer, unter Unix üblichen, Berechtigung (664) angelegt ist. Damit
+diese Datei aber entsprechend ausführbar ist, müssen wir noch einen weiteren
+Commit, mit einer Änderung an den Dateiberechtigungen, erzeugen:
+
+\lstinputlisting[
+  label=lst:git_commit_all,
   caption={Commit mit allen Änderungen},
   captionpos=none,
 ]{listings/git_commit_all.lst}
@@ -198,14 +217,32 @@ Mit dem zuvor ausgeführten Befehl haben wir einen Commit erzeugt ohne unsere
 \texttt{-a} bewirkt hier das alle vorhandenen Änderungen zu einem Commit
 zusammengefasst werden und nicht einzeln hinzugefügt werden müssen. Zu beachten
 ist allerdings das Dateien die Git noch nicht kennt, davon nicht betroffen
-sind. Diese müssen nach wie vor zuerst mit einem \texttt{add} hinzugefügt
+sind. Diese müssen nach wie vor zuerst mit einem \texttt{\$git add} hinzugefügt
 werden.
 
-Abschließend zu diese \texttt{\$ git tag -m "Tagging first Release 0.0.1"
-tags/0.0.1}
+Abschließend zu diesem Abschnitt versehen wir den letzten Commit noch mit einer
+Markierung bzw. \gls{tag}.
+
+\lstinputlisting[
+  label=lst:git_first_tag,
+  caption={Anlegen eines Tags},
+  captionpos=none,
+]{listings/git_first_tag.lst}
+
+Hiermit haben wir einen \gls{tag} mit dem Namen \texttt{tags/0.0.1} angelegt,
+der den letzten Commit (\gls{HEAD}) referenziert:
+
+\lstinputlisting[
+  label=lst:git_list_first_tag,
+  caption={Listen eines Tags},
+  captionpos=none,
+]{listings/git_list_first_tag.lst}
+
+Auf den weiteren Umgang mit Tags und welche Arten es gibt wird in den
+Abschnitten \ref{sec:tag} und \ref{sec:tagobject} weiter eingegangen.
 
 \subsection{Bäume???Titel}\label{sec:trees}
-\subsection{Objektmodell}\label{objectmodel}
+\subsection{Objektmodell}\label{sec:objectmodel}
 Wie in vorherigen Abschnitten bereits erwähnt, ist das Repository ein
 Datenspeicher vergleichbar mit einer Datenbank. Dahinter steht ein Datenmodell
 welches sicherstellt, dass die einzelnen Teile eines Commits und deren
@@ -266,17 +303,17 @@ zusammengeführt wurden. Hier wird jeweils auf \gls{HEAD} des jeweiligen
 Branches referenziert. Der in einem Commit referenzierte \textit{tree} ist,
 immer ein Verweis auf einen sogenannten \textit{top-level-tree} (\texttt{/}).
 Dieser Verweis referenziert die Wurzel des entstandenen Objektbaums und enhält
-keinen Dateinamen(Abbildung \ref{fig:objectmodel} auf Seite \pageref{fig:objectmodel}). 
+keinen Dateinamen(Abbildung \ref{fig:objectmodel} auf Seite \pageref{fig:objectmodel}).
 
 \lstinputlisting[
-  label=lst:git_show_raw.lst,
+  label=lst:git_show_raw,
   caption={Ausgabe eines Commits im \textit{raw} Format},
 ]{listings/git_show_raw.lst}
 
 Zusätzlich unterscheidet Git noch den Committer vom Autor. Diese können sich
 unterscheiden wenn Commits z.B. einen Reviewprozess durchlaufen müssen und
 nicht von dem Autor selbst in das aktuelle Repository integiert werden(Listing
-\ref{lst:git_show_raw.lst}). 
+\ref{lst:git_show_raw}).
 
 \begin{figure}
   \centering
@@ -293,29 +330,54 @@ Typ und der Autor (\textit{tagger}) mit Name und Mailadresse gespeichert. Je
 nach Art des Tags kann optional noch eine Beschreibung angegeben werden. Bei
 Tags ist nicht nur die Prüfsumme, sondern auch der Name eindeutig. Wird
 versucht ein Tag mit einem bereits existierenden Namen zu erzeugen, dann
-reagiert Git mit einer Fehlermeldung und lehnt das Erstellen entsprechend ab. 
+reagiert Git mit einer Fehlermeldung und lehnt das Erstellen entsprechend ab.
 
 Git unterscheidet zwischen drei Arten von Tags:
 
 \begin{enumerate}
 \item \textbf{Lightweight Tags:} Dieser Typ ist die einfachste Variante. Er
 enthält neben den benötigten Daten wie Autor, Commitreferenz und Prüfsumme
-lediglich den Namen. Erzeugt wird er mit dem Befehl: \\\\\texttt{\$ git tag
-<name>}\\
+lediglich den Namen. Erzeugt wird er mit dem Befehl:
+
+\lstinputlisting[
+  label=lst:git_light_tags,
+  caption={Lightweight Tags},
+  captionpos=none,
+]{listings/git_light_tags.lst}
+
 \item \textbf{Annotated Tags:} Annotated bedeutet nichts Anderes als
 kommentiert. Zusätzlich zu den Daten aus den einfachen Tags, wird hier wie bei
 einem Commit ein Texteditor geöffnet. Alternativ kann auf der Kommandozeile
 ebenfalls mit dem Parameter \texttt{-m} eine Beschreibung übergeben
-werden.\\\\\texttt{\$ git tag <name> -m "Das ist ein annotated Tag."}\\ 
+werden.
+
+\lstinputlisting[
+  label=lst:git_annotated_tags,
+  caption={Annotated Tags},
+  captionpos=none,
+]{listings/git_annotated_tags.lst}
+
 \item \textbf{Signierte Tags:} Vorausetzung für diese Art von Tags, ist ein
 vorhandener privater \textit{GPG-Key}. Diese Tags werden mit einer Signatur,
 versehen die von anderen entsprechend überprüft werden kann, um die Identität
 des Autors eindeutig zu verifizieren\footnote{\url{https://gnupg.org}}.
 Erstellt werden signierte Tags mit dem zusätzlichen Parameter
-\texttt{-s}.\\\\\texttt{\$ git tag -s  <name> -m "Das ist ein signierter
-Tag"}\\\\ Zuvor muss Git der zu verwendene Key noch bekannt gemacht werden. Das
-kann mit folgendem Befehl erreicht werden:\\\\\texttt{\$ git config --global
-user.signingkey <Key-Id>}\\
+\texttt{-s} angelegt:
+
+\lstinputlisting[
+  label=lst:git_signatured_tags,
+  caption={Signierte Tags},
+  captionpos=none,
+]{listings/git_signatured_tags.lst}
+
+Zuvor muss Git der zu verwendene Key noch bekannt gemacht werden. Das
+kann mit folgendem Befehl erreicht werden:
+
+\lstinputlisting[
+  label=lst:git_add_key,
+  caption={Signierte Tags},
+  captionpos=none,
+]{listings/git_add_key.lst}
 \end{enumerate}
 
 \subsubsection{Branch}\label{sec:branchobject}
@@ -341,25 +403,43 @@ Scott Chacon und Ben Straub in \cite[S.~408-418]{progit} eine ausführlichere
 Sicht auf die Objektverwaltung dar.
 
 \subsection{Kommandos}\label{sec:commands}
-Note...Alle Kommandos die in der Arbeit sind,
+Einige der in der Arbeit verwendeten Kommandos werden in diesem Abschnitt
+nochmal erwähnt und ggf. um weitere Parameter ergänzt. Aufgrund der begrenzten
+Länge dieser Arbeit kann an dieser Stelle weder auf alle Git Kommandos noch auf
+alle Parameter eingegangen werden. Die verwendeten Kommandos werden aber um
+einige wenige Kommandos ergänzt die für die alltägliche Arbeit mit Git sinnvoll
+sind.
+
+Alle Git Kommandos bieten eine Vielzahl an Optionen. Eine Übersicht über die
+unterstützten Optionen kann mit den unter Linux üblichen Methoden angezeigt
+werden. So z.B. mit \texttt{\$ git <Befehl> help} oder mit dem klassischen
+Aufruf der Manpage \texttt{\$ man git <Befehl>}.
+
+Viele der Kommandos erwarten ein bestimmtes Argument auf dem sie Arbeiten. So
+findet man häufig Argumente die als \textit{tree-ish} oder \textit{commit-ish}
+bezeichnet werden. Damit sind aber lediglich entsprechende Objekte gemeint die
+z.B. einen Tree referenzieren.\cite[52]{gitosp} So benötigt \texttt{\$ git
+ls-tree} aus Abschnitt \ref{sec:objectmodel} ein \textit{tree-ish} und
+\texttt{\$ git show} kann auf allen Objecten aus Abschnitt
+\ref{sec:objectmodel} arbeiten.
 
 \subsubsection{git add}\label{sec:gitadd}
-Mit \texttt{git add} können grundsätzlich Dateien hinzugefügt werden. Der
-Befehl selbst bietet, wie fast alle Git Kommandos eine Vielzahl an
-Optionen\footnote{Eine Übersicht über die unterstützten Optionen kann mit den
-unter Linux üblichen Methoden angezeigt werden. So z.B. mit \texttt{\$ git <Befehl>
-help} oder mit dem klassischen Aufruf der Manpage \texttt{\$ man git <Befehl>}}.
+Mit \texttt{\$ git add} können grundsätzlich Dateien hinzugefügt werden. Der
+Befehl selbst bietet, wie fast alle Git Kommandos eine Vielzahl an Optionen.
 Eine sei an dieser Stelle besonders erwähnt, \texttt{\$ git add -p}. Das
 \texttt{-p} ermöglicht, die durchgeführten Änderungen an den Dateien selektiv
 hinzuzufügen. Das kann hilfreich sein, um Änderungen an verschiedenen Teilen in
 einzelne \glspl{commit} aufzuteilen oder bestimmte Änderungen wegzulassen.
 
+\subsubsection{git rm}
+
 \subsubsection{git log}\label{sec:gitlog}
 \subsubsection{git show}\label{sec:gitshow}
 Git show gibt alle relevanten Informationen eines Commits aus.....S.25 gitosp
 \subsubsection{git tag}
+\subsubsection{git branch}
+\subsubsection{git mv}
 \subsubsection{git ls-tree}
-\subsubsection{git rm}
 
 \section{Workflows}\label{sec:Workflows}
 \section{Fortgeschrittene Konzepte}

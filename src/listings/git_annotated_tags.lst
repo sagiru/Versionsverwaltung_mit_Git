@@ -1,0 +1,1 @@
+$ git tag <name> -m "Das ist ein annotated Tag."

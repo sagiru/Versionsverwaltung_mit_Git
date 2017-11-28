@@ -1,0 +1,1 @@
+$ git tag -s  <name> -m "Das ist ein signierter Tag"}

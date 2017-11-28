@@ -1,0 +1,12 @@
+$ git show --pretty=raw
+commit 878b1715fe18bb84733837d20b8f0ae3f4f1be1e
+tree 51c2dda0c9920b1d0600d0d5fae74aabd39fcd46
+parent ce31bd52900e7c45c07ef83291b79a471e71ba77
+author Markus Moeglich <markus@moeglich.de> 1511888829 +0100
+committer Sascha Girrulat <sascha@girrulat.de> 1511889029 +0100
+
+    Add executable bit to helper script.
+
+    diff --git a/helpers/git-stats b/helpers/git-stats
+    old mode 100644
+    new mode 100755
