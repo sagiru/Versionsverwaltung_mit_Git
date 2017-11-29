@@ -1,0 +1,8 @@
+$ git push
+Zähle Objekte: 3, Fertig.
+Delta compression using up to 4 threads.
+Komprimiere Objekte: 100% (2/2), Fertig.
+Schreibe Objekte: 100% (3/3), 355 bytes | 355.00 KiB/s, Fertig.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:sagiru/git-example.git
+   ce31bd5..878b171  master -> master

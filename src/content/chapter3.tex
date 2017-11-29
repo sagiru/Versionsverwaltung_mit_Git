@@ -241,6 +241,140 @@ der den letzten Commit (\gls{HEAD}) referenziert:
 Auf den weiteren Umgang mit Tags und welche Arten es gibt wird in den
 Abschnitten \ref{sec:tag} und \ref{sec:tagobject} weiter eingegangen.
 
+\subsection{Verteiltes Git}
+In diesem Abschnitt geht es um die Arbeit mit entferten Repositorys((Abbildung
+\ref{fig:centralworkflow})). Die eigentliche Funktionsweise von Git ist, wie
+aus Abschnitt \ref{sec:kernel} nochmal deutlicher wird, die verteilte
+kollaborative Arbeit an \glspl{repository}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.70]{images/workflow.eps}
+  \caption{Zentraler Workflow mit verteilten Repositorys\cite[S.~138]{gitosp}}
+  \label{fig:centralworkflow}
+\end{figure}
+
+\subsubsection{Erstellen eines Klons}
+Um eine lokale Kopie eines entferten Repositorys zu erstellen bzw. ein
+Repository zu klonen, benötigt man den Befehl \texttt{\$ git clone}. Zum
+Transport über das Netzwerk können verschiedene Protokolle benutzt werden.
+Unterstützt werden \texttt{ssh,git,http[s],ftp[s]} und \texttt{file}. Eine
+entsprechende Url kann neben dem Protokoll noch den Pfad des Repositorys, einen
+Benutzernamen oder einen Port enthalten:
+
+\lstinputlisting[
+  label=lst:git_url,
+  caption={Git Repository-Url },
+  captionpos=none,
+]{listings/git_url.lst}
+
+Als Besonderheiten gibt es für das klonen lokaler Repositorys und entfernter
+über \gls{ssh}, jeweils eine kurzform. Für das Klonen über \gls{ssh} muss das
+Protokoll nicht mit angegeben werden und bei lokalen kann vollständig auf die
+Angabe einer Adresse verzichtet werden. Hier reich einfach die Angabe eines
+Pfads \texttt{/pfad/zum/repo}.
+
+Das erstellte Beispiel, aus Abschnitt \ref{sec:first_commits}, ist als
+Repository verfügbar und kann mit folgendem Befehl geklont werden.
+
+\lstinputlisting[
+  label=lst:git_clone,
+  caption={Repository klonen},
+  captionpos=none,
+]{listings/git_clone.lst}
+
+Git speichert die Herkunft des entfernten \glspl{repository} ebenfalls in der
+Datei \texttt{.git/config}:  
+
+\lstinputlisting[
+  label=lst:remote_reference,
+  caption={Verfolgtes Repository},
+  captionpos=none,
+]{listings/remote_reference.lst}
+
+Die gleichen Informationen nur mit Hilfe eines Git Befehl erhält man mit
+\texttt{\$ git remote}:
+
+\lstinputlisting[
+  label=lst:git_remote,
+  caption={Verfolgtes Repository mit \texttt{\$ git remote}},
+]{listings/git_remote.lst}
+
+In Listing \ref{lst:git_remote} wird zum einen der Name, in diesem Fall
+\textit{origin}, ausgegeben und zum anderen wegen dem Parameter \texttt{-v}
+auch der Pfad zum entfernten Repository. Mit \texttt{\$ git remote} können
+weitere entfernte Repository, unter anderem Namen, konfiguriert
+werden\footnote{Hierzu siehe \texttt{man git remote}}. Ebenso wird
+standardmäßig der \gls{branch} \texttt{master} konfiguriert und als sogenannter
+\textit{remote-tracking-branch} eingerichtet. Diese Branches sollen die
+Änderungen gleichnamiger Branches aus den entfernten \glspl{repository}
+verfolgen und werden bei einer Syncronisation automatisch durch Git
+aktualisiert.\cite[S.~141-143]{gitosp}
+
+Das weitere Bearbeiten des Repository Inhalts kann wie in dem Abschnitt
+\ref{sec:first_commit} beschrieben, durchgeführt werden.
+
+\subsubsection{Änderungen übertragen}
+Um Daten in ein entferntes Repository zu übertragen wir der Befehl \texttt{\$
+git push} benutzt. Als Standard Ziel wird das Repository verwendet von dem auch
+ursprünglich die Kopie erstellt wurde\footnote{I.d.R. ist das \texttt{origin}.}. 
+initial genutzt wurde, wird weiterhin benutzt. 
+
+\lstinputlisting[
+  label=lst:git_push,
+  caption={Änderungen übertragen},
+]{listings/git_push.lst}
+
+In Listing \ref{lst:git_remote} wurde weder der Name des entfernten Repositorys
+noch des verwendeten Branches angegeben. In diesen Fall entscheidet Git hier
+nach der vorhandenen Konfiguration selbst und ergänzt i.w.S. zu \texttt{\$ git
+push origin master}. Wenn der Branch in dem entfernten Repository einen anderen
+Namen hat oder ein neuer Branch unter einem anderen Namen angelegt werden soll
+kann dieser Vorgang wie in Listing \ref{lst:git_push_other} durchgeführt werden:
+
+\lstinputlisting[
+  label=lst:git_push_other,
+  caption={Änderungen in einen anderen Branch übertragen},
+]{listings/git_push_other.lst}
+
+Mit dem \texttt{push} Befehl können anber auch entfernte Referenzen, wie
+Branches oder Tags gelöscht werden. Dazu muss neben dem Namen des entfernten
+Repositorys eine leere Referenz mit dem Zielbranch angeben:
+werden.\cite[S.~153-155]{gitosp}
+
+\lstinputlisting[
+  label=lst:git_push_remove,
+  caption={Remote Referenz löschen},
+  captionpos=none,
+]{listings/git_push_remove.lst}
+
+\subsubsection{Änderungen herunterladen}
+Um Änderungen aus entfernten Repositorys herunterzuladen existieren zwei
+Befehle. Zum einen \texttt{\$ git push} und zum anderen \texttt{\$ git fetch}.
+Der hauptsächliche Unterschied zwischen den beiden Befehlen ist das
+\texttt{fetch} lediglich die Änderungen anderer Entwickler aus dem entfernten
+Repository herunterläd(Listing \ref{lst:git_fetch}).
+
+\lstinputlisting[
+  label=lst:git_fetch,
+  caption={Änderungen herunterladen},
+]{listings/git_fetch.lst}
+
+Bei dem Befehl \texttt{\$ git pull} versucht Git nach herunterladen der
+Änderungen aus einem entsprechend konfigurierten
+\textit{remote-tracking-branch} zu integrieren(Listing \ref{Änderungen
+herunterladen}). Der Befehl ist also eine Kombination aus \texttt{\$ git fetch}
+und \texttt{\$ git merge}\footnote{Wenn stattdessen \texttt{\$ git pull
+--rebase} verwendet wird, kommt hier eine Kombination von \texttt{\$ git fetch}
+und \texttt{\$ git rebase} zum Einsatz. Für weitere Details sei hierzu auf
+einschlägige Fachliteratur verwiesen \cite[144-152]{gitosp} oder
+\cite[85-88]{progit}}.
+
+\lstinputlisting[
+  label=lst:git_pull,
+  caption={Änderungen herunterladen},
+]{listings/git_pull.lst}
+
 \subsection{Objektmodell}\label{sec:objectmodel}
 Wie in vorherigen Abschnitten bereits erwähnt, ist das Repository ein
 Datenspeicher vergleichbar mit einer Datenbank. Dahinter steht ein Datenmodell
@@ -431,18 +565,22 @@ Bereichen.\cite[34-35]{gitosp}
     \label{fig:trees}
 \end{figure}
 
-\subsection{Kommandos}\label{sec:commands}
-Einige der in der Arbeit verwendeten Kommandos werden in diesem Abschnitt
-nochmal erwähnt und ggf. um weitere Parameter ergänzt. Aufgrund der begrenzten
-Länge dieser Arbeit kann an dieser Stelle weder auf alle Git Kommandos noch auf
-alle Parameter eingegangen werden. Die verwendeten Kommandos werden aber um
-einige wenige Kommandos ergänzt die für die alltägliche Arbeit mit Git sinnvoll
-sind.
+\subsection{Ergänzende Kommandos}\label{sec:commands}
+Aufgrund der begrenzten Länge dieser Arbeit kann an dieser Stelle weder auf
+alle Git Kommandos noch auf alle Parameter eingegangen werden. Die bisher
+verwendeten Kommandos werden aber um einige wenige Kommandos ergänzt die für
+die alltägliche Arbeit mit Git sinnvoll sind. Wenn im folgenden von Befehlen
+gesprochen wird ist immer ein Befehl der im Kontext von Git ausgeführt wird
+(\texttt{git <Befehl>}), gemeint. Sollte es gleichnamige Unix-Befehle geben
+wird darauf gesondert hingewiesen.
 
-Alle Git Kommandos bieten eine Vielzahl an Optionen. Eine Übersicht über die
-unterstützten Optionen kann mit den unter Linux üblichen Methoden angezeigt
-werden. So z.B. mit \texttt{\$ git <Befehl> help} oder mit dem klassischen
-Aufruf der Manpage \texttt{\$ man git <Befehl>}.
+Alle Git Kommandos bieten eine Vielzahl an Optionen. So verstehen viele der
+Kommandos die Änderungen vornehmen z.B. einen Parameter \texttt{dry-run} der es
+ermöglicht Vorgänge erstmal zu simulieren oder nahezu alle Kommandos bieten mit
+\texttt{-v} eine umfangreichere Ausgabe (engl. \textit{verbose}) an. Eine
+Übersicht über die unterstützten Optionen kann mit den unter Linux üblichen
+Methoden angezeigt werden. So z.B. mit \texttt{\$ git <Befehl> help} oder mit
+dem klassischen Aufruf der Manpage \texttt{\$ man git <Befehl>}.
 
 Viele der Kommandos erwarten ein bestimmtes Argument auf dem sie Arbeiten. So
 findet man häufig Argumente die als \textit{tree-ish} oder \textit{commit-ish}
@@ -452,23 +590,40 @@ ls-tree} aus Abschnitt \ref{sec:objectmodel} ein \textit{tree-ish} und
 \texttt{\$ git show} kann auf allen Objecten aus Abschnitt
 \ref{sec:objectmodel} arbeiten.
 
-\subsubsection{git add}\label{sec:gitadd}
+\subsubsection{Dateien Hinzufügen}\label{sec:gitadd}
 Mit \texttt{\$ git add} können grundsätzlich Dateien hinzugefügt werden. Der
 Befehl selbst bietet, wie fast alle Git Kommandos eine Vielzahl an Optionen.
 Eine sei an dieser Stelle besonders erwähnt, \texttt{\$ git add -p}. Das
 \texttt{-p} ermöglicht, die durchgeführten Änderungen an den Dateien selektiv
 hinzuzufügen. Das kann hilfreich sein, um Änderungen an verschiedenen Teilen in
-einzelne \glspl{commit} aufzuteilen oder bestimmte Änderungen wegzulassen.
+einzelne \glspl{commit} aufzuteilen oder bestimmte Änderungen
+wegzulassen.\cite[S.~36-37]{gitosp}
 
-\subsubsection{git rm}
-\subsubsection{git clone}
-\subsubsection{git push}
+\subsubsection{Dateien Verschieben} Will man Dateien verschieben kann man den Befehl
+\texttt{mv} benutzen. Ähnlich wie auch \texttt{rm} gibt arbeitet dieser Befehl
+ähnlich dem gleichnamigen Unix-Befehl. Um den Vorgang zu erzwingen, wenn z.B.
+die Zieldatei schon existiert, kann der Parameter \texttt{-f} für
+\textit{force} angegeben werden.  Die Datein kann aber auch genauso mit Unix
+üblichen Mitteln (\texttt{cp, rm, mv, etc.}) verschoben werden. Hinterher muss
+die Änderung lediglich mit dem Befehl \texttt{add} hinzugefügt
+werden.\cite[S.~43-44]{gitosp}
+
+\subsubsection{Dateien Entfernen}
+Der Befehl \texttt{rm} steht für \textit{remove} und bewirkt aber nicht das
+Gegenteil von \texttt{add}. Dieser Befehl entfernt, vergleichbar mit dem
+Unix-Kommando, Dateien oder Verzeichnisse. Um nicht leere Verzeichnisse zu
+löschen muss noch ein \texttt{-r} für Rekursiv angegeben werden. Wenn Dateien
+bereits verändert wurden kann zusätzlich noch mit einem \texttt{-f} der Vorgang
+erzwingen werden. Ein entfernen von Dateien aus dem Repository kann aber
+genauso mit Unix üblichen Mitteln vorgenommen werden. Die Änderungen müssen
+dann mit \texttt{add} hinzugefügt werden.\cite[S.~43-44]{gitosp}
+
 \subsubsection{git log}\label{sec:gitlog}
 \subsubsection{git show}\label{sec:gitshow}
 Git show gibt alle relevanten Informationen eines Commits aus.....S.25 gitosp
 \subsubsection{git tag}
 \subsubsection{git branch}
-\subsubsection{git mv}
+\subsubsection{git diff}
 
 \section{Workflows}\label{sec:Workflows}
 \section{Fortgeschrittene Konzepte}

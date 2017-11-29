@@ -1,0 +1,3 @@
+$ git remote -v
+origin  git@github.com:sagiru/git-example.git (fetch)
+origin  git@github.com:sagiru/git-example.git (push)

@@ -1,0 +1,4 @@
+$ git push origin master:other_branch
+Total 0 (delta 0), reused 0 (delta 0)
+To github.com:sagiru/git-example.git
+ * [new branch]      master -> other_branch
