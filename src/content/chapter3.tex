@@ -241,32 +241,6 @@ der den letzten Commit (\gls{HEAD}) referenziert:
 Auf den weiteren Umgang mit Tags und welche Arten es gibt wird in den
 Abschnitten \ref{sec:tag} und \ref{sec:tagobject} weiter eingegangen.
 
-\subsection{Bäume}\label{sec:trees}
-Git organisiert das Repository in drei verschiedene Bereiche. Scott Chacon,
-einer der Autoren von \cite{progit}, spricht in einem seiner
-Vorträge\cite{link:talesoftrees} von drei Bäumen \textit{HEAD}, \textit{Index}
-und dem \textit{Work Tree}.
-
-Den \textit{Work Tree} (Abschnitt \ref{sec:workingtree} auf Seite
-\pageref{sec:workingtree}) haben wir bereits als Arbeitsbereich angesprochen.
-Mit \gls{HEAD} ist neben dem Verweis auf den neuesten commit auch i.w.S. das
-Repository gemeint.  Das Repository(Abschnitt \ref{repository} auf Seite
-\pageref{repository}) dient i.d.S. als Datenspeicher für alle Commits, deren
-Inhalte und Historie. Der Index(Abschnitt \ref{sec:index} auf Seite
-\pageref{sec:index}) in Git stellt, im Vergleich zu voherigen
-Versionskontrollsystemen, eine Neuerung dar. Der Index stellt einen Bereich
-zwischen dem \gls{repository} und dem Arbeitsbereich dar. Er dient dazu um den
-nächsten \gls{HEAD} bzw. Commit vorzubereiten. Die Kommandos \texttt{\$git
-add}, \texttt{\$ git reset} und \texttt{\$git commit} arbeiten auf diesen drei
-Bereichen.\cite[34-35]{gitosp}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.60]{images/trees.eps}
-    \caption{\textit{Work Tree}, \textit{HEAD} und Index\cite[34]{gitosp}}
-    \label{fig:trees}
-\end{figure}
-
 \subsection{Objektmodell}\label{sec:objectmodel}
 Wie in vorherigen Abschnitten bereits erwähnt, ist das Repository ein
 Datenspeicher vergleichbar mit einer Datenbank. Dahinter steht ein Datenmodell
@@ -430,6 +404,32 @@ eindeutig.
 Neben der fortgeschrittenen Manipulation von Git Objekten stellen die Autoren
 Scott Chacon und Ben Straub in \cite[S.~408-418]{progit} eine ausführlichere
 Sicht auf die Objektverwaltung dar.
+
+\subsection{Bäume}\label{sec:trees}
+Git organisiert das Repository in drei verschiedene Bereiche. Scott Chacon,
+einer der Autoren von \cite{progit}, spricht in einem seiner
+Vorträge\cite{link:talesoftrees} von drei Bäumen \textit{HEAD}, \textit{Index}
+und dem \textit{Work Tree}.
+
+Den \textit{Work Tree} (Abschnitt \ref{sec:workingtree} auf Seite
+\pageref{sec:workingtree}) haben wir bereits als Arbeitsbereich angesprochen.
+Mit \gls{HEAD} ist neben dem Verweis auf den neuesten commit auch i.w.S. das
+Repository gemeint.  Das Repository(Abschnitt \ref{repository} auf Seite
+\pageref{repository}) dient i.d.S. als Datenspeicher für alle Commits, deren
+Inhalte und Historie. Der Index(Abschnitt \ref{sec:index} auf Seite
+\pageref{sec:index}) in Git stellt, im Vergleich zu voherigen
+Versionskontrollsystemen, eine Neuerung dar. Der Index stellt einen Bereich
+zwischen dem \gls{repository} und dem Arbeitsbereich dar. Er dient dazu um den
+nächsten \gls{HEAD} bzw. Commit vorzubereiten. Die Kommandos \texttt{\$git
+add}, \texttt{\$ git reset} und \texttt{\$git commit} arbeiten auf diesen drei
+Bereichen.\cite[34-35]{gitosp}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.60]{images/trees.eps}
+    \caption{\textit{Work Tree}, \textit{HEAD} und Index\cite[34]{gitosp}}
+    \label{fig:trees}
+\end{figure}
 
 \subsection{Kommandos}\label{sec:commands}
 Einige der in der Arbeit verwendeten Kommandos werden in diesem Abschnitt
