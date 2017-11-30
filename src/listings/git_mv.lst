@@ -1,0 +1,7 @@
+$ git mv LICENSE GPLv3_LICENSE 
+$ git status
+Auf Branch topic
+zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git reset HEAD <Datei>..." zum Entfernen aus der Staging-Area)
+
+    umbenannt:      LICENSE -> GPLv3_LICENSE

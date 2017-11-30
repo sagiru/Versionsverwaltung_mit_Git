@@ -1,0 +1,24 @@
+$ git log
+commit 878b1715fe18bb84733837d20b8f0ae3f4f1be1e
+Author: Markus Moeglich <markus@moeglich.de>
+Date:   Tue Nov 28 18:07:09 2017 +0100
+
+    Add executable bit to helper script.
+
+commit ce31bd52900e7c45c07ef83291b79a471e71ba77
+Author: Markus Moeglich <markus@moeglich.de>
+Date:   Tue Nov 28 17:50:35 2017 +0100
+
+    Add helper script to generate author statistics.
+
+commit 86c36617ece5884928cdb20eacbbf0511a47d96a
+Author: Markus Moeglich <markus@moeglich.de>
+Date:   Tue Nov 28 17:39:52 2017 +0100
+
+    Add gpl license file
+    
+    The software and all the files included in this repository should be
+    licensed by the GNU General Public Licsense 3.0. Thats why we put the
+    original license file from [1] into this repository.
+    
+    [1] https://www.gnu.org/licenses/gpl-3.0.txt

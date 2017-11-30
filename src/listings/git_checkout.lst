@@ -1,0 +1,4 @@
+$ git checkout -b topic master
+$ git branch
+  master
+  * topic

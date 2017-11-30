@@ -1,0 +1,8 @@
+git rm LICENSE 
+rm 'LICENSE'
+$ git status
+Auf Branch topic
+zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git reset HEAD <Datei>..." zum Entfernen aus der Staging-Area)
+
+    gelöscht:       LICENSE

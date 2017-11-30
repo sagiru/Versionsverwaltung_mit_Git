@@ -139,7 +139,7 @@ bereinigen.\cite[S.~37]{cd}
 Nachdem der erste Commit erzeugt wurde, kann dieser nun mit \texttt{\$ git
 show} (Abschnitt \ref{sec:gitshow} auf Seite \pageref{sec:git_show}) betrachtet
 werden. In diesem Fall wurde beispielhaft eine etwas ausführlichere Bemerkung
-gewählt:
+für den Commit ewählt:
 
 \lstinputlisting[
   label=lst:git_show_first_commit.lst,
@@ -147,12 +147,14 @@ gewählt:
   captionpos=none,
 ]{listings/git_show_first_commit.lst}
 
-Hier können alle wichtigen Informationen eingesehen werden. Neben Zeitpunkt,
-Autor und Beschreibung auch die \textit{Commit-ID} (Abschnitt \ref{sec:commit}
-auf Seite \pageref{sec:commit}). Die weiteren Informationen werden in einem
-Format namens Unified-Diff dargestellt, auf welches hier nicht weiter
-eingegangen wird. Details zu dem Format stellen die Autoren von \textit{GNU
-diffutils} unter \cite[S.~12-13]{paper:diffutils} zur Verfügung.
+Mit \texttt{\$git show} können alle wichtigen Informationen eines Commits
+eingesehen werden.  Neben Zeitpunkt, Autor und Beschreibung auch die
+\textit{Commit-ID} (Abschnitt \ref{sec:commit} auf Seite \pageref{sec:commit}).
+Die weiteren Informationen werden in einem Format namens
+\textit{Unified-Diff}\footnote{Details zu dem \textit{Unified-Diff} Format
+stellen die Autoren von \textit{GNU diffutils} unter
+\cite[S.~12-13]{paper:diffutils} zur Verfügung.} dargestellt, auf welches hier
+nicht weiter eingegangen wird.\cite[25]{gitops}
 
 Wir fügen nun die zweite Datei mit einem weiteren \texttt{\$ git add} hinzu:
 
@@ -178,9 +180,8 @@ log}. Wir werden in Abschnitt \ref{sec:gitlog} weiter darauf eingehen aber für
 diesen Fall ist \texttt{\$ git whatchanged} ausreichend:
 
 \lstinputlisting[
-  label=lst:first_git_whatchanged.lst,
-  caption={Untersuchen der Historie},
-  captionpos=none,
+  label=lst:first_git_whatchanged,
+  caption={Untersuchen der Historie mit \texttt{whatchanged}},
 ]{listings/first_git_whatchanged.lst}
 
 Die Ausgabe wird im sogenannten \textit{raw} Format dargestellt. Es werden alle
@@ -226,7 +227,6 @@ Markierung bzw. \gls{tag}.
 \lstinputlisting[
   label=lst:git_first_tag,
   caption={Anlegen eines Tags},
-  captionpos=none,
 ]{listings/git_first_tag.lst}
 
 Hiermit haben wir einen \gls{tag} mit dem Namen \texttt{tags/0.0.1} angelegt,
@@ -234,14 +234,13 @@ der den letzten Commit (\gls{HEAD}) referenziert:
 
 \lstinputlisting[
   label=lst:git_list_first_tag,
-  caption={Listen eines Tags},
-  captionpos=none,
+  caption={Auflisten von Tags},
 ]{listings/git_list_first_tag.lst}
 
 Auf den weiteren Umgang mit Tags und welche Arten es gibt wird in den
-Abschnitten \ref{sec:tag} und \ref{sec:tagobject} weiter eingegangen.
+Abschnitten \ref{sec:managetags} und \ref{sec:tagobject} weiter eingegangen.
 
-\subsection{Verteiltes Git}
+\subsection{Verteiltes Git}\label{sec:distributed}
 In diesem Abschnitt geht es um die Arbeit mit entferten Repositorys((Abbildung
 \ref{fig:centralworkflow})). Die eigentliche Funktionsweise von Git ist, wie
 aus Abschnitt \ref{sec:kernel} nochmal deutlicher wird, die verteilte
@@ -284,7 +283,7 @@ Repository verfügbar und kann mit folgendem Befehl geklont werden.
 ]{listings/git_clone.lst}
 
 Git speichert die Herkunft des entfernten \glspl{repository} ebenfalls in der
-Datei \texttt{.git/config}:  
+Datei \texttt{.git/config}:
 
 \lstinputlisting[
   label=lst:remote_reference,
@@ -317,8 +316,8 @@ Das weitere Bearbeiten des Repository Inhalts kann wie in dem Abschnitt
 \subsubsection{Änderungen übertragen}
 Um Daten in ein entferntes Repository zu übertragen wir der Befehl \texttt{\$
 git push} benutzt. Als Standard Ziel wird das Repository verwendet von dem auch
-ursprünglich die Kopie erstellt wurde\footnote{I.d.R. ist das \texttt{origin}.}. 
-initial genutzt wurde, wird weiterhin benutzt. 
+ursprünglich die Kopie erstellt wurde\footnote{I.d.R. ist das \texttt{origin}.}.
+initial genutzt wurde, wird weiterhin benutzt.
 
 \lstinputlisting[
   label=lst:git_push,
@@ -447,7 +446,14 @@ keinen Dateinamen(Abbildung \ref{fig:objectmodel} auf Seite \pageref{fig:objectm
 
 Dadurch das Jeder Commit seinen vorhergehenden Commit referenziert entsteht ein
 gerichteter azyklicher Graph bei dem ein Koten durch einen Commit und Kanten
-durch Referenzen repräsentiert werden.\cite[57]{gitops}.
+durch Referenzen repräsentiert werden. Ein weiterer Vorteil dieser
+Vorgehensweise ist das in dem Commit nicht immer alle enthaltenen Objekte neu
+gespeichert werden sondern nur diejenigen die verändert wurden. Alle anderen
+referenzieren das ursprünglich angelegte \textit{blob} Objekt. Dieser Effekt
+wird als Deduplizierung bezeichnet und führt dazu das ein Repository in dem
+eine Datei viele Male existiert bzw. referenziert wird, kaum größer ist als ein
+Repository mit nur dieser einen Datei.
+\cite[56-57]{gitops}.
 
 \lstinputlisting[
   label=lst:git_show_raw,
@@ -590,16 +596,17 @@ ls-tree} aus Abschnitt \ref{sec:objectmodel} ein \textit{tree-ish} und
 \texttt{\$ git show} kann auf allen Objecten aus Abschnitt
 \ref{sec:objectmodel} arbeiten.
 
-\subsubsection{Dateien Hinzufügen}\label{sec:gitadd}
+\subsubsection{Dateien hinzufügen}\label{sec:gitadd}
 Mit \texttt{\$ git add} können grundsätzlich Dateien hinzugefügt werden. Der
 Befehl selbst bietet, wie fast alle Git Kommandos eine Vielzahl an Optionen.
 Eine sei an dieser Stelle besonders erwähnt, \texttt{\$ git add -p}. Das
 \texttt{-p} ermöglicht, die durchgeführten Änderungen an den Dateien selektiv
-hinzuzufügen. Das kann hilfreich sein, um Änderungen an verschiedenen Teilen in
-einzelne \glspl{commit} aufzuteilen oder bestimmte Änderungen
+auf den Index zu legen und somit für einen Commit vorzumerken. Das kann
+hilfreich sein, um Änderungen an verschiedenen Teilen in einzelne
+\glspl{commit} aufzuteilen oder bestimmte Änderungen
 wegzulassen.\cite[S.~36-37]{gitosp}
 
-\subsubsection{Dateien Verschieben} Will man Dateien verschieben kann man den Befehl
+\subsubsection{Dateien verschieben} Will man Dateien verschieben kann man den Befehl
 \texttt{mv} benutzen. Ähnlich wie auch \texttt{rm} gibt arbeitet dieser Befehl
 ähnlich dem gleichnamigen Unix-Befehl. Um den Vorgang zu erzwingen, wenn z.B.
 die Zieldatei schon existiert, kann der Parameter \texttt{-f} für
@@ -608,19 +615,184 @@ die Zieldatei schon existiert, kann der Parameter \texttt{-f} für
 die Änderung lediglich mit dem Befehl \texttt{add} hinzugefügt
 werden.\cite[S.~43-44]{gitosp}
 
-\subsubsection{Dateien Entfernen}
+\lstinputlisting[
+  label=lst:git_mv,
+  caption={Dateien verschieben},
+  captionpos=none,
+]{listings/git_mv.lst}
+
+\subsubsection{Dateien entfernen}
 Der Befehl \texttt{rm} steht für \textit{remove} und bewirkt aber nicht das
 Gegenteil von \texttt{add}. Dieser Befehl entfernt, vergleichbar mit dem
 Unix-Kommando, Dateien oder Verzeichnisse. Um nicht leere Verzeichnisse zu
 löschen muss noch ein \texttt{-r} für Rekursiv angegeben werden. Wenn Dateien
 bereits verändert wurden kann zusätzlich noch mit einem \texttt{-f} der Vorgang
-erzwingen werden. Ein entfernen von Dateien aus dem Repository kann aber
-genauso mit Unix üblichen Mitteln vorgenommen werden. Die Änderungen müssen
-dann mit \texttt{add} hinzugefügt werden.\cite[S.~43-44]{gitosp}
+erzwingen werden.
 
-\subsubsection{git log}\label{sec:gitlog}
-\subsubsection{git show}\label{sec:gitshow}
-Git show gibt alle relevanten Informationen eines Commits aus.....S.25 gitosp
-\subsubsection{git tag}
-\subsubsection{git branch}
-\subsubsection{git diff}
+\lstinputlisting[
+  label=lst:git_rm,
+  caption={Dateien entfernen},
+  captionpos=none,
+]{listings/git_rm.lst}
+
+Das Entfernen von Dateien aus dem Repository kann aber genauso mit Unix
+üblichen Mitteln vorgenommen werden. Die Änderungen müssen dann mit
+\texttt{add} dem Index hinzugefügt werden. Die Dateien werden aber nicht
+vollständig entfernt. Der neu erstellte Commit verweist lediglich nicht mehr
+auf das enstprechende Objekt(Abschnitt
+\ref{sec:commitobject}).\cite[S.~43-44]{gitosp}
+
+\subsubsection{Tags verwalten}\label{sec:managetags}
+Die eindeutige Identifikation von Versionen bzw. konkreten Zuständen eines
+Repositorys mit \gls{SHA-1} Prüfsummen ist aus technischer Sicht sicherlich
+keine schlechte Lösung. Als Mensch kann man sich solche Prüfsummen zum einen
+nur schwerlich merken und zum anderen geht aus den Prüfsummen auch keine
+Historie bzw. Reihenfolge hervor. Git ermöglicht mit dem Befehl \texttt{tag}
+Objekte i.d.R.  Commits zu Markieren. Als Namen dieser Markierungen wird man in
+der Praxis eine vielzahl an Varianten finden. Eine durchaus übliche ist aber
+die Kombination aus drei bis vier fortlaufende Zahlen wie z.B. \texttt{1.2.3}.
+Um den Tag zusätzlich zu identifizieren kann hier auch noch ein Prefix z.b.
+\texttt{release/} oder \texttt{v} verwendet werden. Wie Tags angelegt und
+angezeigt werden haben wir bereits in Listing \ref{lst:git_first_tag} und
+Listing \ref{lst:git_list_first_tag} gezeigt. Ebenso wurde in Abschnitt
+\ref{sec:tagobject} bereits auf die verschiedenen Typen von Tags eingegangen.
+Ergänzend hierzu sei noch erwähnt das Tags mit dem zusätzlichen Parameter
+\texttt{-d} gelöscht werden und mit \texttt{-f} überschrieben werden können.
+Das veröffentlichen bzw. Herunterladen von Tags erfolgt wie für andere Objekte
+auch über \texttt{fetch} oder \texttt{push}(Abschnitt \ref{sec:distributed}).
+
+\lstinputlisting[
+  label=lst:git_push_tag,
+  caption={Tags veröffentlichen},
+  captionpos=none,
+]{listings/git_push_tag.lst}
+
+Um alle lokalen Tags zu veröffentlichen kann der \texttt{push} Befehl auch mit
+dem Parameter \texttt{--tags} kombiniert werden.\cite[70-71,162-163]{gitosp}
+
+\lstinputlisting[
+  label=lst:git_push_all_tags,
+  caption={Alle Tags veröffentlichen},
+  captionpos=none,
+]{listings/git_push_all_tags.lst}
+
+\subsubsection{Branches verwalten} Ähnlich wie bei Tags Markiert auch ein
+Branch eine \gls{SHA-1} Prüfsumme. In diesem Fall die eines Commits. Im
+Gegensatz zu Tags sind diese lediglich dynamische Referenzen. Da hier nur einer
+Textdatei mit der Referenz erstellt werden muss, ist der Vorgang entsprechend
+Schnell. Das erstellen eines Branches benötigt als Argumente mindestens einen
+eindeutigen Namen(Abschnitt \ref{sec:branchobject}). Wenn keine Referenz auf
+einen Commit übergeben wird, wählt Git einfach den aktuellen \texttt{HEAD}.
+Das folgende Beispiel erstellt einen Branch namens \textit{topic} von der
+Referenz \texttt{master}.
+
+\lstinputlisting[
+  label=lst:git_branch,
+  caption={Branch anlegen},
+  captionpos=none,
+]{listings/git_branch.lst}
+
+Um auf einen anderen Branch zu wechseln kann der Befehl \texttt{\$ git checkout
+<name>} benutzt werden. In bestimmten Situationen verweigert Git den Checkout.
+Wenn z.B. eine Datei überschrieben würde oder ein Branchwechsel zusätzliche
+Änderungen an einer lokal geänderten Datei zur folge hätte. Git reagiert da
+i.d.R. aber mit entsprechenden Hinweisen. Der Parameter \texttt{-f} erzwingt
+auch hier den gewünschten Vorgang. Mit \texttt{checkout} können auch Branches
+angelegt werden und direckt gewechselt werden:
+
+\lstinputlisting[
+  label=lst:git_checkout,
+  caption={Branch anlegen und wechseln},
+  captionpos=none,
+]{listings/git_checkout.lst}
+
+Der Befehl \texttt{\$ git branch} unterstützt noch weitere Parameter die
+erwähnenswert sind. So kann mit den Parametern
+\texttt{-d/-D}\footnote{\texttt{-D wird benötigt wenn auf dem Branch Objekte
+sind die noch nicht dem aktuellen Branch hinzugefügt wurden.}} ein Branch
+gelöscht werden oder mit \texttt{-m} ein Branch umbenannt werden. Lokale
+Branche können mit \texttt{-l}\footnote{Das ist das standard Verhalten wenn kein
+Parameter übergeben wird.} angezeigt werden, entfernte aus dem entfernten
+Repository mit \texttt{-r} und alle zusammen mit
+\texttt{-a}.\cite[65-67]{gitosp}
+
+Für die weiterführende Arbeit mit Branches sei auf entsprechende Fachliteratur
+verwiesen \cite[388-389, 408-415]{cd} und \cite[56-88]{progit}.
+
+\subsubsection{Geschichte untersuchen}\label{sec:arch}
+In Abschnitt \ref{sec:first_commits} sind wir schon einmal auf \texttt{\$ git
+whatchanged} eingegangen.  Wie erwähnt steckt dahinter der Befehl \texttt{\$
+git log}. Mit diesem Befehl kann die Versionshistorie des \glspl{repository}
+untersucht werden. Wir nutzen dazu wieder das Beispiel aus dem genannten
+Abschnitt:
+
+\lstinputlisting[
+  label=lst:git_log,
+  caption={Versionsgeschichte mit \texttt{log} anzeigen},
+  captionpos=none,
+]{listings/git_log.lst}
+
+Der unterschied zu Listing \ref{lst:first_git_whatchanged} ist die etwas
+reduzierte Ausgabe. Um die Ausgabe noch weiter einzuschränken kann z.B. der
+Parameter \texttt{--oneline} genutzt werden.
+
+\lstinputlisting[
+  label=lst:git_log_oneline,
+  caption={Versionsgeschichte einzeilig anzeigen},
+  captionpos=none,
+]{listings/git_log_oneline.lst}
+
+Auch kann die Ausgabe auf einen oder mehrere von Commits eingeschränkt werden.
+Hierzu muss einfach zusäzlich die enstprechende \textit{SHA-1-ID} oder die
+Referenz übergeben werden. Soll ein bestimmter Bereich untersucht werden kann
+der Anfang und das Ende mit \texttt{..} getrennt werden:
+
+\lstinputlisting[
+  label=lst:git_log_range,
+  caption={Versionsgeschichte auf einen Bereich einschränken},
+  captionpos=none,
+]{listings/git_log_range.lst}
+
+Die Trennung mit zwei Punkten wird auch von vielen anderen Kommandos
+verstanden. So z.b. \texttt{\$ git diff} oder \texttt{\$ git show}(Abschnitt
+\ref{first_commits}). Die Auswahl des angezeigten Bereichs erfolgt immer
+exklusive des ersten und inklusive des als zweites (nach \texttt{..}) angegebenen
+Commits.\cite[45-48]{gitosp}
+
+\subsubsection{Aktuelle Änderungen anzeigen}\label{sec:gitdiff}
+Wenn Dateien im Repository verändert wurden, können diese Änderungen entweder
+nur in dem Arbeitsbereich (Abbildung \ref{fig:trees}) oder bereits auf dem
+Index vorliegen(Abschnitt \ref{sec:gitadd}). Um diese Änderungen anzuzeigen
+kann \texttt{\$ git diff} verwendet werden. Angenommen wir entfernen den
+letzten Absatz aus der Lizenzdatei des verwendeten Beispiels(Abschnitt
+\ref{first_commit}). Der Befehl \texttt{\$ git status} zeigt die Ausgangsituation:
+
+\lstinputlisting[
+  label=lst:git_status_wk,
+  caption={Status des Arbeitsbereichs anzeigen},
+  captionpos=none,
+]{listings/git_status_wk.lst}
+
+Der Befehl \texttt{\$ git diff} führt nun zur folgenden Ausgabe im Unified-Diff
+Format:
+
+\lstinputlisting[
+  label=lst:git_diff_wk,
+  caption={Änderungen auf Arbeitsbereich anzeigen},
+  captionpos=none,
+]{listings/git_diff_wk.lst}
+
+Ein anschließendes \texttt{\$ git add LICENSE} führt zum verschieben auf den
+Index(Listing \ref{lst:git_status_staged}, Listing) und das nochmalige
+Ausführen von \texttt{\$ git diff} führt zu einer leeren Ausgabe.
+
+\lstinputlisting[
+  label=lst:git_status_staged,
+  caption={Status des Index anzeigen},
+]{listings/git_status_staged.lst}
+
+Um die Änderungen auf dem Index anzuzeigen muss der \texttt{diff} Befehl um
+den Parameter \texttt{--staged} ergänzt werden\footnote{Die Parameter \texttt{--staged} und
+\texttt{--cached} können Synonym verwendet werden.},\footnote{Der Parameter
+\texttt{--staged} steht in diesem Fall für das betrachten der \textit{Staging
+Area}(Abschnitt \ref{sec:index}.}.\cite[26-29]{progit}
