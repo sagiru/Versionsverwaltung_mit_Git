@@ -35,9 +35,7 @@
 
 \ifthenelse{\boolean{listoffigures}}{\listoffigures}{}
 \ifthenelse{\boolean{listoftables}}{\listoftables}{}
-
-\renewcommand{\lstlistlistingname}{Listings}
-\iftotallstlistings\lstlistoflistings\fi
+\ifthenelse{\boolean{listoflistings}}{\listoflistings}{}
 
 \input{acronyms}
 \input{glossary}
