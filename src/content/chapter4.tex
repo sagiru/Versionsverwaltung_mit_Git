@@ -1,6 +1,52 @@
 \chapter{Außerdem}\label{cha:lookout}
-\section{Umgang mit Binärdateien}
-\section{Alles oder nichts}
+\section{Einschränkungen}\label{sec:problems}
+Auch wenn Git eine innovative Neuereung mit einem großen Funktionsumfang ist
+gibt es auch hier Einschränkungen. In folgenden seien zwei in kurzen
+Abschnitten erläutert:
+
+\subsection{Umgang mit Binärdateien}\label{sec:binaries}
+Wie in Abschnitt \ref{sec:objectmodel} kurz erläutert ist der Umgang mit
+Dateien und Speicherplatz innerhalb von Git effizient organisiert. Eine
+Ausnahme bilden hier Dateien in Binärformaten (z.B.  Grafiken, Videos,
+Audiodateien o.ä.). Wie bereits beschrieben werden Dateien innerhalb von Git
+als Objekte gespeichert und referenziert. Zusätzlich Komprimiert Git diese
+Dateien so das trotz vieler Kopien und Änderungen der Speicherplatzverbrauch
+sehr gering ist. Binäre Formate lassen sich allerdings häufig nicht mehr weiter
+Komprimieren oder zusammenfassen so wird bei Änderungen bei solchen Dateien
+jede Version als eigenes Objekt vorgehalten.  Angenommen, eine mit Git
+verwaltete Software wird mehrfach am Tag in einem Binärformat kompiliert und
+ebenfalls in dem gleichen Repository Versioniert, dann bekommt jeder Entwickler
+alle Binärdateien über die gesamte Lebenszeit in seiner lokalen Kopie abgelegt.
+Es gibt hier aber externe Tools\footnote{https://git-lfs.github.com/} und
+organisatorische Workflows\footnote{Lange Historien
+auslagern\cite[S.~235-244]{gitwf}} die sich mit diesem Problem
+beschäftigen.\cite[S.~300]{gitwf}
+
+\subsection{Alles oder nichts}
+Bei der Betrachtung von anderen Versionskontrollsystemen (Abschnitt
+\ref{sec:svn}) fällt auf das viele die Möglichkeit bieten nur bestimmte
+Teilbereiche herunterzuladen\footnote{Der Clone Befehl(Abschnitt
+\ref{sec:gitclone}) bietet die Möglichkeit mit --depth nur eine bestimmte
+Anzahl von zusammenhängenden Commits herunter zu laden. Das aber das hier
+beschriebene Problem nicht löst.\cite[S.~244]{gitwf}}. Auch können hier häufig
+verschiedene Berechtigungen auf unterschiedlche Verzeichnisse definiert werden.
+Beides ist mit Git nicht möglich. So muss man zum einen immer einen Klon des
+gesamten \glspl{repository} vornehmen und zum anderen kann auf das gesamte
+Repository nur das Recht entweder alles zu lesen oder zu schreiben vergeben
+werden. Das macht es in der Praxis häufig nötig weitere Tools\footnote{z.B.
+https://www.gerritcodereview.com} einzusetzten oder andere
+Vorgehensweisen\footnote{Forking-Workflow\cite[S.~163-173]{gitwf}} zu verwenden
+um dieses Problem zu umgehen.\cite[300-302]{gitwf}
+
+\subsection{Grafische Werkzeuge}
+Git selbst bietet keine grafische Unterstüzung um Informationen über den Inhalt
+zu visualisieren. So gibt es zwar neben den beschriebenen (Abschnitt
+\ref{sec:arch}) Befehlen auch mit \texttt{blame}, \texttt{annotate} und
+\texttt{git log --graph} noch Möglichkeiten mit denen sich Umfangreichere
+Informationen anzeigen lassen aber eben nur Texttuell\cite[S.~302]{gitwf}. Es
+gibt eine vielzahl an grafischen Tools so seinen hier nur einige wie
+\texttt{gitk}, \texttt{gitg} oder \texttt{gitkraken} genannt.
+
 \section{Zahlen und Fakten - Der Linux Kernel}\label{sec:kernel}
 Das Git Repository des Linux Kernels wurde am 16. April 2005 initial von Linus
 Torvalds mit folgendem \gls{commit}\cite{link:linuxgit} eröffnet:
