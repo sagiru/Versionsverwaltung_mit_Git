@@ -18,38 +18,33 @@
 
 % style of header/footer twoside/oneside
 \if@twoside
-\fancypagestyle{mypagestyle}{%
-  \fancyhf{}
-  \fancyhead[OR]{\leftmark}
-  \fancyfoot[OR]{\thepage}
+  \fancypagestyle{mypagestyle}{%
+    \fancyhf{}
 
-  \ifthenelse{\boolean{final}}{}{\fancyfoot[OL]{\version}}
-  \ifthenelse{\boolean{final}}{}{\fancyhead[OL]{Version vom \today}}
+    \fancyhead[OR]{\leftmark}
+    \fancyfoot[OR]{\pagemark}
 
-  \fancyhead[EL]{\titel}
-  \fancyfoot[EL]{\thepage}
+    \ifthenelse{\boolean{final}}{}{\fancyfoot[OL]{\version}}
+    \ifthenelse{\boolean{final}}{}{\fancyhead[OL]{Version vom \today}}
 
-  \ifthenelse{\boolean{final}}{}{\fancyhead[ER]{Version vom \today}}
-  \ifthenelse{\boolean{final}}{}{\fancyfoot[ER]{\version}}
-}
+    \fancyhead[EL]{\titel}
+    \fancyfoot[EL]{\pagemark}
+
+    \ifthenelse{\boolean{final}}{}{\fancyhead[ER]{Version vom \today}}
+    \ifthenelse{\boolean{final}}{}{\fancyfoot[ER]{\version}}
+  }
 
 \else
-\fancypagestyle{mypagestyle}{%
-  \fancyhf{}
-  \fancyhead[R]{\leftmark}
-  \fancyfoot[R]{\thepage}
+  \fancypagestyle{mypagestyle}{%
+    \fancyhf{}
 
-  \ifthenelse{\boolean{final}}{}{\fancyfoot[L]{\version}}
-  \ifthenelse{\boolean{final}}{}{\fancyhead[L]{Version vom \today}}
+    \fancyhead[L]{\titel}
+    \fancyhead[R]{\leftmark}
 
-  \fancyhead[R]{\titel}
-  \fancyfoot[R]{\thepage}
-
-  \ifthenelse{\boolean{final}}{}{\fancyhead[L]{Version vom \today}}
-  \ifthenelse{\boolean{final}}{}{\fancyfoot[L]{\version}}
-}
-
+    \fancyfoot[R]{\pagemark}
+  }
 \fi
+
 \pagestyle{mypagestyle}
 
 \renewcommand*{\chapterpagestyle}{mypagestyle}
