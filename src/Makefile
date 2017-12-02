@@ -34,6 +34,8 @@ clean_all: clean
 clean:
 	test $(SKIP_CLEANUP) -ne 1 && $(RM) count \
 		*.blg \
+		*.ac* \
+		*.al* \
 		*.fdb_latexmk \
 		*.dvi \
 		*.fls \
