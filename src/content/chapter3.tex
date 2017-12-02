@@ -1,4 +1,4 @@
-\chapter{Git}\label{cha:Git}
+\chapter{Git}\label{cha:git}
 In diesem Kapitel werden auf die wesentlichsten Grundlagen und Befehle
 beschrieben, um mit Git Dateien zu verwalten. Als Erstes wird mit einfachen
 Befehlen ein Git-Repository erstellt und später am Beispiel dieses Repositorys,
@@ -16,7 +16,7 @@ auf anderen Betriebssystemen ein.
 
 Die in den Beispielen eingesetzte Version von Git ist 2.15.0. Der folgende
 Abschnitt basiert zum Zeil auf den Ausführungen der Autoren aus
-\cite[S.22-57]{gitops}
+\cite[S.22-57]{gitosp}
 
 \lstinputlisting[
   label=lst:gitversion,
@@ -133,7 +133,7 @@ nicht selten darin, dass viele Stunden Arbeit investiert werden müssen diese zu
 bereinigen.\cite[S.~37]{cd}
 
 Nachdem der erste Commit erzeugt wurde, kann dieser nun mit \texttt{\$ git
-show} (Abschnitt \ref{sec:gitshow} auf Seite \pageref{sec:git_show}) betrachtet
+show} (Abschnitt \ref{sec:arch} auf Seite \pageref{sec:arch}) betrachtet
 werden. In diesem Fall wurde beispielhaft eine etwas ausführlichere Bemerkung
 für den Commit ewählt:
 
@@ -143,14 +143,14 @@ für den Commit ewählt:
   captionpos=none,
 ]{listings/git_show_first_commit.lst}
 
-Mit \texttt{\$git show} können alle wichtigen Informationen eines Commits
+Mit \texttt{\$ git show} können alle wichtigen Informationen eines Commits
 eingesehen werden.  Neben Zeitpunkt, Autor und Beschreibung auch die
 \textit{Commit-ID} (Abschnitt \ref{sec:commit} auf Seite \pageref{sec:commit}).
 Die weiteren Informationen werden in einem Format namens
 \textit{Unified-Diff}\footnote{Details zu dem \textit{Unified-Diff} Format
 stellen die Autoren von \textit{GNU diffutils} unter
 \cite[S.~12-13]{paper:diffutils} zur Verfügung.} dargestellt, auf welches hier
-nicht weiter eingegangen wird.\cite[25]{gitops}
+nicht weiter eingegangen wird.\cite[25]{gitosp}
 
 Wir fügen nun die zweite Datei mit einem weiteren \texttt{\$ git add} hinzu:
 
@@ -172,7 +172,7 @@ kurze, Historie erstellt. Um diese zu untersuchen dienen die Befehle \texttt{\$
 git whatchanged}\footnote{Der Befehl \texttt{\$ git whatchanged} stammt aus
 frühen von Git und ist das gleiche wie \texttt{\$ git log} mit einigen
 Parametern um die Ausgabe entsprechend zu Formatieren.} oder \texttt{\$ git
-log}. Wir werden in Abschnitt \ref{sec:gitlog} weiter darauf eingehen aber für
+log}. Wir werden in Abschnitt \ref{sec:arch} weiter darauf eingehen aber für
 diesen Fall ist \texttt{\$ git whatchanged} ausreichend:
 
 \lstinputlisting[
@@ -183,8 +183,8 @@ diesen Fall ist \texttt{\$ git whatchanged} ausreichend:
 Die Ausgabe wird im sogenannten \textit{raw} Format dargestellt. Es werden alle
 Commits mit Informationen über den Autor, Commit-ID, Zeit und den veränderten
 Dateien in zeitlicher Reihenfolge dargestellt. Die konkreten Veränderungen am
-Inhalt der Dateien werden hier nicht dargestellt(Abschnitt \ref{sec:gitlog} auf
-Seite \pageref{sec:gitlog}).
+Inhalt der Dateien werden hier nicht dargestellt(Abschnitt \ref{sec:arch} auf
+Seite \pageref{sec:arch}).
 
 Erwähnenswert ist noch das Git, im Gegensatz zu anderen
 Versionskontrollsystemen, die Dateiberechtigungen speichert. Wer bei den
@@ -249,7 +249,7 @@ kollaborative Arbeit an \glspl{repository}.
   \label{fig:centralworkflow}
 \end{figure}
 
-\subsubsection{Erstellen eines Klons}
+\subsubsection{Erstellen eines Klons}\label{sec:gitclone}
 Um eine lokale Kopie eines entferten Repositorys zu erstellen bzw. ein
 Repository zu klonen, benötigt man den Befehl \texttt{\$ git clone}. Zum
 Transport über das Netzwerk können verschiedene Protokolle benutzt werden.
@@ -307,7 +307,7 @@ verfolgen und werden bei einer Syncronisation automatisch durch Git
 aktualisiert.\cite[S.~141-143]{gitosp}
 
 Das weitere Bearbeiten des Repository Inhalts kann wie in dem Abschnitt
-\ref{sec:first_commit} beschrieben, durchgeführt werden.
+\ref{sec:first_commits} beschrieben, durchgeführt werden.
 
 \subsubsection{Änderungen übertragen}
 Um Daten in ein entferntes Repository zu übertragen wir der Befehl \texttt{\$
@@ -355,15 +355,14 @@ Repository herunterläd(Listing \ref{lst:git_fetch}).
   caption={Änderungen herunterladen},
 ]{listings/git_fetch.lst}
 
-Bei dem Befehl \texttt{\$ git pull} versucht Git nach herunterladen der
-Änderungen aus einem entsprechend konfigurierten
-\textit{remote-tracking-branch} zu integrieren(Listing \ref{Änderungen
-herunterladen}). Der Befehl ist also eine Kombination aus \texttt{\$ git fetch}
-und \texttt{\$ git merge}\footnote{Wenn stattdessen \texttt{\$ git pull
---rebase} verwendet wird, kommt hier eine Kombination von \texttt{\$ git fetch}
-und \texttt{\$ git rebase} zum Einsatz. Für weitere Details sei hierzu auf
-einschlägige Fachliteratur verwiesen \cite[144-152]{gitosp} oder
-\cite[85-88]{progit}}.
+Bei dem Befehl \texttt{\$ git pull}, versucht Git nach herunterladen der
+Änderungen, diese aus einem entsprechend konfigurierten
+\textit{remote-tracking-branch} zu integrieren(Listing \ref{lst:git_fetch}). Der
+Befehl ist also eine Kombination aus \texttt{\$ git fetch} und \texttt{\$ git
+merge}\footnote{Wenn stattdessen \texttt{\$ git pull --rebase} verwendet wird,
+kommt hier eine Kombination von \texttt{\$ git fetch} und \texttt{\$ git
+rebase} zum Einsatz. Für weitere Details sei hierzu auf einschlägige
+Fachliteratur verwiesen \cite[144-152]{gitosp} oder \cite[85-88]{progit}}.
 
 \lstinputlisting[
   label=lst:git_pull,
@@ -449,7 +448,7 @@ referenzieren das ursprünglich angelegte \textit{blob} Objekt. Dieser Effekt
 wird als Deduplizierung bezeichnet und führt dazu das ein Repository in dem
 eine Datei viele Male existiert bzw. referenziert wird, kaum größer ist als ein
 Repository mit nur dieser einen Datei.
-\cite[56-57]{gitops}.
+\cite[56-57]{gitosp}.
 
 \lstinputlisting[
   label=lst:git_show_raw,
@@ -550,10 +549,9 @@ und dem \textit{Work Tree}.
 Den \textit{Work Tree} (Abschnitt \ref{sec:workingtree} auf Seite
 \pageref{sec:workingtree}) haben wir bereits als Arbeitsbereich angesprochen.
 Mit \gls{HEAD} ist neben dem Verweis auf den neuesten commit auch i.w.S. das
-Repository gemeint.  Das Repository(Abschnitt \ref{repository} auf Seite
-\pageref{repository}) dient i.d.S. als Datenspeicher für alle Commits, deren
-Inhalte und Historie. Der Index(Abschnitt \ref{sec:index} auf Seite
-\pageref{sec:index}) in Git stellt, im Vergleich zu voherigen
+Repository gemeint. Das \gls{repository} dient als Datenspeicher für alle
+Commits, deren Inhalte und Historie. Der Index(Abschnitt \ref{sec:index} auf
+Seite \pageref{sec:index}) in Git stellt, im Vergleich zu voherigen
 Versionskontrollsystemen, eine Neuerung dar. Der Index stellt einen Bereich
 zwischen dem \gls{repository} und dem Arbeitsbereich dar. Er dient dazu um den
 nächsten \gls{HEAD} bzw. Commit vorzubereiten. Die Kommandos \texttt{\$git
@@ -751,7 +749,7 @@ der Anfang und das Ende mit \texttt{..} getrennt werden:
 
 Die Trennung mit zwei Punkten wird auch von vielen anderen Kommandos
 verstanden. So z.b. \texttt{\$ git diff} oder \texttt{\$ git show}(Abschnitt
-\ref{first_commits}). Die Auswahl des angezeigten Bereichs erfolgt immer
+\ref{sec:first_commits}). Die Auswahl des angezeigten Bereichs erfolgt immer
 exklusive des ersten und inklusive des als zweites (nach \texttt{..}) angegebenen
 Commits.\cite[45-48]{gitosp}
 
@@ -761,7 +759,8 @@ nur in dem Arbeitsbereich (Abbildung \ref{fig:trees}) oder bereits auf dem
 Index vorliegen(Abschnitt \ref{sec:gitadd}). Um diese Änderungen anzuzeigen
 kann \texttt{\$ git diff} verwendet werden. Angenommen wir entfernen den
 letzten Absatz aus der Lizenzdatei des verwendeten Beispiels(Abschnitt
-\ref{first_commit}). Der Befehl \texttt{\$ git status} zeigt die Ausgangsituation:
+\ref{sec:first_commits}). Der Befehl \texttt{\$ git status} zeigt die
+Ausgangsituation:
 
 \lstinputlisting[
   label=lst:git_status_wk,
