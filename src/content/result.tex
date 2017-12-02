@@ -1,54 +1,56 @@
 \chapter{\result}\label{cha:result}
 Im Rahmen dieser Arbeit wurde grundlegend über Funktionen und Arbeitsweisen von
-Versionskontollsystemen im allgemeinen und Git im speziellen gesprochen. Die
-angesprochenen Themen wurden meist nur Oberflächlich betrachtet und
-fortgeschrittene Betrachtungen aus Platzgründen häufig vollständig weggelassen.
-Allein aber die Tatsache das alle Dateien über die Zeit in jeder Version
-zuverlässig und reproduzierbar erhalten bleiben ist in erheblicher zugewinn zu
-einer Zeit wo Quellcode ein einsames dasein auf der Festplatte eines Computers
-frisitete. Jez Humble und David Farley sprechen in \cite[S.~35]{cd} von:
+Versionskontollsystemen im Allgemeinen und Git im Speziellen gesprochen. Die
+angesprochenen Themen wurden meist nur oberflächlich behandelt und
+fortgeschrittene Betrachtungen, aus Platzgründen, häufig vollständig
+weggelassen. Allein aber die Tatsache, dass alle Dateien über die Zeit in
+jeder Version zuverlässig und reproduzierbar erhalten bleiben, ist in
+erheblicher Zugewinn gegenüber einer Zeit, in der Quellcode ein einsames Dasein
+auf der Festplatte eines einzenlnen Computers frisitete. Jez Humble und David
+Farley sprechen darüber hinaus in \cite[S.~35]{cd} von:
 
 \begin{center}
-\textit{\glqq{}Version Control: The Freedom do Delete}.
+\textit{\glqq{}Version Control: The Freedom do Delete}\grqq{}.
 \end{center}
 
-Damit meinen die Autoren nicht das leichtere Verwalten von Dateien sondern eher
-die Idee das \textit{alte} Ideen oder Entwicklungen ohne Risiko von Verlusten
-entfernt oder überabreitet werden können. Diese Sicherheit schafft
-\textit{Freiheit} neue Dinge auszuprobieren oder zu verbessern.
+Damit meinen die Autoren nicht das leichtere Verwalten von Dateien, sondern
+eher die Idee, dass \textit{alte} Ideen oder Entwicklungen ohne das Risiko von
+Verlusten entfernt oder überabreitet werden können. Diese Sicherheit schafft
+\textit{Freiheit}, neue Dinge auszuprobieren oder zu verbessern.
 
-Ungeachtet der in Abschnitt \ref{cha:lookout} beschriebenen Einschränkungen ist
-Git im Vergleich zu vorhergehenden Versionskontrollsystemen ein mächtiges
-Werkzeug welches nicht nur technische Verbesserungen mitbringt sondern die
-Zusammenarbeit in Teams und Projekten auch äußerst effizient unterstüzen kann.
+Ungeachtet der in Abschnitt \ref{cha:lookout} beschriebenen Einschränkungen, ist
+Git im Vergleich zu vorhergehenden Versionskontrollsystemen, ein mächtiges
+Werkzeug welches nicht nur technische Verbesserungen mitbringt, sondern die
+Zusammenarbeit in Teams und Projekten auch äußerst effizient unterstützen kann.
 Die Bedienung von Git, hat man nun Erfahrungen mit anderen
 Versionskontollsystemen oder nicht, mag zu Anfang etwas sperrig sein.  Wenn man
-sich aber mit fortgeschrittenen Themen im Rahmen umfangreicherer Projekten
-auseinandersetzt (z.B. Linux Abschnitt \ref{sec:kernel}) stellt man fest das
-die Architektur von Git eine Skalierbarkeit ermöglicht die man mit anderen
-Systemen vergeblich sucht. Das in der Arbeit verwendetet Beispiel (Abschnitt
-\ref{sec:first_commits}) Zeigt aber auch die Arbeit mit Git in einem kleinen
-Rahmen. So wurde auch diese Semiararbeit, die in LaTeX gesetzt wurde, mit Git
-Versioniert\footnote{https://github.com/sagiru/Seminar-1908-Git/}. Auch
-\textit{kleine} Projekte die nicht in Teams geteilt und bearbeitet
-werdenprofitieren von der Arbeit mit Git.
+sich aber mit fortgeschrittenen Themen im Rahmen umfangreicherer Projekte
+auseinandersetzt (z.B. Abschnitt \ref{sec:kernel}), stellt man fest, dass
+die Architektur von Git eine Skalierbarkeit, ermöglicht die man mit anderen
+Systemen vergeblich sucht. Das in der Arbeit verwendete Beispiel(Abschnitt
+\ref{sec:first_commits}) zeigt aber auch die Arbeit mit Git in einem kleinen
+Rahmen. So wurde auch diese Seminararbeit, die in LaTeX gesetzt wurde, mit Git
+versioniert\footnote{https://github.com/sagiru/Seminar-1908-Git/}. Auch
+\textit{kleine} Projekte, die nicht in Teams geteilt und bearbeitet
+werden profitieren von der Arbeit mit Git.
 
-In der Praxis hat der Umgang mit Git gezeigt das Qualität von erstelltem
-Quellcode und Kollaboration in Teams sich durch den Einsatz von Platformen wie
+In der Praxis hat der Umgang mit Git gezeigt, dass sich Qualität von erstelltem
+Quellcode und Kollaboration in Teams durch den Einsatz von Plattformen wie
 Gerrit\footnote{https://www.gerritcodereview.com/} oder
-GitHub\footnote{https://github.com} nochmals verbessert lassen. Der Einsatz von
+GitHub\footnote{https://github.com}, nochmals verbessern lassen. Der Einsatz von
 Versionskontrollsystemen ist sowohl Vorrausetzung für eine erfolgreiche
 Auseinandersetzung mit Themen wie \textit{Continuous Integration} oder
-\textit{Continuous Delivery} als auch für den Einsatz agiler Vorgehensmodelle
+\textit{Continuous Delivery}, als auch für den Einsatz agiler Vorgehensmodelle
 in der Softwareentwicklung.\cite{cd}
 
-Schlussendlich sei dem interessierten Leser noch ans Herz gelegt sich mit
+Schlussendlich sei dem interessierten Leser noch ans Herz gelegt, sich mit
 weiterführenden Begriffen wie Regression und Bisektion, Stashes, Submodulen,
-Workflows und Reviewsystemen auseinander zu setzten. Auch wurde der Umgang mit
-Konflikten, durch gleichzeitige Änderung von mehreren Personen an gleichen
-Dateien, aus Platzgründen nicht betrachtet. Diese Themen werden in der
-einschlägigen Fachliteratur\footnote{\cite{gitosp},\cite{progit},\cite{gitwf}
-oder \cite{cd}} entsprechend ausführlich behandelt. Nicht zuletzt bietet der
-Funktionsumfang und die Manpages der Kommandos auch für Personen mit viel
-Erfahrung eine umfangreiche Quelle um Herausforderungen, im Rahmen der
-Zusammenarbeit von Entwicklerteams, in der Praxis zu lösen.
+Workflows und Reviewsystemen auseinander zu setzen. Auch wurde der Umgang mit
+Konflikten, die durch die gleichzeitige Änderung von mehreren Personen an
+gleichen Dateien verursacht werden können, aus Platzgründen nicht betrachtet.
+Diese Themen werden in der einschlägigen
+Fachliteratur\footnote{\cite{gitosp},\cite{progit},\cite{gitwf} oder \cite{cd}}
+entsprechend ausführlich behandelt. Nicht zuletzt, bietet der Funktionsumfang
+und die Manpages der Kommandos auch für Personen mit viel Erfahrung eine
+umfangreiche Quelle um Herausforderungen, im Rahmen der Zusammenarbeit von
+Entwicklerteams, in der Praxis zu lösen.

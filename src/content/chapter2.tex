@@ -3,16 +3,16 @@
 Versionsverwaltungssysteme sind auch bekannt als Versionskontrollsysteme (engl.
 \acrlong{vcs}), Quellcode Verwaltung(engl. Source Control) oder
 Revisionskontrollsysteme(engl. Revision Control System). Mit diesen Begriffen
-sind Systeme gemeint, die es Entwicklern, Teams oder Organisationen erlauben
+sind Systeme gemeint, die es Entwicklern, Teams oder Organisationen erlauben,
 eine vollständige Historie mit allen Änderungen am Quellcode ihrer gemeinsam
 entwickelten Software zu verwalten. Ausschlaggebend ist hierbei, dass für alle
 Nutzer transparent wird wer, wann und vor allem warum welche Änderungen
 durchgeführt hat. Eine weitere wichtige Eigenschaft ist, dass es verschiedenen
 Teams eine Zusammenarbeit an ggf. verschiedenen Teilen der Software ermöglicht
-ohne sich gegenseitig zu behindern\footnote{\label{dev:1}Das hängt natürlich
+ohne sich gegenseitig zu behindern\footnote{Das hängt natürlich
 nicht nur von dem Versionskontrollsystem ab, sondern auch vom Design der
 entwickelten Software.  Diese wird i.d.R. eher modular aufgebaut, so dass die
-Möglichkeit einer parallelen Entwicklung unterstützt wird.}.\cite[S.~381]{cd}\\
+Möglichkeit einer parallelen Entwicklung unterstützt wird.}.\cite[S.~381]{cd}
 
 In den nachfolgenden Abschnitten wird nicht im Detail auf alle existierenden
 Versionskontrollsysteme eingegangen. Viel mehr wird ein kleiner Ausschnitt
@@ -40,16 +40,16 @@ Versionskontrollsystem mit einem zentralen \gls{repository}. Das wurde
 erreicht, indem \acrshort{rcs} mit Hilfe eines \glspl{wrapper} um eine
 Client-/Serverkomponente erweitert wurde. Dadurch war es erstmals möglich, dass
 mehrere Entwickler gleichzeitig an einem \gls{repository} und konkurrierend an
-den selben Dateien arbeiten konnten. Neben den innovativen Ansätzen gab es hier
+denselben Dateien arbeiten konnten. Neben den innovativen Ansätzen, gab es hier
 aber noch einige technische Einschränkungen, die ein kollaboratives Arbeiten
 erschwerten. Beispielsweise war die Nutzung des verbrauchten Speicherplatzes
-nicht optimal. Das Erzeugen von Abzweigungen (referenz fehlt!!  Branches) wurde
+nicht optimal. Das Erzeugen von Abzweigungen (Abschnitt \ref{sec:branch}) wurde
 durch einfaches Kopieren erreicht. Das war deshalb nicht nur zeitaufwändig,
 sondern verbrauchte auch entsprechend zusätzlichen Speicherplatz. Ein späteres
 Zusammenführen(Abschnitt \ref{sec:merge}) dieser Zweige, führte daher zu
 Dateikonflikten und verursachte hierduch erheblichen Mehraufwand. Auch gab es
-keine Funktionalität um Binärdateien zu verwalten so das der Speicherplatz eher
-ineffizient genutzt wurde. Das Erstellen von Tags\ref{sec:tag} wurde mit
+keine Funktionalität um Binärdateien zu verwalten, so dass der Speicherplatz eher
+ineffizient genutzt wurde. Das Erstellen von \glspl{tag} wurde mit
 steigendem Inhalt des \glspl{repository} ebenfalls immer zeitaufwändiger, da
 alle enthaltenen Dateien bearbeitet werden mussten. Eine der, aus heutiger
 Sicht, größte Einschränkung war aber sicher die Tatsache, dass
@@ -79,7 +79,7 @@ Tags oder Branches wurde ebenfalls verbessert. Hierzu wurde eine Konvention
 eingeführt, welche drei verschiedene Verzeichnisse innerhalb eines
 \glspl{repository} vorgibt:
 \begin{itemize}
-\item \textbf{trunk}: Enthält die Revision an der gemeinsam gearbeitet wird,
+\item \textbf{trunk}: Enthält die Revision an der gemeinsam gearbeitet wird
        und von welcher Branches und Tags erzeugt werden.
 \item \textbf{tags}: Verzeichnis, in dem unterschiedliche Verzeichnisse als
        Tags erzeugt werden, die von einer bestimmten Revision erzeugt werden.
@@ -87,39 +87,39 @@ eingeführt, welche drei verschiedene Verzeichnisse innerhalb eines
       Abzweigungen angelegt werden. Auf diesen Abzweigungen kann unabhängig von
       \textit{trunk} gearbeitet werden.
 \end{itemize}
-Die o.a. Verzeichnisse bzw. Tags(Abschnitt \ref{sec:tag}, \ref{sec:branch} Branches
-sind lediglich Zeiger auf eine bestimmte Revision und die Trennung dazwischen
-ist nur eine Konvention. So werden Tags und Branches erzeugt, indem ein
-Verzeichnis angelegt wird und der Inhalt von \textit{trunk} kopiert wird. Das
-führt auch zu einem der Probleme beim Arbeiten mit \acrlong{svn}. Tags sind
-nicht eindeutig und veränderbar.  So macht SVN technisch keinen Unterschied
-zwischen \textit{trunk}, \textit{tags}, \textit{branches} oder einem beliebigen
-anderen Verzeichnis. Alle können in der gleichen Art und Weise bearbeitet
-werden. Ein großer Vorteil von \acrshort{svn} zu vorherigen
-Versionskontrollsystemen ist, dass mit \acrshort{svn} auch gearbeitet werden
-kann, wenn das Netzwerk nicht zur Verfügung steht. Alle Änderungen an Dateien
-werden i.d.R. erstmal auf einer lokalen Kopie durchgeführt und mit einem
-separaten Kommando an das zentrale Repository gesendet. Als weitere
-Funktionalität seien noch sogenannte Externals erwähnt, die es erstmals
-ermöglichen Inhalte von anderen Repositorys einzubinden. Dies kann nützlich
-sein, um Abhängigkeiten zwischen unterschiedlicher Software oder
-\glspl{repository} abzubilden und Binärdateien auszulagern. \acrshort{svn}
-stellte zwar eine erhebliche Neuerung gegenüber \acrshort{cvs} dar, hatte aber
-aufgrund der zusätzlichen Client-/Server Komponente einige neue Probleme. So
-waren z.B. zwar die Aktionen aufseiten des zentralen \glspl{repository} atomar,
-aber nicht aufseiten des Clients. So das hier bei unvorhergesehenen Fehlern,
-wieder Inkonsistenzen entstehen konnten. Des Weiteren verwaltet \acrshort{svn}
-mit Hilfe eines Unterordners \textit{.svn} in jedem enthaltenen Verzeichnis die
-Verwaltungsinformationen desselbigen. Das ermöglicht eine unabhängige
-Verwaltung aller Verzeichnisse untereinander und führt ggf. dazu, dass die
-lokale Kopie eine Summe aus unterschiedlichen Revisionen verschiedener
-Unterordner ist und keinen eindeutigen Versionsstand repräsentiert.  Dieser
-Abschnitt stellt nur einen Auszug der Vor- und Nachteile von SVN dar. Auf
-eine weitere Ausführung wird aus Platzgründen verzichtet und kann in
-einschlägiger Literatur nachgelesen werden.\cite[S.~383-385]{cd}
+Die o.a. Verzeichnisse bzw. \glspl{tag} und \glspl{branch}, sind lediglich
+Zeiger auf eine bestimmte Revision und die Trennung dazwischen ist nur eine
+Konvention. So werden Tags und Branches erzeugt, indem ein Verzeichnis angelegt
+wird und der Inhalt von \textit{trunk} kopiert wird. Das führt auch zu einem
+der Probleme beim Arbeiten mit \acrlong{svn}. Tags sind nicht eindeutig und
+veränderbar.  So macht SVN technisch keinen Unterschied zwischen
+\textit{trunk}, \textit{tags}, \textit{branches} oder einem beliebigen anderen
+Verzeichnis. Alle können in der gleichen Art und Weise bearbeitet werden. Ein
+großer Vorteil von \acrshort{svn} zu vorherigen Versionskontrollsystemen ist,
+dass mit \acrshort{svn} auch gearbeitet werden kann, wenn das Netzwerk nicht
+zur Verfügung steht. Alle Änderungen an Dateien werden i.d.R. erstmal auf einer
+lokalen Kopie durchgeführt und mit einem separaten Kommando an das zentrale
+Repository gesendet. Als weitere Funktionalität seien noch sogenannte Externals
+erwähnt, die es erstmals ermöglichen, Inhalte von anderen Repositorys
+einzubinden. Dies kann nützlich sein, um Abhängigkeiten zwischen
+unterschiedlicher Software oder \glspl{repository} abzubilden und Binärdateien
+auszulagern. \acrshort{svn} stellte zwar eine erhebliche Neuerung gegenüber
+\acrshort{cvs} dar, hatte aber aufgrund der zusätzlichen Client-/Server
+Komponente einige neue Probleme. So waren z.B. zwar die Aktionen aufseiten des
+zentralen \glspl{repository} atomar, aber nicht aufseiten des Clients. So das
+hier bei unvorhergesehenen Fehlern, wieder Inkonsistenzen entstehen konnten.
+Des weiteren verwaltet \acrshort{svn} mit Hilfe eines Unterordners
+\textit{.svn} in jedem enthaltenen Verzeichnis die Verwaltungsinformationen
+desselbigen. Das ermöglicht eine unabhängige Verwaltung aller Verzeichnisse
+untereinander und führt ggf. dazu, dass die lokale Kopie eine Summe aus
+unterschiedlichen Revisionen verschiedener Unterordner ist und keinen
+eindeutigen Versionsstand repräsentiert.  Dieser Abschnitt stellt nur einen
+Auszug der Vor- und Nachteile von SVN dar. Auf eine weitere Ausführung wird aus
+Platzgründen verzichtet und kann in einschlägiger Literatur nachgelesen
+werden.\cite[S.~383-385]{cd}
 
 \subsection{Git}\label{git}
-Git ist ein verteiltes bzw. dezentrales \acrlong{vcs:de}. Es wurde von Linus
+Git ist ein verteiltes, bzw. dezentrales \acrlong{vcs:de}. Es wurde von Linus
 Torvalds und Junio Hamano entwickelt und ist für gängige Plattformen wie Linux,
 BSD, Windows u.a. verfügbar. Im englischen wird Git als \textit{git - the
 stupid content tracker} bezeichnet. Der Name \textit{Git} kommt nach einem
@@ -156,14 +156,14 @@ eine Aussage von Linus Torvalds zu \acrshort{cvs}\cite[S.~385]{cd}:
 \textit{\glqq{}There is no way to do CVS right\grqq{}}\\
 \end{center}
 
-Neben dem Beheben der Probleme mit denen die populären Systeme (Abschnitt
-\ref{sec:svn} und \ref{sec:cvs}) zu kämpfen hatten sollte das zentrale
+Neben dem Beheben der Probleme, mit denen die populären Systeme (Abschnitt
+\ref{sec:svn} und \ref{sec:cvs}) zu kämpfen hatten, sollte das zentrale
 Augenmerk auf Geschwindigkeit und Integrität liegen. Schon wenige Wochen nach
 dem Start mit der Arbeit an Git, konnten die ersten Versionen bereits Quellcode
 verwalten. Die grundlegenden Konzepte sind bis heute gleich geblieben. Die
 spätere erfolgreiche Migration und Verwaltung des Linux Kernel
 \glspl{repository} mit Git, führte zu einem hohen Ansehen und einer starken
-Verbreitung von Git. Die Anforderungen an ein \acrlong{vcs:de} um den Linux Kernel
+Verbreitung von Git. Die Anforderungen an ein \acrlong{vcs:de}, um den Linux Kernel
 mit über 1000 Entwicklern zu verwalten, sind immens. Allein zwischen zwei
 Versionen finden sich mehrere hunderttausend Änderungen in über 1000 Dateien
 und etliche Merges zwischen verschiedenen Branches (Abschnitt
@@ -222,7 +222,7 @@ Dateien sein, wie z.B.
 
 So können neue Mitarbeiter schnell in Teams integriert werden und ein
 effizienter Start wird gefördert. Es ist ebenso wichtig, dass alle benötigten
-Informationen unter Versionskontrolle stehen und allen Beteiligten zur Verfügung
+Informationen unter Versionskontrolle und allen Beteiligten zur Verfügung
 stehen. Hierzu gehören neben Dokumentationen beispielsweise Projekt- und
 Releasepläne der Manager oder Dokumente über durchgeführte Analysen. Darüber
 hinaus sollten auch externe Abhängigkeiten mit verwaltet werden. So könnten
@@ -235,7 +235,7 @@ hier ebenso
 \end{itemize}
 
 Im Kern alles was nötig ist, um Umgebungen (insbesondere produktive\footnote{Es
-gibt sicher eine Vielzahl von Szenarien die es als wirtschaftlich arbeitendes
+gibt sicher eine Vielzahl von Szenarien, die es als wirtschaftlich arbeitendes
 Unternehmen erfordern, zu so etwas in der Lage zu sein. Ausgenommen vielleicht
 Anbieter einschlägiger Suchmaschinen, die beispielsweise nicht vom Abbrennen
 eines einzelnen Datenzentrums abhängig sind.}) von Grund auf neu zu erzeugen.
@@ -250,7 +250,7 @@ es aus Sicht der Benutzer für den gemeinsamen Zugriff auf Dateien bestimmte
 Anforderungen gibt. Nach \cite[S.~37]{hagen:1678} bestehen Forderungen nach
 \textbf{Aktualität}, \textbf{Konsistenz}, \textbf{Isolation},
 \textbf{Integration}, \textbf{Gruppenwahrnehmung} und
-\textbf{Nachvollziehbarkeit}. So sollen Entwickler in der Lage sein immer an
+\textbf{Nachvollziehbarkeit}. So sollen Entwickler in der Lage sein, immer an
 einer gültigen Fassung einer Datei zu arbeiten, als sei diese Datei exklusiv für
 sie reserviert sowie die eigenen Änderungen daran so wieder zu integrieren, dass
 eine Nachvollziehbarkeit mit einer Änderungshistorie, die wenigstens Namen und
@@ -259,9 +259,9 @@ Forderungen in der Praxis darstellt, wird in den folgenden Unterkapiteln
 gezeigt. Vorher werden aber noch einige benötigte Grundbegriffe erläutert.
 
 \subsection{Commit}\label{sec:commit}
-Werden Veränderungen am Repository durchgeführt bzw. an den darin enthaltenen
+Werden Veränderungen am Repository durchgeführt, bzw. an den darin enthaltenen
 Dateien werden diese als Commits gespeichert. Hierzu werden die einzelnen
-Veränderungen an Dateien oder Metadaten z.B. löschen, hinzufügen oder verändern
+Veränderungen an Dateien oder Metadaten, z.B. löschen, hinzufügen oder verändern
 von Dateiberechtigungen durch den Autor, mit verschiedenen Kommandos
 zusammengefasst. Diese werden mit Namen, Zeitpunkt und Beschreibung dem
 \gls{repository} als \gls{commit} hinzugefügt. Unter Git referenziert ein
@@ -285,35 +285,35 @@ darüber hinaus noch Metadaten wie Autor, Beschreibung oder ggf. eine Signatur
 mit GPG enthalten.\cite[S.~48]{progit}
 
 \subsection{Branch}\label{sec:branch}
-Ein Repository enthält i.d.R. mindestens einen zentralen Zweig(engl. Branch), auf dem
-die Entwicklungsarbeit stattfindet. Ein Abzweig an einer bestimmten Stelle, zu
-einem bestimmten Zeitpunkt, erzeugt einen neuen Branch. Dieser Abzweig kann von
-dem zentralen oder einem anderen Branch erfolgen. Wie diese Branches erzeugt
-werden, ist abbhängig vom eingesetzten Versionskonrollsystem. So wird unter
-\acrshort{svn} oder \acrshort{cvs} der Branch lediglich mittels eines Kopiervorgangs
-erzeugt und unter Git lediglich
-über eine symbolische Referenz. Häufig werden Branches verwendet, um Features zu
-entwickeln, Releases zu erzeugen oder Bugfixes an bestehenden Versionen
-durchzuführen\cite[S.~21]{gitosp}. Um effizient mit Branches umzugehen, gibt es
-verschiedene Strategien. So wird von Jez Humble und David Farley in
-\cite[S.~408-412]{cd} auf Releasebranches, Featurebranches, Teambranches oder
-eine Entwicklung mit nur einem Hauptbranch\footnote{Umgangsprachlich werden
-verschiedene Begriffe für diesen Branch benutzt. So sind Begriffe wie z.b.
-Trunk, Masterbranch oder Mainlinebranch nicht unüblich. Gemeint ist hiermit
-i.d.R. aber immer der zentrale Branch, der standardmäßig von dem genutzen
-\acrlong{vcs:de} vorgesehen ist. Für \acrshort{svn} ist das, z.B. per Konvention
-das Verzeichnis \textit{trunk} und unter Git einfach die Referenz auf den Namen
+Ein Repository enthält i.d.R. mindestens einen zentralen Zweig(engl. Branch),
+auf dem die Entwicklungsarbeit stattfindet. Ein Abzweig an einer bestimmten
+Stelle, zu einem bestimmten Zeitpunkt, erzeugt einen neuen Branch. Dieser
+Abzweig kann von dem zentralen oder einem anderen Branch erfolgen. Wie diese
+Branches erzeugt werden, ist abbhängig vom eingesetzten Versionskonrollsystem.
+So wird unter \acrshort{svn} oder \acrshort{cvs} der Branch lediglich mittels
+eines Kopiervorgangs und unter Git aber über eine Referenz erzeugt. Häufig
+werden Branches verwendet, um Features zu entwickeln, Releases zu erzeugen oder
+Bugfixes an bestehenden Versionen durchzuführen\cite[S.~21]{gitosp}. Um
+effizient mit Branches umzugehen, gibt es verschiedene Strategien. So wird von
+Jez Humble und David Farley in \cite[S.~408-412]{cd} auf Releasebranches,
+Featurebranches, Teambranches oder eine Entwicklung mit nur einem
+Hauptbranch\footnote{Umgangsprachlich werden verschiedene Begriffe für diesen
+Branch benutzt. So sind Begriffe wie z.b.  Trunk, Masterbranch oder
+Mainlinebranch nicht unüblich. Gemeint ist hiermit i.d.R. aber immer der
+zentrale Branch, der standardmäßig von dem genutzen \acrlong{vcs:de} vorgesehen
+ist. Für \acrshort{svn} ist das, z.B. per Konvention das Verzeichnis
+\textit{trunk} und unter Git einfach die Referenz auf den Namen
 \textit{master}.} eingegangen.
 
 \subsection{Merge}\label{sec:merge}
 Wenn mehrere Entwickler an einem \gls{repository} arbeiten(Abschnitt
 \ref{sec:collaboration}), entstehen an einer gemeinsamen Basis häufig parallele
 Abzweige. An diesen wird gleichzeitig gearbeitet und dadurch laufen diese
-Zweige u.U. auseinander. Das Spätere wieder Zusammenführen dieser Zweige,
+Zweige u.U. auseinander. Das spätere wieder Zusammenführen dieser Zweige,
 bezeichnet man als Merge. Wie auch andere Versionskontrollsysteme bietet Git
 hier mit \textit{merge}, \textit{mergetool}, \textit{rebase} und
 \textit{cherry-pick} eine umfangreiche Unterstützung\cite[S.~vii]{gitwf}. Beim
-zusammenführen der beiden Zweige, z.B.  \textit{topic} und \textit{master}
+Zusammenführen der beiden Zweige, z.B. \textit{topic} und \textit{master}
 ensteht, wie in Abbildung \ref{fig:merge} gezeigt ein sogenannter Merge-Commit.
 Dieser hat seinen Ursprung in den beiden vorhergehenden Knoten dieser Zweige.
 
@@ -328,21 +328,21 @@ Komplexere Szenarien erlauben es, mit Git auch Merges aus mehr als zwei
 Branches zu erzeugen, z.B. sogenannte \textit{three-way-merges} oder
 \textit{octopus-merges}\cite[S.~87]{gitosp}. Git ermöglicht es auch, Zweige aus
 verschiedenen Repositorys zusammenzuführen. So gibt es nach \cite[3]{gitwf}
-noch die Möglichkeit Repositorys, nach spezielleren Funktionen zu unterteilen.
-So kann ein dediziertes \textit{Blessed Repositorys} ausschließlich für das
+noch die Möglichkeit, Repositorys nach spezielleren Funktionen zu unterteilen.
+So kann ein dediziertes \textit{Blessed Repository} ausschließlich für das
 Erstellen von Versionen der erzeugten Software genutzt werden. Die Änderungen
 können aus einem \textit{Fork Repository} importiert werden. Das \textit{Fork
 Repository} dient zur Entkopplung des Haupt-Repositorys. So können größere
 Umbauten, Merges oder Features unabhängig vom Haupt-Repository entwickelt
 werden\cite[S.~123]{gitwf}. Eine vergleichbare Vorgehensweise findet man im
-Repository des Linux Kernels\cite{link:linuxgit} aus Abschnitt \ref{sec:kernel}.
+Repository des Linux Kernels\cite{link:linuxgit}(Abschnitt \ref{sec:kernel}).
 
 \subsection{Repository}\label{sec:repository}
 Das Repository ist ein Datenspeicher, in dem gemeinsame Dateien eines Projekts
 durch das \acrlong{vcs:de} verwaltet werden. Der Benutzer kann hier Dateien
 beispielsweise hinzufügen, entfernen oder verändern und in einem \gls{commit}
-zusammenfassen. Das \acrlong{vcs:de} erzeugt für alle in \glspl{commit}
-zusammengefassten Anderungen eine Historie.\cite[S.~38]{hagen:1678}.
+zusammenfassen. Das \acrlong{vcs:de} erzeugt für alle, in \glspl{commit}
+zusammengefassten Änderungen eine Historie.\cite[S.~38]{hagen:1678}.
 
 \subsection{HEAD}\label{sec:head}
 Eine Referenz, die auf den letzten Commit im aktuellen Repository bzw. Branch
@@ -360,20 +360,21 @@ veröffentlichte Version im Repository.
 \subsection{Checkout}\label{sec:checkout} Um Missverständnisse zu vermeiden,
 muss man hier zwischen den bisher erwähnten Versionskontrollsystemen und Git
 unterscheiden. Der Begriff \textit{checkout} beschreibt im Rahmen der bisher
-erwähnten Versionskonrollsystemen z.B. \acrshort{cvs} oder \acrshort{svn}
-(Abschnitt \ref{cha:Versionsverwaltung}) das Erstellen einer lokalen Kopie eines
-entfernten \glspl{repository}. Im Kontext von Git\ref{git} beschreibt dieses
-aber eher das wechseln zu einem konkreten \glspl{commit}. Das kann unter Git
-ein \gls{branch}, \gls{tag} oder eine \textit{Commit-ID} sein. Unter allen
-erwähnten Versionskontrollsystemen gibt es einen gleichnamigen Befehl.
+erwähnten Versionskonrollsysteme, z.B. \acrshort{cvs} oder \acrshort{svn}
+(Abschnitt \ref{cha:Versionsverwaltung}) das Erstellen einer lokalen Kopie
+eines entfernten \glspl{repository}. Im Kontext von Git(Abschnitt
+\ref{cha:git}) beschreibt dieses aber eher das Wechseln zu einem konkreten
+\gls{commit}. Das kann unter Git ein \gls{branch}, \gls{tag} oder eine
+\textit{Commit-ID}(Abschnitt \ref{sec:commit}) sein. Unter vielen
+Versionskontrollsystemen gibt es einen gleichlautenden Befehl.
 
 \subsection{Clone}\label{sec:clone}
 Was z.B. unter \acrshort{svn} oder \acrshort{cvs} der \textit{checkout} eines
 entfernten \glspl{repository} ist, ist unter Git das \textit{Clonen} eines
-entfernten \glspl{repository}. Es bezeichnet also das herunterladen eines
+entfernten \glspl{repository}. Es bezeichnet also das Herunterladen eines
 Git-Repositorys von einer Quelle mit der vollständigen Historie und allen
 enhaltenen \glspl{commit}. Es erstellt also sozusagen einen Klon des
-ursprünglichen \gls{repository}.\cite[S.~21]{gitosp}
+ursprünglichen \glspl{repository}.\cite[S.~21]{gitosp}
 
 \subsection{Working Tree}\label{sec:workingtree} Es gibt unterschiedliche
 Begriffe für den \textit{Working Tree}. So werden synonyme Begriffe wie
@@ -394,7 +395,7 @@ oder \textit{Staging Area} genannt\cite[S.~11]{progit}.
 \subsection{Lokal}\label{sec:local}
 Frühe Versionskontrollsysteme wie \acrshort{rcs} oder \acrshort{cssc} arbeiten
 ausschließlich auf dem lokalen Dateisystem und sind nicht dafür entwickelt, ein
-kollaboratives Arbeiten zu unterstützen. Der hauptsächliche Anwendungsfall ist
+kollaboratives Arbeiten zu unterstützen. Der hauptsächliche Anwendungsfall ist,
 einem Entwickler eine lokale Versionsverwaltung zu ermöglichen. Die Inhalte
 können weiteren Personen nicht mit Mitteln des Versionskontrollsystems zur
 Verfügung gestellt werden.
@@ -420,9 +421,9 @@ Werkzeugen.\cite[S.~38-40]{hagen:1678}
 \subsection{Verteilt}\label{sec:decentral}
 Versionskontrollsysteme, die verteilt arbeiten werden im englischen
 \acrfull{dvcs} genannt und zeichnen sich dadurch aus, dass der Benutzer lokal
-ein vollwertiges \gls{repository} zur Verfügung hat, ohne das eine
+ein vollwertiges \gls{repository} zur Verfügung hat, ohne dass eine
 Serverkomponente ein zentrales zur Verfügung stellen muss. Das ist aber nicht
-zu verwechseln mit lokalen Versionskontrollsystemen wie \acrshort{rcs} oder
+zu verwechseln mit lokalen Versionskontrollsystemen, wie \acrshort{rcs} oder
 \acrshort{sccs}. Der Unterschied ist, dass verteilte Systeme das gleichzeitige
 Arbeiten von mehreren Usern stärker unterstützen als zentrale
 \acrshort{vcs:de}. Dabei ist es unerheblich, ob Benutzer gleichzeitig an
@@ -433,20 +434,20 @@ Ein Auszug, aus den von Jez Humble und David Farley in \cite[S.~393-394]{cd}
 beschriebenen Eigenschaften eines \acrshort{dvcs} lautet wie folgt:
 
 \begin{itemize}
-\item Es ist keine Serverkomponente, nötig um einen Commit in ein lokales
+\item Es ist keine Serverkomponente nötig, um einen \gls{commit} in ein lokales
 \gls{repository} durchzuführen.
 \item \glspl{repository} verschiedener Benutzer und Quellen können miteinander
 verbunden werden und deren Inhalte verglichen, integriert oder verändert werden.
-\item Um Veränderungen durchzuführen und in einem \ref{sec:commit} zusammenzufassen
+\item Um Veränderungen durchzuführen und in einem \gls{commit} zusammenzufassen,
 ist es unerheblich, ob eine Netzwerkverbindung zu einer möglichen Quelle besteht.
-\item Änderungen können an eingeschränkte Nutzergruppen veröffentlicht werden
+\item Änderungen können an eingeschränkte Nutzergruppen veröffentlicht werden,
 ohne daß jemand gezwungen ist, diese zu übernehmen.
 \item Dadurch, dass jeder Benutzer eine eigene vollwertige Kopie des
 \glspl{repository} hat, sind \acrshort{dvcs} robuster gegenüber Datenverlusten.
 Darüberhinaus können Benutzer dadurch lokal branches anlegen und ggf.
 Experimente durchführen, ohne diese immer in ein zentrales Repository zu
 übertragen.  Das sorgt zusätzlich, durch eine geringere Beanspruchung von
-zentralen Ressource, für eine bessere Skalierbarkeit.
+zentralen Ressourcen, für eine bessere Skalierbarkeit.
 \item Commits, Branches und Tags können lokal sortiert, geordnet und ggf.
 Zusammengefasst werden, bevor die Übertragung in ein gemeinsam genutztes
 \gls{repository} durchgeführt wird.\footnote{Das wird im Kontext von Git als
@@ -459,15 +460,16 @@ mit einem zusätzlichen Befehl z.B. \textit{push}. Dabei können die Daten belie
 oft in weitere \glspl{repository} übertragen werden.
 
 \subsection{Streaming}\label{sec:streaming}
-An dieser Stelle sei noch grob auf Versionskontrollsysteme eingegangen, die auf
-Datenströmen basieren. Ein populäres Beispiel ist das kommerziell vermarktete
-ClearCase von IBM. Das zentrale Merkmal hierbei ist, das \textit{Branches}
-durch sogenannte Streams ersetzt wurden. Das ermöglicht eine Baumstruktur von
-abhängigen Zweigen, die durch eine Vererbungsstruktur verbunden sind. Es können
-Änderungen innerhalb eines Arbeitsbereichs durchgeführt werden, ohne andere
-Benutzer zu beeinflussen. Nach Abschluss dieser Arbeiten, können diese
-veröffentlicht bzw.  \textit{promoted} werden. Diese werden dann allen
-abhängigen Streams gleichzeitig zur Verfügung gestellt. Das kann hilfreich
-sein, um z.B.  grundlegende Softwarebibliotheken auszutauschen oder wichtige
-Fehlerbehebungen durchzuführen. In herkömmlichen \acrshort{vcs:de} müssen
-solche Änderungen einzeln auf jeden Branch übertragen werden.
+An dieser Stelle sei oberflächlich noch auf Versionskontrollsysteme
+eingegangen, die auf Datenströmen basieren. Ein populäres Beispiel ist das
+kommerziell vermarktete ClearCase von IBM. Das zentrale Merkmal hierbei ist,
+dass \textit{Branches} durch sogenannte Streams ersetzt wurden. Das ermöglicht
+eine Baumstruktur von abhängigen Zweigen, die durch eine Vererbungsstruktur
+verbunden sind. Es können Änderungen innerhalb eines Arbeitsbereichs
+durchgeführt werden, ohne andere Benutzer zu beeinflussen. Nach Abschluss
+dieser Arbeiten, können diese veröffentlicht, bzw. \textit{promoted} werden.
+Diese werden dann allen abhängigen Streams gleichzeitig zur Verfügung gestellt.
+Das kann hilfreich sein, um z.B.  grundlegende Softwarebibliotheken
+auszutauschen oder wichtige Fehlerbehebungen durchzuführen. In herkömmlichen
+\acrshort{vcs:de} müssen solche Änderungen einzeln auf jeden Branch übertragen
+werden.
