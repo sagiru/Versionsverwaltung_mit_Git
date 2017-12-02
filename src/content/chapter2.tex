@@ -267,23 +267,22 @@ zusammengefasst. Diese werden mit Namen, Zeitpunkt und Beschreibung dem
 \gls{repository} als \gls{commit} hinzugefügt. Unter Git referenziert ein
 \gls{commit} immer einen eindeutigen Zustand aller verwalteten Dateien. Diese
 Referenz enhält eine inhaltsabhängige, eindeutige, 160-Bit lange Prüfsumme, die
-auch als \textit{Commit-ID} bezeichnet wird(Abschnitt \ref{sec:kernel} auf Seite
-\pageref{sec:kernel}). Die inhaltsabhängige Prüfsumme gewährleistet auch, dass
-Inhalte nachträglich nicht unbemerkt verändert werden können. Die Prüfsumme
-wird mit dem \textit{Secure Hash Algorithm} (\gls{SHA-1})
-erzeugt.\cite[S.~20-21]{gitosp}
+auch als \textit{Commit-ID} bezeichnet wird(Abschnitt \ref{sec:kernel}). Die
+inhaltsabhängige Prüfsumme gewährleistet auch, dass Inhalte nachträglich nicht
+unbemerkt verändert werden können. Die Prüfsumme wird mit dem \textit{Secure
+Hash Algorithm} (\gls{SHA-1}) erzeugt.\cite[S.~20-21]{gitosp}
 
 \subsection{Tag}\label{sec:tag}
 Die meisten Versionskontollsysteme benutzen Markierungen (engl. Tag), um
 bestimmte Stände des Repositorys mit Namen zu versehen. Üblicherweise werden
 zur Bezeichnung von Markierungen Versionsstände genutzt, wie z.B.
-2.6.12-rc2(Abschnitt \ref{sec:kernel} auf Seite \pageref{sec:kernel}), v1.0
-oder ähnliche. Unter Git sind Tags lediglich symbolische Namen für Referenzen
-zu einzelnen Commits. Es gibt hier zwei verschiedene Arten von Commits. Zum
-Einen leichtgewichtige Tags (\textit{lightweight tags}), die keine weiteren
-Informationen außer der Versionsnummer enthalten und ausführlichere Tags
-(\textit{annotated}), die darüber hinaus noch Metadaten wie Autor, Beschreibung
-oder ggf. eine Signatur mit GPG enthalten.\cite[S.~48]{progit}
+2.6.12-rc2(Abschnitt \ref{sec:kernel}), v1.0 oder ähnliche. Unter Git sind Tags
+lediglich symbolische Namen für Referenzen zu einzelnen Commits. Es gibt hier
+zwei verschiedene Arten von Commits. Zum Einen leichtgewichtige Tags
+(\textit{lightweight tags}), die keine weiteren Informationen außer der
+Versionsnummer enthalten und ausführlichere Tags (\textit{annotated}), die
+darüber hinaus noch Metadaten wie Autor, Beschreibung oder ggf. eine Signatur
+mit GPG enthalten.\cite[S.~48]{progit}
 
 \subsection{Branch}\label{sec:branch}
 Ein Repository enthält i.d.R. mindestens einen zentralen Zweig(engl. Branch), auf dem
@@ -308,16 +307,15 @@ das Verzeichnis \textit{trunk} und unter Git einfach die Referenz auf den Namen
 
 \subsection{Merge}\label{sec:merge}
 Wenn mehrere Entwickler an einem \gls{repository} arbeiten(Abschnitt
-\ref{sec:collaboration} auf Seite \pageref{sec:collaboration}), entstehen an
-einer gemeinsamen Basis häufig parallele Abzweige. An diesen wird gleichzeitig
-gearbeitet und dadurch laufen diese Zweige u.U. auseinander. Das Spätere wieder
-Zusammenführen dieser Zweige, bezeichnet man als Merge. Wie auch andere
-Versionskontrollsysteme bietet Git hier mit \textit{merge}, \textit{mergetool},
-\textit{rebase} und \textit{cherry-pick} eine umfangreiche
-Unterstützung\cite[S.~vii]{gitwf}. Beim zusammenführen der beiden Zweige, z.B.
-\textit{topic} und \textit{master} ensteht, wie in Abbildung \ref{fig:merge}
-gezeigt ein sogenannter Merge-Commit. Dieser hat seinen Ursprung in den beiden
-vorhergehenden Knoten dieser Zweige.
+\ref{sec:collaboration}), entstehen an einer gemeinsamen Basis häufig parallele
+Abzweige. An diesen wird gleichzeitig gearbeitet und dadurch laufen diese
+Zweige u.U. auseinander. Das Spätere wieder Zusammenführen dieser Zweige,
+bezeichnet man als Merge. Wie auch andere Versionskontrollsysteme bietet Git
+hier mit \textit{merge}, \textit{mergetool}, \textit{rebase} und
+\textit{cherry-pick} eine umfangreiche Unterstützung\cite[S.~vii]{gitwf}. Beim
+zusammenführen der beiden Zweige, z.B.  \textit{topic} und \textit{master}
+ensteht, wie in Abbildung \ref{fig:merge} gezeigt ein sogenannter Merge-Commit.
+Dieser hat seinen Ursprung in den beiden vorhergehenden Knoten dieser Zweige.
 
 \begin{figure}[hb]
   \centering
@@ -337,8 +335,7 @@ können aus einem \textit{Fork Repository} importiert werden. Das \textit{Fork
 Repository} dient zur Entkopplung des Haupt-Repositorys. So können größere
 Umbauten, Merges oder Features unabhängig vom Haupt-Repository entwickelt
 werden\cite[S.~123]{gitwf}. Eine vergleichbare Vorgehensweise findet man im
-Repository des Linux Kernels\cite{link:linuxgit} aus Abschnitt \ref{sec:kernel}
-auf Seite \pageref{sec:kernel}.
+Repository des Linux Kernels\cite{link:linuxgit} aus Abschnitt \ref{sec:kernel}.
 
 \subsection{Repository}\label{sec:repository}
 Das Repository ist ein Datenspeicher, in dem gemeinsame Dateien eines Projekts
@@ -364,8 +361,7 @@ veröffentlichte Version im Repository.
 muss man hier zwischen den bisher erwähnten Versionskontrollsystemen und Git
 unterscheiden. Der Begriff \textit{checkout} beschreibt im Rahmen der bisher
 erwähnten Versionskonrollsystemen z.B. \acrshort{cvs} oder \acrshort{svn}
-(Abschnitt \ref{cha:Versionsverwaltung} auf Seite
-\pageref{cha:Versionsverwaltung}) das Erstellen einer lokalen Kopie eines
+(Abschnitt \ref{cha:Versionsverwaltung}) das Erstellen einer lokalen Kopie eines
 entfernten \glspl{repository}. Im Kontext von Git\ref{git} beschreibt dieses
 aber eher das wechseln zu einem konkreten \glspl{commit}. Das kann unter Git
 ein \gls{branch}, \gls{tag} oder eine \textit{Commit-ID} sein. Unter allen
@@ -414,7 +410,7 @@ i.d.R. direkt. Das bedeutet, der Benutzer holt mit dem Client die Dokumente aus
 dem zentralen Repository, führt seine Änderungen durch und fasst diese in einem
 \gls{commit} zusammen. Hierfür stellt das \acrlong{vcs:de} entsprechende
 Unterstützung bereit. So eben für die o.a. Versionskontrollsysteme einen Befehl
-\textit{checkout}(Abschnitt \ref{sec:checkout} auf Seite \ref{sec:checkout})
+\textit{checkout}(Abschnitt \ref{sec:checkout})
 zum Holen der Dokumente und \textit{commit}(Abschnitt \ref{sec:commit} auf
 Seite \pageref{sec:commit}), zum Zusammenfassen und gleichzeitigen Übertragen
 an die Serverkomponente. Die Bearbeitung der Dokumente im lokalen

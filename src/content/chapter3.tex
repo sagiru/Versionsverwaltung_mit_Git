@@ -103,8 +103,7 @@ vorgemerkt ist und zum Anderen, dass sich noch eine Datei im Verzeichnis
 befindet, die wir noch nicht mit Git verwalten. Hierbei ist anzumerken, dass
 Git auch die vorgemerkte Datei noch nicht wirklich versioniert. Dazu müssen wir
 zuerst einen Commit erstellen. Darauf wie Git hier unterscheidet, wird im
-Späteren (Abschnitt \ref{sec:trees} auf Seite \pageref{sec:trees}) nochmal
-eingegangen.
+Späteren (Abschnitt \ref{sec:trees}) nochmal eingegangen.
 
 Der erste Commit in dem angelegten Repository wird mit dem Befehl \texttt{\$
 git commit} erzeugt. Eine Bemerkung zu dem Commit kann, je nach
@@ -133,9 +132,8 @@ nicht selten darin, dass viele Stunden Arbeit investiert werden müssen diese zu
 bereinigen.\cite[S.~37]{cd}
 
 Nachdem der erste Commit erzeugt wurde, kann dieser nun mit \texttt{\$ git
-show} (Abschnitt \ref{sec:arch} auf Seite \pageref{sec:arch}) betrachtet
-werden. In diesem Fall wurde beispielhaft eine etwas ausführlichere Bemerkung
-für den Commit ewählt:
+show} (Abschnitt \ref{sec:arch}) betrachtet werden. In diesem Fall wurde
+beispielhaft eine etwas ausführlichere Bemerkung für den Commit ewählt:
 
 \lstinputlisting[
   label=lst:git_show_first_commit.lst,
@@ -145,12 +143,11 @@ für den Commit ewählt:
 
 Mit \texttt{\$ git show} können alle wichtigen Informationen eines Commits
 eingesehen werden.  Neben Zeitpunkt, Autor und Beschreibung auch die
-\textit{Commit-ID} (Abschnitt \ref{sec:commit} auf Seite \pageref{sec:commit}).
-Die weiteren Informationen werden in einem Format namens
-\textit{Unified-Diff}\footnote{Details zu dem \textit{Unified-Diff} Format
-stellen die Autoren von \textit{GNU diffutils} unter
-\cite[S.~12-13]{paper:diffutils} zur Verfügung.} dargestellt, auf welches hier
-nicht weiter eingegangen wird.\cite[25]{gitosp}
+\textit{Commit-ID} (Abschnitt \ref{sec:commit}).  Die weiteren Informationen
+werden in einem Format namens \textit{Unified-Diff}\footnote{Details zu dem
+\textit{Unified-Diff} Format stellen die Autoren von \textit{GNU diffutils}
+unter \cite[S.~12-13]{paper:diffutils} zur Verfügung.} dargestellt, auf welches
+hier nicht weiter eingegangen wird.\cite[25]{gitosp}
 
 Wir fügen nun die zweite Datei mit einem weiteren \texttt{\$ git add} hinzu:
 
@@ -189,8 +186,7 @@ Seite \pageref{sec:arch}).
 Erwähnenswert ist noch das Git, im Gegensatz zu anderen
 Versionskontrollsystemen, die Dateiberechtigungen speichert. Wer bei den
 letzten der beiden Commits auf die Ausgabe geachtet hat (Listing
-\ref{lst:commit_git-stats} auf Seite \pageref{lst:commit_git-stats}) dem ist
-vielleicht folgende Zeile aufgefallen:
+\ref{lst:commit_git-stats}) dem ist vielleicht folgende Zeile aufgefallen:
 
 \lstinputlisting[
   label=lst:create_mode,
@@ -387,8 +383,8 @@ Object, Commit und Tag.
 \subsubsection{Trees und Blobs}\label{sec:treeblobobjects}
 Zum Speichern von Verzeichnissen verwendet Git ein sogenanntes
 \textit{Tree-Object}. Eine Ausgabe der Dateistruktur aus dem verwendeten
-Beispiel (Abschnitt \ref{sec:first_commits} auf Seite
-\pageref{sec:first_commits}) erhält man mit dem Linux Befehl \texttt{\$ tree}:
+Beispiel(Abschnitt \ref{sec:first_commits}) erhält man mit dem Linux Befehl
+\texttt{\$ tree}:
 
 \lstinputlisting[
   label=lst:tree.lst,
@@ -430,14 +426,14 @@ wenn wir uns das \textit{tree} Objekt zu dem Ordner \texttt{helpers} anschauen:
 \subsubsection{Commit}\label{sec:commitobject}
 Ein Commit-Objekt enthält, neben den bereits bekannten Daten aus Listing
 \ref{lst:git_show_first_commit.lst} eine Referenz zu \textbf{einem}
-\textit{tree} und ggf. einem vorhergehenden Commit (engl.  \textit{parent}). Im Fall
-eines Merge-Commits (Abbildung \ref{fig:merge} auf Seite \pageref{fig:merge})
-werden enstprechend so viele Vorgänger referenziert wie branches
-zusammengeführt wurden. Hier wird jeweils auf \gls{HEAD} des jeweiligen
-Branches referenziert. Der in einem Commit referenzierte \textit{tree} ist,
-immer ein Verweis auf einen sogenannten \textit{top-level-tree} (\texttt{/}).
-Dieser Verweis referenziert die Wurzel des entstandenen Objektbaums und enhält
-keinen Dateinamen(Abbildung \ref{fig:objectmodel} auf Seite \pageref{fig:objectmodel}).
+\textit{tree} und ggf. einem vorhergehenden Commit (engl.  \textit{parent}). Im
+Fall eines Merge-Commits (Abbildung \ref{fig:merge}) werden enstprechend so
+viele Vorgänger referenziert wie branches zusammengeführt wurden. Hier wird
+jeweils auf \gls{HEAD} des jeweiligen Branches referenziert. Der in einem
+Commit referenzierte \textit{tree} ist, immer ein Verweis auf einen sogenannten
+\textit{top-level-tree} (\texttt{/}).  Dieser Verweis referenziert die Wurzel
+des entstandenen Objektbaums und enhält keinen Dateinamen(Abbildung
+\ref{fig:objectmodel}).
 
 Dadurch das Jeder Commit seinen vorhergehenden Commit referenziert entsteht ein
 gerichteter azyklicher Graph bei dem ein Koten durch einen Commit und Kanten
@@ -462,7 +458,7 @@ nicht von dem Autor selbst in das aktuelle Repository integiert werden(Listing
 
 \subsubsection{Tag}\label{sec:tagobject}
 Ein \gls{tag} markiert einzelne Commits. Hierzu werden i.d.R. Versionsnummern
-als Namen verwendet (Abschnitt \ref{sec:tag} auf Seite \ref{sec:tag}). Neben
+als Namen verwendet (Abschnitt \ref{sec:tag}). Neben
 der \textit{SHA-1-ID} des zu referenzierenden Commits, wird ein Tagname, der
 Typ und der Autor (\textit{tagger}) mit Name und Mailadresse gespeichert. Je
 nach Art des Tags kann optional noch eine Beschreibung angegeben werden. Bei
@@ -546,12 +542,11 @@ einer der Autoren von \cite{progit}, spricht in einem seiner
 Vorträge\cite{link:talesoftrees} von drei Bäumen \textit{HEAD}, \textit{Index}
 und dem \textit{Work Tree}.
 
-Den \textit{Work Tree} (Abschnitt \ref{sec:workingtree} auf Seite
-\pageref{sec:workingtree}) haben wir bereits als Arbeitsbereich angesprochen.
-Mit \gls{HEAD} ist neben dem Verweis auf den neuesten commit auch i.w.S. das
-Repository gemeint. Das \gls{repository} dient als Datenspeicher für alle
-Commits, deren Inhalte und Historie. Der Index(Abschnitt \ref{sec:index} auf
-Seite \pageref{sec:index}) in Git stellt, im Vergleich zu voherigen
+Den \textit{Work Tree} (Abschnitt \ref{sec:workingtree}) haben wir bereits als
+Arbeitsbereich angesprochen.  Mit \gls{HEAD} ist neben dem Verweis auf den
+neuesten commit auch i.w.S. das Repository gemeint. Das \gls{repository} dient
+als Datenspeicher für alle Commits, deren Inhalte und Historie. Der
+Index(Abschnitt \ref{sec:index}) in Git stellt, im Vergleich zu voherigen
 Versionskontrollsystemen, eine Neuerung dar. Der Index stellt einen Bereich
 zwischen dem \gls{repository} und dem Arbeitsbereich dar. Er dient dazu um den
 nächsten \gls{HEAD} bzw. Commit vorzubereiten. Die Kommandos \texttt{\$git
