@@ -350,7 +350,11 @@ zusammengefassten Anderungen eine Historie.\cite[S.~38]{hagen:1678}.
 \subsection{HEAD}\label{sec:head}
 Eine Referenz, die auf den letzten Commit im aktuellen Repository bzw. Branch
 verweist. Hier muss zwischen verschiedenen Versionskontrollsystemen
-unterschieden werden. So ist unter Git die HEAD Version eine symbolische
+unterschieden werden. So ist unter Git die HEAD\footnote{Git benutzt eine
+spezielle Syntax für HEAD-Referenzen. So können Vorgänger(Abschnitt
+\ref{sec:commitobject}) beispielsweise mit HEAD\^{} referenziert werden. Das
+Zeichen \^{} dient dabei als Zähler. So bezeichntet HEAD\^{}\^{} den zweiten Vorgäner und
+ist Aquivalent zu HEAD\~{}2.\cite[S.~65]{gitosp}} Version eine symbolische
 Referenz auf die letzte Version des aktuell lokal genutzten Branches. Diese ist
 also abhängig von den gerade vorhandenen Daten im Working Tree von
 Git\cite[S.~20]{gitosp}. Für SVN hingegen bezeichnet HEAD die letzte
