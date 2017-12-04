@@ -18,11 +18,7 @@ Die in den Beispielen eingesetzte Version von Git ist 2.15.0. Der folgende
 Abschnitt basiert zum Zeil auf den Ausführungen der Autoren aus
 \cite[S.22-57]{gitosp}
 
-\lstinputlisting[
-  label=lst:gitversion,
-  caption={Version von Git ausgeben},
-  captionpos=none,
-]{listings/git_version.lst}
+\eqlst{listings/git_version.lst}{lst:gitversion}{Die Version von Git ausgeben}
 
 \subsection{Konfiguration}\label{gitconfig}
 Zu Beginn sollten einige grundlegende Konfigurationen vorgenommen werden. So
@@ -32,11 +28,7 @@ farbliche Darstellung der Ausgaben durchaus hilfreich. Hier kann Git so
 konfiguriert werden, dass die Farbausgabe automatisch unterdrückt wird, sollte
 die Ausgabe in eine Datei umgeleitet werden.
 
-\lstinputlisting[
-  label=lst:gitinitconfig,
-  caption={Erste Git Konfiguration},
-  captionpos=none,
-]{listings/git_init_config.lst}
+\eqlst{listings/git_init_config.lst}{lst:gitinitconfig}{Die erste Git Konfiguration}
 
 Die \textit{global} eingestellten Optionen können ebenfalls direkt in der Datei
 \texttt{\textasciitilde/.gitconfig} eingesehen und bearbeitet werden.
@@ -49,11 +41,7 @@ Repository unter dem Pfad \texttt{.git/config}.
 Damit Dateien nun mit Git versioniert werden können, muss wie folgt ein
 (lokales) \gls{repository} erstellt werden:
 
-\lstinputlisting[
-  label=lst:gitinit,
-  caption={Repository anlegen},
-  captionpos=none,
-]{listings/git_init.lst}
+\eqlst{listings/git_init.lst}{lst:gitinit}{Ein lokales Repository anlegen}
 
 Sollte das Verzeichnis \texttt{git-example.git} noch nicht existieren, wird
 es angelegt. Zusätzlich wird innerhalb von \texttt{git-example.git} noch ein
@@ -64,11 +52,7 @@ benötigt.
 Um den Status des aktuell erzeugten \glspl{repository} auszugeben kann der
 Befehl \texttt{\$ git status} verwendet werden:
 
-\lstinputlisting[
-  label=lst:gitstatus,
-  caption={Status des Repositorys ausgeben},
-  captionpos=none,
-]{listings/git_status.lst}
+\eqlst{listings/git_status.lst}{lst:gitstatus}{Den Status eines Repositorys ausgeben}
 
 Die von Git erzeugte Ausgabe macht darauf aufmerksam, dass noch keine Commits
 erzeugt wurden und, dass man nun neue Dateien erstellen und hinzufügen kann.
@@ -82,21 +66,13 @@ erzeugten Repository angelegt werden. Wer diese Dateien nicht herunterladen
 kann oder möchte, darf selbstverständlich auch einfach Dateien mit gleichem
 Namen und beliebigem Inhalt erstellen.
 
-\lstinputlisting[
-  label=lst:downloads,
-  caption={Herunterladen der Beispieldateien},
-  captionpos=none,
-]{listings/downloads.lst}
+\eqlst{listings/downloads.lst}{lst:downloads}{Herunterladen der Beispieldateien}
 
 Ab jetzt können die Dateien mit Git verwaltet werden. Ein erstes Hinzufügen
 einer Datei mit dem Befehl \texttt{\$ git add LICENSE}, führt zu folgender
 Ausgabe von \texttt{\$ git status}:
 
-\lstinputlisting[
-  label=lst:add_first_file,
-  caption={Eine erste Datei hinzufügen},
-  captionpos=none,
-]{listings/add_first_file.lst}
+\eqlst{listings/add_first_file.lst}{lst:add_first_file}{Eine erste Datei hinzufügen}
 
 Die Ausgabe macht darauf aufmerksam, dass zum Einen, eine neue Datei zum Commit
 vorgemerkt ist und zum Anderen, dass sich noch eine Datei im Verzeichnis
@@ -114,10 +90,7 @@ getrennt durch eine Leerzeile, alle weiteren Zeilen als ausführliche Beschreibu
 verwendet. Dieses Format ist, i.d.R. in den meisten Versionskontrollsystemen
 üblich.
 
-\lstinputlisting[
-  label=lst:git_first_commit,
-  caption={Der erste Commit},
-]{listings/git_first_commit.lst}
+\eqlst{listings/git_first_commit.lst}{lst:git_first_commit}{Ein erster Commit}
 
 Darüber hinaus bietet es sich an, beim Erstellen solcher Bemerkungen gewisse
 Regeln einzuhalten. Beispielsweise beschreiben Jez Humble und David Farley in
@@ -134,11 +107,8 @@ Nachdem der erste Commit erzeugt wurde, kann dieser nun mit \texttt{\$ git
 show} (Abschnitt \ref{sec:arch}) betrachtet werden. In diesem Fall wurde
 beispielhaft eine etwas ausführlichere Bemerkung für den Commit ewählt:
 
-\lstinputlisting[
-  label=lst:git_show_first_commit.lst,
-  caption={Anzeige des ersten Commits},
-  captionpos=none,
-]{listings/git_show_first_commit.lst}
+\eqlst{listings/git_show_first_commit.lst}{lst:git_show_first_commit}{Anzeige
+des ersten Commits}
 
 Mit \texttt{\$ git show} können alle wichtigen Informationen eines Commits
 eingesehen werden.  Neben Zeitpunkt, Autor und Beschreibung auch die
@@ -150,18 +120,13 @@ hier aber nicht weiter eingegangen wird.\cite[25]{gitosp}
 
 Wir fügen nun die zweite Datei mit einem weiteren \texttt{\$ git add} hinzu:
 
-\lstinputlisting[
-  label=lst:git_add_second_file,
-  caption={Eine weitere Datei hinzufügen},
-  captionpos=none,
-]{listings/git_add_second_file.lst}
+\eqlst{listings/git_add_second_file.lst}{lst:git_add_second_file}{Eine weitere
+Datei hinzufügen}
 
 Anschließend erzeugen wir einen weiteren \gls{commit} mit:
 
-\lstinputlisting[
-  label=lst:commit_git-stats,
-  caption={Hinzufügen einer weiteren Datei},
-]{listings/commit_git-stats.lst}
+\eqlst{listings/commit_git-stats.lst}{lst:commit_git-stats}{Hinzufügen einer
+weiteren Datei}
 
 Mit diesen beiden zuvor ausgeführten Commits, haben wir nun eine, wenn auch
 kurze, Historie erstellt. Um diese zu untersuchen, dienen die Befehle
@@ -172,10 +137,8 @@ formatieren.} oder \texttt{\$ git log}. Wir werden in Abschnitt \ref{sec:arch}
 weiter darauf eingehen, aber für diesen Fall ist \texttt{\$ git whatchanged}
 ausreichend:
 
-\lstinputlisting[
-  label=lst:first_git_whatchanged,
-  caption={Untersuchen der Historie mit \texttt{whatchanged}},
-]{listings/first_git_whatchanged.lst}
+\eqlst{listings/first_git_whatchanged.lst}{lst:first_git_whatchanged}{Untersuchen
+der Historie mit \texttt{whatchanged}}
 
 Die Ausgabe wird im sogenannten \textit{raw} Format dargestellt. Es werden alle
 Commits mit Informationen über den Autor, Commit-ID, Zeit und den veränderten
@@ -188,22 +151,15 @@ Versionskontrollsystemen, die Dateiberechtigungen speichert. Die Ausgabe des
 als letztes durchgefühten Commits(Listing \ref{lst:commit_git-stats}), enthielt
 die folgende Zeile:
 
-\lstinputlisting[
-  label=lst:create_mode,
-  caption={Create Mode},
-  captionpos=none,
-]{listings/create_mode.lst}
+\eqlst{listings/create_mode.lst}{lst:create_mode}{Berechtigungen einer Datei}
 
 Diese Ausgabe besagt, das es sich hierbei um eine normale Datei handelt (100),
 die mit einer, unter Unix üblichen, Berechtigung (664) angelegt ist. Damit
 diese Datei aber entsprechend ausführbar ist, müssen wir noch einen weiteren
 Commit, mit einer Änderung an den Dateiberechtigungen, erzeugen:
 
-\lstinputlisting[
-  label=lst:git_commit_all,
-  caption={Commit mit allen Änderungen},
-  captionpos=none,
-]{listings/git_commit_all.lst}
+\eqlst{listings/git_commit_all.lst}{lst:git_commit_all}{Einen Commit mit allen
+Änderungen anzeigen}
 
 Mit dem zuvor ausgeführten Befehl haben wir einen Commit erzeugt, ohne unsere
 Änderungen vorher mit \texttt{\$ git add} hinzuzufügen. Der Parameter
@@ -216,18 +172,13 @@ werden.
 Abschließend zu diesem Abschnitt versehen wir den letzten Commit noch mit einer
 Markierung, bzw. \gls{tag}.
 
-\lstinputlisting[
-  label=lst:git_first_tag,
-  caption={Anlegen eines Tags},
-]{listings/git_first_tag.lst}
+\eqlst{listings/git_first_tag.lst}{lst:git_first_tag}{Anlegen eines Tags}
 
 Hiermit haben wir einen \gls{tag} mit dem Namen \texttt{tags/0.0.1} angelegt,
 der den letzten Commit (\gls{HEAD}) referenziert:
 
-\lstinputlisting[
-  label=lst:git_list_first_tag,
-  caption={Auflisten von Tags},
-]{listings/git_list_first_tag.lst}
+\eqlst{listings/git_list_first_tag.lst}{lst:git_list_first_tag}{Auflisten von
+lokalen Tags}
 
 Auf den weiteren Umgang mit Tags und welche Arten es gibt, wird in den
 Abschnitten \ref{sec:managetags} und \ref{sec:tagobject} weiter eingegangen.
@@ -253,11 +204,7 @@ Unterstützt werden \textit{ssh,git,http[s],ftp[s]} und \textit{file}. Eine
 entsprechende Url kann neben dem Protokoll noch den Pfad des Repositorys, einen
 Benutzernamen oder einen Port enthalten:
 
-\lstinputlisting[
-  label=lst:git_url,
-  caption={Git Repository-Url },
-  captionpos=none,
-]{listings/git_url.lst}
+\eqlst{listings/git_url.lst}{lst:git_url}{Git Repository Url syntax}
 
 Besonderheiten gibt es für das Klonen lokaler Repositorys und solcher die über
 über \gls{sshell}(\acrshort{ssh}) geklont werden. Hier gibt es jeweils eine
@@ -269,28 +216,19 @@ eines Pfads \texttt{/pfad/zum/repo}.
 Das erstellte Beispiel, aus Abschnitt \ref{sec:first_commits}, ist als
 Repository verfügbar und kann mit folgendem Befehl geklont werden.
 
-\lstinputlisting[
-  label=lst:git_clone,
-  caption={Repository klonen},
-  captionpos=none,
-]{listings/git_clone.lst}
+\eqlst{listings/git_clone.lst}{lst:git_clone}{Ein Repository klonen}
 
 Git speichert die Herkunft des entfernten \glspl{repository} ebenfalls in der
 Datei \texttt{.git/config}:
 
-\lstinputlisting[
-  label=lst:remote_reference,
-  caption={Verfolgtes Repository},
-  captionpos=none,
-]{listings/remote_reference.lst}
+\eqlst{listings/remote_reference.lst}{lst:remote_reference}{Konfiguration eines
+entfernten Repositorys anzeigen}
 
 Die gleichen Informationen nur mit Hilfe eines Git Befehls erhält man mit
 \texttt{\$ git remote}:
 
-\lstinputlisting[
-  label=lst:git_remote,
-  caption={Verfolgtes Repository mit \texttt{\$ git remote}},
-]{listings/git_remote.lst}
+\eqlst{listings/git_remote.lst}{lst:git_remote}{Informationen eines entfernten
+Repositorys anzeigen}
 
 In Listing \ref{lst:git_remote} wird zum Einen der Name, in diesem Fall
 \textit{origin}, ausgegeben und zum Anderen, wegen dem Parameter \texttt{-v},
@@ -311,10 +249,7 @@ Um Daten in ein entferntes Repository zu übertragen, wird der Befehl \texttt{\$
 git push} benutzt. Als Standard Ziel wird das Repository verwendet, von dem auch
 ursprünglich die Kopie erstellt wurde\footnote{I.d.R. ist das \textit{origin}.}.
 
-\lstinputlisting[
-  label=lst:git_push,
-  caption={Änderungen übertragen},
-]{listings/git_push.lst}
+\eqlst{listings/git_push.lst}{lst:git_push}{Änderungen veröffentlichen}
 
 In Listing \ref{lst:git_remote} wurde weder der Name des entfernten Repositorys,
 noch des verwendeten Branches angegeben. In diesem Fall entscheidet Git hier
@@ -323,21 +258,16 @@ push origin master}. Wenn der Branch in dem entfernten Repository einen anderen
 Namen hat oder ein neuer Branch unter einem anderen Namen angelegt werden soll,
 kann dieser Vorgang wie in Listing \ref{lst:git_push_other} durchgeführt werden:
 
-\lstinputlisting[
-  label=lst:git_push_other,
-  caption={Änderungen in einen anderen Branch übertragen},
-]{listings/git_push_other.lst}
+\eqlst{listings/git_push_other.lst}{lst:git_push_other}{Änderungen in einen
+anderen Branch übertragen}
 
 Mit dem \texttt{push} Befehl können aber auch entfernte Referenzen, wie
 Branches oder Tags gelöscht werden. Dazu muss neben dem Namen des entfernten
 Repositorys, eine leere Referenz mit dem Zielbranch angeben:
 werden.\cite[S.~153-155]{gitosp}
 
-\lstinputlisting[
-  label=lst:git_push_remove,
-  caption={Remote Referenz löschen},
-  captionpos=none,
-]{listings/git_push_remove.lst}
+\eqlst{listings/git_push_remove.lst}{lst:git_push_remove}{Eine entfernte
+Referenz löschen}
 
 \subsubsection{Änderungen herunterladen}
 Um Änderungen aus entfernten Repositorys herunterzuladen existieren zwei
@@ -346,10 +276,7 @@ Der hauptsächliche Unterschied zwischen den beiden Befehlen ist, dass
 \texttt{fetch} lediglich die Änderungen anderer Entwickler aus dem entfernten
 Repository herunterläd(Listing \ref{lst:git_fetch}).
 
-\lstinputlisting[
-  label=lst:git_fetch,
-  caption={Änderungen herunterladen},
-]{listings/git_fetch.lst}
+\eqlst{listings/git_fetch.lst}{lst:git_fetch}{Neue Änderungen herunterladen}
 
 Bei dem Befehl \texttt{\$ git pull}, versucht Git nach herunterladen der
 Änderungen, diese aus einem entsprechend konfigurierten
@@ -357,14 +284,12 @@ Bei dem Befehl \texttt{\$ git pull}, versucht Git nach herunterladen der
 Der Befehl ist also eine Kombination aus \texttt{\$ git fetch} und \texttt{\$
 git merge}\footnote{Wenn stattdessen \texttt{\$ git pull --rebase} verwendet
 wird, kommt hier eine Kombination von \texttt{\$ git fetch} und \texttt{\$ git
-rebase} zum Einsatz. Für weitere Details sei hierzu auf einschlägige
+rebase} zum Einsatz. Für weitere Details hierzu sei auf einschlägige
 Fachliteratur verwiesen \cite[144-152]{gitosp} oder
 \cite[85-88]{progit}.}.\cite[144-152]{gitosp}
 
-\lstinputlisting[
-  label=lst:git_pull,
-  caption={Änderungen herunterladen},
-]{listings/git_pull.lst}
+\eqlst{listings/git_pull.lst}{lst:git_pull}{Neue Änderungen herunterladen und
+integrieren}
 
 \subsection{Objektmodell}\label{sec:objectmodel}
 Wie in vorherigen Abschnitten bereits erwähnt, ist das Repository ein
@@ -387,20 +312,12 @@ Zum Speichern von Verzeichnissen, verwendet Git ein sogenanntes
 Beispiel(Abschnitt \ref{sec:first_commits}) erhält man mit dem Linux Befehl
 \texttt{\$ tree}:
 
-\lstinputlisting[
-  label=lst:tree.lst,
-  caption={Dateibaum des Beispiels},
-  captionpos=none,
-]{listings/tree.lst}
+\eqlst{listings/tree.lst}{lst:tree}{Dateibaum des Beispiels auflisten}
 
 Um nun den Dateibaum mit der Objektstruktur aus dem Git Repository zur
 vergleichen, kann der Befehl \texttt{\$ git ls-tree HEAD} genutzt werden:
 
-\lstinputlisting[
-  label=lst:git_ls_tree.lst,
-  caption={Objektbaum des Beispiels},
-  captionpos=none,
-]{listings/git_ls_tree.lst}
+\eqlst{listings/git_ls_tree.lst}{lst:git_ls_tree}{Objektbaum des Beispiels anzeigen}
 
 Git unterscheidet hier zwischen den angelegten Verzeichnissen und den
 eigentlichen Dateien, wie \texttt{helpers/git-stats}. Verzeichnisse werden als
@@ -411,11 +328,8 @@ Dateiname nicht Bestandteil des \textit{blob}, sondern wird in dem
 referenzierenden \textit{tree} gespeichert. Dies wird auch nochmal deutlicher,
 wenn wir uns das \textit{tree} Objekt zu dem Ordner \texttt{helpers} anschauen:
 
-\lstinputlisting[
-  label=lst:git_ls_tree_helpers.lst,
-  caption={Objekt eines Ordners},
-  captionpos=none,
-]{listings/git_ls_tree_helpers.lst}
+\eqlst{listings/git_ls_tree_helpers.lst}{git_ls_tree_helpers}{Objekt eines
+Ordners anzeigen}
 
 \begin{figure}[h]
   \centering
@@ -426,7 +340,7 @@ wenn wir uns das \textit{tree} Objekt zu dem Ordner \texttt{helpers} anschauen:
 \end{figure}
 
 \subsubsection{Commit}\label{sec:commitobject} Ein Commit-Objekt enthält, neben
-den bereits bekannten Daten aus Listing \ref{lst:git_show_first_commit.lst}
+den bereits bekannten Daten aus Listing \ref{lst:git_show_first_commit}
 eine Referenz zu \textbf{einem} \textit{tree} und ggf. einem vorhergehenden
 Commit (engl. \textit{parent}). Im Fall eines Merge-Commits (Abbildung
 \ref{fig:merge}) werden entsprechend so viele Vorgänger referenziert, wie
@@ -447,10 +361,8 @@ wird als Deduplizierung bezeichnet und führt dazu, dass ein Repository, in dem
 eine Datei viele Male existiert, bzw. referenziert wird, kaum größer ist als ein
 Repository mit nur dieser einen Datei.\cite[56-57]{gitosp}
 
-\lstinputlisting[
-  label=lst:git_show_raw,
-  caption={Ausgabe eines Commits im \textit{raw} Format},
-]{listings/git_show_raw.lst}
+\eqlst{listings/git_show_raw.lst}{lst:git_show_raw}{Ausgabe eines Commits im
+\textit{raw} Format}
 
 Zusätzlich unterscheidet Git noch den Committer vom Autor. Diese können sich
 unterscheiden, wenn Commits z.B. einen Reviewprozess durchlaufen müssen und
@@ -474,11 +386,8 @@ Git unterscheidet zwischen drei Arten von Tags:
 enthält neben den benötigten Daten wie Autor, Commitreferenz und Prüfsumme
 lediglich den Namen. Erzeugt wird er mit dem Befehl:
 
-\lstinputlisting[
-  label=lst:git_light_tags,
-  caption={Lightweight Tags},
-  captionpos=none,
-]{listings/git_light_tags.lst}
+\eqlst{listings/git_light_tags.lst}{lst:git_light_tags}{Einen leichtgewichtigen
+Tag anlegen}
 
 \item \textbf{Annotated Tags:} Annotated bedeutet nichts anderes als
 kommentiert. Zusätzlich zu den Daten aus den einfachen Tags, wird hier wie bei
@@ -486,11 +395,8 @@ einem Commit ein Texteditor geöffnet. Alternativ kann auf der Kommandozeile
 ebenfalls mit dem Parameter \texttt{-m} eine Beschreibung übergeben
 werden.
 
-\lstinputlisting[
-  label=lst:git_annotated_tags,
-  caption={Annotated Tags},
-  captionpos=none,
-]{listings/git_annotated_tags.lst}
+\eqlst{listings/git_annotated_tags.lst}{lst:git_annotated_tags}{Einen
+kommentierten Tag anlegen}
 
 \item \textbf{Signierte Tags:} Vorausetzung für diese Art von Tags, ist ein
 vorhandener privater \textit{GPG-Key}. Diese Tags werden mit einer Signatur
@@ -498,31 +404,20 @@ versehen, die von anderen entsprechend überprüft werden kann, um die Identitä
 des Autors eindeutig zu verifizieren\footnote{\url{https://gnupg.org}}.
 Erstellt werden signierte Tags mit dem zusätzlichen Parameter \texttt{-s}:
 
-\lstinputlisting[
-  label=lst:git_signatured_tags,
-  caption={Signierte Tags},
-  captionpos=none,
-]{listings/git_signatured_tags.lst}
+\eqlst{listings/git_signatured_tags.lst}{lst:git_signatured_tags}{Signierte
+Tags anlegen}
 
 Zuvor muss Git der zu verwendete Schlüssel noch bekannt gemacht werden. Das
 kann mit folgendem Befehl erreicht werden:
 
-\lstinputlisting[
-  label=lst:git_add_key,
-  caption={Signierte Tags},
-  captionpos=none,
-]{listings/git_add_key.lst}
+\eqlst{listings/git_add_key.lst}{lst:git_add_key}{GPG-Key hinzufügen}
 \end{enumerate}
 
 \subsubsection{Branch}\label{sec:branchobject}
 Eine einfache Antwort auf die Frage, warum ein Branch nun kein Objekt ist, liefert
 das Ausgeben der Referenzdatei des Branches \textit{master}:
 
-\lstinputlisting[
-  label=lst:cat_master.lst,
-  caption={Referenz \textit{master}},
-  captionpos=none,
-]{listings/cat_master.lst}
+\eqlst{listings/cat_master.lst}{lst:cat_master.lst}{Den Inhalt der Referenz \textit{master} ausgeben}
 
 Die ausgegebene Prüfsumme ist in diesem Fall lediglich die \textit{SHA-1-ID} des
 letzten Commits aus Abschnitt \ref{sec:first_commits}. Branches sind einfach
@@ -606,11 +501,7 @@ z.B.  die Zieldatei schon existiert, kann der Parameter \texttt{-f} für
 muss die Änderung lediglich mit dem Befehl \texttt{add} hinzugefügt
 werden.\cite[S.~43-44]{gitosp}
 
-\lstinputlisting[
-  label=lst:git_mv,
-  caption={Dateien verschieben},
-  captionpos=none,
-]{listings/git_mv.lst}
+\eqlst{listings/git_mv.lst}{lst:git_mv}{Dateien verschieben}
 
 \subsubsection{Dateien entfernen}
 Der Befehl \texttt{rm} steht für \textit{remove}, bewirkt aber nicht das
@@ -620,11 +511,7 @@ löschen, muss noch ein \texttt{-r} für Rekursiv angegeben werden. Wenn Dateien
 bereits verändert wurden, kann zusätzlich noch mit einem \texttt{-f} der
 Vorgang erzwungen werden.
 
-\lstinputlisting[
-  label=lst:git_rm,
-  caption={Dateien entfernen},
-  captionpos=none,
-]{listings/git_rm.lst}
+\eqlst{listings/git_rm.lst}{lst:git_rm}{Dateien entfernen}
 
 Das Entfernen von Dateien aus dem Repository kann aber genauso mit Unix
 üblichen Mitteln vorgenommen werden. Die Änderungen müssen dann mit
@@ -652,20 +539,13 @@ Ergänzend hierzu sei noch erwähnt, dass Tags mit dem zusätzlichen Parameter
 Das Veröffentlichen, bzw. Herunterladen von Tags erfolgt, wie für andere Objekte
 auch über \texttt{fetch} oder \texttt{push}(Abschnitt \ref{sec:distributed}).
 
-\lstinputlisting[
-  label=lst:git_push_tag,
-  caption={Tags veröffentlichen},
-  captionpos=none,
-]{listings/git_push_tag.lst}
+\eqlst{listings/git_push_tag.lst}{lst:git_push_tag}{Einen Tag veröffentlichen}
 
 Um alle lokalen Tags zu veröffentlichen, kann der \texttt{push} Befehl auch mit
 dem Parameter \texttt{--tags} kombiniert werden.\cite[70-71,162-163]{gitosp}
 
-\lstinputlisting[
-  label=lst:git_push_all_tags,
-  caption={Alle Tags veröffentlichen},
-  captionpos=none,
-]{listings/git_push_all_tags.lst}
+\eqlst{listings/git_push_all_tags.lst}{lst:git_push_all_tags}{Alle erzeugten
+Tags veröffentlichen}
 
 \subsubsection{Branches verwalten} Ähnlich wie bei Tags, markiert auch ein
 Branch eine \gls{SHA-1} Prüfsumme. In diesem Fall, die eines Commits. Im
@@ -677,11 +557,7 @@ einen Commit übergeben wird, wählt Git einfach den aktuellen \textit{HEAD}.
 Das folgende Beispiel erstellt einen Branch namens \textit{topic} von der
 Referenz \textit{master}.
 
-\lstinputlisting[
-  label=lst:git_branch,
-  caption={Branch anlegen},
-  captionpos=none,
-]{listings/git_branch.lst}
+\eqlst{listings/git_branch.lst}{lst:git_branch}{Einen Branch anlegen}
 
 Um auf einen anderen Branch zu wechseln, kann der Befehl \texttt{\$ git checkout
 <name>} benutzt werden. In bestimmten Situationen verweigert Git den Checkout.
@@ -691,11 +567,8 @@ i.d.R. aber mit entsprechenden Hinweisen. Der Parameter \texttt{-f} erzwingt
 auch hier den gewünschten Vorgang. Mit \texttt{checkout} können auch Branches
 angelegt und direct darauf gewechselt werden:
 
-\lstinputlisting[
-  label=lst:git_checkout,
-  caption={Branch anlegen und wechseln},
-  captionpos=none,
-]{listings/git_checkout.lst}
+\eqlst{listings/git_checkout.lst}{lst:git_checkout}{Einen Branch anlegen und
+darauf wechseln}
 
 Der Befehl \texttt{\$ git branch} unterstützt noch weitere Parameter die
 erwähnenswert sind. So kann mit den Parametern
@@ -717,32 +590,23 @@ whatchanged} eingegangen. Wie bereits erwähnt, steckt dahinter der Befehl
 \glspl{repository} untersucht werden. Wir nutzen dazu wieder das Beispiel aus
 dem genannten Abschnitt:
 
-\lstinputlisting[
-  label=lst:git_log,
-  caption={Versionsgeschichte mit \texttt{log} anzeigen},
-  captionpos=none,
-]{listings/git_log.lst}
+\eqlst{listings/git_log.lst}{lst:git_log}{Versionsgeschichte mit \texttt{log}
+anzeigen}
 
 Der Unterschied zu Listing \ref{lst:first_git_whatchanged} ist die etwas
 reduzierte Ausgabe. Um die Ausgabe noch weiter einzuschränken, kann z.B. der
 Parameter \texttt{--oneline} genutzt werden.
 
-\lstinputlisting[
-  label=lst:git_log_oneline,
-  caption={Versionsgeschichte einzeilig anzeigen},
-  captionpos=none,
-]{listings/git_log_oneline.lst}
+\eqlst{listings/git_log_oneline.lst}{lst:git_log_oneline}{Versionsgeschichte
+einzeilig anzeigen}
 
 Auch kann die Ausgabe auf einen oder mehrere Commits eingeschränkt werden.
 Hierzu muss einfach zusäzlich die enstprechende \textit{SHA-1-ID} oder die
 Referenz übergeben werden. Soll ein bestimmter Bereich untersucht werden, kann
 der Anfang mit \texttt{..} vom Ende getrennt werden:
 
-\lstinputlisting[
-  label=lst:git_log_range,
-  caption={Versionsgeschichte auf einen Bereich einschränken},
-  captionpos=none,
-]{listings/git_log_range.lst}
+\eqlst{listings/git_log_range.lst}{lst:git_log_range}{Versionsgeschichte auf
+einen Bereich einschränken}
 
 Die Trennung mit zwei Punkten wird auch von vielen anderen Kommandos
 verstanden. So z.B. \texttt{\$ git diff} oder \texttt{\$ git show}(Abschnitt
@@ -759,29 +623,19 @@ letzten Absatz aus der Lizenzdatei des verwendeten Beispiels(Abschnitt
 \ref{sec:first_commits}). Der Befehl \texttt{\$ git status} zeigt die
 Ausgangsituation:
 
-\lstinputlisting[
-  label=lst:git_status_wk,
-  caption={Status des Arbeitsbereichs anzeigen},
-  captionpos=none,
-]{listings/git_status_wk.lst}
+\eqlst{listings/git_status_wk.lst}{lst:git_status_wk}{Status des
+Arbeitsbereichs anzeigen}
 
 Der Befehl \texttt{\$ git diff} führt nun zur folgenden Ausgabe im Unified-Diff
 Format:
 
-\lstinputlisting[
-  label=lst:git_diff_wk,
-  caption={Änderungen auf Arbeitsbereich anzeigen},
-  captionpos=none,
-]{listings/git_diff_wk.lst}
+\eqlst{listings/git_diff_wk.lst}{lst:git_diff_wk}{Änderungen auf Arbeitsbereich anzeigen}
 
 Ein anschließendes \texttt{\$ git add LICENSE}, führt zum Verschieben auf den
 Index(Listing \ref{lst:git_status_staged}, Listing) und das nochmalige
 Ausführen von \texttt{\$ git diff}, führt zu einer leeren Ausgabe.
 
-\lstinputlisting[
-  label=lst:git_status_staged,
-  caption={Status des Index anzeigen},
-]{listings/git_status_staged.lst}
+\eqlst{listings/git_status_staged.lst}{lst:git_status_staged}{Status des Index anzeigen}
 
 Um die Änderungen auf dem Index anzuzeigen, muss der \texttt{diff} Befehl um
 den Parameter \texttt{--staged} ergänzt werden\footnote{Die Parameter
