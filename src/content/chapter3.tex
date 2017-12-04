@@ -249,7 +249,7 @@ kollaborative Arbeit an \glspl{repository}.
 Um eine lokale Kopie eines entferten Repositorys zu erstellen bzw. ein
 Repository zu klonen, benötigt man den Befehl \texttt{\$ git clone}. Zum
 Transport über das Netzwerk können verschiedene Protokolle benutzt werden.
-Unterstützt werden \texttt{ssh,git,http[s],ftp[s]} und \texttt{file}. Eine
+Unterstützt werden \textit{ssh,git,http[s],ftp[s]} und \textit{file}. Eine
 entsprechende Url kann neben dem Protokoll noch den Pfad des Repositorys, einen
 Benutzernamen oder einen Port enthalten:
 
@@ -296,8 +296,8 @@ In Listing \ref{lst:git_remote} wird zum Einen der Name, in diesem Fall
 \textit{origin}, ausgegeben und zum Anderen, wegen dem Parameter \texttt{-v},
 auch der Pfad zum entfernten Repository. Mit \texttt{\$ git remote} können
 weitere entfernte Repositorys, unter anderem Namen, konfiguriert
-werden\footnote{Hierzu siehe \texttt{man git remote}}. Ebenso wird
-standardmäßig der \gls{branch} \texttt{master} konfiguriert und als sogenannter
+werden\footnote{Hierzu siehe \texttt{\$ man git remote}}. Ebenso wird
+standardmäßig der \gls{branch} \textit{master} konfiguriert und als sogenannter
 \textit{remote-tracking-branch} eingerichtet. Diese Branches sollen die
 Änderungen gleichnamiger Branches aus den entfernten \glspl{repository}
 verfolgen und werden bei einer Synchronisation automatisch durch Git
@@ -309,7 +309,7 @@ Das weitere Bearbeiten des Repository Inhalts kann wie in dem Abschnitt
 \subsubsection{Änderungen übertragen}
 Um Daten in ein entferntes Repository zu übertragen, wird der Befehl \texttt{\$
 git push} benutzt. Als Standard Ziel wird das Repository verwendet, von dem auch
-ursprünglich die Kopie erstellt wurde\footnote{I.d.R. ist das \texttt{origin}.}.
+ursprünglich die Kopie erstellt wurde\footnote{I.d.R. ist das \textit{origin}.}.
 
 \lstinputlisting[
   label=lst:git_push,
@@ -673,9 +673,9 @@ Gegensatz zu Tags sind diese lediglich dynamische Referenzen. Da hier nur eine
 Textdatei mit der Referenz erstellt werden muss, ist der Vorgang entsprechend
 schnell. Das Erstellen eines Branches, benötigt als Argument mindestens einen
 eindeutigen Namen(Abschnitt \ref{sec:branchobject}). Wenn keine Referenz auf
-einen Commit übergeben wird, wählt Git einfach den aktuellen \texttt{HEAD}.
+einen Commit übergeben wird, wählt Git einfach den aktuellen \textit{HEAD}.
 Das folgende Beispiel erstellt einen Branch namens \textit{topic} von der
-Referenz \texttt{master}.
+Referenz \textit{master}.
 
 \lstinputlisting[
   label=lst:git_branch,
