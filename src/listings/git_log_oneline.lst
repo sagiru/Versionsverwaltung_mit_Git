@@ -1,3 +1,4 @@
+$ git log --oneline
 878b171 Add executable bit to helper script.
 ce31bd5 Add helper script to generate author statistics.
 86c3661 Add gpl license file

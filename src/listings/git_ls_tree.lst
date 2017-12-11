@@ -1,3 +1,3 @@
-git ls-tree HEAD
+$ git ls-tree HEAD
 100644 blob 9cecc1d4669ee8af2ca727a5d8cde10cd8b2d7cc  LICENSE
 040000 tree a72b974ebc96599b9ab0fc82fe8b3457da148744  helpers

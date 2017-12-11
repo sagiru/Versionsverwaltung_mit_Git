@@ -1,57 +1,57 @@
-\chapter{Außerdem}\label{cha:lookout}
+\chapter{Weiteres zu Git}\label{cha:lookout}
 \section{Einschränkungen}\label{sec:problems}
-Auch wenn Git, im vergleich zu anderen Versionskontrollsystemen(Abschnitt
+Auch wenn Git im Vergleich zu anderen Versionskontrollsystemen (Abschnitt
 \ref{sec:GeschichtlicheEntwicklung}), eine innovative Neuerung mit einem großen
-Funktionsumfang ist, gibt es auch hier Einschränkungen. In folgenden sind drei
-in Abschnitten kurz erläutert:
+Funktionsumfang ist, gibt es auch hier Einschränkungen. Im Folgenden sind drei
+in kurz erläutert.
 
 \subsection{Umgang mit Binärdateien}\label{sec:binaries}
-Wie in Abschnitt \ref{sec:objectmodel} kurz erläutert ist der Umgang mit
+Wie in Abschnitt \ref{sec:objectmodel} erläutert, ist der Umgang mit
 Dateien und Speicherplatz innerhalb von Git effizient organisiert. Eine
 Ausnahme bilden hier Dateien in Binärformaten (z.B.  Grafiken, Videos,
-Audiodateien o.ä.). Wie bereits beschrieben(Abschnitt \ref{sec:objectmodel}),
+Audiodateien). Wie bereits in Abschnitt \ref{sec:objectmodel} beschrieben,
 werden Dateien innerhalb von Git als Objekte gespeichert und referenziert.
 Zusätzlich komprimiert Git diese Dateien, so dass trotz vieler Kopien und
 Änderungen der Speicherplatzverbrauch sehr gering ist. Binäre Formate lassen
 sich allerdings häufig nicht mehr weiter komprimieren oder zusammenfassen, so
 wird bei Änderungen solcher Dateien jede Version als eigenes Objekt
-gespreichert und vorgehalten. Angenommen, eine mit Git verwaltete Software wird
+gespeichert und vorgehalten. Angenommen, eine mit Git verwaltete Software wird
 mehrfach am Tag in einem Binärformat kompiliert und ebenfalls in dem gleichen
 Repository versioniert, dann bekommt jeder Entwickler alle Binärdateien über
 die gesamte Lebenszeit in seiner lokalen Kopie abgelegt.  Es gibt hier aber
 externe Tools\footnote{https://git-lfs.github.com/} und organisatorische
-Workflows\footnote{Lange Historien auslagern\cite[S.~235-244]{gitwf}}, die sich
-mit diesem Problem beschäftigen.\cite[S.~300]{gitwf}
+Workflows\footnote{Lange Historien auslagern \cite[S.~235-244]{gitwf}}, die sich
+mit diesem Problem beschäftigen. \cite[S.~300]{gitwf}
 
 \subsection{Alles oder nichts}
 Bei der Betrachtung von anderen Versionskontrollsystemen (Abschnitt
-\ref{sec:svn}) fällt auf, dass Viele die Möglichkeit bieten, nur bestimmte
-Teilbereiche herunterzuladen\footnote{Der Clone Befehl(Abschnitt
-\ref{sec:gitclone}) bietet die Möglichkeit, mit \-{}\-{}depth nur eine bestimmte
-Anzahl von zusammenhängenden Commits herunterzuladen. Das aber das hier
-beschriebene Problem nicht löst.\cite[S.~244]{gitwf}}. Auch können hier häufig
-verschiedene Berechtigungen auf unterschiedliche Verzeichnisse definiert werden.
-Beides ist mit Git nicht möglich. So muss man zum Einen immer einen Klon des
-gesamten \glspl{repository} erstellen und zum Anderen kann auf das gesamte
-Repository nur das Recht entweder alles zu lesen oder zu schreiben vergeben
-werden. Das macht es in der Praxis häufig nötig, weitere Tools\footnote{z.B.
-https://www.gerritcodereview.com} einzusetzten oder andere
-Vorgehensweisen\footnote{Forking-Workflow\cite[S.~163-173]{gitwf}} zu verwenden,
-um dieses Problem zu umgehen.\cite[300-302]{gitwf}
+\ref{sec:svn}) fällt auf, dass viele die Möglichkeit bieten, nur bestimmte
+Teilbereiche herunterzuladen\footnote{Der Clone Befehl (Abschnitt
+\ref{sec:gitclone}) bietet die Möglichkeit, mit \-{}\-{}depth nur eine
+bestimmte Anzahl von zusammenhängenden Commits herunterzuladen. Dies löst aber das
+hier beschriebene Problem nicht. \cite[S.~244]{gitwf}}. Auch können hier
+häufig verschiedene Berechtigungen auf unterschiedliche Verzeichnisse definiert
+werden.  Beides ist mit Git nicht möglich. So muss man zum Einen immer einen
+Klon des gesamten \glspl{repository} erstellen und zum Anderen können Lese- und
+Schreibrechte nur für das gesamte Repository vergeben werden. Das macht es in
+der Praxis häufig nötig, weitere Tools\footnote{z.B.
+https://www.gerritcodereview.com} einzusetzen oder andere
+Vorgehensweisen\footnote{Forking-Workflow \cite[S.~163-173]{gitwf}.} zu
+verwenden, um dieses Problem zu umgehen. \cite[300-302]{gitwf}
 
 \subsection{Grafische Werkzeuge}
-Git selbst bietet keine grafische Unterstüzung, um Informationen über den
-Inhalt zu visualisieren. So gibt es zwar neben den beschriebenen(Abschnitt
-\ref{sec:arch}) Befehlen auch mit \texttt{blame}, \texttt{annotate} und
+Git selbst bietet keine grafische Unterstützung um Informationen über den
+Inhalt zu visualisieren. So gibt es zwar neben den beschriebenen (Abschnitt
+\ref{sec:arch}) Befehlen auch mit \texttt{\$ git blame}, \texttt{\$ git annotate} und
 \texttt{git log --graph} noch weitere Möglichkeiten mit denen sich
 umfangreichere Informationen anzeigen lassen, aber eben nur
-textuell\cite[S.~302]{gitwf}. Es gibt eine Vielzahl an grafischen Tools, hier
+textuell \cite[S.~302]{gitwf}. Es gibt eine Vielzahl an grafischen Tools, hier
 seien nur einige wie \texttt{gitk}, \texttt{gitg} oder \texttt{gitkraken}
 genannt.
 
 \section{Zahlen und Fakten - Der Linux Kernel}\label{sec:kernel}
 Das Git Repository des Linux Kernels wurde am 16. April 2005 initial von Linus
-Torvalds mit folgendem \gls{commit}\cite{link:linuxgit} eröffnet:
+Torvalds mit folgendem \gls{commit} \cite{link:linuxgit} eröffnet:
 
 \lstinputlisting[
   label=lst:linusfirst,
@@ -63,13 +63,13 @@ Der Linux Kernel ist eines der populärsten Git Repositorys und unterstreicht
 die technischen Möglichkeiten von Git mit einigen, durchaus beindruckenden
 Statistiken.
 
-Seit der Version (\textit{2.6.12-rc2}) vom 16 April 2005 ist der Inhalt des
+Seit der Version (2.6.12-rc2) vom 16 April 2005 ist der Inhalt des
 \glspl{repository} auf insgesamt 61.287 Dateien mit 17.734.793 Zeilen Quellcode
 angewachsen. In dem Zeitraum zwischen 2005 und 2017 haben 17.225 verschiedene
 Autoren in 693.782 Commits 36.122.715 Zeilen Quellcode hinzugefügt und
 18.387.922 entfernt. Das sind ca. 40 Commits pro Autor und durchschnittlich
 157 Commits am Tag. Das Repository enthält ca. 530 versionierte \glspl{tag}
-mit durchschnittlich 1309 Commits pro \gls{tag}(bzw. Version). Insgesamt wurden
+mit durchschnittlich 1309 Commits pro Version. Insgesamt wurden
 51.667 Merges durchgeführt, von denen Linus Torvalds 22.043 selbst durchgeführt
 hat. Abbildung \ref{top20} gibt einen Überblick der 20 Autoren, die diese
 Statistiken anführen.
@@ -77,20 +77,20 @@ Statistiken anführen.
 \begin{figure}
 	\centering
   \includegraphics[scale=0.40]{images/top_20_of_linux_authors.png}
-	\caption{Top 20 Linux Kernel Autoren}
+	\caption{Top 20 Linux Kernel Autoren (Stand 13.11.2017)}
 	\label{top20}
 \end{figure}
 
-Diese Statistiken wurden entweder mit gitstats\cite{link:gitstats} oder standard
-Git Befehlen ermittelt. So lassen sich z.B. unter Linux, die durchgeführten
-Merges von Linus Torvalds mit folgendem Befehl ermitteln:
+Statistiken wurden entweder mit \texttt{\$ gitstats} \cite{link:gitstats} oder
+Standard Git Befehlen ermittelt. So lassen sich z.B. unter Linux, die
+durchgeführten Merges von Linus Torvalds mit folgendem Befehl ermitteln:
 
 \lstinputlisting[
   label=lst:allmerges,
   caption={Ermitteln von Merges pro Autor},
 ]{listings/all_merges.lst}
 
-Statistiken, wie o.a. sind aber nicht unbedingt als Qualitätsmaßstab geeignet um
+Solche Statistiken sind nicht unbedingt als Qualitätsmaßstab geeignet, um
 Rückschlüsse auf die Effizienz einzelner Personen zu ziehen. Wie in Kapitel
 \ref{sec:collaboration} beschrieben, sollten diese Informationen aber trotzdem
 allen Beteiligten zur Verfügung gestellt werden.  So wird nach Jez Humble und
@@ -101,7 +101,7 @@ evtl. dazu, dass Änderungen pro Commit kleiner werden und dadurch besser
 nachvollziehbar. So schreiben Jeniffer Davis und Katherine Daniels in
 \cite[S.~179]{effdo} zu der Anzahl geschriebener Zeilen Quellcode:
 \begin{center}
-\textit{\glqq{}Lines of code is not an accurare measure of value. There are
+\textit{\glqq{}Lines of code is not an accurate measure of value. There are
 different types of developers, some that refactor hundreds of confusing lines
 into tens of lines of simple-to-read abstractions that can be build upon by
 others in the team.\grqq{}}
@@ -116,15 +116,15 @@ der Liste, weit mehr Zeilen zum Kernel beigetragen, als Linus Torvalds selbst.
 Die Betrachtung der reinen Zahlen reicht also nicht aus, um eine repräsentative
 Einschätzung einzelner Personen zu erhalten.
 
-Es können verschiedenste Statistiken über ein Projekt, bzw. Repository erhoben
+Es können verschiedenste Statistiken über ein Projekt bzw. Repository erhoben
 werden, die geeignet sind, ein vollständigeres Bild über die Aktivitäten
 innerhalb des Projektes zu bilden. Beispielsweise könnten das nach Jez Humble
-und David Farley in \cite[S.~138]{cd}folgende sein:
+und David Farley in \cite[S.~138]{cd} folgende sein:
 
 \begin{itemize}
-\item Testabdeckung,
-\item Anzahl der Fehler,
-\item Anzahl der \glspl{commit},
-\item Anzahl der fehlgeschlagenen/erfolgreichen Versuche, die Software zu erstellen,
-\item Metriken über den Quellcode (Zyklen, Duplikate o.a.),
+\item Testabdeckung
+\item Anzahl der Fehler
+\item Anzahl der \glspl{commit}
+\item Anzahl der fehlgeschlagenen/erfolgreichen Versuche, die Software zu erstellen
+\item Metriken über den Quellcode (Zyklen, Duplikate o.a.)
 \end{itemize}

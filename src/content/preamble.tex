@@ -1,26 +1,21 @@
 \chapter{\preamble}
 \label{cha:preamble}
 Das heutige Umfeld der Informationstechnologie ist gepr\"agt von einer Vielzahl
-unterschiedlichster Arten von Software. Schaut man sich allein in seinem Alltag
-genauer um wird man feststellen, daß man es täglich mit verschiedensten
-Systemen zu tun hat, auf denen eine Softwarekomponente ihre Arbeit verrichtet.
-Allen voran ist sicherlich das Internet mit zahlreichen Online Plattformen, ein
-Motor dieser Softwareindustrie. Dieser o.a. Ausschnitt ist aber auch nur ein
-Teil dessen, mit dem jeder unmittelbar Kontakt hat oder der umgangssprachlich
-"`gesehen"' werden kann. Eine Vielzahl von Softwaresystemen wird hinter
-verschlossenen T\"uren entwickelt und betrieben. So entwickeln z.B.
-Versicherungen, Banken o.\"a. Organisationen viele ihrer Softwaresysteme nicht
-f\"ur die \"Offenlichkeit. Eine Eigenschaft, die fast alle gro\ss{}en
-Softwareprojekte gemeinsam haben ist, daß sie i.d.R. in Teams unterschiedlicher
+unterschiedlicher Arten von Software. Allein das Alltagsleben stüzt sich auf
+täglich auf verschiedenste Systeme, auf denen eine Softwarekomponente ihre
+Arbeit verrichtet.  Allen voran ist sicherlich das Internet mit zahlreichen
+Online Plattformen zu nennen.  Eine Eigenschaft, die fast alle gro\ss{}en
+Softwareprojekte gemeinsam haben ist, daß sie in Teams unterschiedlicher
 Gr\"o\ss{}e entwickelt werden. Je nach Zusammenstellung dieser Teams, kommt es
-hier u.U. zu geografischen und zeitlichen Herausforderungen solche Systeme
-gemeinsam effektiv zu entwickeln.  Weitere Beispiele f\"ur verteilte
-Softwareprojekte findet man ebenfalls h\"aufig in der Welt der \gls{OpenSource}
-Software. So ist Git\footnote{\label{git:1}\url{https://git-scm.com/}}, auf das
-im Weiteren noch eingegangen wird, ebenfalls ein Beispiel aus der
-\gls{OpenSource} Community. So stellen sich nach Jez Humble und David Farley in
-Projekten mit verteilten Teams einige Fragen, auf die in Kapitel
-\ref{cha:Versionsverwaltung} Bezug genommen wird\cite[S.~26, 33]{cd}:
+hier möglicherweise zu geografischen und zeitlichen Herausforderungen solche
+Systeme gemeinsam effektiv zu entwickeln.  Weitere Beispiele f\"ur verteilte
+Softwareprojekte findet man h\"aufig in der Welt der \gls{OpenSource} Software.
+So ist Git\footnote{\label{git:1}\url{https://git-scm.com/}}, auf dem der Fokus
+dieser Arbeit liegt, ebenfalls ein Beispiel aus der \gls{OpenSource} Community. 
+
+Nach Jez Humble und David Farley, stellen sich in Projekten mit verteilten
+Teams einige Herrausforderungen, auf die in Kapitel
+\ref{cha:Versionsverwaltung} Bezug genommen wird \cite[S.~26, 33]{cd}:
 \begin{itemize}
   \item Ein neues Teammitglied bekommt seinen Arbeitsplatz und ben\"otigt
   schnellen Zugriff auf ggf. verschiedene Versionen der entwickelten Software,
@@ -34,29 +29,29 @@ Projekten mit verteilten Teams einige Fragen, auf die in Kapitel
   vermeiden, wird die Software häufig in sogenannten Entwicklungsumgebungen,
   die der Produktionsumgebung nachempfunden sind getestet \cite[S.~49,
   250]{cd}.} gerade verwendet wird \citep[S.~26]{cd}.
-  \item Was macht eine spezielle Version einer Software aus?  Wie kann eine
+  \item Was macht eine spezielle Version einer Software aus? Wie kann eine
   konkrete Auspr\"agung einer Software, die sich im produktiven Einsatz
-  befindet, reproduziert werden. Das kann z.B. n\"otig sein, um einen akuten
-  Fehlerfall nachzustellen\cite[s.~33]{cd}.
+  befindet, reproduziert werden. Reproduzierbarkeit kann z.B. n\"otig sein, um
+  einen akuten Fehlerfall nachzustellen \cite[s.~33]{cd}.
   \item Was wurde durch wen und wann ge\"andert? Und aus welchen Gr\"unden?
   Auch das kann f\"ur den Fall einer Fehlersuche von Vorteil sein. Darüber
   hinaus kann mit Beantwortung dieser Frage, die Projekthistorie aus Sicht der
-  Entwicklung reproduziert werden\cite[S.~33]{cd}.
+  Entwicklung reproduziert werden \cite[S.~33]{cd}.
 \end{itemize}
-Die o.a. Fragen sind natürlich nicht nur exklusiv auf große Projekte
-beschränkt, sondern gewinnen mit steigender Größe verstärkt an Wichtigkeit.
-Vergleichbare Problemstellungen finden sich aber genauso in
-Entwicklungsprojekten, bei denen nur wenige Personen beteiligt sind. Um diese
-Fragestellungen, neben der eigentlichen Frage wofür Versionskontrollsysteme
-überhaupt eingesetzt werden, zu berücksichtigen wird in Kapitel
-\ref{cha:Versionsverwaltung} ab Seite \pageref{cha:Versionsverwaltung} auf
-Versionskontrollsysteme(\acrshort{vcs}) im Allgemeinen eingegangen. Hier wird,
-neben einer grundlegenden Definition und einem geschichtlichen Überblick auf
-Gemeinsamkeiten und Vorgehensweisen eingegangen. In Kapitel \ref{cha:git} ab
-Seite \pageref{cha:git} wird Git vorgestellt. Hierbei werden zunächst die
-Grundlagen beschrieben und daran anschließend erfolgt eine praktische
-Anwendung. Aufbauend darauf wird auf grundlegende Workflows und die
-arbeitsweise von Git eingegangen. Um einen weiteren Praxisbezug herzustellen
-sowie weitere Vorteile und Nachteile von Git herauszustellen, wird abschließend
-in Kapitel \ref{cha:lookout} ab Seite \pageref{cha:lookout} neben einigen
-Einschränkungen der Einsatz von Git in dem Linux Kernel Projekt betrachtet.
+Diese Fragen sind natürlich nicht auf große Projekte beschränkt, sondern
+gewinnen hier vermehrt an Wichtigkeit. Vergleichbare Problemstellungen finden
+sich aber genauso in Entwicklungsprojekten, an denen nur wenige Personen
+beteiligt sind. 
+
+In Kapitel \ref{cha:Versionsverwaltung} wird vorgestellt, wie
+Versionskontrollsysteme bei der Lösung dieser Problemstellungen helfen können
+und was ihre eigentlichen Aufgaben sind. Hier wird, neben einer grundlegenden
+Definition und einem geschichtlichen Überblick auf Gemeinsamkeiten und
+Vorgehensweisen verschiedener Versionskontrollsysteme eingegangen. In Kapitel
+\ref{cha:git} wird das Versionskontrollsystem Git vorgestellt. Hierbei werden
+zunächst die Grundlagen beschrieben, anschließend wird eine praktische
+Anwendung vorgestellt. Aufbauend darauf wird auf grundlegende Workflows und die
+Arbeitsweise von Git eingegangen. Um einen weiteren Praxisbezug herzustellen
+sowie weitere Vor- und Nachteile von Git herauszustellen, werden in Kapitel
+\ref{cha:lookout} zuerst Einschränkungen von Git und abschließend der Einsatz
+von Git im Linux Kernel Projekt betrachtet.
