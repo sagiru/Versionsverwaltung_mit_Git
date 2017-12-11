@@ -1,16 +1,14 @@
 % define own commands here
 %\newcommand{\mycommand}{oldcommand}
 \newcommand{\eqlst}[3]{
-  \begin{minipage}{.85\linewidth}
-    \centering
+  \begin{minipage}[c][][c]{.85\linewidth}
     \lstinputlisting[
       caption={#3},
       captionpos=none]{#1}
   \end{minipage}
   \hfill
-  \begin{minipage}{.15\linewidth}
-    \centering
-    \begin{equation}\label{#2}\end{equation}
-    \vfill
+  \begin{minipage}[c][11pt][c]{.15\linewidth}
+    \vspace{11pt}
+    \footnotesize{\begin{equation}\label{#2}\end{equation}}
   \end{minipage}
 }
