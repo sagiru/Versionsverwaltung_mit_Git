@@ -609,12 +609,11 @@ exklusive des ersten und inklusive des zweites (nach \texttt{..}) angegebenen
 Commits. \cite[45-48]{gitosp}
 
 \subsubsection{Aktuelle Änderungen anzeigen}\label{sec:gitdiff}
-Wenn Dateien im Repository verändert wurden, können diese Änderungen entweder
-nur im Arbeitsbereich (Abbildung \ref{fig:trees}) oder bereits auf dem Index
-vorliegen (Abschnitt \ref{sec:gitadd}). Um diese Änderungen anzuzeigen, kann
-\texttt{\$ git diff} verwendet werden. Wird der letzte Absatz aus der
-Lizenzdatei des verwendeten Beispiels (Abschnitt \ref{sec:first_commits})
-entfernt, zeigt der Befehl \texttt{\$ git status} folgende Ausgangsituation:
+Veränderte Dateien können entweder im Arbeitsbereich (Abbildung
+\ref{fig:trees}) oder bereits auf dem Index vorliegen (Abschnitt
+\ref{sec:gitadd}). Für die Anzeige, wird \texttt{\$ git diff} verwendet.
+Wird der letzte Absatz aus der Lizenzdatei (Abschnitt \ref{sec:first_commits})
+entfernt, zeigt \texttt{\$ git status} folgende Situation:
 
 \eqlst{listings/git_status_wk.lst}{lst:git_status_wk}{Status des
 Arbeitsbereichs anzeigen}
@@ -625,12 +624,11 @@ Format:
 \eqlst{listings/git_diff_wk.lst}{lst:git_diff_wk}{Änderungen auf Arbeitsbereich anzeigen}
 
 Ein anschließendes \texttt{\$ git add LICENSE} führt zum Verschieben auf den
-Index (Listing \ref{lst:git_status_staged}) und das nochmalige Ausführen von
-\texttt{\$ git diff}, führt zu einer leeren Ausgabe.
+Index und \texttt{\$ git diff}, zu einer leeren Ausgabe:
 
 \eqlst{listings/git_status_staged.lst}{lst:git_status_staged}{Status des Index anzeigen}
 
-Um die Änderungen auf dem Index anzuzeigen, muss der Befehl \texttt{\$ git
+Um die Änderungen auf dem Index zu betrachten, muss der Befehl \texttt{\$ git
 diff} um den Parameter \texttt{--staged} ergänzt werden\footnote{Die Parameter
 \texttt{--staged} und \texttt{--cached} können Synonym verwendet
 werden.}\textsuperscript{\footnotesize{,}}\footnote{Der Parameter
