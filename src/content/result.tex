@@ -1,56 +1,46 @@
 \chapter{\result}\label{cha:result}
-Im Rahmen dieser Arbeit wurde grundlegend über Funktionen und Arbeitsweisen von
-Versionskontollsystemen im Allgemeinen und Git im Speziellen gesprochen. Die
-angesprochenen Themen wurden meist nur oberflächlich behandelt und
-fortgeschrittene Betrachtungen, aus Platzgründen, häufig vollständig
-weggelassen. Allein aber die Tatsache, dass alle Dateien über die Zeit in
-jeder Version zuverlässig und reproduzierbar erhalten bleiben, ist in
-erheblicher Zugewinn gegenüber einer Zeit, in der Quellcode ein einsames Dasein
-auf der Festplatte eines einzenlnen Computers frisitete. Jez Humble und David
-Farley sprechen darüber hinaus in \cite[S.~35]{cd} von:
+Im Rahmen dieser Arbeit wurden grundlegende Funktionen und Arbeitsweisen von
+Versionskontrollsystemen im Allgemeinen und Git im Besonderen behandelt.
+Die Möglichkeit, alle Dateien dauerhaft in jeder Version zuverlässig und
+reproduzierbar zu erhalten, ist ein erheblicher Zugewinn verglichen mit der
+Zeit, in der Quellcode ein einsames Dasein auf der Festplatte eines Computers
+fristete. Ein wichtiger Punkt ist jedoch nicht nur das leichtere
+Verwalten von Dateien, sondern auch der Gedanke, dass überholte Ideen oder
+Entwicklungen ohne das Risiko von Verlusten entfernt oder überarbeitet werden
+können. Diese Sicherheit schafft Freiheit, neue Dinge auszuprobieren
+oder zu verbessern. Das unterstreichen auch die Autoren Jez Humble und David
+Farley in \cite[S.~35]{cd} mit dem folgenden Satz:
 
 \begin{center}
-\textit{\glqq{}Version Control: The Freedom do Delete}\grqq{}.
+\textit{\glqq{}Version Control: The Freedom to Delete}\grqq{}.
 \end{center}
 
-Damit meinen die Autoren nicht das leichtere Verwalten von Dateien, sondern
-eher die Idee, dass \textit{alte} Ideen oder Entwicklungen ohne das Risiko von
-Verlusten entfernt oder überabreitet werden können. Diese Sicherheit schafft
-\textit{Freiheit}, neue Dinge auszuprobieren oder zu verbessern.
+Ungeachtet der beschriebenen Einschränkungen ist Git im Vergleich zu
+vorhergehenden Versionskontrollsystemen ein leistungsfähiges Werkzeug, welches
+nicht nur technische Verbesserungen mitbringt, sondern die Zusammenarbeit in
+Teams und Projekten auch äußerst effizient unterstützt. Die Bedienung von
+Git mag zu Anfang nicht besonders übersichtlich sein, insbesondere bei
+fortgeschrittenen Themen im Rahmen umfangreicher Projekte, ermöglicht die
+Architektur von Git aber eine Skalierbarkeit, die mit anderen
+Versionskontrollsystemen nur schwer zu erreichen ist.
 
-Ungeachtet der in Abschnitt \ref{cha:lookout} beschriebenen Einschränkungen, ist
-Git im Vergleich zu vorhergehenden Versionskontrollsystemen, ein mächtiges
-Werkzeug welches nicht nur technische Verbesserungen mitbringt, sondern die
-Zusammenarbeit in Teams und Projekten auch äußerst effizient unterstützen kann.
-Die Bedienung von Git, hat man nun Erfahrungen mit anderen
-Versionskontollsystemen oder nicht, mag zu Anfang etwas sperrig sein.  Wenn man
-sich aber mit fortgeschrittenen Themen im Rahmen umfangreicherer Projekte
-auseinandersetzt (z.B. Abschnitt \ref{sec:kernel}), stellt man fest, dass
-die Architektur von Git eine Skalierbarkeit, ermöglicht die man mit anderen
-Systemen vergeblich sucht. Das in der Arbeit verwendete Beispiel(Abschnitt
-\ref{sec:first_commits}) zeigt aber auch die Arbeit mit Git in einem kleinen
-Rahmen. So wurde auch diese Seminararbeit, die in LaTeX gesetzt wurde, mit Git
-versioniert\footnote{https://github.com/sagiru/Seminar-1908-Git/}. Auch
-\textit{kleine} Projekte, die nicht in Teams geteilt und bearbeitet
-werden profitieren von der Arbeit mit Git.
+Diese in LaTex gesetzte Seminararbeit stellt mithilfe des verwendeten Beispiels,
+den Einsatz von Git in einem kleinen Rahmen vor und wurde ebenfalls mit Git
+versioniert\footnote{https://github.com/sagiru/Seminar-1908-Git/}. Dies zeigt,
+dass Projekte mit kleinem Umfang, die nicht in Teams geteilt und bearbeitet
+werden, gleichermaßen von der Arbeit mit Git profitieren.
 
-In der Praxis hat der Umgang mit Git gezeigt, dass sich Qualität von erstelltem
-Quellcode und Kollaboration in Teams durch den Einsatz von Plattformen wie
+Für eine Anwendung über den Inhalt dieser Seminararbeit hinaus, ist es
+erforderlich, Themen wie Bisektion, Submodule, Workflows und die Zusammenarbeit
+von Git mit anderen Versionskontrollsystemen zu betrachten. Die intensivere
+Auseinandersetzung mit dem Objektmodell führt ebenfalls zu einem besseren
+Verständnis der Funktionsweise von Git.
+
+In der Praxis hat der Umgang mit Git gezeigt, dass sich Softwarequalität und
+Kollaboration in Teams durch den Einsatz von Plattformen wie
 Gerrit\footnote{https://www.gerritcodereview.com/} oder
-GitHub\footnote{https://github.com}, nochmals verbessern lassen. Der Einsatz von
-Versionskontrollsystemen ist sowohl Vorrausetzung für eine erfolgreiche
-Auseinandersetzung mit Themen wie \textit{Continuous Integration} oder
-\textit{Continuous Delivery}, als auch für den Einsatz agiler Vorgehensmodelle
-in der Softwareentwicklung.\cite{cd}
-
-Weiterführende Begriffe wie Regression und Bisektion, Stashes, Submodulen,
-Workflows und Reviewsystemen, wurden in dieser Arbeit, aus Platzgründen nicht
-betrachtet. Auch muss für den Umgang mit Konflikten, die durch die
-gleichzeitige Änderung von mehreren Personen an gleichen Dateien verursacht
-werden können, auf weitere Fachliteratur verwiesen werden. Die o.a. Themen
-werden beispielsweise in \footnote{\cite{gitosp},\cite{progit},\cite{gitwf}
-oder \cite{cd}} ausführlich behandelt.
-
-Nicht zuletzt, bietet der Funktionsumfang und die Manpages der Kommandos auch
-für Personen mit viel Erfahrung eine umfangreiche Quelle um Herausforderungen,
-im Rahmen der Zusammenarbeit von Entwicklerteams, in der Praxis zu lösen.
+GitHub\footnote{https://github.com} nochmals verbessern lassen. Die Verwendung
+von Versionskontrollsystemen ist eine Voraussetzung sowohl für den Einsatz
+agiler Vorgehensmodelle in der Softwareentwicklung, als auch für eine
+erfolgreiche Auseinandersetzung mit Themen wie \textit{Continuous Integration}
+oder \textit{Continuous Delivery}.
