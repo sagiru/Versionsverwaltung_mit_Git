@@ -1,34 +1,34 @@
 \chapter{\preamble}
 \label{cha:preamble}
 Das heutige Umfeld der Informationstechnologie ist gepr\"agt von einer Vielzahl
-unterschiedlicher Arten von Software. Allein das Alltagsleben stüzt sich auf
+unterschiedlicher Arten von Software. Allein das Alltagsleben stützt sich auf
 täglich auf verschiedenste Systeme, auf denen eine Softwarekomponente ihre
 Arbeit verrichtet.  Allen voran ist sicherlich das Internet mit zahlreichen
 Online Plattformen zu nennen.  Eine Eigenschaft, die fast alle gro\ss{}en
-Softwareprojekte gemeinsam haben ist, daß sie in Teams unterschiedlicher
+Softwareprojekte gemeinsam haben ist, dass sie in Teams unterschiedlicher
 Gr\"o\ss{}e entwickelt werden. Je nach Zusammenstellung dieser Teams, kommt es
-hier möglicherweise zu geografischen und zeitlichen Herausforderungen solche
+hier nicht selten zu geografischen und zeitlichen Herausforderungen um solche
 Systeme gemeinsam effektiv zu entwickeln.  Weitere Beispiele f\"ur verteilte
-Softwareprojekte findet man h\"aufig in der Welt der \gls{OpenSource} Software.
-So ist Git\footnote{\label{git:1}\url{https://git-scm.com/}}, auf dem der Fokus
-dieser Arbeit liegt, ebenfalls ein Beispiel aus der \gls{OpenSource} Community. 
+Softwareprojekte findet man in der Welt der \gls{OpenSource} Software.  So ist
+Git\footnote{\label{git:1}\url{https://git-scm.com/}}, auf dem der Fokus dieser
+Arbeit liegt, ebenfalls ein Beispiel aus der \gls{OpenSource} Community. 
 
-Nach Jez Humble und David Farley, stellen sich in Projekten mit verteilten
+Nach Jez Humble und David Farley stellen sich in Projekten mit verteilten
 Teams einige Herrausforderungen, auf die in Kapitel
 \ref{cha:Versionsverwaltung} Bezug genommen wird \cite[S.~26, 33]{cd}:
 \begin{itemize}
-  \item Ein neues Teammitglied bekommt seinen Arbeitsplatz und ben\"otigt
-  schnellen Zugriff auf ggf. verschiedene Versionen der entwickelten Software,
-  m\"ochte diese ggf. kompilieren und in einem definierten Umfeld ausf\"uhren.
-  Auch gibt es vielleicht verschiedene Umgebungen und der Entwickler muss
-  feststellen, welche Version mit welchen Unterschieden in welcher \gls{Umgebung}
-  \footnote{\label{umgebung:1}In der Softwareentwicklung wird häufig von
-  produktiven Umgebungen gesprochen. Damit ist eine Zusammenstellung aus
-  verschiedenen Systemen in definierter Konfiguration gemeint, auf denen die
-  entwickelte Software produktiv eingesetzt wird. Um Fehlentwicklungen zu
-  vermeiden, wird die Software häufig in sogenannten Entwicklungsumgebungen,
-  die der Produktionsumgebung nachempfunden sind getestet \cite[S.~49,
-  250]{cd}.} gerade verwendet wird \citep[S.~26]{cd}.
+	\item Ein neues Teammitglied bekommt seinen Arbeitsplatz und ben\"otigt
+	schnellen Zugriff auf meist verschiedene Versionen der entwickelten Software,
+	m\"ochte diese erzeugen und in einem definierten Umfeld ausf\"uhren. Auch gibt
+	es eventuell verschiedene Umgebungen\footnote{\label{umgebung:1}In der
+	Softwareentwicklung wird häufig von produktiven Umgebungen gesprochen. Damit
+	ist eine Zusammenstellung aus verschiedenen Systemen in definierter
+	Konfiguration gemeint, auf denen die entwickelte Software produktiv eingesetzt
+	wird. Um Fehlentwicklungen zu vermeiden, wird die Software häufig in
+	sogenannten Entwicklungsumgebungen, die der Produktionsumgebung nachempfunden
+	sind getestet \cite[S.~49, 250]{cd}.} und der Entwickler muss neben der
+	eingesetzten Version feststellen welche Unterschiede zwischen den Umgebungen
+	bestehen \citep[S.~26]{cd}.
   \item Was macht eine spezielle Version einer Software aus? Wie kann eine
   konkrete Auspr\"agung einer Software, die sich im produktiven Einsatz
   befindet, reproduziert werden. Reproduzierbarkeit kann z.B. n\"otig sein, um

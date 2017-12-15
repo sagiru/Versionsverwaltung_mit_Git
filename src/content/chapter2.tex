@@ -8,8 +8,8 @@ vollständige Historie mit allen Änderungen am Quellcode ihrer gemeinsam
 entwickelten Software zu verwalten. Ausschlaggebend ist hierbei, dass für alle
 Nutzer transparent wird wer wann welche Änderungen durchgeführt hat und vor
 allem warum diese Änderungen durchgeführt wurden. Eine weitere wichtige
-Eigenschaft ist, dass verschiedene Teams das gleichzeitige Arbeiten an
-verschiedenen Teilen der Software ermöglicht wird ohne sich gegenseitig zu
+Eigenschaft ist, dass verschiedenen Teams das gleichzeitige Arbeiten an
+verschiedenen Teilen der Software ermöglicht wird, ohne sich gegenseitig zu
 behindern\footnote{Dies hängt natürlich nicht nur von dem
 Versionskontrollsystem ab, sondern auch vom Design der entwickelten Software.
 Diese wird zumeist modular aufgebaut, so dass die Möglichkeit einer parallelen
@@ -21,8 +21,8 @@ vorgestellt, um einen Überblick über die grundlegende Entwicklung von
 Versionsverwaltungssystemen zu vermitteln.
 
 \section{Geschichtliche Entwicklung}\label{sec:GeschichtlicheEntwicklung}
-Das erste \gls{vcs:de} namens SCCS enstand 1972 und wurde von Marc J.  Rockkind
-bei Bell Labs geschrieben\footnote{\url{http://www.belllabs.com/}}
+Das erste \gls{vcs:de} namens \acrshort{sccs} enstand 1972 und wurde von Marc
+J. Rockkind bei Bell Labs geschrieben\footnote{\url{http://www.belllabs.com/}}
 \cite[S.~382]{cd}. Ab diesem Zeitpunkt enstand eine Vielzahl verschiedener
 Versionskontrollsysteme. Als Alternative zu dem kommerziellen \acrshort{sccs}
 folgte Anfang 1980 das von Walter F. Tichy an der Purdue University entwickelte
@@ -62,7 +62,7 @@ und musste administrativ repariert werden. \cite[S.~382-383]{cd}
 Das Ziel des quasi als Nachfolger zu \acrshort{cvs} entwickelten
 Versionsverwaltungssystems \acrfull{svn} war es, die technischen
 Einschränkungen von \acrshort{cvs} zu beheben. Es wurde darauf geachtet, dass
-es als Ersatz fungieren kann und das sich ein Umstieg sowohl aus
+es als Ersatz fungieren kann und dass sich ein Umstieg sowohl aus
 administrativer Sicht, als auch aus Sicht eines Nutzers möglichst einfach gestaltet.
 Das Benutzerinterface funktioniert daher ähnlich zu \acrshort{cvs}, so dass
 Entwickler sich nach einem Umstieg leichter zurecht finden. Als zentrale
@@ -79,10 +79,10 @@ Tags oder Branches wurde ebenfalls verbessert. Hierzu wurde eine Konvention
 eingeführt, welche drei verschiedene Verzeichnisse innerhalb eines
 \glspl{repository} vorgibt:
 \begin{itemize}
-\item \textbf{trunk}: Zentraler Zweig der die führende Version enhält.
+\item \textbf{trunk}: Zentraler Zweig, der die führende Version enhält.
       Vornehmlich werden Branches und Tags erzeugt in dem von dieser Version
       eine Kopie erzeugt wird.
-\item \textbf{tags}: Verzeichnis, in dem unterschiedliche Verzeichnisse als
+\item \textbf{tags}: Verzeichnis, indem unterschiedliche Verzeichnisse als
        Tags erzeugt werden, die von einer bestimmten Revision erzeugt werden.
 \item \textbf{branches}: Ein Verzeichnis, in dem unterschiedliche Ordner als
       Abzweigungen angelegt werden. Auf diesen Abzweigungen kann unabhängig von
@@ -90,40 +90,39 @@ eingeführt, welche drei verschiedene Verzeichnisse innerhalb eines
 \end{itemize}
 Tags und Branches werden erzeugt, indem ein Verzeichnis angelegt wird und der
 Inhalt von \textit{trunk} kopiert wird. So lange keine Änderungen in den
-erzeugten Verzeichnissen durchgeführt werden, sind diese ledigich Zeiger auf
-eine Menge von Objekte die mir der Kopie der Quelle übereinstimmen. Die
+erzeugten Verzeichnissen durchgeführt werden, sind diese lediglich Zeiger auf
+eine Menge von Objekten, die mit der Kopie der Quelle übereinstimmen. Die
 Trennung zwischen Tags und Branches ist nur eine Konvention. Das führt auch zu
 einem der Probleme beim Arbeiten mit \acrlong{svn}. \glspl{tag} sind nicht
-eindeutig und veränderbar.  So macht SVN technisch keinen Unterschied zwischen
-\textit{trunk}, \textit{tags}, \textit{branches} oder einem beliebigen anderen
-Verzeichnis. Alle Verzeichnisse können in der gleichen Art und Weise bearbeitet
-werden. Ein großer Vorteil von \acrshort{svn} gegenüber vorherigen
-Versionskontrollsystemen ist, dass mit \acrshort{svn} auch gearbeitet werden
-kann, wenn das Netzwerk nicht zur Verfügung steht. Alle Änderungen an Dateien
-werden zuerst auf einer lokalen Kopie durchgeführt und mit einem separaten
-Kommando an das zentrale Repository gesendet. Des Weiteren seien sogenannte
-Externals erwähnt, die es als weitere Funktionalität ermöglichen, erstmals
-Inhalte von anderen Repositorys einzubinden. Dies kann nützlich sein, um
-Abhängigkeiten beispielsweise zwischen \glspl{repository}
-abzubilden und Binärdateien auszulagern. \acrshort{svn} stellt zwar eine
-erhebliche Verbesserung gegenüber \acrshort{cvs} dar, hatt aber aufgrund der
-zusätzlichen Client-/Server Komponente einige neue Probleme. So sind zwar
-die Aktionen auf Seiten des zentralen \glspl{repository} atomar, aber nicht
-auf Seiten des Clients so dass, hier bei unvorhergesehenen Fehlern wieder
-Inkonsistenzen entstehen können. Des Weiteren verwaltet \acrshort{svn} mit
-Hilfe eines Unterordners \textit{.svn} in jedem enthaltenen Verzeichnis die
-Verwaltungsinformationen desselbigen. Das ermöglicht eine unabhängige
-Verwaltung aller Verzeichnisse untereinander, führt aber ggf. dazu, dass die
-lokale Kopie eine Summe aus unterschiedlichen Revisionen verschiedener
-Unterordner ist und keinen eindeutigen Versionsstand repräsentiert. Weitere
-Vor- und Nachteile von SVN sind beispielsweise in \cite[S.~383-385]{cd}
-beschrieben.
+eindeutig und veränderbar. So macht SVN technisch keinen Unterschied zwischen
+\texttt{trunk}, \texttt{tags}, \texttt{branches} oder einem beliebigen anderen
+Verzeichnis innerhalb des Repositorys. Alle Verzeichnisse können in der
+gleichen Art und Weise bearbeitet werden. Ein großer Vorteil von \acrshort{svn}
+gegenüber vorherigen Versionskontrollsystemen ist, dass mit \acrshort{svn} auch
+gearbeitet werden kann, wenn das Netzwerk nicht zur Verfügung steht. Alle
+Änderungen an Dateien werden zuerst auf einer lokalen Kopie durchgeführt und
+mit einem separaten Kommando an das zentrale Repository gesendet. Ferner seien
+sogenannte Externals erwähnt, die es als weitere Funktionalität ermöglichen,
+erstmals Inhalte von anderen Repositorys einzubinden. Dies kann nützlich sein,
+um Abhängigkeiten zwischen \glspl{repository} abzubilden oder Binärdateien
+auszulagern. \acrshort{svn} stellt zwar eine erhebliche Verbesserung gegenüber
+\acrshort{cvs} dar, hat aber aufgrund der zusätzlichen Client-/Server
+Komponente einige neue Probleme. So sind zwar die Aktionen auf Seiten des
+zentralen \glspl{repository} atomar, aber nicht auf Seiten des Clients, so dass
+bei unvorhergesehenen Fehlern wieder Inkonsistenzen entstehen können. Des
+Weiteren verwaltet \acrshort{svn} mit Hilfe eines Unterordners \textit{.svn} in
+jedem enthaltenen Verzeichnis dessen Verwaltungsinformationen. Das
+ermöglicht eine unabhängige Verwaltung aller Verzeichnisse untereinander, führt
+aber ggf. dazu, dass die lokale Kopie eine Summe aus unterschiedlichen
+Revisionen verschiedener Unterordner ist und keinen eindeutigen Versionsstand
+repräsentiert. Weitere Vor- und Nachteile von SVN sind beispielsweise in
+\cite[S.~383-385]{cd} beschrieben.
 
 \subsection{Git}\label{git}
 Git ist ein verteiltes bzw. dezentrales \acrlong{vcs:de}. Es wurde von Linus
 Torvalds und Junio Hamano entwickelt und ist für gängige Plattformen wie Linux,
 BSD, Windows u.a. verfügbar. Im Englischen wird Git als \textit{git - the
-stupid content tracker} bezeichnet. Der Name \textit{Git} kommt nach einem
+stupid content tracker} bezeichnet. Der Name \acrshort{git} kommt nach einem
 Zitat von Linus Torvalds wie folgt zustande \cite{link:gitfaq}:
 
 \begin{center}
@@ -137,7 +136,7 @@ Alternativ stellt Linus Torvalds, etwas scherzhaft, noch weitere Varianten als
 \begin{itemize}
   \item \textit{\glqq{}Random three-letter combination that is pronounceable,
   and not actually used by any common UNIX command. The fact that it is a
-  mispronunciation of \"{}get\"{} may or may not be relevant.\grqq{}}
+  mispronounciation of \"{}get\"{} may or may not be relevant.\grqq{}}
   \item \textit{\glqq{}Stupid. Contemptible and despicable. Simple. Take your
   pick from the dictionary of slang.\grqq{}}
   \item \textit{\glqq{}\"{}Global information tracker\"{}: you're in a good
@@ -147,13 +146,13 @@ Alternativ stellt Linus Torvalds, etwas scherzhaft, noch weitere Varianten als
   breaks\grqq{}}
 \end{itemize}
 
-Linus Torvalds nutzte ursprünglich als Versionsverwaltung das kommerzielle
-System BitKeeper für die Entwicklung des Linux
-Kernel\footnote{\url{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git}}.
-Nach Unstimmigkeiten mit dem Hersteller von BitKeeper entschloss Linus Tovalds
-sich 2005 azu, ein neues \gls{vcs:de} zu schreiben. Dieses sollte weit mehr als
-eine Alternative zu den bisherigen sein \cite[S.~13]{gitosp}. So lautete
-eine Aussage von Linus Torvalds zu \acrshort{cvs} \cite[S.~385]{cd}:
+Linus Torvalds nutzte für die Entwicklung des Linux
+Kernel\footnote{\url{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git}}
+ursprünglich das kommerzielle System BitKeeper als Versionsverwaltung.  Nach
+Unstimmigkeiten mit dem Hersteller von BitKeeper entschloss Linus Tovalds sich
+2005 dazu, ein neues \gls{vcs:de} zu schreiben. Dieses sollte weit mehr als eine
+Alternative zu den bisherigen sein \cite[S.~13]{gitosp}. So lautete eine
+Aussage von Linus Torvalds zu \acrshort{cvs} \cite[S.~385]{cd}:
 
 \begin{center}
 \textit{\glqq{}There is no way to do CVS right\grqq{}}\\
@@ -161,17 +160,17 @@ eine Aussage von Linus Torvalds zu \acrshort{cvs} \cite[S.~385]{cd}:
 
 Neben dem Beheben der Probleme, mit denen die populären Systeme \acrshort{cvs}
 (Abschnitt \ref{sec:cvs}) und \acrshort{svn} (Abschnitt \ref{sec:svn}) zu
-kämpfen hatten, sollte das zentrale Augenmerk auf Geschwindigkeit und
-Integrität liegen \cite[S.~13]{gitosp}.
+kämpfen hatten, sollte bei der Entwicklung von Git das zentrale Augenmerk auf
+Geschwindigkeit und Integrität liegen \cite[S.~13]{gitosp}.
 
 Die Erfolgsgeschichte von Git ist aber nicht nur in den technischen Neuerungen
 begründet. Schon wenige Wochen nach dem Start mit der Arbeit an Git konnten die
 ersten Versionen bereits Quellcode verwalten. Die grundlegenden Konzepte der
 anfänglichen Entwicklung sind bis heute gleich geblieben. Die spätere
-erfolgreiche Migration zu und Verwaltung des Linux Kernel \glspl{repository}
+erfolgreiche Migration und Verwaltung des Linux Kernel \glspl{repository}
 mit Git, führte zu einem hohen Ansehen und einer starken Verbreitung von Git.
-Die Anforderungen welche die Verwaltung des Linux Kernels mit über 1000
-Entwicklern an ein Versionskontrollsystem stellt, sind immens. Allein zwischen
+Die Anforderungen, welche die Verwaltung des Linux Kernels mit über 1000
+Entwicklern an ein Versionskontrollsystem stellt sind immens. Allein zwischen
 zwei Versionen finden sich mehrere hunderttausend Änderungen in über 1000
 Dateien und etliche Merges zwischen verschiedenen Branches (Abschnitt
 \ref{sec:kernel}). Git ist heutzutage insbesondere aus großen Projekten,
@@ -185,20 +184,20 @@ zusammenzuführen und Teile davon wieder herzustellen, ermöglicht es, die
 Zusammenarbeit in Teams oder Organisationen erheblich zu verbessern. Alle
 Beteiligten werden damit konfrontiert, dass mehrere Personen und Teams an
 gleichen Inhalten zur gleichen Zeit arbeiten müssen. Das verbessert den Umgang
-mit Konflikten, seien sie technischer oder organisatorischer Art, die eben
-durch eine solche Zusammenarbeit enstehen können. Der Einsatz eines
-Versionsverwaltungssystems sollte als eine gute Vorgehensweise angesehen werden,
-die einen positiven Einfluss auf die Zusammenarbeit hat. Da nicht alle Systeme
-die gleichen Funktionen unterstützen, sollte bei der Auswahl des einzusetzenden
-Systems darauf geachtet werden, welche Eigenschaften der Zusammenarbeit
-gefördert werden sollen. Hierzu zählen nach Jennifer Davis und Katherine
-Daniels \cite[S.~178]{effdo} beispielsweise:
+mit Konflikten, seien sie technischer oder organisatorischer Art, die durch
+eine solche Zusammenarbeit entstehen können. Der Einsatz eines
+Versionsverwaltungssystems sollte als eine Vorgehensweise angesehen werden, die
+einen positiven Einfluss auf die Zusammenarbeit hat. Da nicht alle Systeme die
+gleichen Funktionen unterstützen, sollte daher bei der Auswahl des
+einzusetzenden Systems darauf geachtet werden, welche Eigenschaften der
+Zusammenarbeit gefördert werden sollen. Hierzu zählen nach Jennifer Davis und
+Katherine Daniels \cite[S.~178]{effdo} beispielsweise:
 
 \begin{itemize}
-\item das Erstellen und Abzweigen von Repositories,
-\item das Beitragen zu Repositories bzw. das Verwalten von Beiträgen,
+\item das Erstellen und Abzweigen von Repositorys,
+\item das Beitragen zu Repositorys bzw. das Verwalten von Beiträgen,
 \item das Festlegen von Prozessen oder
-\item das Verwalten von Berechtigungen innerhalb von Repositories.
+\item das Verwalten von Berechtigungen innerhalb von Repositorys.
 \end{itemize}
 
 Der Einsatz eines Versionskontrollsystems hat auch einen positiven Einfluss auf
@@ -207,9 +206,8 @@ Softwareplattform (z.B.  eines Internetportals) entstehen. Hierdurch wird es
 möglich, im Fehlerfall eine frühere Version der Software wieder einzusetzen.
  \cite[S.~178]{effdo}
 
-Ein \acrlong{vcs:de} ist auch nicht ausschließlich zum Versionieren von Quellcode
-geeignet. Eine Aussage von Jez Humble und David Farley in \cite[S.~33]{cd}
-lautet hierzu:
+Ein \acrlong{vcs:de} ist nicht nur alleinig zum Versionieren von Quellcode geeignet.
+Eine Aussage von Jez Humble und David Farley in \cite[S.~33]{cd} lautet hierzu:
 
 \begin{center}
 \textit{\glqq{}Keep Absolutely Everything in Version Control\grqq{}}
@@ -262,7 +260,7 @@ Anforderungen gibt. Nach \cite[S.~37]{hagen:1678} bestehen Forderungen nach
 \textbf{Integration}, \textbf{Gruppenwahrnehmung} und
 \textbf{Nachvollziehbarkeit}. So sollen Entwickler in der Lage sein, immer an
 einer gültigen Fassung einer Datei zu arbeiten, als sei diese Datei exklusiv für
-sie reserviert, sowie die eigenen Änderungen daran wieder so zu integrieren, dass
+sie reserviert sowie die eigenen Änderungen daran wieder so zu integrieren, dass
 eine Nachvollziehbarkeit mit einer Änderungshistorie, die wenigstens Namen und
 Datum enthält, gewährleistet ist. Wie sich mit Git eine Umsetzung dieser
 Forderungen in der Praxis darstellt, wird in den folgenden Unterkapiteln
@@ -286,17 +284,16 @@ Prüfsumme wird mit dem \textit{Secure Hash Algorithm} (\gls{SHA-1})
 erzeugt. \cite[S.~20-21]{gitosp}
 
 \subsection{Tag}\label{sec:tag}
-Die meisten Versionskontollsysteme benutzen Markierungen (engl. Tag), um
+Die meisten Versionskontrollsysteme benutzen Markierungen (engl. Tag), um
 bestimmte Stände des Repositorys mit Namen zu versehen. Üblicherweise werden
 zur Bezeichnung von Markierungen Versionsstände genutzt, wie z.B.
 2.6.12-rc2 (Abschnitt \ref{sec:kernel}), v1.0 oder ähnliches. \cite[S.~48]{progit}
 
-Unter Git sind Tags lediglich symbolische Namen für Referenzen zu einzelnen
-Commits. Es gibt hier zwei verschiedene Arten von Commits. Zum Einen
-leichtgewichtige Tags (\textit{lightweight tags}), die keine weiteren
-Informationen außer der Versionsnummer enthalten und ausführlichere Tags
-(\textit{annotated}), die darüber hinaus noch Metadaten wie Autor, Beschreibung
-oder ggf. eine GPG-Signatur. \cite[S.~21]{gitosp}
+Unter Git sind Tags symbolische Namen für Referenzen zu einzelnen Commits. Es
+gibt hier zwei verschiedene Arten von Commits. Zum Einen leichtgewichtige Tags
+(\textit{lightweight tags}), die lediglich die Versionsnummer enthalten sowie
+ausführlichere Tags (\textit{annotated}), die darüber hinaus noch Metadaten wie
+Autor, Beschreibung oder eine GPG-Signatur beinhalten. \cite[S.~21]{gitosp}
 
 \subsection{Branch}\label{sec:branch}
 Ein Repository enthält in der Regel einen zentralen Zweig (engl. Branch),
