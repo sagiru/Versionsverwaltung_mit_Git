@@ -21,7 +21,7 @@ vorgestellt, um einen Überblick über die grundlegende Entwicklung von
 Versionsverwaltungssystemen zu vermitteln.
 
 \section{Geschichtliche Entwicklung}\label{sec:GeschichtlicheEntwicklung}
-Das erste \gls{vcs:de} namens \acrshort{sccs} enstand 1972 und wurde von Marc
+Das erste Versionskontrollsystem namens \acrshort{sccs} enstand 1972 und wurde von Marc
 J. Rockkind bei Bell Labs geschrieben\footnote{\url{http://www.belllabs.com/}}
 \cite[S.~382]{cd}. Ab diesem Zeitpunkt enstand eine Vielzahl verschiedener
 Versionskontrollsysteme. Als Alternative zu dem kommerziellen \acrshort{sccs}
@@ -119,7 +119,7 @@ repräsentiert. Weitere Vor- und Nachteile von SVN sind beispielsweise in
 \cite[S.~383-385]{cd} beschrieben.
 
 \subsection{Git}\label{git}
-Git ist ein verteiltes bzw. dezentrales \acrlong{vcs:de}. Es wurde von Linus
+Git ist ein verteiltes bzw. dezentrales Versionskontrollsystem. Es wurde von Linus
 Torvalds und Junio Hamano entwickelt und ist für gängige Plattformen wie Linux,
 BSD, Windows u.a. verfügbar. Im Englischen wird Git als \textit{git - the
 stupid content tracker} bezeichnet. Der Name \acrshort{git} kommt nach einem
@@ -150,7 +150,7 @@ Linus Torvalds nutzte für die Entwicklung des Linux
 Kernel\footnote{\url{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git}}
 ursprünglich das kommerzielle System BitKeeper als Versionsverwaltung.  Nach
 Unstimmigkeiten mit dem Hersteller von BitKeeper entschloss Linus Tovalds sich
-2005 dazu, ein neues \gls{vcs:de} zu schreiben. Dieses sollte weit mehr als eine
+2005 dazu, ein neues Versionskontrollsystem zu schreiben. Dieses sollte weit mehr als eine
 Alternative zu den bisherigen sein \cite[S.~13]{gitosp}. So lautete eine
 Aussage von Linus Torvalds zu \acrshort{cvs} \cite[S.~385]{cd}:
 
@@ -206,7 +206,7 @@ Softwareplattform (z.B.  eines Internetportals) entstehen. Hierdurch wird es
 möglich, im Fehlerfall eine frühere Version der Software wieder einzusetzen.
  \cite[S.~178]{effdo}
 
-Ein \acrlong{vcs:de} ist nicht nur alleinig zum Versionieren von Quellcode geeignet.
+Ein Versionskontrollsystem ist nicht nur alleinig zum Versionieren von Quellcode geeignet.
 Eine Aussage von Jez Humble und David Farley in \cite[S.~33]{cd} lautet hierzu:
 
 \begin{center}
@@ -311,7 +311,7 @@ Featurebranches, Teambranches oder eine Entwicklung mit nur einem
 Hauptbranch\footnote{Umgangsprachlich werden verschiedene Begriffe für diesen
 Branch benutzt. So sind Begriffe wie z.B. Trunk, Masterbranch oder
 Mainlinebranch nicht unüblich. Gemeint ist hiermit aber immer der
-zentrale Branch, der standardmäßig von dem genutzen \acrlong{vcs:de} vorgesehen
+zentrale Branch, der standardmäßig von dem genutzen Versionskontrollsystem vorgesehen
 ist. Für \acrshort{svn} z.B. ist das das Verzeichnis
 \textit{trunk} und unter Git einfach die Referenz auf den Namen
 \textit{master}.} eingegangen.
@@ -350,9 +350,9 @@ Repository des Linux Kernels \cite{link:linuxgit} (Abschnitt \ref{sec:kernel}).
 
 \subsection{Repository}\label{sec:repository}
 Das Repository ist ein Datenspeicher, in dem gemeinsame Dateien eines Projekts
-durch das \acrlong{vcs:de} verwaltet werden. Der Benutzer kann hier Dateien
+durch das Versionskontrollsystem verwaltet werden. Der Benutzer kann hier Dateien
 beispielsweise hinzufügen, entfernen oder verändern und Änderungen in einem
-\gls{commit} zusammenfassen. Das \acrlong{vcs:de} erzeugt für alle in
+\gls{commit} zusammenfassen. Das Versionskontrollsystem erzeugt für alle in
 \glspl{commit} zusammengefassten Änderungen eine Historie.
  \cite[S.~38]{hagen:1678}.
 
@@ -425,7 +425,7 @@ Clientkomponenten, die zum Teil grafisch sowie in einem Terminal zu bedienen
 sind. Die Kommunikation der Clientkomponente erfolgt im Regelfall direkt mit
 dem Server. Das bedeutet, der Benutzer holt mit dem Client die Dokumente aus
 dem zentralen Repository, führt seine Änderungen durch und fasst diese in einem
-\gls{commit} zusammen. Hierfür stellt das \acrlong{vcs:de} entsprechende
+\gls{commit} zusammen. Hierfür stellt das Versionskontrollsystem entsprechende
 Unterstützung bereit beispielsweise mit den Befehlen \texttt{checkout}
 (Abschnitt \ref{sec:checkout}) zum Holen der Dokumente und
 \texttt{commit}(Abschnitt \ref{sec:commit}), zum Zusammenfassen und
@@ -441,7 +441,7 @@ Serverkomponente ein zentrales \gls{repository} zur Verfügung stellen muss. Das
 ist aber nicht zu verwechseln mit lokalen Versionskontrollsystemen wie
 \acrshort{rcs} oder \acrshort{sccs}. Der Unterschied ist, dass verteilte
 Systeme das gleichzeitige Arbeiten von mehreren Benutzern stärker unterstützen als
-zentrale \acrlong{vcs:de}. Dabei ist es unerheblich, ob Benutzer gleichzeitig
+zentrale Versionskontrollsystem. Dabei ist es unerheblich, ob Benutzer gleichzeitig
 an mehreren Branches, an verschiedenen Repositorys oder an den gleichen
 Dateien arbeiten. \cite[S.~393-394]{cd}
 
@@ -475,7 +475,7 @@ mit einem zusätzlichen Befehl wie \texttt{push}. Dabei können die Daten belieb
 oft in weitere \glspl{repository} übertragen werden.
 
 \subsection{Streaming}\label{sec:streaming}
-Ein populäres Beispiel für ein \acrlong{vcs:de}, das auf Datenströmen
+Ein populäres Beispiel für ein Versionskontrollsystem, das auf Datenströmen
 (\textit{Streams}) basiert, ist das kommerziell vermarktete ClearCase von IBM.
 Das zentrale Merkmal hierbei ist, dass \textit{Branches} durch sogenannte
 Streams ersetzt werden. Das ermöglicht eine Baumstruktur von abhängigen
