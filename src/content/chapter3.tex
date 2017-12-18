@@ -44,7 +44,7 @@ Damit Dateien nun mit Git versioniert werden können, muss ein (lokales)
 
 \eqlst{listings/git_init.lst}{lst:gitinit}{Ein lokales Repository anlegen}
 
-Existiert das Verzeichnis \texttt{git-example.git} noch nicht wird es durch
+Existiert das Verzeichnis \texttt{git-example.git} noch nicht, wird es durch
 den Befehl angelegt. Zusätzlich wird innerhalb von \texttt{git-example.git}
 noch ein weiteres Verzeichnis \texttt{.git} erzeugt, in dem neben der
 Konfiguration alle Daten abgelegt werden, die Git zur weiteren Verwaltung des
@@ -61,11 +61,9 @@ erzeugt wurden und dass man nun neue Dateien erstellen und hinzufügen kann.
 \subsection{Die ersten Commits}\label{sec:first_commits}
 
 Hier werden nun die ersten Dateien zu dem Repository hinzugefügt. Dazu werden
-mit folgendem Befehl, zwei Dateien, aus dem Internet heruntergeladen. Zuvor wird
-mit dem Befehl \texttt{\$ mkdir helpers} ein Unterordner in dem
-erzeugten Repository angelegt werden\footnote{Wer diese Dateien nicht herunterladen
-kann oder möchte, darf selbstverständlich auch einfach Dateien mit gleichem
-Namen und beliebigem Inhalt erstellen.}.
+mit folgendem Befehl, zwei Dateien aus dem Internet heruntergeladen. Zuvor wird
+mit dem Befehl \texttt{\$ mkdir helpers} ein Unterordner in dem erzeugten
+Repository angelegt.
 
 \eqlst{listings/downloads.lst}{lst:downloads}{Herunterladen der Beispieldateien}
 
@@ -112,12 +110,12 @@ beispielhaft eine etwas ausführlichere Bemerkung für den Commit gewählt:
 des ersten Commits}
 
 Mit \texttt{\$ git show} können alle wichtigen Informationen eines Commits
-eingesehen werden. Neben Zeitpunkt, Autor und Beschreibung beinhaltet dies auch
-die \textit{Commit-ID} (Abschnitt \ref{sec:commit}).  Die weiteren
+eingesehen werden. Neben Zeitpunkt, Autor und Beschreibung beinhaltet dieser
+auch die \textit{Commit-ID} (Abschnitt \ref{sec:commit}). Die weiteren
 Informationen werden in einem Format namens
 \textit{Unified-Diff}\footnote{Details zu dem \textit{Unified-Diff} Format
 stellen die Autoren von \textit{GNU diffutils} unter
- \cite[S.~12-13]{paper:diffutils} zur Verfügung.} dargestellt. \cite[25]{gitosp}
+\cite[S.~12-13]{paper:diffutils} zur Verfügung.} dargestellt. \cite[25]{gitosp}
 
 Mit \texttt{\$ git add} wird nun eine zweite Datei hinzugefügt:
 
@@ -133,7 +131,7 @@ Mit den beiden zuvor ausgeführten Commits, wurde eine, wenn auch
 kurze, Historie erstellt. Um diese zu untersuchen, dienen die Befehle
 \texttt{\$ git whatchanged}\footnote{Der Befehl \texttt{\$ git whatchanged}
 stammt aus frühen Zeiten von Git und ist eigentlich der heutige Befehl
-\texttt{\$ git log} mit einigen Parametern, um die Ausgabe entsprechend zu
+\texttt{\$ git log} mit einigen Parametern um die Ausgabe entsprechend zu
 formatieren.} oder \texttt{\$ git log}. Hierauf wird in Abschnitt \ref{sec:arch}
 weiter eingegangen. Für diesen Fall aber ist \texttt{\$ git whatchanged}
 ausreichend:
@@ -144,16 +142,15 @@ der Historie mit \texttt{whatchanged}}
 Die Ausgabe wird im sogenannten \textit{raw} Format dargestellt. Es werden alle
 Commits mit Informationen über den Autor, Commit-ID, Zeit und den veränderten
 Dateien in zeitlicher Reihenfolge dargestellt. Die konkreten Veränderungen am
-Inhalt der Dateien werden hier nicht dargestellt (Abschnitt \ref{sec:arch}).
+Inhalt der Dateien werden hier nicht dargestellt.
 
-Erwähnenswert ist noch, das Git im Gegensatz zu anderen
+Erwähnenswert ist noch, dass Git im Gegensatz zu anderen
 Versionskontrollsystemen die Dateiberechtigungen speichert. Die Ausgabe des
-letzten Commits (Listing \ref{lst:commit_git-stats}) ist folgende Zeile
-enthalten:
+letzten Commits (Listing \ref{lst:commit_git-stats}) enthält folgende Zeile:
 
 \eqlst{listings/create_mode.lst}{lst:create_mode}{Berechtigungen einer Datei}
 
-Diese Ausgabe besagt, das es sich hierbei um eine normale Datei handelt (100),
+Diese Ausgabe beschreibt, dass es sich hierbei um eine normale Datei handelt (100),
 die mit einer unter Unix üblichen Berechtigung (664) angelegt ist. Damit
 diese Datei aber entsprechend ausführbar ist, muss noch ein weiterer
 Commit, mit einer Änderung an den Dateiberechtigungen, erzeugt werden:
@@ -166,7 +163,7 @@ Mit dem zuvor ausgeführten Befehl wurde ein Commit erzeugt, ohne die
 \texttt{-a} bewirkt hier, dass alle vorhandenen Änderungen zu einem Commit
 zusammengefasst werden und nicht einzeln hinzugefügt werden müssen. Zu beachten
 ist allerdings, dass Dateien, die Git noch nicht kennt, davon nicht betroffen
-sind. Diese müssen nach wie vor zuerst mit \texttt{\$git add} hinzugefügt
+sind. Diese müssen nach wie vor zuerst mit \texttt{\$ git add} hinzugefügt
 werden.
 
 Abschließend erhält der letzte Commit noch eine Markierung bzw. einen \gls{tag}.
@@ -174,7 +171,7 @@ Abschließend erhält der letzte Commit noch eine Markierung bzw. einen \gls{tag
 \eqlst{listings/git_first_tag.lst}{lst:git_first_tag}{Anlegen eines Tags}
 
 Damit wurde ein \gls{tag} mit dem Namen \texttt{tags/0.0.1} angelegt,
-der den letzten Commit bzw. (\gls{HEAD}) referenziert:
+der den letzten Commit bzw. \textit{\gls{HEAD}} referenziert:
 
 \eqlst{listings/git_list_first_tag.lst}{lst:git_list_first_tag}{Auflisten von
 lokalen Tags}
@@ -184,8 +181,8 @@ in den Abschnitten \ref{sec:managetags} und \ref{sec:tagobject} eingegangen.
 
 \subsection{Verteiltes Git}\label{sec:distributed}
 In diesem Abschnitt wird das Arbeiten mit entferten \glspl{repository}
-(Abbildung \ref{fig:centralworkflow}). Die wesentliche Funktionsweise von Git
-ist auf kollaborative Arbeit an \glspl{repository} ausgelegt (Abschnitt
+gezeigt (Abbildung \ref{fig:centralworkflow}). Die wesentliche Funktionsweise
+von Git ist auf kollaborative Arbeit an \glspl{repository} ausgelegt (Abschnitt
 \ref{sec:kernel}).
 
 \begin{figure}[h]
@@ -205,10 +202,10 @@ Repositorys, einen Benutzernamen oder einen Port enthalten:
 
 \eqlst{listings/git_url.lst}{lst:git_url}{Git Repository Url syntax}
 
-Besonderheiten gibt es für das Klonen lokaler Repositorys und solcher die über
+Besonderheiten gibt es für das Klonen lokaler Repositorys und solcher, die über
 über \gls{sshell}(\acrshort{ssh}) geklont werden. Hier gibt es jeweils eine
 Kurzform. Für das Klonen über \acrshort{ssh} muss das Protokoll nicht mit
-angegeben werden und bei lokal erreichbarer Repositorys kann vollständig auf
+angegeben werden und bei lokal erreichbaren Repositorys kann vollständig auf
 die Angabe einer Adresse verzichtet werden. Hier reicht einfach die Angabe
 eines Pfads \texttt{/pfad/zum/repo}.
 
@@ -243,7 +240,7 @@ aktualisiert. \cite[S.~141-143]{gitosp}
 Das weitere Bearbeiten des Repositoryinhalts kann wie in Abschnitt
 \ref{sec:first_commits} beschrieben durchgeführt werden.
 
-\subsubsection{Änderungen übertragen}
+\subsubsection{Änderungen übertragen}\label{sec:pushchanges}
 Um Daten in ein entferntes Repository zu übertragen, wird der Befehl \texttt{\$
 git push} benutzt. Als Standard Ziel wird das Repository verwendet, von dem auch
 ursprünglich die Kopie erstellt wurde\footnote{In der Regel ist das \textit{origin}.}.
@@ -269,11 +266,11 @@ Repositorys, eine leere Referenz mit dem Zielbranch angeben werden:
 Referenz löschen}
 
 \subsubsection{Änderungen herunterladen}
-Um Änderungen aus entfernten Repositorys herunterzuladen existieren zwei
+Um Änderungen aus entfernten Repositorys herunterzuladen, existieren zwei
 Befehle. Zum Einen \texttt{\$ git pull} und zum Anderen \texttt{\$ git fetch}.
 Der hauptsächliche Unterschied zwischen den beiden Befehlen ist, dass
 \texttt{\$ git fetch} lediglich die Änderungen anderer Entwickler aus dem entfernten
-Repository herunterläd (Listing \ref{lst:git_fetch}).
+Repository herunterlät (Listing \ref{lst:git_fetch}).
 
 \eqlst{listings/git_fetch.lst}{lst:git_fetch}{Neue Änderungen herunterladen}
 
@@ -350,7 +347,7 @@ entstandenen Objektbaums und enhält keinen Dateinamen (Abbildung
 \ref{fig:objectmodel}).
 
 Dadurch, dass jeder Commit seinen vorhergehenden Commit referenziert, entsteht ein
-gerichteter azyklischer Graph, bei dem ein Koten durch einen Commit und Kanten
+gerichteter azyklischer Graph, bei dem ein Knoten durch einen Commit und Kanten
 durch Referenzen repräsentiert werden. Ein weiterer Vorteil dieser
 Vorgehensweise ist, dass in dem Commit nicht immer alle enthaltenen Objekte neu
 gespeichert werden, sondern nur diejenigen, die verändert wurden. Alle anderen
@@ -364,7 +361,7 @@ Repository mit nur dieser einen Datei. \cite[56-57]{gitosp}
 
 Zusätzlich unterscheidet Git noch den Committer vom Autor. Diese können sich
 unterscheiden, wenn Commits z.B. einen Reviewprozess durchlaufen müssen und
-nicht von dem Autor selbst in das aktuelle Repository integiert werdeni (Listing
+nicht von dem Autor selbst in das aktuelle Repository integiert werden (Listing
 \ref{lst:git_show_raw}).
 
 \subsubsection{Tag}\label{sec:tagobject}
@@ -374,7 +371,7 @@ referenzierenden Commits, wird ein Tagname, der Typ und der Autor
 (\textit{tagger}) mit Name und Mailadresse gespeichert. Je nach Art des Tags
 kann optional noch eine Beschreibung angegeben werden. Bei Tags ist nicht nur
 die Prüfsumme, sondern auch der Name eindeutig. Wird versucht ein Tag mit einem
-bereits existierenden Namen zu erzeugen, dann reagiert Git mit einer
+bereits existierenden Namen zu erzeugen, reagiert Git mit einer
 Fehlermeldung und lehnt das Erstellen entsprechend ab.
 
 Git unterscheidet zwischen drei Arten von Tags:
@@ -418,34 +415,34 @@ die Ausgabe der Referenzdatei des Branches \textit{master}:
 \eqlst{listings/cat_master.lst}{lst:cat_master.lst}{Den Inhalt der Referenz
 \textit{master} ausgeben}
 
-Die ausgegebene Prüfsumme ist in diesem Fall lediglich die \textit{SHA-1-ID} des
-letzten Commits aus Abschnitt \ref{sec:first_commits}. Branches sind einfach
-Textdateien, die eine Commit-ID zu einem referenzierenden Commit enthalten. Da
-diese Referenz veränderbar ist und keine weiteren Informationen enthält, wird
-hier kein weiterer Objekttyp benötigt. Da der Name des Branches direkt
-von der erstellten Referenzdatei abhängig ist, sind auch die Namen von Branches
-eindeutig.
+Die ausgegebene Prüfsumme ist in diesem Fall lediglich die \textit{SHA-1-ID}
+des letzten Commits aus Abschnitt \ref{sec:first_commits}. Branches sind
+einfache Textdateien, die eine \textit{Commit-ID} zu einem referenzierten
+Commit enthalten. Da diese Referenz veränderbar ist und keine weiteren
+Informationen enthält, wird hier kein weiterer Objekttyp benötigt. Da der Name
+des Branches direkt von der erstellten Referenzdatei abhängig ist, sind auch
+die Namen eindeutig.
 
-Neben der fortgeschrittenen Manipulation von Git Objekten gehen die Autoren
-Scott Chacon und Ben Straub in \cite[S.~408-418]{progit} ausführlicherer
+Neben der fortgeschrittenen Manipulation von Git Objekten, gehen die Autoren
+Scott Chacon und Ben Straub in \cite[S.~408-418]{progit} ausführlicher
 auf die Objektverwaltung ein.
 
 \subsection{Bäume}\label{sec:trees}
-Git organisiert das Repository in drei verschiedene Bereichen. Scott Chacon,
+Git organisiert das Repository in drei verschiedenen Bereichen. Scott Chacon,
 einer der Autoren von \cite{progit}, spricht in einem seiner
 Vorträge \cite{link:talesoftrees} von drei Bäumen \textit{HEAD}, \textit{Index}
 und dem \textit{Work Tree}.
 
 Der \textit{Work Tree} (Abschnitt \ref{sec:workingtree}) wurde bereits als
-Arbeitsbereich angesprochen. Mit \textit{\gls{HEAD}} ist neben dem Verweis auf den
-neuesten Commit, auch im weitesten Sinne das Repository gemeint. Das \gls{repository} dient
-als Datenspeicher für alle Commits, deren Inhalte und Historie. Der
-Index (Abschnitt \ref{sec:index}) in Git stellt im Vergleich zu voherigen
-Versionskontrollsystemen eine Neuerung dar. Der Index ist ein Bereich
-zwischen dem \gls{repository} und dem Arbeitsbereich dar. Er dient dazu, den
-nächsten \textit{\gls{HEAD}} bzw. Commit vorzubereiten. Die Befehle \texttt{\$ git
-add}, \texttt{\$ git reset} und \texttt{\$ git commit} arbeiten auf diesen drei
-Bereichen.\cite[34-35]{gitosp}
+Arbeitsbereich angesprochen. Mit \textit{\gls{HEAD}} ist neben dem Verweis auf
+den neuesten Commit, auch im weitesten Sinne das Repository gemeint. Das
+\gls{repository} dient als Datenspeicher für alle Commits, deren Inhalte und
+Historie. Der Index (Abschnitt \ref{sec:index}) in Git stellt im Vergleich zu
+vorherigen Versionskontrollsystemen eine Neuerung dar. Der Index ist ein
+Bereich zwischen dem \gls{repository} und dem Arbeitsbereich. Er dient dazu,
+den nächsten \textit{\gls{HEAD}} bzw. Commit vorzubereiten. Die Befehle
+\texttt{\$ git add}, \texttt{\$ git reset} und \texttt{\$ git commit} arbeiten
+auf diesen drei Bereichen. \cite[34-35]{gitosp}
 
 \begin{figure}[h]
     \centering
@@ -456,7 +453,7 @@ Bereichen.\cite[34-35]{gitosp}
 \end{figure}
 
 \subsection{Ergänzende Befehle}\label{sec:commands}
-Die bisher verwendeten Befehle werden in diesem Abschnit um weitere  ergänzt
+Die bisher verwendeten Befehle werden in diesem Abschnit um weitere, ergänzt
 die für die alltägliche Arbeit mit Git sinnvoll sind\footnote{Weitere siehe
 hierzu \cite{gitosp}, \cite{progit} oder \cite{gitwf}.}.
 
@@ -472,9 +469,9 @@ mit \texttt{\$ git help <Befehl>} oder mit dem klassischen Aufruf der Manpage
 Viele der Befehle erwarten ein bestimmtes Objekt als Argument. So finden sich
 häufig Argumente, die als \textit{tree-ish} oder \textit{commit-ish} bezeichnet
 werden. Damit sind aber lediglich entsprechende Objekte gemeint, die z.B. einen
-Tree referenzieren. \cite[52]{gitosp} So benötigt \texttt{\$ git ls-tree} aus
-Abschnitt \ref{sec:objectmodel} ein \textit{tree-ish} und \texttt{\$ git show}
-kann auf allen Objekten aus Abschnitt \ref{sec:objectmodel} arbeiten.
+Tree referenzieren. So benötigt \texttt{\$ git ls-tree} aus Abschnitt
+\ref{sec:objectmodel} ein \textit{tree-ish} und \texttt{\$ git show} kann auf
+allen Objekten aus Abschnitt \ref{sec:objectmodel} arbeiten. \cite[52]{gitosp}
 
 \subsubsection{Dateien hinzufügen}\label{sec:gitadd}
 Mit \texttt{\$ git add} können grundsätzlich Dateien hinzugefügt werden. Der
@@ -501,7 +498,7 @@ hinzugefügt werden.\cite[S.~43-44]{gitosp}
 Der Befehl \texttt{\$ git rm} steht für \textit{remove}, bewirkt aber nicht das
 Gegenteil von \texttt{add}. Dieser Befehl entfernt, vergleichbar mit dem
 Linux-Befehl, Dateien oder Verzeichnisse. Um nicht leere Verzeichnisse zu
-löschen, muss noch ein \texttt{-r} für Rekursiv angegeben werden. Wenn Dateien
+löschen, muss noch ein \texttt{-r} für rekursiv angegeben werden. Wenn Dateien
 bereits verändert wurden, kann zusätzlich noch mit einem \texttt{-f} der
 Vorgang erzwungen werden.
 
@@ -517,12 +514,12 @@ auf das entsprechende Objekt (Abschnitt \ref{sec:commitobject}).
 \subsubsection{Tags verwalten}\label{sec:managetags}
 Die eindeutige Identifikation von Versionen bzw. konkreten Zuständen eines
 Repositorys mit \gls{SHA-1} Prüfsummen ist aus technischer Sicht problemlos.
-Als Mensch hingegen kann man sich solche Prüfsummen weder gut merken noch geht
-aus den Prüfsummen eine Historie hervor. Git ermöglicht mit dem Befehl
+Als Mensch hingegen kann man sich solche Prüfsummen weder gut merken, noch geht
+aus den Prüfsummen eine Historie hervor. Git ermöglicht es mit dem Befehl
 \texttt{\$ git tag} Objekte, zumeist Commits, namentlich zu markieren. Als
 Namen dieser Markierungen wird man in der Praxis eine Vielzahl an Varianten
 finden. Eine durchaus übliche ist aber die Kombination aus drei bis vier
-fortlaufende Zahlen. Um den Tag zusätzlich zu identifizieren, kann hier auch
+fortlaufenden Zahlen. Um den Tag zusätzlich zu identifizieren, kann hier auch
 noch ein Präfix, z.B. \texttt{release/} oder \texttt{v} verwendet werden. Wie
 Tags angelegt und angezeigt werden, ist in Listing \ref{lst:git_first_tag} und
 Listing \ref{lst:git_list_first_tag} gezeigt.  Ebenso wurde in Abschnitt
@@ -547,8 +544,8 @@ dynamische Referenzen. Da hier nur eine Textdatei mit der Referenz erstellt
 werden muss, ist der Vorgang entsprechend schnell. Das Erstellen eines
 Branches benötigt als Argument mindestens einen eindeutigen Namen (Abschnitt
 \ref{sec:branchobject}). Wenn keine Referenz auf einen Commit übergeben wird,
-wählt Git einfach den aktuellen \texttt{HEAD}. Das folgende Beispiel erstellt
-einen Branch namens \textit{topic} von der Referenz \textit{master}.
+wählt Git einfach den aktuellen \textit{\gls{HEAD}}. Das folgende Beispiel
+erstellt einen Branch namens \textit{topic} von der Referenz \textit{master}.
 
 \eqlst{listings/git_branch.lst}{lst:git_branch}{Einen Branch anlegen}
 
@@ -557,22 +554,21 @@ Um auf einen anderen Branch zu wechseln, kann der Befehl \texttt{\$ git checkout
 
 In bestimmten Situationen verweigert Git den Checkout, beispielsweise wenn eine
 Datei überschrieben würde oder ein Wechsel des Branches zusätzliche Änderungen
-an einer lokal geänderten Datei zur Folge hätte.Der Parameter \texttt{-f}
+an einer lokal geänderten Datei zur Folge hätte. Der Parameter \texttt{-f}
 erzwingt auch hier den gewünschten Vorgang. Mit \texttt{\$ git checkout} können
 auch Branches angelegt und direkt darauf gewechselt werden:
 
 \eqlst{listings/git_checkout.lst}{lst:git_checkout}{Einen Branch anlegen und
 darauf wechseln}
 
-Der Befehl \texttt{\$ git branch} unterstützt noch weitere Parameter die
-. So kann mit den Parametern
-\texttt{-d/-D}\footnote{Der Parameter \texttt{-D} wird benötigt, wenn auf dem
-Branch Objekte sind, die noch nicht dem aktuellen Branch hinzugefügt
-wurden \cite[67]{gitosp}.} ein Branch gelöscht werden oder mit \texttt{-m} ein
-Branch umbenannt werden. Lokale Branches können mit \texttt{-l}\footnote{Das
-ist das Standardverhalten, wenn kein Parameter übergeben wird.} angezeigt
-werden, entfernte aus dem entfernten Repository mit \texttt{-r} und alle
-zusammen mit \texttt{-a}. \cite[65-67]{gitosp}
+Der Befehl \texttt{\$ git branch} unterstützt noch weitere Parameter. So kann
+mit den Parametern \texttt{-d/-D}\footnote{Der Parameter \texttt{-D} wird
+benötigt, wenn auf dem Branch Objekte sind, die noch nicht dem aktuellen Branch
+hinzugefügt wurden \cite[67]{gitosp}.} ein Branch gelöscht werden oder mit
+\texttt{-m} ein Branch umbenannt werden. Lokale Branches können mit
+\texttt{-l}\footnote{Das ist das Standardverhalten, wenn kein Parameter
+übergeben wird.} angezeigt werden, entfernte aus dem entfernten Repository mit
+\texttt{-r} und alle zusammen mit \texttt{-a}. \cite[65-67]{gitosp}
 
 Weitere Details zur Arbeit mit Branches sind beispielsweise in \cite[388-389,
 408-415]{cd} und \cite[56-88]{progit} enthalten.
@@ -603,9 +599,9 @@ der Anfang mit \texttt{..} vom Ende getrennt werden:
 einen Bereich einschränken}
 
 Die Trennung mit zwei Punkten wird auch von vielen anderen Befehlen verstanden,
-sowie beispielsweise \texttt{\$ git diff} oder \texttt{\$ git show} (Abschnitt
+so wie beispielsweise von \texttt{\$ git diff} oder \texttt{\$ git show} (Abschnitt
 \ref{sec:first_commits}). Die Auswahl des angezeigten Bereichs erfolgt immer
-exklusive des ersten und inklusive des zweites (nach \texttt{..}) angegebenen
+exklusive des ersten und inklusive des zweiten (nach \texttt{..}) angegebenen
 Commits. \cite[45-48]{gitosp}
 
 \subsubsection{Aktuelle Änderungen anzeigen}\label{sec:gitdiff}
@@ -618,19 +614,18 @@ entfernt, zeigt \texttt{\$ git status} folgende Situation:
 \eqlst{listings/git_status_wk.lst}{lst:git_status_wk}{Status des
 Arbeitsbereichs anzeigen}
 
-Der Befehl \texttt{\$ git diff} führt nun zur folgenden Ausgabe im Unified-Diff
+Der Befehl \texttt{\$ git diff} führt nun zu folgender Ausgabe im \textit{Unified-Diff}
 Format:
 
 \eqlst{listings/git_diff_wk.lst}{lst:git_diff_wk}{Änderungen auf Arbeitsbereich anzeigen}
 
-Ein anschließendes \texttt{\$ git add LICENSE} führt zum Verschieben auf den
+Ein anschließendes \texttt{\$ git add LICENSE}, führt zum Verschieben auf den
 Index und \texttt{\$ git diff}, zu einer leeren Ausgabe:
 
 \eqlst{listings/git_status_staged.lst}{lst:git_status_staged}{Status des Index anzeigen}
 
 Um die Änderungen auf dem Index zu betrachten, muss der Befehl \texttt{\$ git
 diff} um den Parameter \texttt{--staged} ergänzt werden\footnote{Die Parameter
-\texttt{--staged} und \texttt{--cached} können Synonym verwendet
-werden.}\textsuperscript{\footnotesize{,}}\footnote{Der Parameter
-\texttt{--staged} steht in diesem Fall für das betrachten der \textit{Staging
-Area} (Abschnitt \ref{sec:index)}.}. \cite[26-29]{progit}
+\texttt{--staged} und \texttt{--cached} können synonym verwendet
+werden und stehen in diesem Fall für das betrachten der \textit{Staging
+Area} (Abschnitt \ref{sec:index}).}. \cite[26-29]{progit}

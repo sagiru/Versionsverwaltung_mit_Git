@@ -300,15 +300,15 @@ Ein Repository enthält in der Regel einen zentralen Zweig (engl. Branch),
 auf dem die Entwicklungsarbeit stattfindet. Ein Abzweig an einer bestimmten
 Stelle zu einem bestimmten Zeitpunkt erzeugt einen neuen Branch. Dieser
 Abzweig kann von dem zentralen oder einem anderen Branch erfolgen. Wie diese
-Branches erzeugt werden, ist abbhängig vom eingesetzten Versionskonrollsystem.
-So wird unter \acrshort{svn} oder \acrshort{cvs} der Branch lediglich mittels
-eines Kopiervorgangs, unter Git aber über eine Referenz erzeugt. Häufig
+Branches erzeugt werden, ist abbhängig vom eingesetzten Versionskontrollsystem.
+So wird unter \acrshort{svn} oder \acrshort{cvs} der Branch mittels
+eines Kopiervorgangs, unter Git jedoch über eine Referenz erzeugt. Häufig
 werden Branches verwendet, um Features zu entwickeln, Releases zu erzeugen oder
 Bugfixes an bestehenden Versionen durchzuführen \cite[S.~21]{gitosp}. Um
 effizient mit Branches umzugehen, gibt es verschiedene Strategien. So wird von
 Jez Humble und David Farley in \cite[S.~408-412]{cd} auf Releasebranches,
 Featurebranches, Teambranches oder eine Entwicklung mit nur einem
-Hauptbranch\footnote{Umgangsprachlich werden verschiedene Begriffe für diesen
+Hauptbranch\footnote{Umgangssprachlich werden verschiedene Begriffe für diesen
 Branch benutzt. So sind Begriffe wie z.B. Trunk, Masterbranch oder
 Mainlinebranch nicht unüblich. Gemeint ist hiermit aber immer der
 zentrale Branch, der standardmäßig von dem genutzen Versionskontrollsystem vorgesehen
@@ -318,40 +318,40 @@ ist. Für \acrshort{svn} z.B. ist das das Verzeichnis
 
 \subsection{Merge}\label{sec:merge}
 Wenn mehrere Entwickler an einem \gls{repository} arbeiten (Abschnitt
-\ref{sec:collaboration}), entstehen an einer gemeinsamen Basis häufig parallele
-Abzweige. An diesen wird gleichzeitig gearbeitet sodass diese Zweige
-auseinander laufen. Das spätere Wiederzusammenführen dieser Zweige bezeichnet
-man als Merge. Wie auch andere Versionskontrollsysteme bietet Git hier mit
-\texttt{merge}, \texttt{mergetool}, \texttt{rebase} und \texttt{cherry-pick}
-eine umfangreiche Unterstützung \cite[S.~vii]{gitwf}. Beim Zusammenführen von
-Zweigen ensteht, wie in Abbildung \ref{fig:merge}, am Beispiel von
-\textit{topic} und \textit{master} gezeigt, ein sogenannter Merge-Commit.
-Dieser hat seinen Ursprung in den beiden vorhergehenden Knoten dieser Zweige.
+\ref{sec:collaboration}), entstehen häufig parallele Abzweige von einer einer
+gemeinsamen Basis. An diesen wird gleichzeitig gearbeitet, sodass diese Zweige
+auseinander laufen. Das spätere Wiederzusammenführen bezeichnet man als Merge.
+Wie auch andere Versionskontrollsysteme bietet Git hier mit \texttt{merge},
+\texttt{mergetool}, \texttt{rebase} und \texttt{cherry-pick} eine umfangreiche
+Unterstützung \cite[S.~vii]{gitwf}. Beim Zusammenführen von Zweigen ensteht ein
+sogenannter Merge-Commit (Abbildung \ref{fig:merge}). Dieser hat seinen
+Ursprung in den beiden vorhergehenden Knoten der Zweige \textit{topic} und
+\textit{master}.
 
 \begin{figure}[hb]
   \centering
   \includegraphics[scale=0.60]{images/merge.eps}
-  \caption{Zusammenführen zweier Branches. Angelehnt an \cite[83]{gitosp}}.
+  \caption{Zusammenführen zweier Branches. Angelehnt an \cite[83]{gitosp}}
   \label{fig:merge}
 \end{figure}
 
 Komplexere Szenarien erlauben es, mit Git auch Merges aus mehr als zwei
-Branches zu erzeugen, z.B. sogenannte \textit{three-way-merges} oder
+Branches durchzuführen, sogenannte \textit{three-way-merges} oder
 \textit{octopus-merges} \cite[S.~87]{gitosp}. Git ermöglicht auch, Zweige aus
 verschiedenen Repositorys zusammenzuführen. So gibt es nach \cite[3]{gitwf}
 noch die Möglichkeit, Repositorys nach spezielleren Funktionen zu unterteilen.
 So kann ein dediziertes \textit{Blessed Repository} ausschließlich für das
 Erstellen von Versionen der erzeugten Software genutzt werden. Die Änderungen
 können aus einem \textit{Fork Repository} importiert werden. Das \textit{Fork
-Repository} dient zur Entkopplung des Haupt-Repositorys. So können größere
-Umbauten, Merges oder Features unabhängig vom Haupt-Repository entwickelt
-werden \cite[S.~123]{gitwf}. Eine vergleichbare Vorgehensweise findet man im
+Repository} dient zur Entkopplung des Haupt Repositorys. So können größere
+Umbauten, Merges oder Features unabhängig entwickelt werden
+\cite[S.~123]{gitwf}. Eine vergleichbare Vorgehensweise findet man im
 Repository des Linux Kernels \cite{link:linuxgit} (Abschnitt \ref{sec:kernel}).
 
 \subsection{Repository}\label{sec:repository}
 Das Repository ist ein Datenspeicher, in dem gemeinsame Dateien eines Projekts
 durch das Versionskontrollsystem verwaltet werden. Der Benutzer kann hier Dateien
-beispielsweise hinzufügen, entfernen oder verändern und Änderungen in einem
+beispielsweise hinzufügen, entfernen oder verändern und in einem
 \gls{commit} zusammenfassen. Das Versionskontrollsystem erzeugt für alle in
 \glspl{commit} zusammengefassten Änderungen eine Historie.
  \cite[S.~38]{hagen:1678}.
@@ -365,31 +365,31 @@ So können Vorgänger (Abschnitt \ref{sec:commitobject}) beispielsweise mit
 \texttt{HEAD\^{}} referenziert werden. Das Zeichen \texttt{\^{}} dient dabei
 als Zähler. So bezeichntet \texttt{HEAD\^{}\^{}} den zweiten Vorgänger und ist
 Aquivalent zu \texttt{HEAD\~{}2}. \cite[S.~65]{gitosp}} Version eine
-symbolische Referenz auf die letzte Version des aktuell lokal genutzten
-Branches. Diese ist also abhängig von den gerade vorhandenen Daten im Working
-Tree von Git \cite[S.~20]{gitosp}. Für \acrshort{svn} hingegen bezeichnet
-\textit{HEAD} die letzte veröffentlichte Version im Repository.
+symbolische Referenz auf die letzte Version des lokal genutzten Branches. Diese
+ist also abhängig von der gerade gewählten Version im Working Tree (Abschnitt
+\ref{sec:workingtree}) \cite[S.~20]{gitosp}. Für \acrshort{svn} hingegen
+bezeichnet \textit{HEAD} die letzte veröffentlichte Version im Repository.
 
 \subsection{Checkout}\label{sec:checkout}
 Bei vielen Versionskontrollsystemen gibt es einen gleichlautenden Befehl.
-Um Missverständnisse zu vermeiden muss man hier zwischen den anderen erwähnten
+Um Missverständnisse zu vermeiden, muss man hier zwischen den anderen erwähnten
 Versionskontrollsystemen und Git unterscheiden. Der Begriff \textit{checkout}
 beschreibt im Rahmen von Versionskonrollsystemen wie z.B. \acrshort{cvs} oder
 \acrshort{svn} (Abschnitt \ref{cha:Versionsverwaltung}) das Erstellen einer
 lokalen Kopie eines entfernten \glspl{repository} \cite[S~137]{gitosp}.
 
 Im Kontext von Git (Abschnitt \ref{cha:git}) beschreibt \textit{checkout} zum
-einen eher das Wechseln zu einem konkreten \gls{commit}. Das kann unter Git ein
+Einen das Wechseln zu einem konkreten \gls{commit}. Das kann unter Git ein
 \gls{branch}, \gls{tag} oder ein beliebiges Commit-Objekt (Abschnitt
-\ref{sec:commit}) sein. Zum anderen können damit auch Dateien aus vorherigen
+\ref{sec:commit}) sein. Zum Anderen können damit auch Dateien aus vorherigen
 Commits wiederhergestellt werden \cite[S~76]{gitosp}.
 
 \subsection{Clone}\label{sec:clone}
 Was z.B. unter \acrshort{svn} oder \acrshort{cvs} der \textit{checkout} eines
 entfernten \glspl{repository} ist, ist unter Git das \textit{Clonen} eines
-entfernten \glspl{repository}. Es bezeichnet also das Herunterladen eines
+entfernten \glspl{repository}. Es bezeichnet das Herunterladen eines
 Git-Repositorys von einer Quelle mit der vollständigen Historie und allen
-enhaltenen \glspl{commit}. Es erstellt also sozusagen einen Klon des
+enhaltenen \glspl{commit}. Es erstellt sozusagen einen Klon des
 ursprünglichen \glspl{repository}. \cite[S.~21]{gitosp}
 
 \subsection{Working Tree}\label{sec:workingtree} Es gibt unterschiedliche
@@ -441,7 +441,7 @@ Serverkomponente ein zentrales \gls{repository} zur Verfügung stellen muss. Das
 ist aber nicht zu verwechseln mit lokalen Versionskontrollsystemen wie
 \acrshort{rcs} oder \acrshort{sccs}. Der Unterschied ist, dass verteilte
 Systeme das gleichzeitige Arbeiten von mehreren Benutzern stärker unterstützen als
-zentrale Versionskontrollsystem. Dabei ist es unerheblich, ob Benutzer gleichzeitig
+zentrale Versionskontrollsysteme. Dabei ist es unerheblich, ob Benutzer gleichzeitig
 an mehreren Branches, an verschiedenen Repositorys oder an den gleichen
 Dateien arbeiten. \cite[S.~393-394]{cd}
 
@@ -459,20 +459,19 @@ ist es unerheblich, ob eine Netzwerkverbindung zu einer möglichen Quelle besteh
 ohne dass jemand gezwungen ist, diese zu übernehmen.
 \item Dadurch, dass jeder Benutzer eine eigene vollwertige Kopie des
 \glspl{repository} hat, sind \acrshort{dvcs} robuster gegenüber Datenverlusten.
-Darüberhinaus können Benutzer dadurch lokal branches anlegen und Experimente
-durchführen, ohne diese immer in ein zentrales Repository zu übertragen. Die
+Darüber hinaus können Benutzer dadurch lokal branches anlegen und Experimente
+durchführen, ohne diese in ein zentrales Repository zu übertragen. Die
 geringere Beanspruchung von zentralen Ressourcen, führt zu einer besseren
 Skalierbarkeit.
-\item Commits, Branches und Tags können lokal sortiert, geordnet und
-zusammengefasst werden, bevor die Übertragung in ein gemeinsam genutztes
-\gls{repository} durchgeführt wird.\footnote{Das wird im Kontext von Git als
-\textit{rebase} bezeichnet.}
+\item Commits, Branches und Tags können lokal sortiert und zusammengefasst
+werden, bevor die Übertragung in ein gemeinsam genutztes \gls{repository}
+durchgeführt wird.\footnote{Das wird im Kontext von Git als \textit{rebase}
+bezeichnet.}
 \end{itemize}
-
 Im Gegensatz zu zentralen Versionskontrollsystemen erfolgt das Erstellen eines
-\glspl{commit} lokal und die Übertragung in ein weiteres \gls{repository}
-mit einem zusätzlichen Befehl wie \texttt{push}. Dabei können die Daten beliebig
-oft in weitere \glspl{repository} übertragen werden.
+\glspl{commit} lokal und die Übertragung in ein weiteres \gls{repository} mit
+einem zusätzlichen Befehl. Dabei können die Daten beliebig oft in weitere
+\glspl{repository} übertragen werden.
 
 \subsection{Streaming}\label{sec:streaming}
 Ein populäres Beispiel für ein Versionskontrollsystem, das auf Datenströmen

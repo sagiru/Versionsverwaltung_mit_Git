@@ -3,25 +3,25 @@
 Auch wenn Git im Vergleich zu anderen Versionskontrollsystemen (Abschnitt
 \ref{sec:GeschichtlicheEntwicklung}), eine innovative Neuerung mit einem großen
 Funktionsumfang ist, gibt es auch hier Einschränkungen. Im Folgenden sind drei
-in kurz erläutert.
+erläutert.
 
 \subsection{Umgang mit Binärdateien}\label{sec:binaries}
-Wie in Abschnitt \ref{sec:objectmodel} erläutert, ist der Umgang mit
-Dateien und Speicherplatz innerhalb von Git effizient organisiert. Eine
-Ausnahme bilden hier Dateien in Binärformaten (z.B.  Grafiken, Videos,
-Audiodateien). Wie bereits in Abschnitt \ref{sec:objectmodel} beschrieben,
-werden Dateien innerhalb von Git als Objekte gespeichert und referenziert.
-Zusätzlich komprimiert Git diese Dateien, so dass trotz vieler Kopien und
-Änderungen der Speicherplatzverbrauch sehr gering ist. Binäre Formate lassen
-sich allerdings häufig nicht mehr weiter komprimieren oder zusammenfassen, so
-wird bei Änderungen solcher Dateien jede Version als eigenes Objekt
-gespeichert und vorgehalten. Angenommen, eine mit Git verwaltete Software wird
-mehrfach am Tag in einem Binärformat kompiliert und ebenfalls in dem gleichen
-Repository versioniert, dann bekommt jeder Entwickler alle Binärdateien über
-die gesamte Lebenszeit in seiner lokalen Kopie abgelegt.  Es gibt hier aber
-externe Tools\footnote{https://git-lfs.github.com/} und organisatorische
-Workflows\footnote{Lange Historien auslagern \cite[S.~235-244]{gitwf}}, die sich
-mit diesem Problem beschäftigen. \cite[S.~300]{gitwf}
+Wie in Abschnitt \ref{sec:objectmodel} erläutert, ist der Umgang mit Dateien
+und Speicherplatz innerhalb von Git effizient organisiert. Eine Ausnahme bilden
+hier Dateien in Binärformaten (z.B.  Grafiken, Videos, Audiodateien). Wie
+bereits beschrieben, werden Dateien innerhalb von Git als Objekte gespeichert
+und referenziert.  Zusätzlich komprimiert Git diese Dateien, so dass trotz
+vieler Kopien und Änderungen der Speicherplatzverbrauch sehr gering ist. Binäre
+Formate lassen sich allerdings häufig nicht mehr weiter komprimieren oder
+zusammenfassen, so wird bei Änderungen solcher Dateien jede Version als eigenes
+Objekt gespeichert und vorgehalten. Angenommen, eine mit Git verwaltete
+Software wird mehrfach am Tag in einem Binärformat kompiliert und ebenfalls in
+dem gleichen Repository versioniert, dann bekommt jeder Entwickler alle
+Binärdateien die über die gesamte Zeit erzeugt wurden in seiner lokalen Kopie
+abgelegt.  Es gibt hier aber externe
+Tools\footnote{https://git-lfs.github.com/} und organisatorische
+Workflows\footnote{Lange Historien auslagern \cite[S.~235-244]{gitwf}}, die
+sich mit diesem Problem beschäftigen.  \cite[S.~300]{gitwf}
 
 \subsection{Alles oder nichts}
 Bei der Betrachtung von anderen Versionskontrollsystemen (Abschnitt
@@ -41,23 +41,18 @@ verwenden, um dieses Problem zu umgehen. \cite[300-302]{gitwf}
 
 \subsection{Grafische Werkzeuge}
 Git selbst bietet keine grafische Unterstützung um Informationen über den
-Inhalt zu visualisieren. So gibt es zwar neben den beschriebenen (Abschnitt
-\ref{sec:arch}) Befehlen auch mit \texttt{\$ git blame}, \texttt{\$ git annotate} und
-\texttt{git log --graph} noch weitere Möglichkeiten mit denen sich
-umfangreichere Informationen anzeigen lassen, aber eben nur
-textuell \cite[S.~302]{gitwf}. Es gibt eine Vielzahl an grafischen Tools, hier
-seien nur einige wie \texttt{gitk}, \texttt{gitg} oder \texttt{gitkraken}
-genannt.
+Inhalt zu visualisieren. So gibt es zwar neben den beschriebenen Befehlen
+(Abschnitt \ref{sec:arch}) mit \texttt{\$ git blame}, \texttt{\$ git annotate}
+und \texttt{git log --graph} noch weitere Möglichkeiten, mit denen sich
+umfangreichere Informationen anzeigen lassen, aber eben nur textuell
+\cite[S.~302]{gitwf}. Es gibt eine Vielzahl an grafischen Tools, hier seien nur
+einige wie \texttt{gitk}, \texttt{gitg} oder \texttt{gitkraken} genannt.
 
 \section{Zahlen und Fakten - Der Linux Kernel}\label{sec:kernel}
 Das Git Repository des Linux Kernels wurde am 16. April 2005 initial von Linus
 Torvalds mit folgendem \gls{commit} \cite{link:linuxgit} eröffnet:
 
-\lstinputlisting[
-  label=lst:linusfirst,
-  caption={Erster Git Commit von Linus Torvalds},
-  frame=L,
-]{listings/linus_first_git_commit.lst}
+\eqlst{listings/linus_first_git_commit.lst}{lst:linusfirst}{Erster Git Commit von Linus Torvalds}
 
 Der Linux Kernel ist eines der populärsten Git Repositorys und unterstreicht
 die technischen Möglichkeiten von Git mit einigen, durchaus beindruckenden
@@ -85,10 +80,7 @@ Statistiken wurden entweder mit \texttt{\$ gitstats} \cite{link:gitstats} oder
 Standard Git Befehlen ermittelt. So lassen sich z.B. unter Linux, die
 durchgeführten Merges von Linus Torvalds mit folgendem Befehl ermitteln:
 
-\lstinputlisting[
-  label=lst:allmerges,
-  caption={Ermitteln von Merges pro Autor},
-]{listings/all_merges.lst}
+\eqlst{listings/all_merges.lst}{lst:allmerges}{Ermitteln von Merges pro Autor}
 
 Solche Statistiken sind nicht unbedingt als Qualitätsmaßstab geeignet, um
 Rückschlüsse auf die Effizienz einzelner Personen zu ziehen. Wie in Kapitel
@@ -117,7 +109,7 @@ Die Betrachtung der reinen Zahlen reicht also nicht aus, um eine repräsentative
 Einschätzung einzelner Personen zu erhalten.
 
 Es können verschiedenste Statistiken über ein Projekt bzw. Repository erhoben
-werden, die geeignet sind, ein vollständigeres Bild über die Aktivitäten
+werden, die geeignet sind, ein vollständiges Bild über die Aktivitäten
 innerhalb des Projektes zu bilden. Beispielsweise könnten das nach Jez Humble
 und David Farley in \cite[S.~138]{cd} folgende sein:
 
