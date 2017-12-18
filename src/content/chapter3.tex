@@ -296,7 +296,7 @@ Objekttypen und deren Zusammenhänge ein. Er basiert größtenteils auf den
 Ausführungen der Autoren aus \cite[S.~49-59]{gitosp}.
 
 Für jedes Objekt wird innerhalb des Repositorys unter \texttt{.git/objects}
-eine Datei abgelegt. Für alle Objekte wird eine eindeutige \gls{SHA-1}
+eine Datei abgelegt. Für alle Objekte wird eine eindeutige \gls{sha1}
 Prüfsumme erzeugt, die gleichzeitig als Dateiname und Referenz für das
 abgespeicherte Objekt dient. Git unterscheidet zwischen den Objekttypen Tree,
 Object, Commit und Tag.
@@ -513,7 +513,7 @@ auf das entsprechende Objekt (Abschnitt \ref{sec:commitobject}).
 
 \subsubsection{Tags verwalten}\label{sec:managetags}
 Die eindeutige Identifikation von Versionen bzw. konkreten Zuständen eines
-Repositorys mit \gls{SHA-1} Prüfsummen ist aus technischer Sicht problemlos.
+Repositorys mit \gls{sha1} Prüfsummen ist aus technischer Sicht problemlos.
 Als Mensch hingegen kann man sich solche Prüfsummen weder gut merken, noch geht
 aus den Prüfsummen eine Historie hervor. Git ermöglicht es mit dem Befehl
 \texttt{\$ git tag} Objekte, zumeist Commits, namentlich zu markieren. Als
@@ -538,7 +538,7 @@ dem Parameter \texttt{--tags} kombiniert werden. \cite[70-71,162-163]{gitosp}
 Tags veröffentlichen}
 
 \subsubsection{Branches verwalten}
-Ähnlich wie bei Tags markiert auch ein Branch eine \gls{SHA-1} Prüfsumme. In
+Ähnlich wie bei Tags markiert auch ein Branch eine \gls{sha1} Prüfsumme. In
 diesem Fall die eines Commits. Im Gegensatz zu Tags sind diese lediglich
 dynamische Referenzen. Da hier nur eine Textdatei mit der Referenz erstellt
 werden muss, ist der Vorgang entsprechend schnell. Das Erstellen eines
