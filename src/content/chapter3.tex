@@ -93,13 +93,13 @@ Versionskontrollsystemen üblich.
 
 Darüber hinaus bietet es sich an, beim Erstellen solcher Bemerkungen gewisse
 Regeln einzuhalten. Beispielsweise beschreiben Jez Humble und David Farley in
-\cite[S.~37]{cd} eine Situation, in der es sinnvoll ist, nicht nur zu wissen
+\cite[S.~37]{cd} eine Situation, in der es sinnvoll ist, nicht nur zu wissen,
 was der Autor geändert hat, sondern auch warum und in welchem Kontext. Wenn
 nicht klar ist, was der Autor sich bei Änderungen gedacht hat oder
 Zusammenhänge nicht aus dem Commit hervorgehen, kann ein gefundener und
 behobener Fehler vor dem Veröffentlichen einer Softwareversion durchaus zu
 Folgefehlern führen. Solche Situationen enden nicht selten darin, dass viele
-Stunden Arbeit investiert werden müssen um diese zu bereinigen.
+Stunden Arbeit investiert werden müssen, um diese zu bereinigen.
 \cite[S.~37]{cd}
 
 Nachdem der erste Commit erzeugt wurde, kann dieser nun mit \texttt{\$ git
@@ -131,7 +131,7 @@ Mit den beiden zuvor ausgeführten Commits, wurde eine, wenn auch
 kurze, Historie erstellt. Um diese zu untersuchen, dienen die Befehle
 \texttt{\$ git whatchanged}\footnote{Der Befehl \texttt{\$ git whatchanged}
 stammt aus frühen Zeiten von Git und ist eigentlich der heutige Befehl
-\texttt{\$ git log} mit einigen Parametern um die Ausgabe entsprechend zu
+\texttt{\$ git log} mit einigen Parametern, um die Ausgabe entsprechend zu
 formatieren.} oder \texttt{\$ git log}. Hierauf wird in Abschnitt \ref{sec:arch}
 weiter eingegangen. Für diesen Fall aber ist \texttt{\$ git whatchanged}
 ausreichend:
@@ -180,7 +180,7 @@ Auf den weiteren Umgang mit Tags und die unterschiedlichen Arten von Tags, wird
 in den Abschnitten \ref{sec:managetags} und \ref{sec:tagobject} eingegangen.
 
 \subsection{Verteiltes Git}\label{sec:distributed}
-In diesem Abschnitt wird das Arbeiten mit entferten \glspl{repository}
+In diesem Abschnitt wird das Arbeiten mit entfernten \glspl{repository}
 gezeigt (Abbildung \ref{fig:centralworkflow}). Die wesentliche Funktionsweise
 von Git ist auf kollaborative Arbeit an \glspl{repository} ausgelegt (Abschnitt
 \ref{sec:kernel}).
@@ -242,7 +242,7 @@ Das weitere Bearbeiten des Repositoryinhalts kann wie in Abschnitt
 
 \subsubsection{Änderungen übertragen}\label{sec:pushchanges}
 Um Daten in ein entferntes Repository zu übertragen, wird der Befehl \texttt{\$
-git push} benutzt. Als Standard Ziel wird das Repository verwendet, von dem auch
+git push} benutzt. Als Standardziel wird das Repository verwendet, von dem auch
 ursprünglich die Kopie erstellt wurde\footnote{In der Regel ist das \textit{origin}.}.
 
 \eqlst{listings/git_push.lst}{lst:git_push}{Änderungen veröffentlichen}
@@ -259,7 +259,7 @@ anderen Branch übertragen}
 
 Mit dem \texttt{\$ git push} können aber auch entfernte Referenzen, wie
 Branches oder Tags gelöscht werden. Dazu muss neben dem Namen des entfernten
-Repositorys, eine leere Referenz mit dem Zielbranch angeben werden:
+Repositorys eine leere Referenz mit dem Zielbranch angeben werden:
  \cite[S.~153-155]{gitosp}
 
 \eqlst{listings/git_push_remove.lst}{lst:git_push_remove}{Eine entfernte
@@ -309,7 +309,7 @@ Beispiel (Abschnitt \ref{sec:first_commits}) erhält man mit dem Linux Befehl
 
 \eqlst{listings/tree.lst}{lst:tree}{Dateibaum des Beispiels auflisten}
 
-Um nun den Dateibaum mit der Objektstruktur aus dem Git Repository zu
+Um nun den Dateibaum mit der Objektstruktur aus dem Git-Repository zu
 vergleichen, kann der Befehl \texttt{\$ git ls-tree HEAD} genutzt werden:
 
 \eqlst{listings/git_ls_tree.lst}{lst:git_ls_tree}{Objektbaum des Beispiels anzeigen}
@@ -367,10 +367,10 @@ nicht von dem Autor selbst in das aktuelle Repository integiert werden (Listing
 \subsubsection{Tag}\label{sec:tagobject}
 Ein \gls{tag} markiert einzelne Commits. Hierzu werden Versionsnummern als
 Namen verwendet (Abschnitt \ref{sec:tag}). Neben der \textit{SHA-1-ID} des zu
-referenzierenden Commits, wird ein Tagname, der Typ und der Autor
+referenzierenden Commits wird ein Tagname, der Typ und der Autor
 (\textit{tagger}) mit Name und Mailadresse gespeichert. Je nach Art des Tags
 kann optional noch eine Beschreibung angegeben werden. Bei Tags ist nicht nur
-die Prüfsumme, sondern auch der Name eindeutig. Wird versucht ein Tag mit einem
+die Prüfsumme, sondern auch der Name eindeutig. Wird versucht, ein Tag mit einem
 bereits existierenden Namen zu erzeugen, reagiert Git mit einer
 Fehlermeldung und lehnt das Erstellen entsprechend ab.
 
@@ -435,7 +435,7 @@ und dem \textit{Work Tree}.
 
 Der \textit{Work Tree} (Abschnitt \ref{sec:workingtree}) wurde bereits als
 Arbeitsbereich angesprochen. Mit \textit{\gls{HEAD}} ist neben dem Verweis auf
-den neuesten Commit, auch im weitesten Sinne das Repository gemeint. Das
+den neuesten Commit auch im weitesten Sinne das Repository gemeint. Das
 \gls{repository} dient als Datenspeicher für alle Commits, deren Inhalte und
 Historie. Der Index (Abschnitt \ref{sec:index}) in Git stellt im Vergleich zu
 vorherigen Versionskontrollsystemen eine Neuerung dar. Der Index ist ein
@@ -453,12 +453,12 @@ auf diesen drei Bereichen. \cite[34-35]{gitosp}
 \end{figure}
 
 \subsection{Ergänzende Befehle}\label{sec:commands}
-Die bisher verwendeten Befehle werden in diesem Abschnit um weitere, ergänzt
+Die bisher verwendeten Befehle werden in diesem Abschnit um weitere ergänzt,
 die für die alltägliche Arbeit mit Git sinnvoll sind\footnote{Weitere siehe
 hierzu \cite{gitosp}, \cite{progit} oder \cite{gitwf}.}.
 
 Alle Git Befehle bieten eine Vielzahl an Optionen. So verstehen viele der
-Befehle, die Änderungen an dem Repository vornehmen den Parameter
+Befehle, die Änderungen an dem Repository vornehmen, den Parameter
 \texttt{\-{}\-{}dry-run}, der es ermöglicht, Vorgänge erst zu simulieren.
 Außerdem bieten die meisten Git Befehle mit \texttt{-v} eine umfangreichere
 Ausgabe (engl. \textit{verbose}) an. Eine Übersicht über die unterstützten
@@ -538,7 +538,7 @@ dem Parameter \texttt{--tags} kombiniert werden. \cite[70-71,162-163]{gitosp}
 Tags veröffentlichen}
 
 \subsubsection{Branches verwalten}
-Ähnlich wie bei Tags markiert auch ein Branch eine \gls{sha1} Prüfsumme. In
+Ähnlich wie bei Tags markiert auch ein Branch eine \gls{sha1} Prüfsumme, in
 diesem Fall die eines Commits. Im Gegensatz zu Tags sind diese lediglich
 dynamische Referenzen. Da hier nur eine Textdatei mit der Referenz erstellt
 werden muss, ist der Vorgang entsprechend schnell. Das Erstellen eines
@@ -620,12 +620,12 @@ Format:
 \eqlst{listings/git_diff_wk.lst}{lst:git_diff_wk}{Änderungen auf Arbeitsbereich anzeigen}
 
 Ein anschließendes \texttt{\$ git add LICENSE}, führt zum Verschieben auf den
-Index und \texttt{\$ git diff}, zu einer leeren Ausgabe:
+Index und \texttt{\$ git diff} zu einer leeren Ausgabe:
 
 \eqlst{listings/git_status_staged.lst}{lst:git_status_staged}{Status des Index anzeigen}
 
 Um die Änderungen auf dem Index zu betrachten, muss der Befehl \texttt{\$ git
 diff} um den Parameter \texttt{--staged} ergänzt werden\footnote{Die Parameter
 \texttt{--staged} und \texttt{--cached} können synonym verwendet
-werden und stehen in diesem Fall für das betrachten der \textit{Staging
+werden und stehen in diesem Fall für das Betrachten der \textit{Staging
 Area} (Abschnitt \ref{sec:index}).}. \cite[26-29]{progit}

@@ -1,7 +1,7 @@
 \chapter{Weiteres zu Git}\label{cha:somethingmore}
 \section{Einschränkungen}\label{sec:problems}
 Auch wenn Git im Vergleich zu anderen Versionskontrollsystemen (Abschnitt
-\ref{sec:GeschichtlicheEntwicklung}), eine innovative Neuerung mit einem großen
+\ref{sec:GeschichtlicheEntwicklung}) eine innovative Neuerung mit einem großen
 Funktionsumfang ist, gibt es auch hier Einschränkungen. Im Folgenden sind drei
 erläutert.
 
@@ -17,8 +17,8 @@ zusammenfassen, so wird bei Änderungen solcher Dateien jede Version als eigenes
 Objekt gespeichert und vorgehalten. Angenommen, eine mit Git verwaltete
 Software wird mehrfach am Tag in einem Binärformat kompiliert und ebenfalls in
 dem gleichen Repository versioniert, dann bekommt jeder Entwickler alle
-Binärdateien die über die gesamte Zeit erzeugt wurden in seiner lokalen Kopie
-abgelegt.  Es gibt hier aber externe
+Binärdateien, die über die gesamte Zeit erzeugt wurden, in seiner lokalen Kopie
+abgelegt. Es gibt hier aber externe
 Tools\footnote{https://git-lfs.github.com/} und organisatorische
 Workflows\footnote{Lange Historien auslagern \cite[S.~235-244]{gitwf}}, die
 sich mit diesem Problem beschäftigen.  \cite[S.~300]{gitwf}
@@ -40,7 +40,7 @@ Vorgehensweisen\footnote{Forking-Workflow \cite[S.~163-173]{gitwf}.} zu
 verwenden, um dieses Problem zu umgehen. \cite[300-302]{gitwf}
 
 \subsection{Grafische Werkzeuge}
-Git selbst bietet keine grafische Unterstützung um Informationen über den
+Git selbst bietet keine grafische Unterstützung, um Informationen über den
 Inhalt zu visualisieren. So gibt es zwar neben den beschriebenen Befehlen
 (Abschnitt \ref{sec:arch}) mit \texttt{\$ git blame}, \texttt{\$ git annotate}
 und \texttt{git log --graph} noch weitere Möglichkeiten, mit denen sich
@@ -77,7 +77,7 @@ Statistiken anführen.
 \end{figure}
 
 Statistiken wurden entweder mit \texttt{\$ gitstats} \cite{link:gitstats} oder
-Standard Git Befehlen ermittelt. So lassen sich z.B. unter Linux, die
+Standard Git Befehlen ermittelt. So lassen sich z.B. unter Linux die
 durchgeführten Merges von Linus Torvalds mit folgendem Befehl ermitteln:
 
 \eqlst{listings/all_merges.lst}{lst:allmerges}{Ermitteln von Merges pro Autor}
@@ -85,7 +85,7 @@ durchgeführten Merges von Linus Torvalds mit folgendem Befehl ermitteln:
 Solche Statistiken sind nicht unbedingt als Qualitätsmaßstab geeignet, um
 Rückschlüsse auf die Effizienz einzelner Personen zu ziehen. Wie in Kapitel
 \ref{sec:collaboration} beschrieben, sollten diese Informationen aber trotzdem
-allen Beteiligten zur Verfügung gestellt werden.  So wird nach Jez Humble und
+allen Beteiligten zur Verfügung gestellt werden. So wird nach Jez Humble und
 David Farley in \cite[S.~138]{cd} eine Messung der geschriebenen Zeilen
 Quellcode am Tag wahrscheinlich eher dazu führen, dass Entwickler kürzere Zeilen
 Quellcode als effizientere schreiben. Die gemessene Anzahl an Commits führt hingegen
@@ -104,7 +104,7 @@ Linus Torvalds führt zwar die Liste der meisten Commits an, hat aber weder die
 meisten Zeilen hinzugefügt noch entfernt. Greg Kroah-Hartman hingegen liegt
 nach der Anzahl der Commits auf Platz 10 und hat mit stattlichen 1.224.072
 hinzugefügten und 891.939 entfernten Zeilen, wie auch die meisten anderen aus
-der Liste, weit mehr Zeilen zum Kernel beigetragen, als Linus Torvalds selbst.
+der Liste, weit mehr Zeilen zum Kernel beigetragen als Linus Torvalds selbst.
 Die Betrachtung der reinen Zahlen reicht also nicht aus, um eine repräsentative
 Einschätzung einzelner Personen zu erhalten.
 
