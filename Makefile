@@ -15,9 +15,12 @@ tag:
 setup:
 	cd src; make setup
 
-pdf:
+pdf: keynote
 	cd src; make pdf
+
+keynote:
+	libreoffice --convert-to pdf keynote/keynote.odp --outdir target/
 
 clean:
 	cd src; make clean
-	rm target tmp tasks -Rf
+	rm tmp tasks -Rf
