@@ -19,8 +19,10 @@ pdf: keynote
 	cd src; make pdf
 
 keynote:
-	libreoffice --convert-to pdf keynote/keynote.odp --outdir target/
+	libreoffice --convert-to pdf keynote/keynote.odp --outdir target
 
 clean:
 	cd src; make clean
 	rm tmp tasks -Rf
+
+.PHONY: keynote
