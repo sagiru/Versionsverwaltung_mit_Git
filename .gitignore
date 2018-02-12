@@ -8,7 +8,6 @@ tmp/*
 *.bak
 .bundle
 *.pyc
-target/*
 src/*.aux
 src/*.bcf
 src/*.bbl
