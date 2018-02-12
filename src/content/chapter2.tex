@@ -101,7 +101,7 @@ Trennung zwischen Tags und Branches ist nur eine Konvention. Das führt auch zu
 einem der Probleme beim Arbeiten mit \acrlong{svn}. \glspl{tag} sind nicht
 eindeutig und veränderbar. So macht SVN technisch keinen Unterschied zwischen
 \texttt{trunk}, \texttt{tags}, \texttt{branches} oder einem beliebigen anderen
-Verzeichnis innerhalb des Repositorys. Alle Verzeichnisse können in der
+Verzeichnis innerhalb des Repositories. Alle Verzeichnisse können in der
 gleichen Art und Weise bearbeitet werden. \cite[S.~383-385]{cd}
 
 Ein großer Vorteil von \acrshort{svn} gegenüber vorherigen
@@ -110,7 +110,7 @@ kann, wenn das Netzwerk nicht zur Verfügung steht. Alle Änderungen an Dateien
 werden zuerst auf einer lokalen Kopie durchgeführt und mit einem separaten
 Kommando an das zentrale Repository gesendet. Ferner seien sogenannte Externals
 erwähnt, die es als weitere Funktionalität ermöglichen, erstmals Inhalte von
-anderen Repositorys einzubinden. Dies kann nützlich sein, um Abhängigkeiten
+anderen Repositories einzubinden. Dies kann nützlich sein, um Abhängigkeiten
 zwischen \glspl{repository} abzubilden oder Binärdateien auszulagern. \cite[S.~384]{cd}
 
 \acrshort{svn} stellt zwar eine erhebliche Verbesserung gegenüber
@@ -202,10 +202,10 @@ welche Eigenschaften der Zusammenarbeit gefördert werden sollen. Hierzu zählen
 nach Jennifer Davis und Katherine Daniels \cite[S.~178]{effdo} beispielsweise:
 
 \begin{itemize}
-\item Das Erstellen und Abzweigen von Repositorys,
-\item das Beitragen zu Repositorys bzw. das Verwalten von Beiträgen,
+\item Das Erstellen und Abzweigen von Repositories,
+\item das Beitragen zu Repositories bzw. das Verwalten von Beiträgen,
 \item das Festlegen von Prozessen oder
-\item das Verwalten von Berechtigungen innerhalb von Repositorys.
+\item das Verwalten von Berechtigungen innerhalb von Repositories.
 \end{itemize}
 
 Der Einsatz eines Versionskontrollsystems hat auch einen positiven Einfluss auf
@@ -293,7 +293,7 @@ erzeugt. \cite[S.~20-21]{gitosp}
 
 \subsection{Tag}\label{sec:tag}
 Die meisten Versionskontrollsysteme benutzen Markierungen (engl. Tag), um
-bestimmte Stände des Repositorys mit Namen zu versehen. Üblicherweise werden
+bestimmte Stände des Repositories mit Namen zu versehen. Üblicherweise werden
 zur Bezeichnung von Markierungen Versionsstände genutzt, wie z.B.
 2.6.12-rc2 (Abschnitt \ref{sec:kernel}), v1.0 oder ähnliches. \cite[S.~48]{progit}
 
@@ -351,12 +351,12 @@ Ursprung in den beiden vorhergehenden Knoten der Zweige \textit{topic} und
 Komplexere Szenarien erlauben es, mit Git auch Merges aus mehr als zwei
 Branches durchzuführen, sogenannte \textit{three-way-merges} oder
 \textit{octopus-merges} \cite[S.~87]{gitosp}. Git ermöglicht auch, Zweige aus
-verschiedenen Repositorys zusammenzuführen. So gibt es nach \cite[3]{gitwf}
-noch die Möglichkeit, Repositorys nach spezielleren Funktionen zu unterteilen.
+verschiedenen Repositories zusammenzuführen. So gibt es nach \cite[3]{gitwf}
+noch die Möglichkeit, Repositories nach spezielleren Funktionen zu unterteilen.
 So kann ein dediziertes \textit{Blessed Repository} ausschließlich für das
 Erstellen von Versionen der erzeugten Software genutzt werden. Die Änderungen
 können aus einem \textit{Fork Repository} importiert werden. Das \textit{Fork
-Repository} dient zur Entkopplung des Haupt-Repositorys. So können größere
+Repository} dient zur Entkopplung des Haupt-Repositories. So können größere
 Umbauten, Merges oder Features unabhängig entwickelt werden
 \cite[S.~123]{gitwf}. Eine vergleichbare Vorgehensweise findet man im
 Repository des Linux Kernels \cite{link:linuxgit} (Abschnitt \ref{sec:kernel}).
@@ -401,7 +401,7 @@ Commits wiederhergestellt werden \cite[S~76]{gitosp}.
 Was z.B. unter \acrshort{svn} oder \acrshort{cvs} der \textit{checkout} eines
 entfernten \glspl{repository} ist, ist unter Git das \textit{Clonen} eines
 entfernten \glspl{repository}. Es bezeichnet das Herunterladen eines
-Git-Repositorys von einer Quelle mit der vollständigen Historie und allen
+Git-Repositories von einer Quelle mit der vollständigen Historie und allen
 enhaltenen \glspl{commit}. Es erstellt sozusagen einen Klon des
 ursprünglichen \glspl{repository}. \cite[S.~21]{gitosp}
 
@@ -455,7 +455,7 @@ ist aber nicht zu verwechseln mit lokalen Versionskontrollsystemen wie
 \acrshort{rcs} oder \acrshort{sccs}. Der Unterschied ist, dass verteilte
 Systeme das gleichzeitige Arbeiten von mehreren Benutzern stärker unterstützen als
 zentrale Versionskontrollsysteme. Dabei ist es unerheblich, ob Benutzer gleichzeitig
-an mehreren Branches, an verschiedenen Repositorys oder an den gleichen
+an mehreren Branches, an verschiedenen Repositories oder an den gleichen
 Dateien arbeiten. \cite[S.~393-394]{cd}
 
 Ein Auszug aus den von Jez Humble und David Farley in \cite[S.~393-394]{cd}

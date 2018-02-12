@@ -1,13 +1,13 @@
 \chapter{Git}\label{cha:git}
 In diesem Kapitel werden die wesentlichsten Grundlagen und Befehle
 beschrieben, um mit Git Dateien zu verwalten. Zunächst wird mit einfachen
-Befehlen ein Git-Repository erstellt und später am Beispiel dieses Repositorys
+Befehlen ein Git-Repository erstellt und später am Beispiel dieses Repositories
 auf weitere Eigenschaften und Befehle eingegangen.
 
 \section{Grundlagen}\label{gitbasics}
 Hier wird beispielhaft ein Repository \textit{git-example} mit einem
 Skript (\texttt{git-stats}) erstellt, welches ein paar einfache Statistiken
-über die Autoren eines git Repositorys erzeugt.
+über die Autoren eines Git-Repositories erzeugt.
 
 Alle Beispiele werden auf der Linux Kommandozeile durchgeführt. Git ist für
 alle gängigen Linux Derivate verfügbar. Die Autoren von \cite[S.~12-14]{progit}
@@ -38,7 +38,7 @@ werden. Hierzu muss der Parameter \texttt{\-\-global} entfernt werden. Die
 zugehörige Konfigurationsdatei findet sich in jedem Repository unter dem Pfad
 \texttt{.git/config}.
 
-\subsection{Erstellen eines Repositorys}\label{startup}
+\subsection{Erstellen eines Repositories}\label{startup}
 Damit Dateien nun mit Git versioniert werden können, muss ein (lokales)
 \gls{repository} erstellt werden:
 
@@ -53,7 +53,7 @@ Konfiguration alle Daten abgelegt werden, die Git zur weiteren Verwaltung des
 Um den Status des aktuell erzeugten \glspl{repository} auszugeben, kann der
 Befehl \texttt{\$ git status} verwendet werden:
 
-\eqlst{listings/git_status.lst}{lst:gitstatus}{Den Status eines Repositorys ausgeben}
+\eqlst{listings/git_status.lst}{lst:gitstatus}{Den Status eines Repositories ausgeben}
 
 Die von Git erzeugte Ausgabe macht darauf aufmerksam, dass noch keine Commits
 erzeugt wurden und dass man nun neue Dateien erstellen und hinzufügen kann.
@@ -193,19 +193,19 @@ von Git ist auf kollaborative Arbeit an \glspl{repository} ausgelegt (Abschnitt
 \end{figure}
 
 \subsubsection{Erstellen eines Klons}\label{sec:gitclone}
-Um eine lokale Kopie eines entfernten Repositorys zu erstellen bzw. ein
+Um eine lokale Kopie eines entfernten Repositories zu erstellen bzw. ein
 Repository zu klonen, benötigt man den Befehl \texttt{\$ git clone}. Zum
 Transport über das Netzwerk können verschiedene Protokolle benutzt werden.
 Unterstützt werden \textit{ssh, git, http[s], ftp[s]} und \textit{file}. Eine
 entsprechende \gls{repourl} kann neben dem Protokoll noch den Pfad des
-Repositorys, einen Benutzernamen oder einen Port enthalten:
+Repositories, einen Benutzernamen oder einen Port enthalten:
 
 \eqlst{listings/git_url.lst}{lst:git_url}{Git Repository Url syntax}
 
-Besonderheiten gibt es für das Klonen lokaler Repositorys und solcher, die über
+Besonderheiten gibt es für das Klonen lokaler Repositories und solcher, die über
 über \gls{sshell}(\acrshort{ssh}) geklont werden. Hier gibt es jeweils eine
 Kurzform. Für das Klonen über \acrshort{ssh} muss das Protokoll nicht mit
-angegeben werden und bei lokal erreichbaren Repositorys kann vollständig auf
+angegeben werden und bei lokal erreichbaren Repositories kann vollständig auf
 die Angabe einer Adresse verzichtet werden. Hier reicht einfach die Angabe
 eines Pfads \texttt{/pfad/zum/repo}.
 
@@ -218,18 +218,18 @@ Git speichert die Herkunft des entfernten \glspl{repository} ebenfalls in der
 Datei \texttt{.git/config}:
 
 \eqlst{listings/remote_reference.lst}{lst:remote_reference}{Konfiguration eines
-entfernten Repositorys anzeigen}
+entfernten Repositories anzeigen}
 
 Die gleichen Informationen werden mit Hilfe des Git Befehls \texttt{\$ git
 remote} ausgegeben:
 
 \eqlst{listings/git_remote.lst}{lst:git_remote}{Informationen eines entfernten
-Repositorys anzeigen}
+Repositories anzeigen}
 
 In Listing \ref{lst:git_remote} wird zum Einen der Name, in diesem Fall
 \textit{origin}, ausgegeben und zum Anderen, aufgrund der Verwendung des
 Parameters \texttt{-v}, auch der Pfad zum entfernten Repository. Mit \texttt{\$
-git remote} können weitere entfernte Repositorys unter anderem Namen
+git remote} können weitere entfernte Repositories unter anderem Namen
 konfiguriert werden\footnote{Hierzu siehe \texttt{\$ git help remote}}. Ebenso
 wird standardmäßig der \gls{branch} \textit{master} konfiguriert und als
 sogenannter \textit{remote-tracking-branch} eingerichtet. Diese Branches verfolgen
@@ -247,7 +247,7 @@ ursprünglich die Kopie erstellt wurde\footnote{In der Regel ist das \textit{ori
 
 \eqlst{listings/git_push.lst}{lst:git_push}{Änderungen veröffentlichen}
 
-In Listing \ref{lst:git_remote} wurde weder der Name des entfernten Repositorys,
+In Listing \ref{lst:git_remote} wurde weder der Name des entfernten Repositories,
 noch der des verwendeten Branches angegeben. In diesem Fall entscheidet Git
 nach der vorhandenen Konfiguration selbst und ergänzt zu \texttt{\$ git
 push origin master}. Wenn der Branch in dem entfernten Repository einen anderen
@@ -259,14 +259,14 @@ anderen Branch übertragen}
 
 Mit dem \texttt{\$ git push} können aber auch entfernte Referenzen, wie
 Branches oder Tags gelöscht werden. Dazu muss neben dem Namen des entfernten
-Repositorys eine leere Referenz mit dem Zielbranch angeben werden:
+Repositories eine leere Referenz mit dem Zielbranch angeben werden:
  \cite[S.~153-155]{gitosp}
 
 \eqlst{listings/git_push_remove.lst}{lst:git_push_remove}{Eine entfernte
 Referenz löschen}
 
 \subsubsection{Änderungen herunterladen}
-Um Änderungen aus entfernten Repositorys herunterzuladen, existieren zwei
+Um Änderungen aus entfernten Repositories herunterzuladen, existieren zwei
 Befehle. Zum Einen \texttt{\$ git pull} und zum Anderen \texttt{\$ git fetch}.
 Der hauptsächliche Unterschied zwischen den beiden Befehlen ist, dass
 \texttt{\$ git fetch} lediglich die Änderungen anderer Entwickler aus dem entfernten
@@ -295,7 +295,7 @@ Objekten basierendes Modell. Dieser Abschnitt geht auf die verschiedenen
 Objekttypen und deren Zusammenhänge ein. Er basiert größtenteils auf den
 Ausführungen der Autoren aus \cite[S.~49-59]{gitosp}.
 
-Für jedes Objekt wird innerhalb des Repositorys unter \texttt{.git/objects}
+Für jedes Objekt wird innerhalb des Repositories unter \texttt{.git/objects}
 eine Datei abgelegt. Für alle Objekte wird eine eindeutige \gls{sha1}
 Prüfsumme erzeugt, die gleichzeitig als Dateiname und Referenz für das
 abgespeicherte Objekt dient. Git unterscheidet zwischen den Objekttypen Tree,
@@ -513,7 +513,7 @@ auf das entsprechende Objekt (Abschnitt \ref{sec:commitobject}).
 
 \subsubsection{Tags verwalten}\label{sec:managetags}
 Die eindeutige Identifikation von Versionen bzw. konkreten Zuständen eines
-Repositorys mit \gls{sha1} Prüfsummen ist aus technischer Sicht problemlos.
+Repositories mit \gls{sha1} Prüfsummen ist aus technischer Sicht problemlos.
 Als Mensch hingegen kann man sich solche Prüfsummen weder gut merken, noch geht
 aus den Prüfsummen eine Historie hervor. Git ermöglicht es mit dem Befehl
 \texttt{\$ git tag} Objekte, zumeist Commits, namentlich zu markieren. Als
