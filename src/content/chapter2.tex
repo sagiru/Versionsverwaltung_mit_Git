@@ -81,17 +81,20 @@ eingeführt, welche drei verschiedene Verzeichnisse innerhalb eines
 
 \begin{itemize}
 \item \textbf{trunk}: Zentraler Zweig, der die führende Version enhält.
-      Vornehmlich werden Branches und Tags erzeugt, in dem von dieser Version
-      eine Kopie erzeugt wird.
-\item \textbf{tags}: Verzeichnis, indem unterschiedliche Verzeichnisse als
-       Tags erzeugt werden, die von einer bestimmten Revision erzeugt werden.
-\item \textbf{branches}: Ein Verzeichnis, in dem unterschiedliche Ordner als
-      Abzweigungen angelegt werden. Auf diesen Abzweigungen kann unabhängig von
-      \textit{trunk} gearbeitet werden.
+      Vornehmlich werden \gls{branch}es und \glspl{tag} erzeugt, indem von
+      dieser Version eine Kopie erstellt wird.
+\item \textbf{tags}: Verzeichnis, in dem Unterverzeichnisse als
+      Kopie einer konkreten Revision angelegt werden. In der Regel werden
+      \glspl{tag} genutzt, um einen bestimmten Stand eines Zweiges
+      beispielsweise mit einer Versionsnummer zu markieren.
+\item \textbf{branches}: Ein Verzeichnis, in dem Unterverzeichnisse als
+      Arbeitskopien von anderen Zweigen angelegt werden. Auf diesen
+      Abzweigungen kann unabhängig von der Quelle (z.B. \textit{trunk})
+      gearbeitet werden.
 \end{itemize}
 
 Tags und Branches werden erzeugt, indem ein Verzeichnis angelegt wird und der
-Inhalt von \textit{trunk} kopiert wird. So lange keine Änderungen in den
+Inhalt von z.B. \textit{trunk} kopiert wird. So lange keine Änderungen in den
 erzeugten Verzeichnissen durchgeführt werden, sind diese lediglich Zeiger auf
 eine Menge von Objekten, die mit der Kopie der Quelle übereinstimmen. Die
 Trennung zwischen Tags und Branches ist nur eine Konvention. Das führt auch zu
@@ -183,20 +186,20 @@ kaum mehr wegzudenken. \cite[S.~13]{gitosp}
 
 \section{Kollaboration}\label{sec:collaboration}
 Die Möglichkeit, Änderungen transparent und nachvollziehbar in einem
-\gls{repository} zu speichern und bei Bedarf wieder zurückzunehmen, Entwicklungsstände, die
-zu unterschiedlichen Zeitpunkten erzeugt wurden, zu vergleichen,
-zusammenzuführen und Teile davon wieder herzustellen, ermöglicht es, die
-Zusammenarbeit in Teams oder Organisationen erheblich zu verbessern. Alle
-Beteiligten werden damit konfrontiert, dass mehrere Personen und Teams an
-gleichen Inhalten zur gleichen Zeit arbeiten müssen. Das verbessert den Umgang
-mit Konflikten, seien sie technischer oder organisatorischer Art, die durch
-eine solche Zusammenarbeit entstehen können. Der Einsatz eines
-Versionsverwaltungssystems sollte als eine Vorgehensweise angesehen werden, die
-einen positiven Einfluss auf die Zusammenarbeit hat. Da nicht alle Systeme die
-gleichen Funktionen unterstützen, sollte daher bei der Auswahl des
-einzusetzenden Systems darauf geachtet werden, welche Eigenschaften der
-Zusammenarbeit gefördert werden sollen. Hierzu zählen nach Jennifer Davis und
-Katherine Daniels \cite[S.~178]{effdo} beispielsweise:
+\gls{repository} zu speichern und bei Bedarf wieder zurückzunehmen,
+Entwicklungsstände, die zu unterschiedlichen Zeitpunkten erzeugt wurden, zu
+vergleichen, zusammenzuführen und Teile davon wieder herzustellen, ermöglicht
+es, die Zusammenarbeit in Teams oder Organisationen erheblich zu verbessern.
+Beispielsweise werden alle Beteiligten damit konfrontiert, dass mehrere
+Personen an gleichen Inhalten zur gleichen Zeit arbeiten müssen. Das kann den
+Umgang mit Konflikten, die durch eine solche Zusammenarbeit entstehen können,
+verbessern. Unabhängig davon, ob diese Konflikte technischer oder
+organisatorischer Art sind. Der Einsatz eines Versionsverwaltungssystems sollte
+als eine Vorgehensweise angesehen werden, die einen positiven Einfluss auf die
+Zusammenarbeit hat. Da nicht alle Systeme die gleichen Funktionen unterstützen,
+sollte daher bei der Auswahl des einzusetzenden Systems darauf geachtet werden,
+welche Eigenschaften der Zusammenarbeit gefördert werden sollen. Hierzu zählen
+nach Jennifer Davis und Katherine Daniels \cite[S.~178]{effdo} beispielsweise:
 
 \begin{itemize}
 \item Das Erstellen und Abzweigen von Repositorys,
