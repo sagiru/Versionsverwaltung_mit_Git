@@ -203,7 +203,7 @@ Repositories, einen Benutzernamen oder einen Port enthalten:
 \eqlst{listings/git_url.lst}{lst:git_url}{Git Repository Url syntax}
 
 Besonderheiten gibt es für das Klonen lokaler Repositories und solcher, die über
-über \gls{sshell}(\acrshort{ssh}) geklont werden. Hier gibt es jeweils eine
+über \gls{sshell} (\acrshort{ssh}) geklont werden. Hier gibt es jeweils eine
 Kurzform. Für das Klonen über \acrshort{ssh} muss das Protokoll nicht mit
 angegeben werden und bei lokal erreichbaren Repositories kann vollständig auf
 die Angabe einer Adresse verzichtet werden. Hier reicht einfach die Angabe
@@ -278,7 +278,7 @@ Bei \texttt{\$ git pull} versucht Git nach Herunterladen der
 Änderungen, diese aus einem entsprechend konfigurierten
 \textit{remote-tracking-branch} zu integrieren (Listing \ref{lst:git_fetch}).
 Der Befehl ist also eine Kombination aus \texttt{\$ git fetch} und \texttt{\$
-git merge}\footnote{Wenn stattdessen \texttt{\$ git pull --rebase} verwendet
+git merge}\footnote{Wenn stattdessen \texttt{\$ git pull -{}-{}rebase} verwendet
 wird, kommt hier eine Kombination von \texttt{\$ git fetch} und \texttt{\$ git
 rebase} zum Einsatz. Siehe hierzu auch \cite[144-152]{gitosp} oder
 \cite[85-88]{progit}.}. \cite[144-152]{gitosp}
@@ -346,7 +346,7 @@ referenzierte \textit{tree} ist immer ein Verweis auf einen sogenannten
 entstandenen Objektbaums und enhält keinen Dateinamen (Abbildung
 \ref{fig:objectmodel}).
 
-Dadurch, dass jeder Commit seinen vorhergehenden Commit referenziert, entsteht ein
+Dadurch, dass jeder Commit seine vorhergehenden Commits referenziert, entsteht ein
 gerichteter azyklischer Graph, bei dem ein Knoten durch einen Commit und Kanten
 durch Referenzen repräsentiert werden. Ein weiterer Vorteil dieser
 Vorgehensweise ist, dass in dem Commit nicht immer alle enthaltenen Objekte neu
@@ -585,7 +585,7 @@ anzeigen}
 
 Der Unterschied zu Listing \ref{lst:first_git_whatchanged} ist die etwas
 reduzierte Ausgabe. Um die Ausgabe noch weiter einzuschränken, kann der
-Parameter \texttt{--oneline} genutzt werden.
+Parameter \texttt{-{}-{}oneline} genutzt werden.
 
 \eqlst{listings/git_log_oneline.lst}{lst:git_log_oneline}{Versionsgeschichte
 einzeilig anzeigen}
@@ -625,7 +625,7 @@ Index und \texttt{\$ git diff} zu einer leeren Ausgabe:
 \eqlst{listings/git_status_staged.lst}{lst:git_status_staged}{Status des Index anzeigen}
 
 Um die Änderungen auf dem Index zu betrachten, muss der Befehl \texttt{\$ git
-diff} um den Parameter \texttt{--staged} ergänzt werden\footnote{Die Parameter
-\texttt{--staged} und \texttt{--cached} können synonym verwendet
+diff} um den Parameter \texttt{-{}-{}staged} ergänzt werden\footnote{Die Parameter
+\texttt{-{}-{}staged} und \texttt{-{}-{}cached} können synonym verwendet
 werden und stehen in diesem Fall für das Betrachten der \textit{Staging
 Area} (Abschnitt \ref{sec:index}).}. \cite[26-29]{progit}
