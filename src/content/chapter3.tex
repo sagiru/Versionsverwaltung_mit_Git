@@ -296,7 +296,7 @@ Objekttypen und deren Zusammenhänge ein. Er basiert größtenteils auf den
 Ausführungen der Autoren aus \cite[S.~49-59]{gitosp}.
 
 Für jedes Objekt wird innerhalb des Repositories unter \texttt{.git/objects}
-eine Datei abgelegt. Für alle Objekte wird eine eindeutige \gls{sha1}
+eine Datei abgelegt. Für alle Objekte wird eine eindeutige \acrshort{sha1}-1
 Prüfsumme erzeugt, die gleichzeitig als Dateiname und Referenz für das
 abgespeicherte Objekt dient. Git unterscheidet zwischen den Objekttypen Tree,
 Blob, Commit und Tag.
@@ -513,7 +513,7 @@ auf das entsprechende Objekt (Abschnitt \ref{sec:commitobject}).
 
 \subsubsection{Tags verwalten}\label{sec:managetags}
 Die eindeutige Identifikation von Versionen bzw. konkreten Zuständen eines
-Repositories mit \gls{sha1} Prüfsummen ist aus technischer Sicht problemlos.
+Repositories mit \acrshort{sha1}-1-Prüfsummen ist aus technischer Sicht problemlos.
 Als Mensch hingegen kann man sich solche Prüfsummen weder gut merken, noch geht
 aus den Prüfsummen eine Historie hervor. Git ermöglicht es mit dem Befehl
 \texttt{\$ git tag} Objekte, zumeist Commits, namentlich zu markieren. Als
@@ -532,13 +532,13 @@ Herunterladen von Tags erfolgt über \texttt{\$ git fetch} (Abschnitt
 \eqlst{listings/git_push_tag.lst}{lst:git_push_tag}{Einen Tag veröffentlichen}
 
 Um alle lokalen Tags zu veröffentlichen, kann der \texttt{\$ git push} Befehl auch mit
-dem Parameter \texttt{--tags} kombiniert werden. \cite[70-71,162-163]{gitosp}
+dem Parameter \texttt{-{}-{}tags} kombiniert werden. \cite[70-71,162-163]{gitosp}
 
 \eqlst{listings/git_push_all_tags.lst}{lst:git_push_all_tags}{Alle erzeugten
 Tags veröffentlichen}
 
 \subsubsection{Branches verwalten}
-Ähnlich wie bei Tags markiert auch ein Branch eine \gls{sha1} Prüfsumme, in
+Ähnlich wie bei Tags markiert auch ein Branch eine \acrshort{sha1}-1-Prüfsumme, in
 diesem Fall die eines Commits. Im Gegensatz zu Tags sind diese lediglich
 dynamische Referenzen. Da hier nur eine Textdatei mit der Referenz erstellt
 werden muss, ist der Vorgang entsprechend schnell. Das Erstellen eines
