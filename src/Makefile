@@ -6,7 +6,7 @@
 #
 #
 
-SOURCE=Seminar-1908-Git.tex
+SOURCE=Versionsverwaltung_mit_Git.tex
 MAIN=$(SOURCE:.tex=)
 PDF=$(SOURCE:tex=pdf)
 export TEXMFHOME=$(PWD)/texmf
