@@ -60,16 +60,18 @@ clean:
 
 install:
 ifeq ($(UNAME_S),Linux)
-	sudo apt-get install texlive-latex-recommended \
-											texlive-extra-utils \
-											texlive-latex-extra \
-											texlive-lang-german \
-											pandoc \
-											texlive-latex-base \
-											texlive-bibtex-extra \
-											latexmk \
-											texlive-generic-extra \
-											biber
+	sudo apt-get install \
+		biber
+		latexmk \
+		pandoc \
+		texlive-bibtex-extra \
+		texlive-extra-utils \
+		texlive-font-utils \
+		texlive-generic-extra \
+		texlive-lang-german \
+		texlive-latex-base \
+		texlive-latex-extra \
+		texlive-latex-recommended \
 endif
 ifeq ($(UNAME_S),FreeBSD)
 	@echo ---
